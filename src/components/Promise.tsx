@@ -42,7 +42,7 @@ export default function Promise() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-4xl md:text-6xl font-bold text-center text-gray-900 mb-6 leading-tight"
+          className="text-display text-center text-gray-900 mb-4"
         >
           We Don't Just Build —
         </motion.h2>
@@ -51,7 +51,7 @@ export default function Promise() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-3xl md:text-5xl font-bold text-center text-gradient-purple mb-16"
+          className="text-heading text-center text-gradient-purple mb-16"
         >
           We Deliver Confidence
         </motion.h3>

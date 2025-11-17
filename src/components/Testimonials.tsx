@@ -45,12 +45,12 @@ export default function Testimonials() {
               initial={{ scale: 0 }}
               animate={isInView ? { scale: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-6xl font-bold text-gradient-purple"
+              className="text-display text-gradient-purple"
             >
               Real Clients. Real Results.
             </motion.div>
           </div>
-          <p className="text-xl text-gray-600">Not Hypotheticals.</p>
+          <p className="text-subheading text-gray-600">Not Hypotheticals.</p>
         </motion.div>
 
         <div className="relative">

@@ -20,6 +20,7 @@ export const SmoothScrollProvider: React.FC<SmoothScrollProviderProps> = ({ chil
   const lenisRef = useRef<Lenis | null>(null);
   const sectionsRef = useRef<string[]>(['hero', 'difference', 'tech-expertise', 'testimonials', 'promise', 'services']);
   const isScrollingRef = useRef(false);
+  const lastHashRef = useRef<string>('');
 
   useEffect(() => {
     // Initialize Lenis with Framer-like settings
@@ -48,9 +49,11 @@ export const SmoothScrollProvider: React.FC<SmoothScrollProviderProps> = ({ chil
       const scrollY = window.scrollY;
       const windowHeight = window.innerHeight;
       
-      // Check if we're at the very top (within 100px)
-      if (scrollY < 100) {
-        if (window.location.hash) {
+      // Check if we're at the very top (within 150px)
+      if (scrollY < 150) {
+        const newHash = '';
+        if (lastHashRef.current !== newHash) {
+          lastHashRef.current = newHash;
           window.history.replaceState(null, '', window.location.pathname);
         }
         return;
@@ -58,33 +61,48 @@ export const SmoothScrollProvider: React.FC<SmoothScrollProviderProps> = ({ chil
       
       // Find the section currently in view
       let currentSection = '';
+      let maxVisibility = 0;
       
       for (const sectionId of sections) {
         const element = document.getElementById(sectionId);
         if (element) {
           const rect = element.getBoundingClientRect();
-          const elementTop = rect.top + scrollY;
-          const elementBottom = elementTop + rect.height;
+          const elementTop = rect.top;
+          const elementBottom = rect.bottom;
           
-          // Check if section is in the middle of the viewport
-          if (scrollY + windowHeight / 2 >= elementTop && scrollY + windowHeight / 2 <= elementBottom) {
+          // Calculate how much of the section is visible
+          const visibleTop = Math.max(0, -elementTop);
+          const visibleBottom = Math.min(windowHeight, windowHeight - Math.max(0, elementBottom - windowHeight));
+          const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+          const visibility = visibleHeight / rect.height;
+          
+          // Use the section with the highest visibility percentage
+          if (visibility > maxVisibility && visibility > 0.3) { // At least 30% visible
+            maxVisibility = visibility;
             currentSection = sectionId;
-            break;
           }
         }
       }
       
-      // Update hash if we found a section and it's different from current hash
-      if (currentSection && window.location.hash !== `#${currentSection}`) {
+      // Only update hash if we found a section and it's different from the last one
+      if (currentSection && lastHashRef.current !== currentSection) {
+        lastHashRef.current = currentSection;
         window.history.replaceState(null, '', `#${currentSection}`);
       }
     };
 
-    // Throttled scroll handler for hash updates
+    // More aggressive throttling to prevent flickering
     let scrollTimeout: NodeJS.Timeout;
+    let isThrottled = false;
     const handleScroll = () => {
+      if (isThrottled) return;
+      
+      isThrottled = true;
       clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(updateHashBasedOnScroll, 100);
+      scrollTimeout = setTimeout(() => {
+        updateHashBasedOnScroll();
+        isThrottled = false;
+      }, 200); // Increased delay to reduce flickering
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -203,6 +221,7 @@ export const SmoothScrollProvider: React.FC<SmoothScrollProviderProps> = ({ chil
     if (!lenisRef.current) return;
     
     // Clear hash when scrolling to top
+    lastHashRef.current = '';
     window.history.replaceState(null, '', window.location.pathname);
     
     // Set scrolling flag to prevent hash updates during scroll
@@ -222,16 +241,19 @@ export const SmoothScrollProvider: React.FC<SmoothScrollProviderProps> = ({ chil
     const element = document.getElementById(sectionId);
     if (element) {
       // Update hash immediately when navigating to section
+      lastHashRef.current = sectionId;
       window.history.replaceState(null, '', `#${sectionId}`);
       scrollToElement(element as HTMLElement, options);
     }
   };
 
   const updateHash = (hash: string) => {
+    lastHashRef.current = hash;
     window.history.replaceState(null, '', `#${hash}`);
   };
 
   const clearHash = () => {
+    lastHashRef.current = '';
     window.history.replaceState(null, '', window.location.pathname);
   };
 

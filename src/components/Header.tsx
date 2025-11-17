@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import logo from '../assets/logo/logo.png';
 import { SmoothScrollLink } from './SmoothScrollButton';
 import { useSmoothScrollContext } from './SmoothScrollProvider';
 
@@ -9,11 +10,13 @@ export default function Header() {
   const { scrollToTop } = useSmoothScrollContext();
 
   const navItems = [
-    { label: 'About', targetId: 'difference' },
-    { label: 'Why Us', targetId: 'difference' },
-    { label: 'Works', targetId: 'tech-expertise' },
+    { label: 'Home', targetId: 'hero' },
+    { label: 'About Us', targetId: 'difference' },
     { label: 'Services', targetId: 'services' },
-    { label: 'Testimonials', targetId: 'testimonials' }
+    { label: 'Why Us', targetId: 'promise' },
+    { label: 'Portfolio', targetId: 'tech-expertise' },
+    { label: 'Blog', targetId: 'testimonials' },
+    { label: 'Contact Us', targetId: 'contact' }
   ];
 
   const handleLogoClick = () => {
@@ -26,7 +29,7 @@ export default function Header() {
       animate={{ y: 0 }}
       className="sticky top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md"
     >
-      <nav className="container mx-auto px-6 lg:px-8 py-6">
+      <nav className="container mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <motion.button
@@ -34,9 +37,13 @@ export default function Header() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
             onClick={handleLogoClick}
-            className="text-2xl font-bold text-gradient-purple hover:opacity-80 transition-opacity cursor-pointer"
+            className="flex items-center gap-2 cursor-pointer"
           >
-            Cyvera.
+            <img
+              src={logo}
+              alt="Cyvera Digitals logo"
+              className="h-24 w-auto"
+            />
           </motion.button>
 
           {/* Desktop Navigation */}
@@ -61,14 +68,14 @@ export default function Header() {
             ))}
           </div>
 
-          {/* Contact Button */}
+          {/* Login Button */}
           <motion.button
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.8 }}
             className="hidden lg:block px-6 py-2 bg-gray-900 text-white rounded-full font-medium hover:bg-gray-800 transition-colors"
           >
-            Contact
+            Login
           </motion.button>
 
           {/* Mobile Menu Button */}
@@ -102,7 +109,7 @@ export default function Header() {
               </SmoothScrollLink>
             ))}
             <button className="mt-2 px-6 py-2 bg-gray-900 text-white rounded-full font-medium hover:bg-gray-800 transition-colors w-fit">
-              Contact
+              Login
             </button>
           </motion.div>
         )}

@@ -21,7 +21,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight"
+            className="text-display text-gray-900 mb-4"
           >
             Build. Design. Grow.
           </motion.h2>
@@ -30,7 +30,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-2xl md:text-4xl lg:text-5xl font-bold text-gradient-purple mb-8"
+            className="text-heading text-gradient-purple mb-8"
           >
             Your Digital Success, Engineered from the Ground Up
           </motion.h3>
@@ -39,7 +39,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-lg md:text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed"
+            className="text-subheading text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed"
           >
             At CYVERA Digitals, we don't just create websites or post graphics — we architect digital ecosystems that attract, engage, and convert. From concept to launch to growth, we're your full-stack digital partner.
           </motion.p>

@@ -38,7 +38,7 @@ export default function Services() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-6"
+          className="text-display text-center text-gray-900 mb-6"
         >
           Our Services
         </motion.h2>
@@ -47,7 +47,7 @@ export default function Services() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-xl text-center text-gray-600 mb-16 max-w-3xl mx-auto"
+          className="text-subheading text-center text-gray-600 mb-16 max-w-3xl mx-auto"
         >
           Comprehensive digital solutions tailored to your unique needs
         </motion.p>
