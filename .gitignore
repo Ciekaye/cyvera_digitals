@@ -24,3 +24,9 @@ out
 *.sw?
 .env
 *.sqlite
+*.sqlite-wal
+*.sqlite-shm
+
+# Legacy Project Folders
+cyvera-digitals/
+server/

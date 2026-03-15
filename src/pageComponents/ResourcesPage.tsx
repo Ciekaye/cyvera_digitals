@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { BookOpen, FileText, Lightbulb, ArrowRight, Sparkles } from 'lucide-react';
@@ -114,10 +115,12 @@ export default function ResourcesPage() {
                 className="group card-modern overflow-hidden shadow-lg hover:shadow-2xl transition-all cursor-pointer"
               >
                 <div className="aspect-video overflow-hidden">
-                  <img
+                  <Image
                     src={post.image}
                     alt={post.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
                 <div className="p-6">

@@ -93,39 +93,14 @@ export default function AboutPage() {
                 <feGaussianBlur stdDeviation="8" />
               </filter>
             </defs>
-            <path filter="url(#abtblur2)" fill="url(#abt6)" opacity="0.7">
-              <animate attributeName="d" dur="9s" repeatCount="indefinite"
-                values="M0,260 C200,160 400,340 600,240 C800,140 1000,300 1200,220 C1350,160 1420,260 1440,240 L1440,500 L0,500 Z;
-                        M0,290 C180,200 380,360 620,260 C820,170 1020,320 1240,240 C1370,180 1420,270 1440,255 L1440,500 L0,500 Z;
-                        M0,260 C200,160 400,340 600,240 C800,140 1000,300 1200,220 C1350,160 1420,260 1440,240 L1440,500 L0,500 Z" />
-            </path>
-            <path fill="url(#abt5)" opacity="0.85">
-              <animate attributeName="d" dur="7s" repeatCount="indefinite"
-                values="M0,310 C160,220 360,380 580,280 C760,190 980,350 1180,260 C1340,190 1411,290 1440,270 L1440,500 L0,500 Z;
-                        M0,280 C200,190 380,400 600,290 C800,200 1000,370 1220,270 C1360,210 1420,300 1440,280 L1440,500 L0,500 Z;
-                        M0,310 C160,220 360,380 580,280 C760,190 980,350 1180,260 C1340,190 1410,290 1440,270 L1440,500 L0,500 Z" />
-            </path>
-            <path fill="url(#abt4)" opacity="0.9">
-              <animate attributeName="d" dur="5.5s" repeatCount="indefinite"
-                values="M0,350 C180,260 360,420 580,330 C760,250 960,400 1180,310 C1340,240 1410,330 1440,315 L1440,500 L0,500 Z;
-                        M0,330 C200,245 380,440 600,345 C800,260 980,420 1200,325 C1360,260 1420,340 1440,325 L1440,500 L0,500 Z;
-                        M0,350 C180,260 360,420 580,330 C760,250 960,400 1180,310 C1340,240 1410,330 1440,315 L1440,500 L0,500 Z" />
-            </path>
-            <path fill="none" stroke="#e879f9" strokeWidth="1.2" opacity="0.35">
-              <animate attributeName="d" dur="6s" repeatCount="indefinite"
-                values="M0,370 C200,295 400,420 620,350 C820,275 1020,410 1240,330 C1370,275 1420,350 1440,335;
-                        M0,355 C220,278 420,440 640,360 C840,285 1040,430 1260,340 C1380,285 1420,360 1440,345;
-                        M0,370 C200,295 400,420 620,350 C820,275 1020,410 1240,330 C1370,275 1420,350 1440,335" />
-            </path>
-            <path fill="none" stroke="#a78bfa" strokeWidth="1" opacity="0.3">
-              <animate attributeName="d" dur="8s" repeatCount="indefinite"
-                values="M0,385 C180,315 380,440 600,368 C800,295 1000,428 1220,348 C1360,295 1420,368 1440,355;
-                        M0,372 C200,302 400,458 620,375 C820,308 1020,445 1240,360 C1370,308 1420,375 1440,362;
-                        M0,385 C180,315 380,440 600,368 C800,295 1000,428 1220,348 C1360,295 1420,368 1440,355" />
-            </path>
+            <path fill="url(#abt6)" opacity="0.7" d="M0,260 C200,160 400,340 600,240 C800,140 1000,300 1200,220 C1350,160 1420,260 1440,240 L1440,500 L0,500 Z" />
+            <path fill="url(#abt5)" opacity="0.85" d="M0,310 C160,220 360,380 580,280 C760,190 980,350 1180,260 C1340,190 1411,290 1440,270 L1440,500 L0,500 Z" />
+            <path fill="url(#abt4)" opacity="0.9" d="M0,350 C180,260 360,420 580,330 C760,250 960,400 1180,310 C1340,240 1410,330 1440,315 L1440,500 L0,500 Z" />
+            <path fill="none" stroke="#e879f9" strokeWidth="1.2" opacity="0.35" d="M0,370 C200,295 400,420 620,350 C820,275 1020,410 1240,330 C1370,275 1420,350 1440,335" />
+            <path fill="none" stroke="#a78bfa" strokeWidth="1" opacity="0.3" d="M0,385 C180,315 380,440 600,368 C800,295 1000,428 1220,348 C1360,295 1420,368 1440,355" />
           </svg>
-          <div className="absolute top-0 left-0 w-[600px] h-[350px] bg-gradient-radial from-fuchsia-100/60 via-purple-50/30 to-transparent rounded-full blur-3xl" />
-          <div className="absolute top-0 right-0 w-[500px] h-[300px] bg-gradient-radial from-blue-100/50 via-indigo-50/20 to-transparent rounded-full blur-3xl" />
+          <div className="absolute top-0 left-0 w-[600px] h-[350px] bg-gradient-radial from-fuchsia-100/60 via-purple-50/30 to-transparent rounded-full" />
+          <div className="absolute top-0 right-0 w-[500px] h-[300px] bg-gradient-radial from-blue-100/50 via-indigo-50/20 to-transparent rounded-full" />
         </div>
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">

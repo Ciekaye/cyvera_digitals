@@ -61,88 +61,11 @@ export default function GraphicDesignPage() {
             </defs>
             
             {/* Homepage-style wave lines */}
-            <path fill="none" stroke="url(#flow1)" strokeWidth="2" opacity="0.6">
-              <animate
-                attributeName="d"
-                dur="5.5s"
-                repeatCount="indefinite"
-                values="
-                  M0,480 C180,380 360,560 580,460 C760,370 960,540 1180,440 C1340,360 1410,460 1440,440;
-                  M0,460 C200,360 380,580 600,470 C800,380 980,560 1200,450 C1360,380 1420,470 1440,450;
-                  M0,480 C180,380 360,560 580,460 C760,370 960,540 1180,440 C1340,360 1410,460 1440,440
-                "
-              />
-            </path>
+            <path fill="none" stroke="url(#flow1)" strokeWidth="2" opacity="0.6" d="M0,480 C180,380 360,560 580,460 C760,370 960,540 1180,440 C1340,360 1410,460 1440,440" />
             
-            <path fill="none" stroke="url(#flow2)" strokeWidth="1.5" opacity="0.5">
-              <animate
-                attributeName="d"
-                dur="7s"
-                repeatCount="indefinite"
-                values="
-                  M0,520 C160,420 360,600 580,490 C760,390 980,570 1180,470 C1340,390 1410,500 1440,480;
-                  M0,500 C200,400 380,620 600,510 C800,410 1000,590 1220,480 C1360,410 1420,510 1440,490;
-                  M0,520 C160,420 360,600 580,490 C760,390 980,570 1180,470 C1340,390 1410,500 1440,480
-                "
-              />
-            </path>
+            <path fill="none" stroke="url(#flow2)" strokeWidth="1.5" opacity="0.5" d="M0,520 C160,420 360,600 580,490 C760,390 980,570 1180,470 C1340,390 1410,500 1440,480" />
             
-            <path fill="none" stroke="url(#flow3)" strokeWidth="1" opacity="0.4">
-              <animate
-                attributeName="d"
-                dur="9s"
-                repeatCount="indefinite"
-                values="
-                  M0,560 C180,460 380,640 600,530 C800,430 1020,610 1220,500 C1360,420 1420,530 1440,510;
-                  M0,540 C200,440 400,660 620,550 C820,450 1040,630 1240,520 C1380,440 1420,550 1440,530;
-                  M0,560 C180,460 380,640 600,530 C800,430 1020,610 1220,500 C1360,420 1420,530 1440,510
-                "
-              />
-            </path>
-            
-            {/* Decorative dots attached to lines */}
-            <g opacity="0.9">
-              {/* Dots on line 1 */}
-              <circle r="8" fill="#e879f9">
-                <animateMotion dur="25s" repeatCount="indefinite" begin="0s">
-                  <mpath href="#dot-path-1" />
-                </animateMotion>
-              </circle>
-              <circle r="6" fill="#e879f9">
-                <animateMotion dur="25s" repeatCount="indefinite" begin="0s">
-                  <mpath href="#dot-path-1" />
-                </animateMotion>
-              </circle>
-              
-              {/* Dots on line 2 */}
-              <circle r="8" fill="#f0abfc">
-                <animateMotion dur="30s" repeatCount="indefinite" begin="0s">
-                  <mpath href="#dot-path-2" />
-                </animateMotion>
-              </circle>
-              <circle r="6" fill="#f0abfc">
-                <animateMotion dur="30s" repeatCount="indefinite" begin="0s">
-                  <mpath href="#dot-path-2" />
-                </animateMotion>
-              </circle>
-              
-              {/* Dots on line 3 */}
-              <circle r="8" fill="#d946ef">
-                <animateMotion dur="35s" repeatCount="indefinite" begin="0s">
-                  <mpath href="#dot-path-3" />
-                </animateMotion>
-              </circle>
-              <circle r="6" fill="#d946ef">
-                <animateMotion dur="35s" repeatCount="indefinite" begin="0s">
-                  <mpath href="#dot-path-3" />
-                </animateMotion>
-              </circle>
-            </g>
-            
-            {/* Hidden paths for dot animation */}
-            <path id="dot-path-1" d="M0,480 C180,380 360,560 580,460 C760,370 960,540 1180,440 C1340,360 1410,460 1440,440" fill="none" />
-            <path id="dot-path-2" d="M0,520 C160,420 360,600 580,490 C760,390 980,570 1180,470 C1340,390 1410,500 1440,480" fill="none" />
-            <path id="dot-path-3" d="M0,560 C180,460 380,640 600,530 C800,430 1020,610 1220,500 C1360,420 1420,530 1440,510" fill="none" />
+            <path fill="none" stroke="url(#flow3)" strokeWidth="1" opacity="0.4" d="M0,560 C180,460 380,640 600,530 C800,430 1020,610 1220,500 C1360,420 1420,530 1440,510" />
             
             {/* Static decorative dots */}
             <g opacity="0.5">
@@ -158,8 +81,8 @@ export default function GraphicDesignPage() {
           </svg>
           
           {/* Radial glows */}
-          <div className="absolute top-0 left-0 w-[600px] h-[400px] bg-gradient-radial from-blue-100/50 via-purple-50/20 to-transparent rounded-full blur-3xl" />
-          <div className="absolute top-0 right-0 w-[500px] h-[350px] bg-gradient-radial from-cyan-100/40 via-indigo-50/15 to-transparent rounded-full blur-3xl" />
+          <div className="absolute top-0 left-0 w-[600px] h-[400px] bg-gradient-radial from-blue-100/50 via-purple-50/20 to-transparent rounded-full" />
+          <div className="absolute top-0 right-0 w-[500px] h-[350px] bg-gradient-radial from-cyan-100/40 via-indigo-50/15 to-transparent rounded-full" />
         </div>
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
@@ -249,39 +172,14 @@ export default function GraphicDesignPage() {
                 <feGaussianBlur stdDeviation="8" />
               </filter>
             </defs>
-            <path filter="url(#gblur)" fill="url(#gw3)" opacity="0.7">
-              <animate attributeName="d" dur="9s" repeatCount="indefinite"
-                values="M0,260 C200,160 400,340 600,240 C800,140 1000,300 1200,220 C1350,160 1420,260 1440,240 L1440,500 L0,500 Z;
-                        M0,290 C180,200 380,360 620,260 C820,170 1020,320 1240,240 C1370,180 1420,270 1440,255 L1440,500 L0,500 Z;
-                        M0,260 C200,160 400,340 600,240 C800,140 1000,300 1200,220 C1350,160 1420,260 1440,240 L1440,500 L0,500 Z" />
-            </path>
-            <path fill="url(#gw2)" opacity="0.85">
-              <animate attributeName="d" dur="7s" repeatCount="indefinite"
-                values="M0,310 C160,220 360,380 580,280 C760,190 980,350 1180,260 C1340,190 1410,290 1440,270 L1440,500 L0,500 Z;
-                        M0,280 C200,190 380,400 600,290 C800,200 1000,370 1220,270 C1360,210 1420,300 1440,280 L1440,500 L0,500 Z;
-                        M0,310 C160,220 360,380 580,280 C760,190 980,350 1180,260 C1340,190 1410,290 1440,270 L1440,500 L0,500 Z" />
-            </path>
-            <path fill="url(#gw1)" opacity="0.9">
-              <animate attributeName="d" dur="5.5s" repeatCount="indefinite"
-                values="M0,350 C180,260 360,420 580,330 C760,250 960,400 1180,310 C1340,240 1410,330 1440,315 L1440,500 L0,500 Z;
-                        M0,330 C200,245 380,440 600,345 C800,260 980,420 1200,325 C1360,260 1420,340 1440,325 L1440,500 L0,500 Z;
-                        M0,350 C180,260 360,420 580,330 C760,250 960,400 1180,310 C1340,240 1411,330 1440,315 L1440,500 L0,500 Z" />
-            </path>
-            <path fill="none" stroke="#e879f9" strokeWidth="1.2" opacity="0.35">
-              <animate attributeName="d" dur="6s" repeatCount="indefinite"
-                values="M0,370 C200,295 400,420 620,350 C820,275 1020,410 1240,330 C1370,275 1420,350 1440,335;
-                        M0,355 C220,278 420,440 640,360 C840,285 1040,430 1260,340 C1380,285 1420,360 1440,345;
-                        M0,370 C200,295 400,420 620,350 C820,275 1020,410 1240,330 C1370,275 1420,350 1440,335" />
-            </path>
-            <path fill="none" stroke="#a78bfa" strokeWidth="1" opacity="0.3">
-              <animate attributeName="d" dur="8s" repeatCount="indefinite"
-                values="M0,385 C180,315 380,440 600,368 C800,295 1000,428 1220,348 C1360,295 1420,368 1440,355;
-                        M0,372 C200,302 400,458 620,375 C820,308 1020,445 1240,360 C1370,308 1420,375 1440,362;
-                        M0,385 C180,315 380,440 600,368 C800,295 1000,428 1220,348 C1360,295 1420,368 1440,355" />
-            </path>
+            <path fill="url(#gw3)" opacity="0.7" d="M0,260 C200,160 400,340 600,240 C800,140 1000,300 1200,220 C1350,160 1420,260 1440,240 L1440,500 L0,500 Z" />
+            <path fill="url(#gw2)" opacity="0.85" d="M0,310 C160,220 360,380 580,280 C760,190 980,350 1180,260 C1340,190 1410,290 1440,270 L1440,500 L0,500 Z" />
+            <path fill="url(#gw1)" opacity="0.9" d="M0,350 C180,260 360,420 580,330 C760,250 960,400 1180,310 C1340,240 1411,330 1440,315 L1440,500 L0,500 Z" />
+            <path fill="none" stroke="#e879f9" strokeWidth="1.2" opacity="0.35" d="M0,370 C200,295 400,420 620,350 C820,275 1020,410 1240,330 C1370,275 1420,350 1440,335" />
+            <path fill="none" stroke="#a78bfa" strokeWidth="1" opacity="0.3" d="M0,385 C180,315 380,440 600,368 C800,295 1000,428 1220,348 C1360,295 1420,368 1440,355" />
           </svg>
-          <div className="absolute top-0 left-0 w-[600px] h-[350px] bg-gradient-radial from-fuchsia-100/60 via-purple-50/30 to-transparent rounded-full blur-3xl" />
-          <div className="absolute top-0 right-0 w-[500px] h-[300px] bg-gradient-radial from-blue-100/50 via-indigo-50/20 to-transparent rounded-full blur-3xl" />
+          <div className="absolute top-0 left-0 w-[600px] h-[350px] bg-gradient-radial from-fuchsia-100/60 via-purple-50/30 to-transparent rounded-full" />
+          <div className="absolute top-0 right-0 w-[500px] h-[300px] bg-gradient-radial from-blue-100/50 via-indigo-50/20 to-transparent rounded-full" />
         </div>
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">

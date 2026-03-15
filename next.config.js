@@ -23,7 +23,7 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: [],
+    domains: ['images.unsplash.com', 'cdn.jsdelivr.net', 'cdn.simpleicons.org'],
   },
 };
 
