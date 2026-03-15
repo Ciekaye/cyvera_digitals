@@ -1,79 +1,176 @@
+'use client';
+
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Play } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-modern-primary">
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMzYjgyZjYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE2YzAtMS4xLS45LTItMi0yaC04Yy0xLjEgMC0yIC45LTIgMnY4YzAgMS4xLjkgMiAyIDJoOGMxLjEgMCAyLS45IDItMnYtOHoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-40"></div>
+    <section className="relative min-h-screen flex items-start overflow-hidden bg-white">
+      {/* Animated wave background */}
+      <div className="absolute inset-0 w-full h-full">
+        <svg
+          className="absolute bottom-0 left-0 w-full"
+          viewBox="0 0 1440 600"
+          preserveAspectRatio="xMidYMid slice"
+          xmlns="http://www.w3.org/2000/svg"
+          style={{ minHeight: '100%' }}
+        >
+          <defs>
+            <linearGradient id="wave1" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#e879f9" stopOpacity="0.55" />
+              <stop offset="50%" stopColor="#a78bfa" stopOpacity="0.45" />
+              <stop offset="100%" stopColor="#93c5fd" stopOpacity="0.5" />
+            </linearGradient>
+            <linearGradient id="wave2" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#f0abfc" stopOpacity="0.4" />
+              <stop offset="50%" stopColor="#c4b5fd" stopOpacity="0.35" />
+              <stop offset="100%" stopColor="#bfdbfe" stopOpacity="0.45" />
+            </linearGradient>
+            <linearGradient id="wave3" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#d946ef" stopOpacity="0.25" />
+              <stop offset="60%" stopColor="#818cf8" stopOpacity="0.2" />
+              <stop offset="100%" stopColor="#60a5fa" stopOpacity="0.3" />
+            </linearGradient>
+            <filter id="blur-wave">
+              <feGaussianBlur stdDeviation="8" />
+            </filter>
+          </defs>
 
-      <div className="container mx-auto px-4 lg:px-8 relative z-10 pt-24">
-        <div className="max-w-5xl mx-auto text-center">
+          {/* Back wave - blurred, lightest */}
+          <path filter="url(#blur-wave)" fill="url(#wave3)" opacity="0.7">
+            <animate
+              attributeName="d"
+              dur="9s"
+              repeatCount="indefinite"
+              values="
+                M0,320 C200,200 400,420 600,300 C800,180 1000,380 1200,280 C1350,200 1420,320 1440,300 L1440,600 L0,600 Z;
+                M0,360 C180,260 380,440 620,320 C820,210 1020,400 1240,300 C1370,230 1420,340 1440,320 L1440,600 L0,600 Z;
+                M0,320 C200,200 400,420 600,300 C800,180 1000,380 1200,280 C1350,200 1420,320 1440,300 L1440,600 L0,600 Z
+              "
+            />
+          </path>
+
+          {/* Mid wave */}
+          <path fill="url(#wave2)" opacity="0.85">
+            <animate
+              attributeName="d"
+              dur="7s"
+              repeatCount="indefinite"
+              values="
+                M0,380 C160,280 360,460 580,350 C760,250 980,430 1180,330 C1340,250 1410,360 1440,340 L1440,600 L0,600 Z;
+                M0,340 C200,240 380,480 600,360 C800,260 1000,450 1220,340 C1360,270 1420,370 1440,350 L1440,600 L0,600 Z;
+                M0,380 C160,280 360,460 580,350 C760,250 980,430 1180,330 C1340,250 1410,360 1440,340 L1440,600 L0,600 Z
+              "
+            />
+          </path>
+
+          {/* Front wave - sharpest, most vivid */}
+          <path fill="url(#wave1)" opacity="0.9">
+            <animate
+              attributeName="d"
+              dur="5.5s"
+              repeatCount="indefinite"
+              values="
+                M0,420 C180,320 360,500 580,400 C760,310 960,480 1180,380 C1340,300 1410,400 1440,380 L1440,600 L0,600 Z;
+                M0,400 C200,300 380,520 600,410 C800,320 980,500 1200,390 C1360,320 1420,410 1440,390 L1440,600 L0,600 Z;
+                M0,420 C180,320 360,500 580,400 C760,310 960,480 1180,380 C1340,300 1410,400 1440,380 L1440,600 L0,600 Z
+              "
+            />
+          </path>
+
+          {/* Fine line details */}
+          <path fill="none" stroke="#e879f9" strokeWidth="1.2" opacity="0.35">
+            <animate
+              attributeName="d"
+              dur="6s"
+              repeatCount="indefinite"
+              values="
+                M0,440 C200,360 400,500 620,420 C820,340 1020,490 1240,400 C1370,340 1420,420 1440,400;
+                M0,420 C220,340 420,520 640,430 C840,350 1040,510 1260,410 C1380,350 1420,430 1440,415;
+                M0,440 C200,360 400,500 620,420 C820,340 1020,490 1240,400 C1370,340 1420,420 1440,400
+              "
+            />
+          </path>
+          <path fill="none" stroke="#a78bfa" strokeWidth="1" opacity="0.3">
+            <animate
+              attributeName="d"
+              dur="8s"
+              repeatCount="indefinite"
+              values="
+                M0,460 C180,380 380,520 600,440 C800,360 1000,510 1220,420 C1360,360 1420,440 1440,425;
+                M0,445 C200,365 400,540 620,450 C820,370 1020,530 1240,435 C1370,370 1420,450 1440,435;
+                M0,460 C180,380 380,520 600,440 C800,360 1000,510 1220,420 C1360,360 1420,440 1440,425
+              "
+            />
+          </path>
+        </svg>
+
+        {/* Soft radial glow top-left */}
+        <div className="absolute top-0 left-0 w-[600px] h-[400px] bg-gradient-radial from-fuchsia-100/60 via-purple-50/30 to-transparent rounded-full blur-3xl" />
+        {/* Soft radial glow top-right */}
+        <div className="absolute top-0 right-0 w-[500px] h-[350px] bg-gradient-radial from-blue-100/50 via-indigo-50/20 to-transparent rounded-full blur-3xl" />
+      </div>
+
+      <div className="container mx-auto px-4 lg:px-8 relative z-10 pt-12 lg:pt-40">
+        <div className="max-w-5xl">
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-secondary-purple font-semibold text-lg md:text-xl mb-4"
           >
-            Digital Excellence, Delivered with Precision
+            Creative Digital Agency
           </motion.p>
 
-          <motion.h2
+          <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-display text-gray-900 mb-4"
           >
-            Build. Design. Grow.
-          </motion.h2>
-
-          <motion.h3
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-heading text-gradient-purple mb-8"
-          >
-            Your Digital Success, Engineered from the Ground Up
-          </motion.h3>
+            Digital Solutions That Help{' '}
+            <span className="text-gradient-purple">Businesses Grow</span> Online
+          </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-subheading text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed"
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="text-subheading text-gray-600 mb-12 max-w-3xl leading-relaxed"
+            style={{ color: '#535252' }}
           >
-            At CYVERA Digitals, we don't just create websites or post graphics — we architect digital ecosystems that attract, engage, and convert. From concept to launch to growth, we're your full-stack digital partner.
+            Cyvera Digitals is a creative digital agency focused on building modern websites,
+            strong brand identities, and effective digital experiences that drive real results.
           </motion.p>
 
-          <motion.button
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="group btn-gradient-primary text-lg font-semibold hover:shadow-2xl transition-all inline-flex items-center gap-2"
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            className="flex flex-col sm:flex-row items-center justify-start gap-4"
           >
-            Start Your Project
-            <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
-          </motion.button>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Link
+                href="/contact"
+                className="group btn-gradient-primary text-lg font-semibold hover:shadow-2xl transition-all inline-flex items-center gap-2 no-underline"
+              >
+                Get Started
+                <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
+              </Link>
+            </motion.div>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Link
+                href="/portfolio"
+                className="group inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-gray-200 text-gray-700 font-semibold text-lg hover:border-purple-300 hover:text-purple-700 transition-all no-underline"
+              >
+                <Play size={18} className="text-secondary-purple" />
+                View Our Work
+              </Link>
+            </motion.div>
+          </motion.div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 100 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1 }}
-          className="mt-20 relative"
-        >
-          <div className="absolute inset-0 bg-gradient-to-t from-white to-transparent h-32 bottom-0 z-10"></div>
-          <div className="relative card-modern overflow-hidden shadow-2xl p-4">
-            <div className="aspect-video bg-gradient-to-br from-purple-100 to-purple-50 rounded-lg overflow-hidden">
-              <img 
-                src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-                alt="Team collaboration and digital workspace"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

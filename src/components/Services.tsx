@@ -1,7 +1,10 @@
+'use client';
+
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Code, Palette, TrendingUp, ArrowRight } from 'lucide-react';
+import { Code, Palette, TrendingUp, Share2, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Services() {
   const ref = useRef(null);
@@ -10,24 +13,35 @@ export default function Services() {
   const services = [
     {
       icon: Code,
-      title: "Web & App Development",
+      title: "Website Development",
       description: "Custom websites, web applications, and mobile apps built with cutting-edge technologies. From MVP to enterprise scale, we architect solutions that grow with your business.",
       features: ["React & Next.js", "Node.js & Laravel", "Mobile Apps", "E-commerce", "API Development"],
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80"
+      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80",
+      link: "/services/website-development"
     },
     {
       icon: Palette,
-      title: "Graphics & UI/UX Design",
+      title: "Graphic & Brand Design",
       description: "Beautiful, conversion-focused designs that put users first. From brand identity to product interfaces, we create digital experiences that engage and delight.",
       features: ["UI/UX Design", "Brand Identity", "Design Systems", "Prototyping", "User Research"],
-      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2064&q=80"
+      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2064&q=80",
+      link: "/services/graphic-brand-design"
     },
     {
       icon: TrendingUp,
-      title: "VA + Growth Support",
-      description: "Ongoing support to keep your digital presence thriving. From content management to analytics, we provide the strategic partnership you need to scale.",
-      features: ["Content Management", "SEO Optimization", "Analytics & Insights", "Maintenance", "Growth Strategy"],
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80"
+      title: "UI & UX Strategy",
+      description: "User-focused design solutions that improve engagement, usability, and conversion rates across all your digital products.",
+      features: ["User Research", "Wireframing", "Design Systems", "Usability Testing", "Conversion Optimization"],
+      image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      link: "/services/ui-ux-strategy"
+    },
+    {
+      icon: Share2,
+      title: "Social Media Management",
+      description: "Content creation and account management to help your brand stay active, visible, and engaging across all major platforms.",
+      features: ["Content Planning", "Graphic Design", "Community Management", "Analytics", "Growth Strategy"],
+      image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1974&q=80",
+      link: "/services/social-media-management"
     }
   ];
 
@@ -52,7 +66,7 @@ export default function Services() {
           Comprehensive digital solutions tailored to your unique needs
         </motion.p>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
@@ -92,10 +106,10 @@ export default function Services() {
                 ))}
               </ul>
 
-                <button className="group/btn inline-flex items-center gap-2 text-secondary-purple font-semibold hover:gap-3 transition-all">
+                <Link href={service.link} className="group/btn inline-flex items-center gap-2 text-secondary-purple font-semibold hover:gap-3 transition-all no-underline">
                   Discover More
                   <ArrowRight className="w-4 h-4" />
-                </button>
+                </Link>
               </div>
             </motion.div>
           ))}

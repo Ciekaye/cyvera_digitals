@@ -282,6 +282,30 @@ body {
   box-shadow: 0 8px 25px rgba(192, 43, 125, 0.4);
 }
 
+/* Liquid glass card */
+.card-liquid-glass {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 20px;
+  box-shadow:
+    0 8px 32px rgba(123, 25, 231, 0.10),
+    0 1.5px 0px rgba(255,255,255,0.7) inset,
+    0 -1px 0px rgba(123, 25, 231, 0.08) inset;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-liquid-glass:hover {
+  background: rgba(255, 255, 255, 0.38);
+  box-shadow:
+    0 20px 48px rgba(123, 25, 231, 0.18),
+    0 1.5px 0px rgba(255,255,255,0.8) inset,
+    0 -1px 0px rgba(123, 25, 231, 0.12) inset;
+  border-color: rgba(255, 255, 255, 0.65);
+  transform: translateY(-6px) scale(1.02);
+}
+
 /* Purple gradient cards */
 .card-gradient {
   background: linear-gradient(135deg, rgba(123, 25, 231, 0.1) 0%, rgba(192, 43, 125, 0.1) 100%);

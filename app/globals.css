@@ -1,0 +1,322 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Cyvera Digitals Brand Colors */
+:root {
+  --primary-purple: #7b19e7;
+  --secondary-purple: #c02b7d;
+  --accent-purple: #7b19e7;
+  --light-purple: #c02b7d;
+  --purple-50: #ffffff;
+  --purple-100: #ffffff;
+  --purple-900: #000000;
+  
+  /* Modern Background Colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #ffffff;
+  --bg-white: #ffffff;
+  --text-primary: #000000;
+  --text-secondary: #000000;
+  
+  /* Gradient definitions */
+  --gradient-primary: linear-gradient(135deg, #7b19e7 0%, #c02b7d 100%);
+  --gradient-secondary: linear-gradient(135deg, #c02b7d 0%, #7b19e7 100%);
+  --gradient-accent: linear-gradient(135deg, #ffffff 0%, #7b19e7 50%, #c02b7d 100%);
+}
+
+/* Lenis Smooth Scroll Optimizations */
+html {
+  scroll-behavior: auto !important;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* Ultra-smooth base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* Ultra-smooth font rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-poppins), 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', 
+    'Arial', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+  /* Studio-style soft background gradient (subtle violet → pink) */
+  background: linear-gradient(135deg, #f7f9ff 0%, #f5f0ff 45%, #ffe9ff 100%);
+  color: var(--text-primary);
+}
+
+/* GPU acceleration for smooth sections */
+.smooth-scroll-section {
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  position: relative;
+}
+
+/* Ultra-smooth GPU acceleration */
+.gpu-accelerated {
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  position: relative;
+}
+
+/* Framer-like smooth transitions */
+.smooth-transition {
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+/* Ultra-smooth hover effects */
+.smooth-hover {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.smooth-hover:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* Performance optimizations for high refresh rate displays */
+@media (min-resolution: 120dpi) {
+  * {
+    transform: translateZ(0);
+  }
+}
+
+/* Scroll performance optimizations */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-on-scroll {
+    animation-fill-mode: both;
+    animation-duration: 0.8s;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .lenis {
+    scroll-behavior: auto !important;
+  }
+  
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Optimize for touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .smooth-hover:hover {
+    transform: none;
+  }
+}
+
+/* Modern Typography Classes */
+.text-modern-primary {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.text-modern-secondary {
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.bg-modern-primary {
+  background-color: var(--bg-primary);
+}
+
+.bg-modern-secondary {
+  background-color: var(--bg-secondary);
+}
+
+.bg-modern-white {
+  background-color: var(--bg-white);
+}
+
+/* Modern Card Styles */
+.card-modern {
+  background-color: var(--bg-white);
+  border-radius: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.card-modern:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+/* Modern Typography Sizes */
+.text-display {
+  font-size: clamp(2.4rem, 4.6vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-family: 'Oceanwide', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
+}
+
+.text-heading {
+  font-size: clamp(1.5rem, 2.6vw, 2.2rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-family: 'Oceanwide', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
+}
+
+.text-subheading {
+  font-size: clamp(1.05rem, 1.9vw, 1.2rem);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--text-secondary);
+  font-family: 'Oceanwide', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
+}
+
+/* Cyvera Digitals Brand Utility Classes */
+.bg-gradient-primary {
+  background: var(--gradient-primary);
+}
+
+.bg-gradient-secondary {
+  background: var(--gradient-secondary);
+}
+
+.bg-gradient-accent {
+  background: var(--gradient-accent);
+}
+
+.text-primary-purple {
+  color: var(--primary-purple);
+}
+
+.text-secondary-purple {
+  color: var(--secondary-purple);
+}
+
+.text-accent-purple {
+  color: var(--accent-purple);
+}
+
+.border-primary-purple {
+  border-color: var(--primary-purple);
+}
+
+.border-secondary-purple {
+  border-color: var(--secondary-purple);
+}
+
+/* Purple gradient text effect */
+.text-gradient-purple {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Purple gradient buttons */
+.btn-gradient-primary {
+  background: var(--gradient-primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(123, 25, 231, 0.3);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateZ(0);
+}
+
+.btn-gradient-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(123, 25, 231, 0.4);
+}
+
+.btn-gradient-secondary {
+  background: var(--gradient-secondary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(192, 43, 125, 0.3);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateZ(0);
+}
+
+.btn-gradient-secondary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(192, 43, 125, 0.4);
+}
+
+/* Liquid glass card */
+.card-liquid-glass {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 20px;
+  box-shadow:
+    0 8px 32px rgba(123, 25, 231, 0.10),
+    0 1.5px 0px rgba(255,255,255,0.7) inset,
+    0 -1px 0px rgba(123, 25, 231, 0.08) inset;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-liquid-glass:hover {
+  background: rgba(255, 255, 255, 0.38);
+  box-shadow:
+    0 20px 48px rgba(123, 25, 231, 0.18),
+    0 1.5px 0px rgba(255,255,255,0.8) inset,
+    0 -1px 0px rgba(123, 25, 231, 0.12) inset;
+  border-color: rgba(255, 255, 255, 0.65);
+  transform: translateY(-6px) scale(1.02);
+}
+
+/* Purple gradient cards */
+.card-gradient {
+  background: linear-gradient(135deg, rgba(123, 25, 231, 0.1) 0%, rgba(192, 43, 125, 0.1) 100%);
+  border: 1px solid rgba(192, 43, 125, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-gradient:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(123, 25, 231, 0.2);
+  border-color: rgba(192, 43, 125, 0.4);
+}

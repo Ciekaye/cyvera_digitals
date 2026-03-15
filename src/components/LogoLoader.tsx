@@ -1,5 +1,7 @@
+'use client';
+
 import { motion } from 'framer-motion';
-import logo from '../assets/logo/logo.png';
+const logo = '/logo.png';
 
 export default function LogoLoader() {
   return (
@@ -11,7 +13,7 @@ export default function LogoLoader() {
         className="flex flex-col items-center justify-center gap-4"
       >
         <motion.img
-          src={logo}
+          src='/logo.png'
           alt="Cyvera Digitals logo"
           className="h-24 w-auto"
           animate={{ rotate: [0, 5, -5, 0] }}
