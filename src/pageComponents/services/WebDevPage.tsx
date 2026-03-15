@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Code, Monitor, Smartphone, ShoppingCart, Server, Zap, ArrowRight, ArrowLeft } from 'lucide-react';
 
 export default function WebDevPage() {
@@ -262,9 +263,10 @@ export default function WebDevPage() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="aspect-square bg-gradient-to-br from-purple-100 to-purple-50 rounded-2xl overflow-hidden shadow-2xl"
             >
-              <img
+              <Image
                 src="/webdevelopment.jpg"
                 alt="Website Development"
+                width={800} height={800}
                 className="w-full h-full object-cover"
               />
             </motion.div>

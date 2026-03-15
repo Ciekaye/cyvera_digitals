@@ -3,7 +3,8 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
-import { Palette, PenTool, Image, BookOpen, Stamp, Sparkles, ArrowRight, ArrowLeft } from 'lucide-react';
+import Image from 'next/image';
+import { Palette, PenTool, Image as ImageIcon, BookOpen, Stamp, Sparkles, ArrowRight, ArrowLeft } from 'lucide-react';
 
 export default function GraphicDesignPage() {
   const ref = useRef(null);
@@ -12,7 +13,7 @@ export default function GraphicDesignPage() {
   const features = [
     { icon: Stamp, title: "Logo Design", description: "Distinctive, memorable logos that capture your brand's personality and values." },
     { icon: Palette, title: "Brand Identity", description: "Complete brand kits including colors, typography, imagery guidelines, and usage rules." },
-    { icon: Image, title: "Marketing Graphics", description: "Eye-catching visuals for social media, ads, presentations, and print materials." },
+    { icon: ImageIcon, title: "Marketing Graphics", description: "Eye-catching visuals for social media, ads, presentations, and print materials." },
     { icon: PenTool, title: "Illustration", description: "Custom illustrations and iconography that add personality to your brand." },
     { icon: BookOpen, title: "Print Design", description: "Business cards, brochures, packaging, and other tangible brand touchpoints." },
     { icon: Sparkles, title: "Visual Strategy", description: "A cohesive visual direction that ensures consistency across every platform." },
@@ -206,9 +207,10 @@ export default function GraphicDesignPage() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="aspect-square bg-gradient-to-br from-purple-100 to-purple-50 rounded-2xl overflow-hidden shadow-2xl"
             >
-              <img
+              <Image
                 src="/graphicdesign.jpg"
                 alt="Graphic & Brand Design"
+                width={800} height={800}
                 className="w-full h-full object-cover"
               />
             </motion.div>

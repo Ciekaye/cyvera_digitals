@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Share2, Camera, CalendarDays, BarChart3, MessageCircle, TrendingUp, ArrowRight, ArrowLeft } from 'lucide-react';
 
 export default function SocialMediaPage() {
@@ -247,9 +248,10 @@ export default function SocialMediaPage() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="aspect-square bg-gradient-to-br from-purple-100 to-purple-50 rounded-2xl overflow-hidden shadow-2xl"
             >
-              <img
+              <Image
                 src="/smm.jpg"
                 alt="Social Media Management"
+                width={800} height={800}
                 className="w-full h-full object-cover"
               />
             </motion.div>

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Code, Layers, Palette, Share2 } from 'lucide-react';
 import { useState, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 const serviceSubPages = [
@@ -42,7 +43,7 @@ export default function Header() {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="sticky top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md"
+      className="sticky top-0 left-0 right-0 z-50 bg-white/95 shadow-sm"
     >
       <nav className="container mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between">
@@ -53,10 +54,12 @@ export default function Header() {
             transition={{ delay: 0.2 }}
           >
             <Link href="/" className="flex items-center gap-2 cursor-pointer">
-              <img
+              <Image
                 src='/logo.png'
                 alt="Cyvera Digitals logo"
-                className="h-24 w-auto"
+                width={200}
+                height={96}
+                style={{ width: 'auto', height: '6rem' }}
               />
             </Link>
           </motion.div>
@@ -99,7 +102,7 @@ export default function Header() {
                           transition={{ duration: 0.2 }}
                           className="absolute top-full left-1/2 -translate-x-1/2 pt-4"
                         >
-                          <div className="w-72 bg-white rounded-2xl shadow-xl border border-gray-100 p-3 backdrop-blur-md">
+                          <div className="w-72 bg-white rounded-2xl shadow-xl border border-gray-100 p-3">
                             {serviceSubPages.map((sub) => (
                               <Link
                                 key={sub.path}

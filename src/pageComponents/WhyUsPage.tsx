@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Target,
   Rocket,
@@ -243,9 +244,10 @@ export default function WhyUsPage() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="relative"
             >
-              <img
+              <Image
                 src="/hands-joined-by-team.jpg"
                 alt="Team collaboration"
+                width={800} height={600}
                 className="w-full h-auto rounded-2xl shadow-2xl"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-purple-900/20 to-transparent rounded-2xl" />
@@ -315,9 +317,10 @@ export default function WhyUsPage() {
                 className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
               >
                 <div className="aspect-[4/5] overflow-hidden">
-                  <img
+                  <Image
                     src={item.image}
                     alt={item.title}
+                    width={800} height={1000}
                     className="w-full h-full object-cover object-top"
                   />
                 </div>

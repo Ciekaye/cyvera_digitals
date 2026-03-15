@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Users, UserPlus, Shield, Trash2, LogOut, Home, ChevronRight } from 'lucide-react';
@@ -88,11 +89,11 @@ export default function DashboardPage() {
   return (
     <div className="min-h-screen" style={{ background: 'linear-gradient(135deg, #f7f9ff 0%, #f5f0ff 45%, #ffe9ff 100%)' }}>
       {/* Sidebar / Top Nav */}
-      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-100">
+      <header className="sticky top-0 z-50 bg-white/95 shadow-sm border-b border-gray-100">
         <div className="container mx-auto px-6 lg:px-8 flex items-center justify-between h-16">
           <div className="flex items-center gap-4">
             <Link href="/">
-              <img src='/logo.png' alt="Cyvera Digitals" className="h-12 w-auto" />
+              <Image src='/logo.png' alt="Cyvera Digitals" width={100} height={48} className="h-12 w-auto" />
             </Link>
             <ChevronRight size={16} className="text-gray-300" />
             <span className="text-sm font-semibold text-gray-800">Dashboard</span>
@@ -150,7 +151,7 @@ export default function DashboardPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 * i, duration: 0.5 }}
-              className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/50 shadow-sm hover:shadow-md transition-shadow"
+              className="bg-white/95 rounded-2xl p-6 border border-white/50 shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="flex items-center justify-between mb-4">
                 <div
@@ -171,7 +172,7 @@ export default function DashboardPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.5 }}
-          className="bg-white/80 backdrop-blur-sm rounded-2xl border border-white/50 shadow-sm overflow-hidden"
+          className="bg-white/95 rounded-2xl border border-white/50 shadow-sm overflow-hidden"
         >
           <div className="px-6 py-5 border-b border-gray-100">
             <h2 className="text-lg font-semibold text-gray-900">All Users</h2>

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 export default function Footer() {
@@ -21,7 +22,7 @@ export default function Footer() {
       {/* Gradient Background */}
       <div className="absolute inset-0 bg-gradient-accent opacity-100"></div>
 
-      <div className="relative z-10 container mx-auto px-6 lg:px-8 py-10 bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg">
+      <div className="relative z-10 container mx-auto px-6 lg:px-8 py-10 bg-white/95 rounded-3xl shadow-lg">
         {/* Main Footer Content */}
         <div className="grid md:grid-cols-3 gap-16 mb-20">
           {/* Cyvera Logo + Navigation */}
@@ -31,7 +32,7 @@ export default function Footer() {
             transition={{ duration: 0.6 }}
           >
             <Link href="/" className="inline-block mb-6">
-              <img src='/logo.png' alt="Cyvera Digitals" className="h-24 w-auto" />
+              <Image src='/logo.png' alt="Cyvera Digitals" width={200} height={96} style={{ width: 'auto', height: '6rem' }} />
             </Link>
             <ul className="space-y-4">
               <li>

@@ -88,7 +88,7 @@ export default function TechExpertise() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
               whileHover={{ y: -10, scale: 1.02 }}
-              className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:bg-white/20 transition-all duration-300"
+              className="bg-white/15 rounded-2xl p-8 border border-white/20 hover:bg-white/25 transition-all duration-300"
             >
               {/* Icon with Gradient Background */}
               <div className={`w-16 h-16 rounded-xl bg-gradient-to-r ${category.color} p-4 mb-6 transform hover:scale-110 transition-transform duration-300`}>

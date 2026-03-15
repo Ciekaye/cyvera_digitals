@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Star, Quote } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Testimonials() {
   const ref = useRef(null);
@@ -84,9 +85,11 @@ export default function Testimonials() {
 
                   <div className="flex items-center gap-4">
                     <div className="w-14 h-14 rounded-full overflow-hidden ring-2 ring-purple-100">
-                      <img 
+                      <Image 
                         src={testimonial.avatar} 
                         alt={testimonial.name}
+                        width={100}
+                        height={100}
                         className="w-full h-full object-cover"
                       />
                     </div>

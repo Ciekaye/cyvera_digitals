@@ -3,11 +3,12 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Code, Layers, Palette, Share2, ArrowRight, MessageCircle,
   Monitor, ShoppingCart, Wrench, Globe,
   PenTool, Users, BarChart3, Lightbulb,
-  Image, Stamp, Megaphone,
+  Image as ImageIcon, Stamp, Megaphone,
   CalendarDays, Camera, ChevronDown, ChevronRight,
   Instagram, Facebook,
 } from 'lucide-react';
@@ -173,9 +174,10 @@ function ServicesHero() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="relative"
           >
-            <img
+            <Image
               src="/services.jpg"
               alt="Digital Services"
+              width={800} height={600}
               className="w-full h-auto rounded-2xl shadow-2xl"
             />
           </motion.div>
@@ -204,7 +206,7 @@ function ServicesHero() {
                 whileHover={{ y: -8, scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => scrollTo(card.target)}
-                className="text-left p-7 bg-white/40 backdrop-blur-sm rounded-2xl hover:bg-white/60 transition-all cursor-pointer group border border-white/20"
+                className="text-left p-7 bg-white/95 rounded-2xl hover:bg-white/100 transition-all cursor-pointer group border border-white/20"
               >
                 <div className="w-13 h-13 bg-gradient-primary rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform" style={{ width: 52, height: 52 }}>
                   <card.icon className="w-6 h-6 text-white" />
@@ -475,7 +477,7 @@ function UiUxSection() {
 const designServices = [
   { icon: Stamp, title: 'Brand identity and logo design', desc: 'Distinctive logos and cohesive brand systems that set you apart.' },
   { icon: Megaphone, title: 'Marketing and promotional materials', desc: 'Print and digital assets designed to communicate your message effectively.' },
-  { icon: Image, title: 'Social media graphics', desc: 'Scroll-stopping visuals consistent with your brand for every platform.' },
+  { icon: ImageIcon, title: 'Social media graphics', desc: 'Scroll-stopping visuals consistent with your brand for every platform.' },
 ];
 
 const designPreviews = [
@@ -539,10 +541,11 @@ function GraphicDesignSection() {
                 whileHover={{ scale: 1.04 }}
                 className="aspect-[4/3] rounded-2xl overflow-hidden cursor-default relative group"
               >
-                <img
+                <Image
                   src={p.image}
                   alt={p.label}
-                  className="w-full h-full object-cover"
+                  width={800} height={1000}
+                  className="w-full h-full object-cover object-top"
                 />
                 <div className="absolute inset-0 bg-black/50 group-hover:bg-black/60 transition-colors" />
                 <div className="absolute inset-0 flex items-center justify-center">

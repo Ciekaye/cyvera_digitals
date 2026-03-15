@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Users, Zap, Shield } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Difference() {
   const ref = useRef(null);
@@ -46,9 +47,11 @@ export default function Difference() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div className="aspect-square bg-gradient-to-br from-purple-100 to-purple-50 rounded-2xl overflow-hidden">
-              <img 
+              <Image 
                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
                 alt="Team collaboration and strategy meeting"
+                width={800}
+                height={800}
                 className="w-full h-full object-cover"
               />
             </div>

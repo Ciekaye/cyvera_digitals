@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Eye, EyeOff, User, Lock } from 'lucide-react';
@@ -43,7 +44,7 @@ export default function LoginPage() {
           href="/"
           className="flex items-center gap-2 no-underline group"
         >
-          <img src='/logo.png' alt="Cyvera Digitals" className="h-10 w-auto" />
+          <Image src='/logo.png' alt="Cyvera Digitals" width={100} height={40} className="h-10 w-auto" />
           <span className="text-sm font-medium text-gray-500 group-hover:text-gray-800 transition-colors">
             Back to Home
           </span>
@@ -68,7 +69,7 @@ export default function LoginPage() {
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         className="w-full max-w-md mx-4"
       >
-        <div className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/40 p-10">
+        <div className="bg-white/95 rounded-3xl shadow-2xl border border-white/40 p-10">
           {/* Logo */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
@@ -77,7 +78,7 @@ export default function LoginPage() {
             className="flex justify-center mb-2"
           >
             <Link href="/">
-              <img src='/logo.png' alt="Cyvera Digitals" className="h-20 w-auto" />
+              <Image src='/logo.png' alt="Cyvera Digitals" width={200} height={80} className="h-20 w-auto" />
             </Link>
           </motion.div>
 
@@ -121,7 +122,7 @@ export default function LoginPage() {
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   placeholder="Enter your username"
-                  className="w-full pl-11 pr-4 py-3 rounded-xl border border-gray-200 bg-white/60 backdrop-blur-sm text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#7b19e7] focus:border-transparent transition-all duration-300"
+                  className="w-full pl-11 pr-4 py-3 rounded-xl border border-gray-200 bg-white/90 text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-[#7b19e7] focus:border-transparent transition-all duration-300"
                   required
                 />
               </div>
@@ -143,7 +144,7 @@ export default function LoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter your password"
-                  className="w-full pl-11 pr-12 py-3 rounded-xl border border-gray-200 bg-white/60 backdrop-blur-sm text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-300"
+                  className="w-full pl-11 pr-12 py-3 rounded-xl border border-gray-200 bg-white/90 text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-300"
                   required
                 />
                 <button

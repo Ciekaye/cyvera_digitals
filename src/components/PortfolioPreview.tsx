@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, ExternalLink } from 'lucide-react';
 
 export default function PortfolioPreview() {
@@ -59,9 +60,11 @@ export default function PortfolioPreview() {
               className="group card-modern overflow-hidden shadow-lg hover:shadow-2xl transition-all cursor-pointer"
             >
               <div className="aspect-[4/3] overflow-hidden relative">
-                <img
+                <Image
                   src={project.image}
                   alt={project.title}
+                  width={800}
+                  height={600}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-6">

@@ -5,6 +5,7 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Code, Palette, TrendingUp, Share2, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Services() {
   const ref = useRef(null);
@@ -78,9 +79,11 @@ export default function Services() {
             >
               {/* Service Image */}
               <div className="aspect-video overflow-hidden">
-                <img 
+                <Image 
                   src={service.image} 
                   alt={service.title}
+                  width={800}
+                  height={600}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>

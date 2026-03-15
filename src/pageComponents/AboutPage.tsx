@@ -5,6 +5,7 @@ import { useRef } from 'react';
 import { useInView } from 'framer-motion';
 import { ArrowRight, Target, Eye, Heart, Users, Shield } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function AboutPage() {
   const heroRef = useRef(null);
@@ -157,9 +158,10 @@ export default function AboutPage() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="relative"
             >
-              <img
+              <Image
                 src="/aboutUs.jpg"
                 alt="About Cyvera Digitals"
+                width={800} height={600}
                 className="w-full h-auto rounded-2xl shadow-2xl"
               />
             </motion.div>
@@ -175,14 +177,18 @@ export default function AboutPage() {
             >
               <div className="grid lg:grid-cols-5 gap-8 items-center">
                 <div className="lg:col-span-2">
-                  <motion.img
+                  <motion.div
                     initial={{ opacity: 0, x: -30 }}
                     animate={whoWeAreInView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.8, delay: 0.1 }}
-                    src="/Who_we_are.jpg"
-                    alt="Who We Are"
-                    className="w-full h-auto rounded-xl shadow-lg"
-                  />
+                  >
+                    <Image
+                      src="/Who_we_are.jpg"
+                      alt="Who We Are"
+                      width={800} height={600}
+                      className="w-full h-auto rounded-xl shadow-lg"
+                    />
+                  </motion.div>
                 </div>
                 <div className="lg:col-span-3">
                   <motion.h2
@@ -224,14 +230,18 @@ export default function AboutPage() {
             >
               <div className="grid lg:grid-cols-5 gap-8 items-center">
                 <div className="lg:col-span-2">
-                  <motion.img
+                  <motion.div
                     initial={{ opacity: 0, x: -30 }}
                     animate={heroInView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.8, delay: 0.7 }}
-                    src="/our_story.jpg"
-                    alt="Our Story"
-                    className="w-full h-auto rounded-xl shadow-lg"
-                  />
+                  >
+                    <Image
+                      src="/our_story.jpg"
+                      alt="Our Story"
+                      width={800} height={600}
+                      className="w-full h-auto rounded-xl shadow-lg"
+                    />
+                  </motion.div>
                 </div>
                 <div className="lg:col-span-3">
                   <motion.h2
@@ -277,9 +287,10 @@ export default function AboutPage() {
               className="lg:col-span-2 relative hidden lg:block"
             >
               <div className="sticky top-20 h-[90vh] rounded-2xl overflow-hidden shadow-2xl">
-                <img
+                <Image
                   src="/mvgv.jpg"
                   alt="Cyvera Digitals Team"
+                  width={800} height={1200}
                   className="w-full h-full object-cover"
                 />
               </div>

@@ -168,7 +168,7 @@ export default function Contact() {
                 <input
                   type="email"
                   placeholder="Enter your email for updates"
-                  className="flex-1 px-4 py-3 rounded-full border-2 bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-secondary-purple text-sm"
+                  className="flex-1 px-4 py-3 rounded-full border-2 bg-white/90 focus:outline-none focus:ring-2 focus:ring-secondary-purple text-sm"
                   style={{ 
                     backgroundImage: 'linear-gradient(white, white), linear-gradient(135deg, #e879f9, #a78bfa, #60a5fa)',
                     backgroundOrigin: 'border-box',
