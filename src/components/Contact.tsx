@@ -63,14 +63,14 @@ export default function Contact() {
           className="max-w-3xl mb-12"
         >
           <p className="text-secondary-purple font-semibold text-lg mb-2">
-            Lets Talk About Your Next Build
+            Let&apos;s Talk About Your Next Build
           </p>
           <h2 className="text-heading text-gray-900 mb-4">
             Ready to Build, Design, and Grow?
           </h2>
           <p className="text-lg text-gray-600">
             Whether you need a new platform, a brand refresh, or ongoing growth support, this is where it starts.
-            Tell us where you are now, and where you want to be  well map the steps in between.
+            Tell us where you are now, and where you want to be &mdash; we&apos;ll map the steps in between.
           </p>
         </motion.div>
 
@@ -87,7 +87,7 @@ export default function Contact() {
                 Contact Info
               </p>
               <p className="text-lg text-gray-800 mb-4">
-                Prefer WhatsApp, Viber, or email? Plug in your official details here when youre ready.
+                Prefer WhatsApp, Viber, or email? Plug in your official details here when you&apos;re ready.
               </p>
               <ul className="space-y-3 text-gray-700 text-sm">
                 <li>
@@ -195,7 +195,7 @@ export default function Contact() {
 
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <p className="text-xs text-gray-500">
-                Well get back to you within 12 business day(s). No spam. No pushy sales.
+                We&apos;ll get back to you within 1-2 business day(s). No spam. No pushy sales.
               </p>
               <button
                 type="submit"
