@@ -10,6 +10,20 @@ export default function Hero() {
     <section className="relative min-h-screen flex flex-col items-center overflow-hidden bg-white">
       {/* Animated wave background */}
       <div className="absolute inset-0 w-full h-full">
+        {/* Grid Background */}
+        <div
+          className="absolute top-0 left-0 right-0 z-0"
+          style={{
+            height: "60%",
+            backgroundImage: `
+              linear-gradient(to right, #d1d5db 1px, transparent 1px),
+              linear-gradient(to bottom, #d1d5db 1px, transparent 1px)
+            `,
+            backgroundSize: "40px 40px",
+            opacity: 0.2,
+          }}
+        />
+
         <svg
           className="absolute bottom-0 left-0 w-full"
           viewBox="0 0 1440 600"
@@ -19,19 +33,19 @@ export default function Hero() {
         >
           <defs>
             <linearGradient id="wave1" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#e879f9" stopOpacity="0.55" />
-              <stop offset="50%" stopColor="#a78bfa" stopOpacity="0.45" />
-              <stop offset="100%" stopColor="#93c5fd" stopOpacity="0.5" />
+              <stop offset="0%" stopColor="#e879f9" stopOpacity="0.75" />
+              <stop offset="50%" stopColor="#a78bfa" stopOpacity="0.65" />
+              <stop offset="100%" stopColor="#93c5fd" stopOpacity="0.7" />
             </linearGradient>
             <linearGradient id="wave2" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#f0abfc" stopOpacity="0.4" />
-              <stop offset="50%" stopColor="#c4b5fd" stopOpacity="0.35" />
-              <stop offset="100%" stopColor="#bfdbfe" stopOpacity="0.45" />
+              <stop offset="0%" stopColor="#f0abfc" stopOpacity="0.6" />
+              <stop offset="50%" stopColor="#c4b5fd" stopOpacity="0.55" />
+              <stop offset="100%" stopColor="#bfdbfe" stopOpacity="0.65" />
             </linearGradient>
             <linearGradient id="wave3" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#d946ef" stopOpacity="0.25" />
-              <stop offset="60%" stopColor="#818cf8" stopOpacity="0.2" />
-              <stop offset="100%" stopColor="#60a5fa" stopOpacity="0.3" />
+              <stop offset="0%" stopColor="#d946ef" stopOpacity="0.45" />
+              <stop offset="60%" stopColor="#818cf8" stopOpacity="0.4" />
+              <stop offset="100%" stopColor="#60a5fa" stopOpacity="0.5" />
             </linearGradient>
             <filter id="blur-wave">
               <feGaussianBlur stdDeviation="8" />
@@ -58,7 +72,7 @@ export default function Hero() {
         <div className="absolute top-0 right-0 w-[500px] h-[350px] bg-gradient-radial from-blue-100/50 via-indigo-50/20 to-transparent rounded-full" />
       </div>
 
-      <div className="container mx-auto px-4 lg:px-8 relative z-10 pt-32 lg:pt-40 pb-20">
+      <div className="container mx-auto px-4 lg:px-8 relative z-10 pt-16 lg:pt-24 pb-20">
         <div className="max-w-6xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -76,10 +90,10 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-bold text-gray-900 mb-6 tracking-tight leading-[1.05] text-[clamp(2.5rem,6vw,4.5rem)]"
+            className="font-inter font-medium text-gray-900 mb-6 tracking-tight leading-[1.2] text-[clamp(2.5rem,6vw,4.5rem)]"
           >
             We Build Digital Experiences That{' '}
-            <span className="text-gradient-purple italic font-medium">
+            <span className="text-gradient-purple italic font-medium leading-[1.2]">
               Work as Hard as You Do
             </span>
           </motion.h1>
@@ -135,7 +149,7 @@ export default function Hero() {
                 style={{ boxShadow: '0 7px 11.9px 7px rgba(0,0,0,0.11)' }}
               >
                 <Image
-                  src="/services.jpg"
+                  src="/heroimage.jpg"
                   alt="Cyvera Digitals work showcase"
                   fill
                   sizes="(min-width: 1024px) 1100px, 100vw"
@@ -146,7 +160,6 @@ export default function Hero() {
             </div>
           </motion.div>
         </div>
-
       </div>
     </section>
   );

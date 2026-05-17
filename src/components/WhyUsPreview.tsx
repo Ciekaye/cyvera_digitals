@@ -43,9 +43,9 @@ export default function WhyUsPreview() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-display text-center text-gray-900 mb-16"
+          className="font-inter text-display text-center text-gray-900 mb-16"
         >
-          Why Choose <span className="text-gradient-purple">Cyvera Digitals</span>
+          Why Choose <span className="text-gradient-purple italic">Cyvera Digitals</span>
         </motion.h2>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
@@ -58,8 +58,8 @@ export default function WhyUsPreview() {
               whileHover={{ y: -8, scale: 1.03 }}
               className="card-liquid-glass p-7 rounded-2xl text-center"
             >
-              <span className="inline-block text-4xl font-bold text-gradient-purple mb-4">{point.step}</span>
-              <div className="w-14 h-14 bg-gradient-primary rounded-xl flex items-center justify-center mb-5 mx-auto">
+              <span className="inline-block text-4xl font-bold mb-4" style={{ color: '#C02B7D' }}>{point.step}</span>
+              <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-5 mx-auto" style={{ backgroundColor: '#C02B7D' }}>
                 <point.icon className="w-7 h-7 text-white" />
               </div>
               <h4 className="text-lg font-bold text-gray-900 mb-2">{point.title}</h4>
