@@ -12,6 +12,7 @@ import {
   CalendarDays, Camera, ChevronDown, ChevronRight,
   Instagram, Facebook,
 } from 'lucide-react';
+import FinalCTA from '@/components/FinalCTA';
 
 /* ─── Smooth scroll helper ─── */
 const scrollTo = (id: string) => {
@@ -718,5 +719,6 @@ function ServicesFinalCTA() {
         </FadeIn>
       </div>
     </section>
+    <FinalCTA />
   );
 }

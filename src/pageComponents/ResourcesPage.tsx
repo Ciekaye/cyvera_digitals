@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { BookOpen, FileText, Lightbulb, ArrowRight, Sparkles } from 'lucide-react';
+import FinalCTA from '@/components/FinalCTA';
 
 export default function ResourcesPage() {
   const ref = useRef(null);
@@ -209,6 +210,8 @@ export default function ResourcesPage() {
           </div>
         </div>
       </section>
+
+      <FinalCTA />
     </div>
   );
 }
