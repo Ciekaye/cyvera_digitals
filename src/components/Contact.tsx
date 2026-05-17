@@ -2,11 +2,70 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 export default function Contact() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const [formData, setFormData] = useState({
+    fullName: '',
+    businessName: '',
+    email: '',
+    projectType: '',
+    projectDetails: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitMessage, setSubmitMessage] = useState('');
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setSubmitMessage('Your inquiry has been submitted successfully! We\'ll be in touch within 1-2 business days.');
+        setFormData({
+          fullName: '',
+          businessName: '',
+          email: '',
+          projectType: '',
+          projectDetails: '',
+        });
+        // Reset success message after 5 seconds
+        setTimeout(() => setSubmitStatus('idle'), 5000);
+      } else {
+        setSubmitStatus('error');
+        setSubmitMessage(data.error || 'Failed to submit your inquiry. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus('error');
+      setSubmitMessage('An error occurred while submitting your inquiry. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section id="contact" ref={ref} className="relative py-24 bg-modern-primary min-h-screen overflow-hidden">
@@ -138,23 +197,44 @@ export default function Contact() {
             animate={isInView ? { opacity: 1, x: 0 } : {} }
             transition={{ duration: 0.8, delay: 0.3 }}
             className="card-liquid-glass rounded-3xl p-8 space-y-6"
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={handleSubmit}
           >
+            {submitStatus === 'success' && (
+              <div className="p-4 bg-green-50 border border-green-200 rounded-xl text-green-700 text-sm">
+                ✓ {submitMessage}
+              </div>
+            )}
+
+            {submitStatus === 'error' && (
+              <div className="p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm">
+                ✕ {submitMessage}
+              </div>
+            )}
+
             <div className="grid md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
                 <input
                   type="text"
+                  name="fullName"
+                  value={formData.fullName}
+                  onChange={handleInputChange}
+                  required
                   className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-secondary-purple text-sm"
                   placeholder="Alex Rivera"
+                  disabled={isSubmitting}
                 />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Business / Brand</label>
                 <input
                   type="text"
+                  name="businessName"
+                  value={formData.businessName}
+                  onChange={handleInputChange}
                   className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-secondary-purple text-sm"
                   placeholder="CYVERA Digitals"
+                  disabled={isSubmitting}
                 />
               </div>
             </div>
@@ -164,15 +244,24 @@ export default function Contact() {
                 <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
                 <input
                   type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
                   className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-secondary-purple text-sm"
                   placeholder="you@example.com"
+                  disabled={isSubmitting}
                 />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Project Type</label>
                 <select
+                  name="projectType"
+                  value={formData.projectType}
+                  onChange={handleInputChange}
+                  required
                   className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-secondary-purple text-sm bg-white"
-                  defaultValue=""
+                  disabled={isSubmitting}
                 >
                   <option value="" disabled>
                     Select one
@@ -188,8 +277,13 @@ export default function Contact() {
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Tell us about your project</label>
               <textarea
+                name="projectDetails"
+                value={formData.projectDetails}
+                onChange={handleInputChange}
+                required
                 className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-secondary-purple text-sm min-h-[140px]"
                 placeholder="Share your goals, challenges, and timelines. The more context, the better we can help."
+                disabled={isSubmitting}
               />
             </div>
 
@@ -199,9 +293,10 @@ export default function Contact() {
               </p>
               <button
                 type="submit"
-                className="btn-gradient-primary text-sm font-semibold px-6 py-3 rounded-full inline-flex items-center justify-center"
+                disabled={isSubmitting}
+                className="btn-gradient-primary text-sm font-semibold px-6 py-3 rounded-full inline-flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
               >
-                Submit Inquiry
+                {isSubmitting ? 'Submitting...' : 'Submit Inquiry'}
               </button>
             </div>
           </motion.form>
