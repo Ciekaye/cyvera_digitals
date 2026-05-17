@@ -56,7 +56,7 @@ export default function ResourcesPage() {
     {
       title: "Building a Scalable SaaS Platform",
       client: "TechFlow Solutions",
-      description: "From legacy system to modern architecture — the decisions that made the difference.",
+      description: "From legacy system to modern architecture, the decisions that made the difference.",
       icon: Lightbulb,
     },
     {

@@ -1,6 +1,9 @@
-'use client';
-
+import type { Metadata } from 'next';
 import Testimonials from '@/components/Testimonials';
+
+export const metadata: Metadata = {
+  title: 'Resources | Cyvera Digitals',
+};
 
 export default function BlogPage() {
   return (

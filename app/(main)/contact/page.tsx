@@ -1,6 +1,9 @@
-'use client';
-
+import type { Metadata } from 'next';
 import Contact from '@/components/Contact';
+
+export const metadata: Metadata = {
+  title: 'Contact Us | Cyvera Digitals',
+};
 
 export default function ContactPage() {
   return (

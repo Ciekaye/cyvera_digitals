@@ -21,7 +21,7 @@ export default function Testimonials() {
     {
       name: "Marcus Chen",
       role: "Founder, EcoMarket",
-      content: "Not just developers — true partners. They understood our vision and brought expertise we didn't even know we needed. Our conversion rate increased by 340% in the first quarter.",
+      content: "Not just developers, true partners. They understood our vision and brought expertise we didn't even know we needed. Our conversion rate increased by 340% in the first quarter.",
       rating: 5,
       avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
     },

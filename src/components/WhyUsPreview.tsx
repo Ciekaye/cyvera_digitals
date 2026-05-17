@@ -14,7 +14,7 @@ export default function WhyUsPreview() {
       step: "01",
       icon: Target,
       title: "Results-Driven Approach",
-      description: "We focus on building digital solutions that support real business goals, not just visual appeal.",
+      description: "Every decision we make ties back to your business goals.",
     },
     {
       step: "02",
@@ -26,7 +26,7 @@ export default function WhyUsPreview() {
       step: "03",
       icon: MessageCircle,
       title: "Clear Communication",
-      description: "We believe in transparency, collaboration, and keeping you informed throughout the process.",
+      description: "No jargon, no surprises, just honest updates throughout.",
     },
     {
       step: "04",

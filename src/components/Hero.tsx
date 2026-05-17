@@ -74,8 +74,8 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-display text-gray-900 mb-4"
           >
-            Digital Solutions That Help{' '}
-            <span className="text-gradient-purple">Businesses Grow</span> Online
+            We Build Digital Experiences That{' '}
+            <span className="text-gradient-purple">Work as Hard as You Do</span>
           </motion.h1>
 
           <motion.p
@@ -85,8 +85,7 @@ export default function Hero() {
             className="text-subheading text-gray-600 mb-12 max-w-3xl leading-relaxed"
             style={{ color: '#535252' }}
           >
-            Cyvera Digitals is a creative digital agency focused on building modern websites,
-            strong brand identities, and effective digital experiences that drive real results.
+            From bold brand identities to high performing websites, Cyvera Digitals helps startups and growing businesses show up online with purpose and professionalism.
           </motion.p>
 
           <motion.div
@@ -110,7 +109,7 @@ export default function Hero() {
                 className="group inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-gray-200 text-gray-700 font-semibold text-lg hover:border-purple-300 hover:text-purple-700 transition-all no-underline"
               >
                 <Play size={18} className="text-secondary-purple" />
-                View Our Work
+                See What We've Built
               </Link>
             </motion.div>
           </motion.div>

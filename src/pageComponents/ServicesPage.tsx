@@ -119,7 +119,7 @@ function ServicesHero() {
               className="text-subheading mb-10 leading-relaxed max-w-2xl"
                 style={{ color: '#535252' }}
             >
-              We design, build, and manage digital solutions that strengthen your brand, improve user experience, and support long-term growth.
+              From concept to launch, we handle every piece of your digital presence.
             </motion.p>
 
             <motion.div
@@ -437,7 +437,7 @@ function UiUxSection() {
           <div className="card-liquid-glass p-8 text-center">
             <Lightbulb size={28} className="text-secondary-purple mx-auto mb-3" />
             <p className="text-lg font-semibold text-gray-900 italic">
-              "Good design isn't just how it looks — it's how it works."
+              "Good design isn't just how it looks, it's how it works."
             </p>
           </div>
         </FadeIn>
@@ -661,7 +661,7 @@ function GuidedDecision() {
         <FadeIn>
           <h2 className="text-heading text-gray-900 mb-4">Not Sure What You Need?</h2>
           <p className="text-gray-600 mb-12 max-w-xl mx-auto">
-            Pick the statement that sounds most like you, and we'll point you in the right direction.
+            Not sure where to start? Tell us where you are and we'll point you in the right direction.
           </p>
         </FadeIn>
 
