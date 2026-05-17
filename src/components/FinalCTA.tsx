@@ -3,7 +3,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, ArrowRight } from 'lucide-react';
 
 export default function FinalCTA() {
   const ref = useRef(null);
@@ -46,7 +46,7 @@ export default function FinalCTA() {
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-200 bg-white text-sm font-medium text-gray-700 mb-8"
             >
               <Sparkles size={14} className="text-secondary-purple" />
-              Cyvera Digitals — Strategy. Design. Growth.
+              Direct & Confident
             </motion.div>
 
             <motion.h2
@@ -55,8 +55,8 @@ export default function FinalCTA() {
               transition={{ duration: 0.8, delay: 0.15 }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 max-w-3xl mx-auto leading-[1.1] text-gray-900 tracking-tight"
             >
-              Your Digital Presence{' '}
-              <span className="block">Deserves Better</span>
+              Let's Build Something{' '}
+              <span className="block">Worth Noticing.</span>
             </motion.h2>
 
             <motion.p
@@ -65,13 +65,14 @@ export default function FinalCTA() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="text-gray-600 text-base md:text-lg mb-10 max-w-xl mx-auto leading-relaxed"
             >
-              Whether you're starting from scratch or upgrading what you have, we're here to make it happen.
+              Whether you're launching, rebranding, or scaling, Cyvera Digitals turns your ideas into a digital presence that performs.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.45 }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-4"
             >
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-block">
                 <Link
@@ -79,9 +80,16 @@ export default function FinalCTA() {
                   className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl text-white text-base font-semibold hover:shadow-2xl transition-all no-underline"
                   style={{ backgroundColor: '#C02B7D' }}
                 >
-                  Schedule a demo
+                  Book a Free Discovery Call
                 </Link>
               </motion.div>
+              <Link
+                href="/pricing"
+                className="inline-flex items-center gap-2 px-6 py-3 text-gray-700 font-semibold hover:text-secondary-purple transition-colors no-underline"
+              >
+                View pricing
+                <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+              </Link>
             </motion.div>
           </div>
         </motion.div>
