@@ -1,5 +1,4 @@
-'use client';
-
+import type { Metadata } from 'next';
 import Hero from '@/components/Hero';
 import Positioning from '@/components/Positioning';
 import ServicesOverview from '@/components/ServicesOverview';
@@ -7,6 +6,10 @@ import WhyUsPreview from '@/components/WhyUsPreview';
 import HowWeWork from '@/components/HowWeWork';
 import PortfolioPreview from '@/components/PortfolioPreview';
 import FinalCTA from '@/components/FinalCTA';
+
+export const metadata: Metadata = {
+  title: 'Cyvera Digitals | Creative Digital Agency for Modern Businesses',
+};
 
 export default function HomePage() {
   return (

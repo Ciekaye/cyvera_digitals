@@ -12,7 +12,7 @@ export default function PricingPage() {
   const plans = [
     {
       name: "Starter",
-      description: "Perfect for small businesses and personal brands getting started online.",
+      description: "Perfect if you're just getting your business online and want something professional without the premium price tag.",
       price: "499",
       features: [
         "Custom one-page website",
@@ -26,7 +26,7 @@ export default function PricingPage() {
     },
     {
       name: "Growth",
-      description: "Ideal for growing brands that need a complete digital presence.",
+      description: "Our most popular choice, because most businesses need more than a single page and less than a full custom system.",
       price: "999",
       features: [
         "Multi-page custom website",
@@ -41,8 +41,8 @@ export default function PricingPage() {
       highlighted: true,
     },
     {
-      name: "Enterprise",
-      description: "Full-scale digital solutions for established businesses ready to scale.",
+      name: "Custom",
+      description: "You've outgrown templates. Let's build something fully tailored to your systems, your team, and your growth goals.",
       price: "Custom",
       features: [
         "Full web application development",
@@ -120,8 +120,7 @@ export default function PricingPage() {
             Pricing That Fits Your <span className="text-gradient-purple">Business</span>
           </h1>
           <p className="text-subheading max-w-2xl mx-auto" style={{ color: '#535252' }}>
-            Choose the plan that works best for your goals. Every plan includes quality design,
-            clean code, and dedicated support.
+            No surprise fees. No complicated contracts. Just straightforward pricing for real results.
           </p>
         </motion.div>
 
@@ -193,7 +192,7 @@ export default function PricingPage() {
           transition={{ delay: 0.8 }}
           className="text-center text-sm text-gray-600 mt-12"
         >
-          All prices are starting points. Final pricing depends on project scope and requirements.
+          Every project is unique. These prices reflect common scopes. Reach out and we'll give you an accurate quote with no obligation.
         </motion.p>
       </div>
     </section>

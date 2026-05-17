@@ -30,22 +30,22 @@ export default function AboutPage() {
     {
       icon: Shield,
       title: 'Quality',
-      description: 'Delivering excellence in every digital solution we create, with attention to detail, performance, and long-term value.',
+      description: "We don't cut corners, because you'll see the difference, and so will your customers.",
     },
     {
       icon: Heart,
       title: 'Fairness',
-      description: 'Providing transparent pricing, honest recommendations, and balanced solutions that respect both client needs and project scope.',
+      description: 'Transparent pricing, honest scopes, no hidden fees.',
     },
     {
       icon: Eye,
       title: 'Innovation',
-      description: 'Embracing creativity and modern technologies to deliver forward-thinking and effective digital solutions.',
+      description: 'We use modern tools because your business deserves modern solutions.',
     },
     {
       icon: Users,
       title: 'Integrity',
-      description: 'Upholding transparency, honesty, and ethical practices in every project and partnership.',
+      description: "We'd rather say no than overpromise.",
     },
   ];
 
@@ -123,7 +123,7 @@ export default function AboutPage() {
                 className="text-subheading leading-relaxed mb-4"
                 style={{ color: '#535252' }}
               >
-                Cyvera Digitals is a digital agency focused on helping businesses build a strong and effective online presence. We specialize in web design, website development, and digital solutions that are visually engaging, strategically built, and aligned with real business goals.
+                Most businesses know they need a strong digital presence. They just don't know where to start. That's exactly why Cyvera Digitals exists.
               </motion.p>
             </div>
             
@@ -233,7 +233,7 @@ export default function AboutPage() {
                     transition={{ duration: 0.8, delay: 0.9 }}
                     className="text-body text-gray-700 leading-relaxed mb-4"
                   >
-                    Cyvera Digitals was founded with a simple goal. To help businesses navigate the digital space with clarity and confidence.
+                    Cyvera Digitals started with a simple frustration. Too many businesses were being sold expensive digital solutions that didn't actually fit their needs.
                   </motion.p>
                   <motion.p
                     initial={{ opacity: 0, y: 20 }}
@@ -241,7 +241,7 @@ export default function AboutPage() {
                     transition={{ duration: 0.8, delay: 1.0 }}
                     className="text-body text-gray-700 leading-relaxed"
                   >
-                    We focus on thoughtful design, clean development, and strategic execution. Our approach avoids unnecessary complexity and prioritizes solutions that make sense for both users and businesses.
+                    We set out to do it differently, with clear communication, honest pricing, and work that actually moves the needle.
                   </motion.p>
                 </div>
               </div>
@@ -273,7 +273,7 @@ export default function AboutPage() {
 
             {/* Right side - Stacked sections */}
             <div className="lg:col-span-3 lg:pl-12 space-y-16">
-              {/* Mission */}
+              {/* Mission & Vision */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={missionInView ? { opacity: 1, y: 0 } : {}}
@@ -284,34 +284,9 @@ export default function AboutPage() {
                     <Target className="w-8 h-8 text-white" />
                   </div>
                   <div>
-                    <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Mission</h2>
-                    <p className="text-body text-gray-600 leading-relaxed mb-3">
-                      Our mission is to create meaningful digital solutions that help businesses grow, connect with their audience, and succeed online.
-                    </p>
+                    <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Mission &amp; Vision</h2>
                     <p className="text-body text-gray-600 leading-relaxed">
-                      We deliver web design and development services that are user-focused, performance-driven, and built for scalability.
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Vision */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={missionInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
-                <div className="flex items-start gap-6">
-                  <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center flex-shrink-0">
-                    <Eye className="w-8 h-8 text-white" />
-                  </div>
-                  <div>
-                    <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Vision</h2>
-                    <p className="text-body text-gray-600 leading-relaxed mb-3">
-                      Our vision is to become a trusted digital partner for growing businesses seeking reliable and effective digital solutions.
-                    </p>
-                    <p className="text-body text-gray-600 leading-relaxed">
-                      We aim to support brands that value clarity, quality, and long-term digital growth.
+                      Our mission is to help businesses grow online through digital solutions that are clear, scalable, and built around real goals. We want to be a long term partner for brands that value quality, honesty, and steady growth.
                     </p>
                   </div>
                 </div>

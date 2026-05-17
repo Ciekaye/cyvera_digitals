@@ -13,25 +13,25 @@ export default function ServicesOverview() {
     {
       icon: Code,
       title: "Website Development",
-      description: "Modern, fast, and scalable websites built for performance and growth.",
+      description: "Websites built to convert, not just impress.",
       link: "/services/website-development",
     },
     {
       icon: Layers,
       title: "UI & UX Strategy",
-      description: "User-focused design solutions that improve usability and engagement.",
+      description: "Experiences designed around the people who actually use them.",
       link: "/services/ui-ux-strategy",
     },
     {
       icon: Palette,
       title: "Graphic & Brand Design",
-      description: "Visual identities and design assets that communicate your brand clearly.",
+      description: "Make people remember your brand before they remember your name.",
       link: "/services/graphic-brand-design",
     },
     {
       icon: Share2,
       title: "Social Media Management",
-      description: "Content creation and management to keep your brand visible and consistent.",
+      description: "Stay visible and relevant, without the stress of doing it yourself.",
       link: "/services/social-media-management",
     },
   ];
@@ -54,8 +54,7 @@ export default function ServicesOverview() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-subheading text-center text-gray-600 mb-16 max-w-3xl mx-auto"
         >
-          We offer end-to-end digital services designed to help your business stand out,
-          connect with your audience, and grow online.
+          Everything your business needs to stand out online, designed, built, and managed under one roof.
         </motion.p>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">

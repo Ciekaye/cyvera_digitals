@@ -12,7 +12,7 @@ export default function WebDevPage() {
 
   const features = [
     { icon: Monitor, title: "Custom Websites", description: "Fully tailored websites designed to match your brand and business goals." },
-    { icon: Smartphone, title: "Responsive Design", description: "Seamless experience across all devices — desktop, tablet, and mobile." },
+    { icon: Smartphone, title: "Responsive Design", description: "Seamless experience across all devices, including desktop, tablet, and mobile." },
     { icon: ShoppingCart, title: "E-Commerce", description: "Online stores with secure payments, inventory management, and smooth checkout." },
     { icon: Server, title: "Web Applications", description: "Complex web apps with custom backends, dashboards, and real-time features." },
     { icon: Zap, title: "Performance Optimized", description: "Fast-loading, SEO-friendly builds that score high on Core Web Vitals." },

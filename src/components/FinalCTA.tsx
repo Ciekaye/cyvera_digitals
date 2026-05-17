@@ -27,7 +27,7 @@ export default function FinalCTA() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 max-w-3xl mx-auto leading-tight"
             >
-              Ready to Start Your Next Digital Project?
+              Your Digital Presence Deserves Better. Let's Fix That.
             </motion.h2>
 
             <motion.p
@@ -36,8 +36,7 @@ export default function FinalCTA() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-white/85 text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed"
             >
-              Let's work together to build a digital presence that reflects your brand
-              and supports your business goals.
+              Whether you're starting from scratch or upgrading what you have, we're here to make it happen.
             </motion.p>
 
             <motion.div
