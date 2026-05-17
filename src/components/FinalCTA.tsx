@@ -46,7 +46,7 @@ export default function FinalCTA() {
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-200 bg-white text-sm font-medium text-gray-700 mb-8"
             >
               <Sparkles size={14} className="text-secondary-purple" />
-              Direct & Confident
+              Cyvera Digitals — Strategy. Design. Growth.
             </motion.div>
 
             <motion.h2
