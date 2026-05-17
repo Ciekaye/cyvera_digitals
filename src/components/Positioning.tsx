@@ -9,7 +9,7 @@ export default function Positioning() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="py-20 bg-modern-primary">
+    <section ref={ref} className="pt-20 pb-4 bg-modern-primary">
       <div className="container mx-auto px-4 lg:px-8 max-w-4xl text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -25,10 +25,10 @@ export default function Positioning() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-heading text-gray-900 leading-snug"
+          className="font-inter text-heading text-gray-900 leading-snug"
         >
           Trusted by startups, creators, and growing brands who want a{' '}
-          <span className="text-gradient-purple">digital presence worth noticing</span>.
+          <span className="text-gradient-purple italic">digital presence worth noticing</span>
         </motion.p>
       </div>
     </section>

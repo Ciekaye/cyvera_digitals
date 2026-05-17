@@ -243,6 +243,12 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  display: inline-block;
+  /* Extend background area so italic slant and tall glyphs aren't clipped.
+     Padding grows the painted region; negative margin keeps layout flush. */
+  padding: 0.15em 0.18em;
+  margin: -0.15em -0.18em;
+  line-height: 1.25;
 }
 
 /* Purple gradient buttons */
