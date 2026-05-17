@@ -89,6 +89,7 @@ export default function ServicesOverview() {
               rating={service.rating}
               title={service.title}
               description={service.description}
+              href={service.href}
             />
           ))}
         </div>

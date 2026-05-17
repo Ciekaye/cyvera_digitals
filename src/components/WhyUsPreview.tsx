@@ -3,7 +3,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
-import { Target, Gem, MessageCircle, TrendingUp, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export default function WhyUsPreview() {
   const ref = useRef(null);
@@ -12,25 +12,21 @@ export default function WhyUsPreview() {
   const points = [
     {
       step: "01",
-      icon: Target,
       title: "Results-Driven Approach",
       description: "Every decision we make ties back to your business goals.",
     },
     {
       step: "02",
-      icon: Gem,
       title: "Modern & Clean Design",
       description: "Our designs follow current best practices for performance, accessibility, and user experience.",
     },
     {
       step: "03",
-      icon: MessageCircle,
       title: "Clear Communication",
       description: "No jargon, no surprises, just honest updates throughout.",
     },
     {
       step: "04",
-      icon: TrendingUp,
       title: "Built for Growth",
       description: "Every project is designed with scalability in mind, so your digital presence can grow with your business.",
     },
@@ -45,7 +41,7 @@ export default function WhyUsPreview() {
           transition={{ duration: 0.8 }}
           className="font-inter text-display text-center text-gray-900 mb-16"
         >
-          Why Choose <span className="text-gradient-purple italic">Cyvera Digitals</span>
+          Why Choose <span className="text-gradient-purple italic">CYVERA Digitals</span>
         </motion.h2>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
@@ -59,9 +55,6 @@ export default function WhyUsPreview() {
               className="card-liquid-glass p-7 rounded-2xl text-center"
             >
               <span className="inline-block text-4xl font-bold mb-4" style={{ color: '#C02B7D' }}>{point.step}</span>
-              <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-5 mx-auto" style={{ backgroundColor: '#C02B7D' }}>
-                <point.icon className="w-7 h-7 text-white" />
-              </div>
               <h4 className="text-lg font-bold text-gray-900 mb-2">{point.title}</h4>
               <p className="text-sm text-gray-600 leading-relaxed">{point.description}</p>
             </motion.div>
