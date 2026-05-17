@@ -1,12 +1,13 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight, Play } from 'lucide-react';
+import { ArrowRight, Play, Sparkles } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-start overflow-hidden bg-white">
+    <section className="relative min-h-screen flex flex-col items-center overflow-hidden bg-white">
       {/* Animated wave background */}
       <div className="absolute inset-0 w-full h-full">
         <svg
@@ -57,32 +58,37 @@ export default function Hero() {
         <div className="absolute top-0 right-0 w-[500px] h-[350px] bg-gradient-radial from-blue-100/50 via-indigo-50/20 to-transparent rounded-full" />
       </div>
 
-      <div className="container mx-auto px-4 lg:px-8 relative z-10 pt-12 lg:pt-40">
-        <div className="max-w-5xl">
-          <motion.p
+      <div className="container mx-auto px-4 lg:px-8 relative z-10 pt-32 lg:pt-40 pb-20">
+        <div className="max-w-6xl mx-auto text-center">
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-secondary-purple font-semibold text-lg md:text-xl mb-4"
+            className="inline-flex items-center justify-center gap-2 mb-6"
           >
-            Creative Digital Agency
-          </motion.p>
+            <Sparkles size={20} className="text-secondary-purple" />
+            <span className="text-secondary-purple font-semibold text-lg md:text-xl">
+              Strategy. Design. Growth.
+            </span>
+          </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-display text-gray-900 mb-4"
+            className="font-bold text-gray-900 mb-6 tracking-tight leading-[1.05] text-[clamp(2.5rem,6vw,4.5rem)]"
           >
             We Build Digital Experiences That{' '}
-            <span className="text-gradient-purple">Work as Hard as You Do</span>
+            <span className="text-gradient-purple italic font-medium">
+              Work as Hard as You Do
+            </span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-subheading text-gray-600 mb-12 max-w-3xl leading-relaxed"
+            className="text-subheading mb-12 max-w-[52rem] mx-auto leading-relaxed"
             style={{ color: '#535252' }}
           >
             From bold brand identities to high performing websites, Cyvera Digitals helps startups and growing businesses show up online with purpose and professionalism.
@@ -92,7 +98,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
-            className="flex flex-col sm:flex-row items-center justify-start gap-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-10"
           >
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
@@ -112,6 +118,32 @@ export default function Hero() {
                 See What We've Built
               </Link>
             </motion.div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
+            className="mt-16 mx-auto max-w-6xl"
+          >
+            <div
+              className="border-2 border-secondary-purple rounded-[31px] p-3"
+              style={{ boxShadow: '0 4px 4px 0 rgba(0,0,0,0.25)' }}
+            >
+              <div
+                className="relative rounded-[30px] overflow-hidden aspect-[1093/577]"
+                style={{ boxShadow: '0 7px 11.9px 7px rgba(0,0,0,0.11)' }}
+              >
+                <Image
+                  src="/services.jpg"
+                  alt="Cyvera Digitals work showcase"
+                  fill
+                  sizes="(min-width: 1024px) 1100px, 100vw"
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            </div>
           </motion.div>
         </div>
 
