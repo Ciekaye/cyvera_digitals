@@ -6,6 +6,7 @@ import { useInView } from 'framer-motion';
 import { ArrowRight, Target, Eye, Heart, Users, Shield } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import FinalCTA from '@/components/FinalCTA';
 
 export default function AboutPage() {
   const heroRef = useRef(null);
@@ -396,46 +397,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Final CTA ── */}
-      <section ref={ctaRef} className="py-20 bg-white">
-        <div className="container mx-auto px-4 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={ctaInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="relative overflow-hidden rounded-3xl"
-          >
-            <div className="absolute inset-0 bg-gradient-primary" />
-            <div className="relative z-10 px-8 py-16 text-center text-white">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Let's Build Something Meaningful
-              </h2>
-              <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-                If you are looking for a digital agency that values clarity, collaboration, and effective digital solutions, we would love to work with you.
-              </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Link
-                    href="/contact"
-                    className="group bg-white text-purple-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all inline-flex items-center gap-2 no-underline"
-                  >
-                    Get Started
-                    <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
-                  </Link>
-                </motion.div>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Link
-                    href="/contact"
-                    className="group inline-flex items-center gap-2 px-8 py-4 rounded-lg border-2 border-white text-white font-semibold text-lg hover:bg-white/10 transition-all no-underline"
-                  >
-                    Contact Us
-                  </Link>
-                </motion.div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <FinalCTA />
     </div>
   );
 }

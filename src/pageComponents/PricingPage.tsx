@@ -4,6 +4,7 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
 import { Check, ArrowRight, Sparkles } from 'lucide-react';
+import FinalCTA from '@/components/FinalCTA';
 
 export default function PricingPage() {
   const ref = useRef(null);
@@ -59,6 +60,7 @@ export default function PricingPage() {
   ];
 
   return (
+    <>
     <section ref={ref} className="relative py-24 bg-modern-primary min-h-screen overflow-hidden">
       {/* Homepage wave background */}
       <div className="absolute inset-0 w-full h-full">
@@ -196,5 +198,7 @@ export default function PricingPage() {
         </motion.p>
       </div>
     </section>
+    <FinalCTA />
+    </>
   );
 }

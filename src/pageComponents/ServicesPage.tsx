@@ -12,6 +12,7 @@ import {
   CalendarDays, Camera, ChevronDown, ChevronRight,
   Instagram, Facebook,
 } from 'lucide-react';
+import FinalCTA from '@/components/FinalCTA';
 
 /* ─── Smooth scroll helper ─── */
 const scrollTo = (id: string) => {
@@ -49,7 +50,7 @@ export default function ServicesPage() {
       <GraphicDesignSection />
       <SocialMediaSection />
       <GuidedDecision />
-      <ServicesFinalCTA />
+      <FinalCTA />
     </div>
   );
 }
@@ -692,31 +693,3 @@ function GuidedDecision() {
   );
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   9 · FINAL CTA
-   ═══════════════════════════════════════════════════════════════ */
-function ServicesFinalCTA() {
-  return (
-    <section className="py-20">
-      <div className="container mx-auto px-4 lg:px-8">
-        <FadeIn>
-          <div className="relative overflow-hidden rounded-3xl">
-            <div className="absolute inset-0 bg-gradient-primary" />
-            <div className="relative z-10 px-8 py-20 text-center text-white">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Start Your Project?</h2>
-              <p className="text-white/80 text-lg mb-8 max-w-xl mx-auto">
-                Let's build a digital solution that supports your business goals.
-              </p>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary-purple rounded-full text-lg font-semibold hover:shadow-2xl transition-all no-underline"
-              >
-                Get Started <ArrowRight size={20} />
-              </Link>
-            </div>
-          </div>
-        </FadeIn>
-      </div>
-    </section>
-  );
-}
