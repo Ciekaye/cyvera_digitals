@@ -5,6 +5,7 @@ import { useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Palette, PenTool, Image as ImageIcon, BookOpen, Stamp, Sparkles, ArrowRight, ArrowLeft } from 'lucide-react';
+import FinalCTA from '@/components/FinalCTA';
 
 export default function GraphicDesignPage() {
   const ref = useRef(null);
@@ -254,28 +255,7 @@ export default function GraphicDesignPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="relative overflow-hidden rounded-3xl"
-          >
-            <div className="absolute inset-0 bg-gradient-primary" />
-            <div className="relative z-10 px-8 py-16 text-center text-white">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Build Your Brand?</h2>
-              <p className="text-white/80 text-lg mb-8 max-w-xl mx-auto">
-                Let's create a visual identity that reflects who you are and resonates with your audience.
-              </p>
-              <Link href="/contact" className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary-purple rounded-full text-lg font-semibold hover:shadow-2xl transition-all no-underline">
-                Get Started <ArrowRight size={20} />
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <FinalCTA />
     </div>
   );
 }

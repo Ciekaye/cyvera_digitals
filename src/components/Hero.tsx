@@ -155,6 +155,7 @@ export default function Hero() {
                   sizes="(min-width: 1024px) 1100px, 100vw"
                   className="object-cover"
                   priority
+                  unoptimized
                 />
               </div>
             </div>

@@ -60,6 +60,7 @@ export default function PricingPage() {
   ];
 
   return (
+    <>
     <section ref={ref} className="relative py-24 bg-modern-primary min-h-screen overflow-hidden">
       {/* Homepage wave background */}
       <div className="absolute inset-0 w-full h-full">
@@ -198,5 +199,6 @@ export default function PricingPage() {
       </div>
     </section>
     <FinalCTA />
+    </>
   );
 }
