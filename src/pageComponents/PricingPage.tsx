@@ -198,7 +198,7 @@ export default function PricingPage() {
         </motion.p>
       </div>
     </section>
-    <FinalCTA />
+    <FinalCTA hidePricingLink />
     </>
   );
 }

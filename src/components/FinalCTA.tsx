@@ -5,7 +5,7 @@ import { useRef } from 'react';
 import Link from 'next/link';
 import { Sparkles, ArrowRight } from 'lucide-react';
 
-export default function FinalCTA() {
+export default function FinalCTA({ hidePricingLink = false }: { hidePricingLink?: boolean } = {}) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -83,13 +83,15 @@ export default function FinalCTA() {
                   Book a Free Discovery Call
                 </Link>
               </motion.div>
-              <Link
-                href="/pricing"
-                className="inline-flex items-center gap-2 px-6 py-3 text-gray-700 font-semibold hover:text-secondary-purple transition-colors no-underline"
-              >
-                View pricing
-                <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
-              </Link>
+              {!hidePricingLink && (
+                <Link
+                  href="/pricing"
+                  className="inline-flex items-center gap-2 px-6 py-3 text-gray-700 font-semibold hover:text-secondary-purple transition-colors no-underline"
+                >
+                  View pricing
+                  <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+                </Link>
+              )}
             </motion.div>
           </div>
         </motion.div>
