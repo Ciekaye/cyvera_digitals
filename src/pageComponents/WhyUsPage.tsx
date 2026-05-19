@@ -23,6 +23,7 @@ import {
   Ear,
 } from 'lucide-react';
 import FinalCTA from '@/components/FinalCTA';
+import GridBackground from '@/components/GridBackground';
 
 export default function WhyUsPage() {
   const heroRef = useRef(null);
@@ -141,6 +142,7 @@ export default function WhyUsPage() {
         ref={heroRef}
         className="relative pt-12 pb-20 overflow-hidden"
       >
+        <GridBackground />
         {/* Shared wave background */}
         <div className="absolute inset-0 w-full h-full">
           <svg
@@ -259,7 +261,7 @@ export default function WhyUsPage() {
                   whileHover={{ y: -6, scale: 1.02 }}
                   className="card-liquid-glass p-7"
                 >
-                  <div className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center mb-5">
+                  <div className="w-12 h-12 bg-[#C02B7D] rounded-xl flex items-center justify-center mb-5">
                     <item.icon className="w-6 h-6 text-white" />
                   </div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
@@ -364,7 +366,7 @@ export default function WhyUsPage() {
                 transition={{ duration: 0.5, delay: 0.25 + index * 0.08 }}
                 className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm"
               >
-                <div className="w-8 h-8 bg-gradient-primary rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="w-8 h-8 bg-[#C02B7D] rounded-full flex items-center justify-center flex-shrink-0">
                   <CheckCircle2 className="w-4 h-4 text-white" />
                 </div>
                 <span className="text-gray-700 font-medium">{point}</span>
@@ -415,7 +417,7 @@ export default function WhyUsPage() {
                 transition={{ duration: 0.5, delay: 0.15 + index * 0.1 }}
                 className="card-liquid-glass p-8 group hover:scale-[1.02] transition-transform duration-300"
               >
-                <div className="w-14 h-14 bg-gradient-primary rounded-2xl flex items-center justify-center mb-5 group-hover:shadow-lg group-hover:shadow-purple-200 transition-shadow duration-300">
+                <div className="w-14 h-14 bg-[#C02B7D] rounded-2xl flex items-center justify-center mb-5 group-hover:shadow-lg group-hover:shadow-purple-200 transition-shadow duration-300">
                   <reason.icon className="w-7 h-7 text-white" />
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">{reason.label}</h3>

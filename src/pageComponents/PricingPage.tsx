@@ -5,6 +5,7 @@ import { useRef } from 'react';
 import Link from 'next/link';
 import { Check, ArrowRight, Sparkles } from 'lucide-react';
 import FinalCTA from '@/components/FinalCTA';
+import GridBackground from '@/components/GridBackground';
 
 export default function PricingPage() {
   const ref = useRef(null);
@@ -75,7 +76,8 @@ export default function PricingPage() {
 
   return (
     <>
-    <section ref={ref} className="relative py-24 bg-modern-primary min-h-screen overflow-hidden">
+    <section ref={ref} className="relative pt-8 pb-24 bg-modern-primary min-h-screen overflow-hidden">
+      <GridBackground />
       {/* Homepage wave background */}
       <div className="absolute inset-0 w-full h-full">
         <svg
@@ -121,7 +123,7 @@ export default function PricingPage() {
         </svg>
       </div>
 
-      <div className="container mx-auto px-4 lg:px-8 pt-12 relative z-10">
+      <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}

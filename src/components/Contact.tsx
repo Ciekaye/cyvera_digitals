@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
+import GridBackground from '@/components/GridBackground';
 
 export default function Contact() {
   const ref = useRef(null);
@@ -69,6 +70,7 @@ export default function Contact() {
 
   return (
     <section id="contact" ref={ref} className="relative py-24 bg-modern-primary min-h-screen overflow-hidden">
+      <GridBackground />
       {/* Homepage wave background */}
       <div className="absolute inset-0 w-full h-full">
         <svg
@@ -164,7 +166,7 @@ export default function Contact() {
               </ul>
             </div>
 
-            <div className="border-t border-gray-200 pt-6">
+            <div className="pt-6">
               <p className="text-sm font-semibold tracking-wide uppercase text-gray-500 mb-2">
                 Prefer updates in your inbox?
               </p>

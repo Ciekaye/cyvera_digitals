@@ -7,6 +7,7 @@ import { ArrowRight, Target, Eye, Heart, Users, Shield } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import FinalCTA from '@/components/FinalCTA';
+import GridBackground from '@/components/GridBackground';
 
 export default function AboutPage() {
   const heroRef = useRef(null);
@@ -65,6 +66,7 @@ export default function AboutPage() {
         ref={heroRef}
         className="relative pt-12 pb-32 overflow-hidden"
       >
+        <GridBackground />
         {/* Animated wave background */}
         <div className="absolute inset-0 w-full h-full">
           <svg
@@ -281,7 +283,7 @@ export default function AboutPage() {
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 <div className="flex items-start gap-6">
-                  <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-16 h-16 bg-[#C02B7D] rounded-full flex items-center justify-center flex-shrink-0">
                     <Target className="w-8 h-8 text-white" />
                   </div>
                   <div>
@@ -300,7 +302,7 @@ export default function AboutPage() {
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
                 <div className="flex items-start gap-6">
-                  <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-16 h-16 bg-[#C02B7D] rounded-full flex items-center justify-center flex-shrink-0">
                     <Target className="w-8 h-8 text-white" />
                   </div>
                   <div>
@@ -324,7 +326,7 @@ export default function AboutPage() {
                 transition={{ duration: 0.8, delay: 0.8 }}
               >
                 <div className="flex items-start gap-6">
-                  <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-16 h-16 bg-[#C02B7D] rounded-full flex items-center justify-center flex-shrink-0">
                     <Heart className="w-8 h-8 text-white" />
                   </div>
                   <div>
