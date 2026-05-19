@@ -3,6 +3,7 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { BookOpen, FileText, Lightbulb, ArrowRight, Sparkles } from 'lucide-react';
 import FinalCTA from '@/components/FinalCTA';
+import GridBackground from '@/components/GridBackground';
 
 export default function ResourcesPage() {
   const ref = useRef(null);
@@ -71,8 +72,9 @@ export default function ResourcesPage() {
   return (
     <div className="bg-modern-primary min-h-screen">
       {/* Hero */}
-      <section ref={ref} className="pt-36 pb-16">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
+      <section ref={ref} className="relative pt-36 pb-16 overflow-hidden">
+        <GridBackground />
+        <div className="relative z-10 container mx-auto px-4 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}

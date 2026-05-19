@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Layers, PenTool, Users, BarChart3, Figma, Lightbulb, ArrowRight, ArrowLeft } from 'lucide-react';
 import FinalCTA from '@/components/FinalCTA';
+import GridBackground from '@/components/GridBackground';
 
 export default function UiUxPage() {
   const ref = useRef(null);
@@ -31,6 +32,7 @@ export default function UiUxPage() {
     <div ref={ref} className="bg-modern-primary min-h-screen">
       {/* Hero */}
       <section className="relative pt-4 md:pt-12 pb-20 overflow-hidden">
+        <GridBackground />
         {/* Animated background */}
         <div className="absolute inset-0 w-full h-full">
           <svg
@@ -251,7 +253,7 @@ export default function UiUxPage() {
                 whileHover={{ y: -6, scale: 1.02 }}
                 className="card-liquid-glass p-7"
               >
-                <div className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center mb-5">
+                <div className="w-12 h-12 bg-[#C02B7D] rounded-xl flex items-center justify-center mb-5">
                   <feature.icon className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>

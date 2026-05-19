@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Palette, PenTool, Image as ImageIcon, BookOpen, Stamp, Sparkles, ArrowRight, ArrowLeft } from 'lucide-react';
 import FinalCTA from '@/components/FinalCTA';
+import GridBackground from '@/components/GridBackground';
 
 export default function GraphicDesignPage() {
   const ref = useRef(null);
@@ -35,6 +36,7 @@ export default function GraphicDesignPage() {
     <div ref={ref} className="bg-modern-primary min-h-screen">
       {/* Hero */}
       <section className="relative pt-4 md:pt-12 pb-20 overflow-hidden">
+        <GridBackground />
         {/* Animated background */}
         <div className="absolute inset-0 w-full h-full">
           <svg
@@ -211,7 +213,7 @@ export default function GraphicDesignPage() {
                 whileHover={{ y: -6, scale: 1.02 }}
                 className="card-liquid-glass p-7"
               >
-                <div className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center mb-5">
+                <div className="w-12 h-12 bg-[#C02B7D] rounded-xl flex items-center justify-center mb-5">
                   <feature.icon className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
@@ -243,7 +245,7 @@ export default function GraphicDesignPage() {
                 transition={{ duration: 0.4, delay: 0.1 + index * 0.06 }}
                 className="flex items-center gap-3 p-4 bg-white rounded-xl shadow-sm"
               >
-                <div className="w-6 h-6 bg-gradient-primary rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="w-6 h-6 bg-[#C02B7D] rounded-full flex items-center justify-center flex-shrink-0">
                   <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                   </svg>

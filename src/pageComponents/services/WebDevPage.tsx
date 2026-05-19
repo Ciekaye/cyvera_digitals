@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Code, Monitor, Smartphone, ShoppingCart, Server, Zap, ArrowRight, ArrowLeft } from 'lucide-react';
 import FinalCTA from '@/components/FinalCTA';
+import GridBackground from '@/components/GridBackground';
 
 export default function WebDevPage() {
   const ref = useRef(null);
@@ -25,56 +26,56 @@ export default function WebDevPage() {
       name: 'WordPress',
       color: '#21759B',
       bg: '#EBF5FB',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg',
+      logo: '/logos/wordpress.svg',
       desc: 'Flexible CMS for business sites, blogs, and WooCommerce stores with easy content management.',
     },
     {
       name: 'Shopify',
       color: '#96BF48',
       bg: '#F0F9EB',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/shopify/shopify-original.svg',
+      logo: '/logos/shopify.svg',
       desc: 'Powerful e-commerce platform for building scalable online stores with seamless checkout.',
     },
     {
       name: 'React',
       color: '#61DAFB',
       bg: '#E8FAFE',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
+      logo: '/logos/react.svg',
       desc: 'Component-based UI library for building fast, interactive, and dynamic web applications.',
     },
     {
       name: 'Next.js',
       color: '#000000',
       bg: '#F2F2F2',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',
+      logo: '/logos/nextjs.svg',
       desc: 'Full-stack React framework with SSR and SSG for lightning-fast, SEO-friendly websites.',
     },
     {
       name: 'Tailwind CSS',
       color: '#38BDF8',
       bg: '#E8F7FE',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg',
+      logo: '/logos/tailwindcss.svg',
       desc: 'Utility-first CSS framework for building modern, responsive interfaces rapidly.',
     },
     {
       name: 'Node.js',
       color: '#339933',
       bg: '#EBF7EB',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
+      logo: '/logos/nodejs.svg',
       desc: 'Scalable server-side runtime for building fast APIs, backends, and real-time applications.',
     },
     {
       name: 'TypeScript',
       color: '#3178C6',
       bg: '#EBF2FB',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
+      logo: '/logos/typescript.svg',
       desc: 'Typed superset of JavaScript that improves code quality, reliability, and maintainability.',
     },
     {
       name: 'Laravel',
       color: '#FF2D20',
       bg: '#FEF0EF',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-plain.svg',
+      logo: '/logos/laravel.svg',
       desc: 'Elegant PHP framework for building robust web applications with clean, expressive syntax.',
     },
   ];
@@ -90,6 +91,7 @@ export default function WebDevPage() {
     <div ref={ref} className="bg-modern-primary min-h-screen">
       {/* Hero */}
       <section className="relative pt-4 md:pt-12 pb-20 overflow-hidden">
+        <GridBackground />
         {/* Animated background */}
         <div className="absolute inset-0 w-full h-full">
           <svg
@@ -272,7 +274,7 @@ export default function WebDevPage() {
                 whileHover={{ y: -6, scale: 1.02 }}
                 className="p-7 bg-white rounded-2xl shadow-lg hover:shadow-2xl border border-gray-50 transition-all"
               >
-                <div className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center mb-5">
+                <div className="w-12 h-12 bg-[#C02B7D] rounded-xl flex items-center justify-center mb-5">
                   <feature.icon className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
