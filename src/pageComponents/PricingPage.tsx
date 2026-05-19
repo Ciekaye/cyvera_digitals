@@ -14,46 +14,60 @@ export default function PricingPage() {
     {
       name: "Starter",
       description: "Perfect if you're just getting your business online and want something professional without the premium price tag.",
-      price: "499",
+      price: "250",
       features: [
-        "Custom one-page website",
+        "Up to 10 pages",
         "Mobile responsive design",
         "Basic SEO setup",
         "Contact form integration",
-        "1 round of revisions",
-        "2 weeks delivery",
+        "1 week free revisions",
+        "$8/hr add-on for extra revisions & requests",
+        "Maintenance available as add-on",
       ],
       highlighted: false,
     },
     {
-      name: "Growth",
-      description: "Our most popular choice, because most businesses need more than a single page and less than a full custom system.",
-      price: "999",
+      name: "Basic",
+      description: "A step up for growing businesses that need more pages and a stronger online presence.",
+      price: "500",
       features: [
-        "Multi-page custom website",
+        "11–15 pages",
+        "Mobile responsive design",
+        "Standard SEO optimization",
+        "Contact form integration",
+        "1 week free revisions",
+        "$8/hr add-on for extra revisions & requests",
+        "Maintenance available as add-on",
+      ],
+      highlighted: false,
+    },
+    {
+      name: "Plus",
+      description: "Our most popular choice for established brands that need a full-featured, polished web presence.",
+      price: "1000",
+      features: [
+        "16–30 pages",
         "UI/UX strategy & wireframes",
         "Advanced SEO optimization",
-        "Social media starter kit",
-        "Brand identity package",
-        "3 rounds of revisions",
-        "Priority support (30 days)",
-        "4 weeks delivery",
+        "Brand identity touches",
+        "2 weeks free revisions",
+        "$8/hr add-on for extra revisions & requests",
+        "Maintenance available as add-on",
       ],
       highlighted: true,
     },
     {
-      name: "Custom",
+      name: "Enterprise",
       description: "You've outgrown templates. Let's build something fully tailored to your systems, your team, and your growth goals.",
       price: "Custom",
       features: [
-        "Full web application development",
+        "Unlimited pages",
         "Custom UI/UX design system",
         "E-commerce or SaaS integration",
-        "Social media management",
-        "Ongoing maintenance & support",
+        "Custom revision window",
         "Dedicated project manager",
-        "Unlimited revisions",
-        "Custom timeline",
+        "Maintenance plan included",
+        "Talk to us for a custom quote",
       ],
       highlighted: false,
     },
@@ -126,7 +140,7 @@ export default function PricingPage() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {plans.map((plan, index) => (
             <motion.div
               key={plan.name}
@@ -134,7 +148,7 @@ export default function PricingPage() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 + index * 0.15 }}
               whileHover={{ y: -8 }}
-              className={`relative p-8 rounded-2xl transition-all card-liquid-glass ${
+              className={`relative p-6 rounded-2xl transition-all card-liquid-glass ${
                 plan.highlighted
                   ? 'scale-[1.02] ring-2 ring-purple-200/50'
                   : ''
