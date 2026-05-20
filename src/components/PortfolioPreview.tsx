@@ -39,8 +39,12 @@ export default function PortfolioPreview() {
         </motion.p>
 
         <div className="grid md:grid-cols-3 gap-8 mb-12">
-          {preview.map((project) => (
-            <PortfolioCard key={project.url} project={project} />
+          {preview.map((project, index) => (
+            <PortfolioCard
+              key={project.url}
+              project={project}
+              delay={index * 0.1}
+            />
           ))}
         </div>
 

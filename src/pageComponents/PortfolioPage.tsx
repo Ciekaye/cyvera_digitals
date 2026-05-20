@@ -1,5 +1,6 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
 import TechExpertise from '@/components/TechExpertise';
 import GridBackground from '@/components/GridBackground';
@@ -13,13 +14,23 @@ export default function PortfolioPage() {
       {/* Hero */}
       <section className="relative pt-20 pb-12 overflow-hidden bg-modern-primary">
         <GridBackground />
-        <div className="relative z-10 container mx-auto px-4 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 border border-purple-100 mb-6">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="relative z-10 container mx-auto px-4 lg:px-8 text-center"
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 border border-purple-100 mb-6"
+          >
             <Sparkles size={16} className="text-secondary-purple" />
             <span className="text-sm font-semibold text-secondary-purple">
               Our Work
             </span>
-          </div>
+          </motion.div>
           <h1 className="text-display text-gray-900 mb-6">
             Selected{' '}
             <span className="text-gradient-purple">Projects</span>
@@ -28,7 +39,7 @@ export default function PortfolioPage() {
             A growing collection of websites we've built and brands we've
             shaped. Click any card to view the live site.
           </p>
-        </div>
+        </motion.div>
       </section>
 
       {/* Projects grid */}
@@ -83,8 +94,12 @@ export default function PortfolioPage() {
             </div>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {projects.map((project) => (
-                <PortfolioCard key={project.url} project={project} />
+              {projects.map((project, index) => (
+                <PortfolioCard
+                  key={project.url}
+                  project={project}
+                  delay={index * 0.1}
+                />
               ))}
             </div>
           )}

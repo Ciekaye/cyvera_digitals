@@ -1,22 +1,33 @@
 'use client';
 
+import { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
 import { ExternalLink } from 'lucide-react';
 import { Project, getPreviewUrl } from '@/data/portfolio';
 
 type Props = {
   project: Project;
+  /** Stagger delay (seconds) for the pop-in animation. */
+  delay?: number;
 };
 
-export default function PortfolioCard({ project }: Props) {
+export default function PortfolioCard({ project, delay = 0 }: Props) {
   const previewUrl = getPreviewUrl(project);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <a
+    <motion.a
+      ref={ref}
       href={project.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group card-modern overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer no-underline block"
+      initial={{ opacity: 0, scale: 0.9, y: 30 }}
+      animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay, ease: [0.16, 1, 0.3, 1] }}
+      whileHover={{ y: -10 }}
+      className="group card-modern overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 cursor-pointer no-underline block"
     >
       <div className="aspect-[4/3] overflow-hidden relative bg-gray-100">
         <Image
@@ -54,6 +65,6 @@ export default function PortfolioCard({ project }: Props) {
           </p>
         )}
       </div>
-    </a>
+    </motion.a>
   );
 }
