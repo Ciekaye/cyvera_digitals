@@ -33,14 +33,19 @@ export const projects: Project[] = [
     category: "Brand & Web Design",
   },
   {
+    title: "Vireo Cardiology",
+    url: "https://vireocardiology.cyveradigitals.com/",
+    category: "Cardiology Clinic",
+  },
+  {
+    title: "Hello Grid",
+    url: "https://hello-grid.cyveradigitals.com/",
+    category: "Web Development",
+  },
+  {
     title: "Dental App",
     url: "https://dental-app.cyveradigitals.com/",
     category: "Web Application",
-  },
-  {
-    title: "Hello Grid Solar",
-    url: "https://hello-grid-solar-cyvera.vercel.app/",
-    category: "Web Development",
   },
 ];
 
