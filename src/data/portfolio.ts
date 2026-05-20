@@ -24,6 +24,12 @@ export type Project = {
   description?: string;
   /** Optional manual image override. If unset, falls back to mShots. */
   image?: string;
+  /**
+   * Bump this value to force mShots to capture a fresh screenshot when the
+   * site has changed but the URL hasn't (mShots caches per target URL).
+   * It's appended only to the screenshot request, not the click-through link.
+   */
+  previewRefresh?: string | number;
 };
 
 export const projects: Project[] = [
@@ -35,7 +41,7 @@ export const projects: Project[] = [
   {
     title: "Vireo Cardiology",
     url: "https://vireocardiology.cyveradigitals.com/",
-    category: "Cardiology Clinic",
+    category: "Web Development",
   },
   {
     title: "Hello Grid",
@@ -46,6 +52,7 @@ export const projects: Project[] = [
     title: "Dental App",
     url: "https://dental-app.cyveradigitals.com/",
     category: "Web Application",
+    previewRefresh: 2,
   },
 ];
 
@@ -60,7 +67,17 @@ export function getPreviewUrl(
   height = 900
 ): string {
   if (project.image) return project.image;
+
+  // mShots caches per target URL. If previewRefresh is set, append it to the
+  // target URL so mShots treats it as a new capture (the click link is
+  // unaffected — that uses project.url directly).
+  let target = project.url;
+  if (project.previewRefresh !== undefined) {
+    const sep = target.includes('?') ? '&' : '?';
+    target = `${target}${sep}_r=${project.previewRefresh}`;
+  }
+
   return `https://s.wordpress.com/mshots/v1/${encodeURIComponent(
-    project.url
+    target
   )}?w=${width}&h=${height}`;
 }
