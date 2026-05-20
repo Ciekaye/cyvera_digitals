@@ -44,7 +44,7 @@ export const projects: Project[] = [
     category: "Web Development",
   },
   {
-    title: "Hello Grid",
+    title: "Helio Grid",
     url: "https://hello-grid.cyveradigitals.com/",
     category: "Web Development",
   },
