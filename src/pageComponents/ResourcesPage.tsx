@@ -1,78 +1,32 @@
+'use client';
+
 import Image from 'next/image';
-import { motion, useInView } from 'framer-motion';
+import Link from 'next/link';
 import { useRef } from 'react';
-import { BookOpen, FileText, Lightbulb, ArrowRight, Sparkles } from 'lucide-react';
+import { motion, useInView } from 'framer-motion';
+import { ArrowRight, Sparkles, Calendar, Clock } from 'lucide-react';
 import FinalCTA from '@/components/FinalCTA';
 import GridBackground from '@/components/GridBackground';
+import { getSortedPosts } from '@/data/blog';
+
+function formatDate(iso: string) {
+  return new Date(iso).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+}
 
 export default function ResourcesPage() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  const blogPosts = [
-    {
-      title: "5 Signs Your Website Needs a Redesign",
-      excerpt: "Is your website still driving results? Here are the telltale signs it's time for a refresh.",
-      category: "Blog",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    },
-    {
-      title: "The Power of Consistent Branding Online",
-      excerpt: "How a unified brand identity across platforms builds trust and drives customer loyalty.",
-      category: "Blog",
-      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    },
-    {
-      title: "Why Mobile-First Design Matters in 2026",
-      excerpt: "Over 60% of web traffic comes from mobile. Here's how to design for it effectively.",
-      category: "Blog",
-      image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    },
-  ];
-
-  const guides = [
-    {
-      title: "Startup Website Launch Checklist",
-      description: "A step-by-step guide to launching a professional website for your startup.",
-      icon: FileText,
-    },
-    {
-      title: "Brand Identity Essentials",
-      description: "Everything you need to know about building a strong visual brand from scratch.",
-      icon: BookOpen,
-    },
-    {
-      title: "SEO Basics for Small Businesses",
-      description: "Practical tips to improve your search engine visibility without a big budget.",
-      icon: FileText,
-    },
-  ];
-
-  const caseInsights = [
-    {
-      title: "How We Increased Conversions by 340%",
-      client: "EcoMarket",
-      description: "A deep dive into how a full redesign and UX overhaul transformed an e-commerce brand.",
-      icon: Lightbulb,
-    },
-    {
-      title: "Building a Scalable SaaS Platform",
-      client: "TechFlow Solutions",
-      description: "From legacy system to modern architecture, the decisions that made the difference.",
-      icon: Lightbulb,
-    },
-    {
-      title: "Rebranding for Growth",
-      client: "HealthFirst",
-      description: "How a strategic rebrand helped a healthcare company expand into new markets.",
-      icon: Lightbulb,
-    },
-  ];
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const posts = getSortedPosts();
+  const [featured, ...rest] = posts;
 
   return (
     <div className="bg-modern-primary min-h-screen">
       {/* Hero */}
-      <section ref={ref} className="relative pt-36 pb-16 overflow-hidden">
+      <section ref={ref} className="relative pt-24 pb-12 overflow-hidden">
         <GridBackground />
         <div className="relative z-10 container mx-auto px-4 lg:px-8 text-center">
           <motion.div
@@ -82,132 +36,113 @@ export default function ResourcesPage() {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 border border-purple-100 mb-6">
               <Sparkles size={16} className="text-secondary-purple" />
-              <span className="text-sm font-semibold text-secondary-purple">Learn & Grow</span>
+              <span className="text-sm font-semibold text-secondary-purple">The Blog</span>
             </div>
             <h1 className="text-display text-gray-900 mb-6">
-              Resources & <span className="text-gradient-purple">Insights</span>
+              Insights to Grow Your{' '}
+              <span className="text-gradient-purple">Digital Presence</span>
             </h1>
             <p className="text-subheading max-w-2xl mx-auto" style={{ color: '#535252' }}>
-              Explore our blog, guides, and case insights to learn how to build
-              a stronger digital presence for your business.
+              Practical advice on web design, branding, SEO, and social media —
+              written to help your business show up and stand out online.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Blog Posts */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 lg:px-8">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-2xl font-bold text-gray-900 mb-10"
-          >
-            Blog
-          </motion.h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {blogPosts.map((post, index) => (
-              <motion.article
-                key={post.title}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-                whileHover={{ y: -8 }}
-                className="group card-modern overflow-hidden shadow-lg hover:shadow-2xl transition-all cursor-pointer"
+      {/* Featured post */}
+      {featured && (
+        <section className="pb-8">
+          <div className="container mx-auto px-4 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.15 }}
+            >
+              <Link
+                href={`/blog/${featured.slug}`}
+                className="group grid lg:grid-cols-2 gap-8 items-center card-modern overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 no-underline"
               >
-                <div className="aspect-video overflow-hidden">
+                <div className="relative aspect-[16/10] lg:aspect-auto lg:h-full min-h-[260px] overflow-hidden">
                   <Image
-                    src={post.image}
-                    alt={post.title}
+                    src={featured.image}
+                    alt={featured.title}
                     fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <div className="p-6">
-                  <span className="text-xs font-semibold text-secondary-purple uppercase tracking-wider">{post.category}</span>
-                  <h3 className="text-lg font-bold text-gray-900 mt-2 mb-2">{post.title}</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed mb-4">{post.excerpt}</p>
+                <div className="p-8 lg:p-10">
+                  <span className="text-xs font-semibold text-secondary-purple uppercase tracking-wider">
+                    {featured.category}
+                  </span>
+                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mt-2 mb-3 leading-tight">
+                    {featured.title}
+                  </h2>
+                  <p className="text-gray-600 leading-relaxed mb-5">{featured.excerpt}</p>
+                  <div className="flex items-center gap-4 text-xs text-gray-500 mb-6">
+                    <span className="inline-flex items-center gap-1.5">
+                      <Calendar size={14} /> {formatDate(featured.date)}
+                    </span>
+                    <span className="inline-flex items-center gap-1.5">
+                      <Clock size={14} /> {featured.readTime}
+                    </span>
+                  </div>
                   <span className="inline-flex items-center gap-1.5 text-secondary-purple font-semibold text-sm group-hover:gap-3 transition-all">
-                    Read More <ArrowRight size={14} />
+                    Read Article <ArrowRight size={16} />
                   </span>
                 </div>
+              </Link>
+            </motion.div>
+          </div>
+        </section>
+      )}
+
+      {/* Post grid */}
+      <section className="py-12">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {rest.map((post, index) => (
+              <motion.article
+                key={post.slug}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.1 + index * 0.08 }}
+                whileHover={{ y: -8 }}
+                className="group card-modern overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
+              >
+                <Link href={`/blog/${post.slug}`} className="no-underline block">
+                  <div className="aspect-video overflow-hidden relative">
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <span className="text-xs font-semibold text-secondary-purple uppercase tracking-wider">
+                      {post.category}
+                    </span>
+                    <h3 className="text-lg font-bold text-gray-900 mt-2 mb-2 leading-snug">
+                      {post.title}
+                    </h3>
+                    <p className="text-sm text-gray-600 leading-relaxed mb-4 line-clamp-2">
+                      {post.excerpt}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <span className="inline-flex items-center gap-1.5 text-xs text-gray-500">
+                        <Clock size={13} /> {post.readTime}
+                      </span>
+                      <span className="inline-flex items-center gap-1.5 text-secondary-purple font-semibold text-sm group-hover:gap-3 transition-all">
+                        Read More <ArrowRight size={14} />
+                      </span>
+                    </div>
+                  </div>
+                </Link>
               </motion.article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Guides */}
-      <section className="py-16 bg-gradient-to-br from-gray-50 to-purple-50">
-        <div className="container mx-auto px-4 lg:px-8">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="text-2xl font-bold text-gray-900 mb-10"
-          >
-            Guides
-          </motion.h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {guides.map((guide, index) => (
-              <motion.div
-                key={guide.title}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.1 + index * 0.1 }}
-                whileHover={{ y: -8, scale: 1.02 }}
-                className="p-7 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all cursor-pointer"
-              >
-                <div className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center mb-5">
-                  <guide.icon className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{guide.title}</h3>
-                <p className="text-sm text-gray-600 leading-relaxed mb-4">{guide.description}</p>
-                <span className="inline-flex items-center gap-1.5 text-secondary-purple font-semibold text-sm">
-                  Download Guide <ArrowRight size={14} />
-                </span>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Case Insights */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 lg:px-8">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="text-2xl font-bold text-gray-900 mb-10"
-          >
-            Case Insights
-          </motion.h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {caseInsights.map((insight, index) => (
-              <motion.div
-                key={insight.title}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.1 + index * 0.1 }}
-                whileHover={{ y: -8, scale: 1.02 }}
-                className="p-7 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all cursor-pointer"
-              >
-                <div className="w-12 h-12 bg-gradient-secondary rounded-xl flex items-center justify-center mb-5">
-                  <insight.icon className="w-6 h-6 text-white" />
-                </div>
-                <span className="text-xs font-semibold text-secondary-purple uppercase tracking-wider">{insight.client}</span>
-                <h3 className="text-lg font-bold text-gray-900 mt-1 mb-2">{insight.title}</h3>
-                <p className="text-sm text-gray-600 leading-relaxed mb-4">{insight.description}</p>
-                <span className="inline-flex items-center gap-1.5 text-secondary-purple font-semibold text-sm">
-                  Read Case Study <ArrowRight size={14} />
-                </span>
-              </motion.div>
             ))}
           </div>
         </div>

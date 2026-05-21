@@ -29,9 +29,9 @@ const sections = [
   {
     title: 'Resources',
     links: [
-      { name: 'Blog', href: '/resources' },
-      { name: 'Guides', href: '/resources' },
-      { name: 'Case Insights', href: '/resources' },
+      { name: 'Blog', href: '/blog' },
+      { name: 'Guides', href: '/blog' },
+      { name: 'Case Studies', href: '/blog' },
     ],
   },
 ];

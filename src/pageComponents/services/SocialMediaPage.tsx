@@ -398,7 +398,7 @@ export default function SocialMediaPage() {
                 )}
                 <h3 className="text-xl font-bold text-gray-900 mb-1">{pkg.name}</h3>
                 <p className="text-secondary-purple font-semibold text-sm mb-5">{pkg.posts}</p>
-                <ul className="space-y-2.5">
+                <ul className="space-y-2.5 mb-7">
                   {pkg.includes.map((item) => (
                     <li key={item} className="flex items-start gap-2.5 text-sm text-gray-600">
                       <div className="w-1.5 h-1.5 bg-secondary-purple rounded-full mt-1.5 flex-shrink-0" />
@@ -406,6 +406,16 @@ export default function SocialMediaPage() {
                     </li>
                   ))}
                 </ul>
+                <Link
+                  href="/contact"
+                  className={`w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold no-underline transition-all ${
+                    pkg.highlighted
+                      ? 'bg-[#C02B7D] text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5'
+                      : 'border-2 border-gray-200 text-gray-700 hover:border-[#C02B7D] hover:text-[#C02B7D]'
+                  }`}
+                >
+                  Get Started <ArrowRight size={16} />
+                </Link>
               </motion.div>
             ))}
           </div>
