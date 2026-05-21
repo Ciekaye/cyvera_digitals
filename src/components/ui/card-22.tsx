@@ -134,21 +134,21 @@ export const ServiceCard = ({
         </div>
 
         {/* Top Badges and Rating */}
-        <div className="absolute top-3 left-3 flex gap-2 flex-wrap">
+        <div className="absolute top-3 left-3 z-10 flex gap-2 flex-wrap">
           {tags.map((tag) => (
             <Badge key={tag} variant="secondary" className="bg-white/90 backdrop-blur-sm text-gray-900">
               {tag}
             </Badge>
           ))}
         </div>
-        <div className="absolute top-3 right-3">
+        <div className="absolute top-3 right-3 z-10">
           <Badge variant="secondary" className="flex items-center gap-1 bg-white/90 backdrop-blur-sm text-gray-900">
             <Star className="h-4 w-4 text-yellow-400 fill-yellow-400" /> {rating}
           </Badge>
         </div>
 
         {/* Pagination Dots */}
-        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex gap-1.5">
           {images.map((_, index) => (
             <button
               key={index}
