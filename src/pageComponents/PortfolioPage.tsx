@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
-import TechExpertise from '@/components/TechExpertise';
 import GridBackground from '@/components/GridBackground';
 import FinalCTA from '@/components/FinalCTA';
 import PortfolioCard from '@/components/PortfolioCard';
@@ -106,7 +105,6 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      <TechExpertise />
       <FinalCTA />
     </>
   );
