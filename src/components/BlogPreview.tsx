@@ -79,7 +79,7 @@ export default function BlogPreview() {
               data-card
               className="group snap-start flex-shrink-0 w-[300px] sm:w-[340px] card-modern overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 no-underline"
             >
-              <div className="aspect-video overflow-hidden relative">
+              <div className="aspect-[4/3] overflow-hidden relative">
                 <Image
                   src={post.image}
                   alt={post.title}
