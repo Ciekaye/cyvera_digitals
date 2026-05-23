@@ -294,6 +294,22 @@ export default function UiUxPage() {
         </div>
       </section>
 
+      {/* Recommended reading */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
+          <div className="rounded-2xl border border-purple-100 bg-purple-50/50 p-8 flex flex-col sm:flex-row sm:items-center gap-6">
+            <div className="flex-1">
+              <p className="text-xs font-semibold text-secondary-purple uppercase tracking-wider mb-2">Recommended reading</p>
+              <h3 className="text-lg font-bold text-gray-900 mb-1">UI/UX Design Strategy: How Great User Experience Drives Revenue</h3>
+              <p className="text-sm text-gray-600">How research, layout, and conversion-focused design turn visitors into customers.</p>
+            </div>
+            <Link href="/guides/ui-ux-design-strategy" className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-white font-semibold text-sm no-underline whitespace-nowrap hover:-translate-y-0.5 transition-transform" style={{ backgroundColor: '#C02B7D' }}>
+              Read the guide <ArrowRight size={16} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <FinalCTA />
     </div>
   );

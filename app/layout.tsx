@@ -19,6 +19,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://cyveradigitals.com'),
   title: {
     default: 'Cyvera Digitals | Creative Digital Agency for Modern Businesses',
     template: '%s',
