@@ -106,7 +106,7 @@ export const posts: BlogPost[] = [
     readTime: '5 min read',
     author: 'Cyvera Digitals Team',
     image:
-      'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
     content: [
       {
         type: 'paragraph',
@@ -158,7 +158,7 @@ export const posts: BlogPost[] = [
     readTime: '6 min read',
     author: 'Cyvera Digitals Team',
     image:
-      'https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1541462608143-67571c6738dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
     content: [
       {
         type: 'paragraph',
