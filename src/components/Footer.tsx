@@ -30,7 +30,7 @@ const sections = [
     title: 'Resources',
     links: [
       { name: 'Blog', href: '/blog' },
-      { name: 'Guides', href: '/blog' },
+      { name: 'Guides', href: '/guides' },
       { name: 'Case Studies', href: '/blog' },
     ],
   },

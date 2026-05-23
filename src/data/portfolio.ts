@@ -34,19 +34,24 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    title: "By Kate Cristyl",
-    url: "https://bykatecristyl.com/",
-    category: "Brand & Web Design",
-  },
-  {
     title: "Vireo Cardiology",
     url: "https://vireocardiology.cyveradigitals.com/",
     category: "Web Development",
   },
   {
+    title: "Beauty E-Commerce",
+    url: "https://beauty-e-commerse.cyveradigitals.com/",
+    category: "E-Commerce",
+  },
+  {
     title: "Helio Grid",
     url: "https://hello-grid.cyveradigitals.com/",
     category: "Web Development",
+  },
+  {
+    title: "By Kate Cristyl",
+    url: "https://bykatecristyl.com/",
+    category: "Brand & Web Design",
   },
   {
     title: "Dental App",
