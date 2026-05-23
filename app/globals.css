@@ -323,3 +323,12 @@ body {
   box-shadow: 0 20px 40px rgba(123, 25, 231, 0.2);
   border-color: rgba(192, 43, 125, 0.4);
 }
+
+/* Hide scrollbar (used by horizontal carousels) */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

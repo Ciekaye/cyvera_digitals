@@ -5,6 +5,7 @@ import ServicesOverview from '@/components/ServicesOverview';
 import WhyUsPreview from '@/components/WhyUsPreview';
 import HowWeWork from '@/components/HowWeWork';
 import PortfolioPreview from '@/components/PortfolioPreview';
+import BlogPreview from '@/components/BlogPreview';
 import FinalCTA from '@/components/FinalCTA';
 
 export const metadata: Metadata = {
@@ -31,6 +32,9 @@ export default function HomePage() {
       </section>
       <section id="portfolio-preview" className="smooth-scroll-section">
         <PortfolioPreview />
+      </section>
+      <section id="blog-preview" className="smooth-scroll-section">
+        <BlogPreview />
       </section>
       <section id="final-cta" className="smooth-scroll-section">
         <FinalCTA />
