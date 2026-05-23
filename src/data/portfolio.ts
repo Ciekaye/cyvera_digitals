@@ -42,6 +42,9 @@ export const projects: Project[] = [
     title: "Beauty E-Commerce",
     url: "https://beauty-e-commerse.cyveradigitals.com/",
     category: "E-Commerce",
+    // Manual screenshot override — avoids the mShots async-generation
+    // placeholder that was sticking on this newly-added entry.
+    image: "/portfolio/beauty-ecommerce.jpg",
   },
   {
     title: "Helio Grid",

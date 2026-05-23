@@ -26,21 +26,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticEntries: MetadataRoute.Sitemap = staticRoutes.map((path) => ({
     url: `${SITE}${path}`,
     lastModified: now,
-    changeFrequency: 'monthly',
+    changeFrequency: 'monthly' as const,
     priority: path === '' ? 1 : 0.7,
   }));
 
   const blogEntries: MetadataRoute.Sitemap = posts.map((p) => ({
     url: `${SITE}/blog/${p.slug}`,
     lastModified: new Date(p.date),
-    changeFrequency: 'monthly',
+    changeFrequency: 'monthly' as const,
     priority: 0.6,
   }));
 
   const guideEntries: MetadataRoute.Sitemap = guides.map((g) => ({
     url: `${SITE}/guides/${g.slug}`,
     lastModified: new Date(g.updatedAt),
-    changeFrequency: 'monthly',
+    changeFrequency: 'monthly' as const,
     priority: 0.8,
   }));
 
