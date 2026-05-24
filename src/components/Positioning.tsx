@@ -2,7 +2,6 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Sparkles } from 'lucide-react';
 
 export default function Positioning() {
   const ref = useRef(null);
@@ -17,7 +16,6 @@ export default function Positioning() {
           transition={{ duration: 0.6 }}
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 border border-purple-100 mb-6"
         >
-          <Sparkles size={16} className="text-secondary-purple" />
           <span className="text-sm font-semibold text-secondary-purple">Trusted Digital Partner</span>
         </motion.div>
 

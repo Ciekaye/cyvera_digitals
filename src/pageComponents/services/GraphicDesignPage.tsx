@@ -4,7 +4,7 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Palette, PenTool, Image as ImageIcon, BookOpen, Stamp, Sparkles, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Palette, PenTool, Image as ImageIcon, BookOpen, Stamp, Eye, ArrowRight, ArrowLeft } from 'lucide-react';
 import FinalCTA from '@/components/FinalCTA';
 import GridBackground from '@/components/GridBackground';
 
@@ -18,7 +18,7 @@ export default function GraphicDesignPage() {
     { icon: ImageIcon, title: "Marketing Graphics", description: "Eye-catching visuals for social media, ads, presentations, and print materials." },
     { icon: PenTool, title: "Illustration", description: "Custom illustrations and iconography that add personality to your brand." },
     { icon: BookOpen, title: "Print Design", description: "Business cards, brochures, packaging, and other tangible brand touchpoints." },
-    { icon: Sparkles, title: "Visual Strategy", description: "A cohesive visual direction that ensures consistency across every platform." },
+    { icon: Eye, title: "Visual Strategy", description: "A cohesive visual direction that ensures consistency across every platform." },
   ];
 
   const deliverables = [
