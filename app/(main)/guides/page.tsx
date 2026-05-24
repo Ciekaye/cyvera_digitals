@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import GuidesPage from '@/pageComponents/GuidesPage';
 
 const title =
-  'Guides: Practical Playbooks for Your Digital Presence | Cyvera Digitals';
+  'Guides | Practical Resources for Building Your Digital Presence — Cyvera Digitals';
 const description =
-  'Step-by-step guides on web design, branding, SEO, UX, and social media — written by the team behind Cyvera Digitals. No fluff, no jargon.';
+  'Step-by-step guides on web design, branding, UX, SEO, and social media. Practical playbooks from the team at Cyvera Digitals.';
 const url = 'https://cyveradigitals.com/guides';
 
 export const metadata: Metadata = {

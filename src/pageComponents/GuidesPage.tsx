@@ -127,7 +127,7 @@ export default function GuidesPage() {
               </Link>
             </div>
             <p className="text-sm text-gray-500">
-              New here? Start with our flagship guide:{' '}
+              New here? Start with our flagship guide —{' '}
               <Link
                 href="/guides/launching-a-business-website"
                 className="text-secondary-purple font-semibold hover:underline"
@@ -199,9 +199,13 @@ export default function GuidesPage() {
       <section className="py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="rounded-3xl p-10 md:p-14 text-center" style={{ backgroundColor: '#C02B7D' }}>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">
-              Need help putting this into practice? Book a free discovery call.
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
+              Need help putting these guides into practice?
             </h2>
+            <p className="text-white/85 max-w-2xl mx-auto mb-7">
+              Whether you're launching, rebranding, or scaling — we'll help you
+              turn strategy into a digital presence that performs.
+            </p>
             <Link
               href="/contact"
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-white text-gray-900 font-semibold no-underline hover:shadow-xl hover:-translate-y-0.5 transition-all"
