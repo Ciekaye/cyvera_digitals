@@ -41,7 +41,7 @@ export default function WhyUsPreview() {
           transition={{ duration: 0.8 }}
           className="font-inter text-display text-center text-gray-900 mb-16"
         >
-          Why Choose <span className="text-gradient-purple italic">CYVERA Digitals</span>
+          Why Choose <span className="text-gradient-purple">CYVERA Digitals</span>
         </motion.h2>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
