@@ -44,8 +44,8 @@ const socialLinks = [
 ];
 
 const legalLinks = [
-  { name: 'Terms and Conditions', href: '#' },
-  { name: 'Privacy Policy', href: '#' },
+  { name: 'Terms and Conditions', href: '/terms' },
+  { name: 'Privacy Policy', href: '/privacy' },
 ];
 
 export default function Footer() {
@@ -117,7 +117,7 @@ export default function Footer() {
           <ul className="order-1 flex flex-col gap-2 md:order-2 md:flex-row">
             {legalLinks.map((link) => (
               <li key={link.name} className="hover:text-secondary-purple transition-colors">
-                <a href={link.href}>{link.name}</a>
+                <Link href={link.href} className="no-underline text-inherit">{link.name}</Link>
               </li>
             ))}
           </ul>
