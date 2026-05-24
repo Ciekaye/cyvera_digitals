@@ -183,7 +183,7 @@ export default function GuideArticlePage({
               {service && (
                 <div className="mt-12 rounded-2xl p-8 text-center" style={{ backgroundColor: '#C02B7D' }}>
                   <h2 className="text-xl md:text-2xl font-bold text-white mb-3">
-                    Where Cyvera Digitals fits in
+                    Ready to put this into practice?
                   </h2>
                   <p className="text-white/85 mb-6 max-w-xl mx-auto">
                     Want this handled by a team that does it every day? Our{' '}
