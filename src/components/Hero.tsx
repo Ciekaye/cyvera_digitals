@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight, Play, Sparkles } from 'lucide-react';
+import { ArrowRight, Play } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -80,7 +80,6 @@ export default function Hero() {
             transition={{ duration: 0.8 }}
             className="inline-flex items-center justify-center gap-2 mb-6"
           >
-            <Sparkles size={20} className="text-secondary-purple" />
             <span className="text-secondary-purple font-semibold text-lg md:text-xl">
               Strategy. Design. Growth.
             </span>

@@ -3,7 +3,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
-import { Sparkles, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export default function FinalCTA({ hidePricingLink = false }: { hidePricingLink?: boolean } = {}) {
   const ref = useRef(null);
@@ -45,7 +45,6 @@ export default function FinalCTA({ hidePricingLink = false }: { hidePricingLink?
               transition={{ duration: 0.6 }}
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-200 bg-white text-sm font-medium text-gray-700 mb-8"
             >
-              <Sparkles size={14} className="text-secondary-purple" />
               Cyvera Digitals — Strategy. Design. Growth.
             </motion.div>
 

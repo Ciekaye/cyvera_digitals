@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { ArrowRight, Sparkles, Calendar, Clock } from 'lucide-react';
+import { ArrowRight, Calendar, Clock } from 'lucide-react';
 import FinalCTA from '@/components/FinalCTA';
 import GridBackground from '@/components/GridBackground';
 import { getSortedPosts } from '@/data/blog';
@@ -35,7 +35,6 @@ export default function ResourcesPage() {
             transition={{ duration: 0.8 }}
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 border border-purple-100 mb-6">
-              <Sparkles size={16} className="text-secondary-purple" />
               <span className="text-sm font-semibold text-secondary-purple">The Blog</span>
             </div>
             <h1 className="text-display text-gray-900 mb-6">

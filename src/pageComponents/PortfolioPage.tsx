@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Sparkles } from 'lucide-react';
 import GridBackground from '@/components/GridBackground';
 import FinalCTA from '@/components/FinalCTA';
 import PortfolioCard from '@/components/PortfolioCard';
@@ -25,7 +24,6 @@ export default function PortfolioPage() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 border border-purple-100 mb-6"
           >
-            <Sparkles size={16} className="text-secondary-purple" />
             <span className="text-sm font-semibold text-secondary-purple">
               Our Work
             </span>

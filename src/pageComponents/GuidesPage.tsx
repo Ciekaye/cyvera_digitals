@@ -4,7 +4,6 @@ import { useRef } from 'react';
 import Link from 'next/link';
 import { motion, useInView, useReducedMotion } from 'framer-motion';
 import {
-  Sparkles,
   Rocket,
   Code,
   Layers,
@@ -92,7 +91,6 @@ export default function GuidesPage() {
         <div className="relative z-10 container mx-auto px-4 lg:px-8 text-center">
           <motion.div {...fadeUp()}>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 border border-purple-100 mb-6">
-              <Sparkles size={16} className="text-secondary-purple" />
               <span className="text-sm font-semibold text-secondary-purple">
                 Resources
               </span>
