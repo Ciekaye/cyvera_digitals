@@ -5,7 +5,7 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Instagram, Facebook, Twitter, Linkedin } from 'lucide-react';
+import { Instagram, Facebook, Linkedin } from 'lucide-react';
 
 const sections = [
   {
@@ -37,10 +37,21 @@ const sections = [
 ];
 
 const socialLinks = [
-  { icon: Instagram, href: '#', label: 'Instagram' },
-  { icon: Facebook, href: '#', label: 'Facebook' },
-  { icon: Twitter, href: '#', label: 'Twitter' },
-  { icon: Linkedin, href: '#', label: 'LinkedIn' },
+  {
+    icon: Instagram,
+    href: 'https://www.instagram.com/cyvera_digitals?igsh=MW8xc3ZlMnpsYmRyaA%3D%3D&utm_source=qr',
+    label: 'Instagram',
+  },
+  {
+    icon: Facebook,
+    href: 'https://www.facebook.com/share/18cUTByjQy/?mibextid=wwXIfr',
+    label: 'Facebook',
+  },
+  {
+    icon: Linkedin,
+    href: 'https://www.linkedin.com/company/cyveradigitals/',
+    label: 'LinkedIn',
+  },
 ];
 
 const legalLinks = [
@@ -74,7 +85,12 @@ export default function Footer() {
             <ul className="flex items-center space-x-7 text-gray-400">
               {socialLinks.map((social) => (
                 <li key={social.label} className="hover:text-secondary-purple transition-colors">
-                  <a href={social.href} aria-label={social.label}>
+                  <a
+                    href={social.href}
+                    aria-label={social.label}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <social.icon className="size-6" />
                   </a>
                 </li>
