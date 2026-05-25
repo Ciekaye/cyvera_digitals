@@ -62,6 +62,13 @@ export const projects: Project[] = [
     category: "Web Application",
     previewRefresh: 2,
   },
+  {
+    title: "Bark & Bathe Lounge",
+    url: "https://bark-bathe-lounge.cyveradigitals.com/",
+    category: "Web Design",
+    // Client-provided preview image.
+    image: "/portfolio/bark-bathe-lounge.png",
+  },
 ];
 
 /**
