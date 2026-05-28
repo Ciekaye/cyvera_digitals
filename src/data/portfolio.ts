@@ -69,6 +69,24 @@ export const projects: Project[] = [
     // Client-provided preview image.
     image: "/portfolio/bark-bathe-lounge.png",
   },
+  {
+    title: "Zenith Financial Advisory",
+    url: "https://zenithfinancialadvisory.jcdigital.dev/",
+    category: "Wordpress Web Development",
+    image: "/portfolio/zenith-financial-advisory.jpg",
+  },
+  {
+    title: "BrightPath Careers",
+    url: "https://brightpathcareers.jcdigital.dev/",
+    category: "Wordpress Web Development",
+    image: "/portfolio/brightpath-careers.jpg",
+  },
+  {
+    title: "ClarityOps Consulting",
+    url: "https://clarityopsconsulting.jcdigital.dev/",
+    category: "Wordpress Web Development",
+    image: "/portfolio/clarity-ops-consulting.jpg",
+  },
 ];
 
 /**
