@@ -87,6 +87,13 @@ export const projects: Project[] = [
     category: "Wordpress Web Development",
     image: "/portfolio/clarity-ops-consulting.jpg",
   },
+  {
+    title: "Aetheria Estates",
+    url: "https://realestate-sample-site.cyveradigitals.com/",
+    category: "Web Development",
+    // Client-provided preview image.
+    image: "/portfolio/aetheria-estates.png",
+  },
 ];
 
 /**
