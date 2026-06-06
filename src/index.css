@@ -311,6 +311,7 @@ body {
   background: linear-gradient(135deg, rgba(123, 25, 231, 0.1) 0%, rgba(192, 43, 125, 0.1) 100%);
   border: 1px solid rgba(192, 43, 125, 0.2);
   backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   border-radius: 16px;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }

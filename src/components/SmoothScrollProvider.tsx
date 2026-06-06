@@ -30,7 +30,7 @@ export const SmoothScrollProvider: React.FC<SmoothScrollProviderProps> = ({ chil
       duration: 1.2, // Smooth duration
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Custom easing for ultra-smooth feel
       wheelMultiplier: 1,
-      touchMultiplier: 2,
+      touchMultiplier: 1,
       infinite: false,
     });
 
@@ -147,12 +147,6 @@ export const SmoothScrollProvider: React.FC<SmoothScrollProviderProps> = ({ chil
         text-rendering: optimizeLegibility;
       }
       
-      /* Optimize for 120fps displays */
-      @media (min-resolution: 120dpi) {
-        * {
-          transform: translateZ(0);
-        }
-      }
     `;
     document.head.appendChild(style);
 
