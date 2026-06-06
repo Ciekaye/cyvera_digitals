@@ -36,12 +36,13 @@ export const SmoothScrollProvider: React.FC<SmoothScrollProviderProps> = ({ chil
 
     lenisRef.current = lenis;
 
-    // Animation loop for Lenis
+    // Animation loop for Lenis — store the ID so we can cancel on cleanup
+    let rafId: number;
     function raf(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
     // Hash management based on scroll position
     const updateHashBasedOnScroll = () => {
@@ -133,25 +134,13 @@ export const SmoothScrollProvider: React.FC<SmoothScrollProviderProps> = ({ chil
         overscroll-behavior: contain;
       }
       
-      .smooth-scroll-section {
-        will-change: transform;
-        transform: translateZ(0);
-        backface-visibility: hidden;
-      }
-      
-      .gpu-accelerated {
-        transform: translate3d(0, 0, 0);
-        will-change: transform;
-        backface-visibility: hidden;
-      }
-      
       /* Ultra-smooth animations */
       * {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-rendering: optimizeLegibility;
       }
-      
+
     `;
     document.head.appendChild(style);
 
@@ -185,6 +174,7 @@ export const SmoothScrollProvider: React.FC<SmoothScrollProviderProps> = ({ chil
 
     // Cleanup
     return () => {
+      cancelAnimationFrame(rafId);
       document.removeEventListener('click', handleAnchorClick);
       window.removeEventListener('scroll', handleScroll);
       clearTimeout(scrollTimeout);

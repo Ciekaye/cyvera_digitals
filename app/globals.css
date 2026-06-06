@@ -28,6 +28,8 @@
 /* Lenis Smooth Scroll Optimizations */
 html {
   scroll-behavior: auto !important;
+  /* Prevent iOS Safari pull-to-refresh from reloading the page on scroll */
+  overscroll-behavior: none;
 }
 
 html.lenis,
@@ -64,27 +66,19 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+  overscroll-behavior: none;
   width: 100%;
   /* Studio-style soft background gradient (subtle violet → pink) */
   background: linear-gradient(135deg, #f7f9ff 0%, #f5f0ff 45%, #ffe9ff 100%);
   color: var(--text-primary);
 }
 
-/* GPU acceleration for smooth sections */
+/* Layout helpers — no GPU promotion; Framer Motion handles its own layers */
 .smooth-scroll-section {
-  will-change: transform;
-  transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
   position: relative;
 }
 
-/* Ultra-smooth GPU acceleration */
 .gpu-accelerated {
-  transform: translate3d(0, 0, 0);
-  will-change: transform;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
   position: relative;
 }
 

@@ -7,9 +7,9 @@ import { SmoothScrollProvider } from './SmoothScrollProvider';
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <SmoothScrollProvider>
-      <div className="min-h-screen gpu-accelerated" style={{ backgroundColor: 'var(--bg-primary)' }}>
+      <div className="min-h-screen" style={{ backgroundColor: 'var(--bg-primary)' }}>
         <Header />
-        <main className="smooth-scroll-section">
+        <main>
           {children}
         </main>
         <Footer />
