@@ -89,7 +89,12 @@ export const SmoothScrollProvider: React.FC<SmoothScrollProviderProps> = ({ chil
       // Only update hash if we found a section and it's different from the last one
       if (currentSection && lastHashRef.current !== currentSection) {
         lastHashRef.current = currentSection;
-        window.history.replaceState(null, '', `#${currentSection}`);
+        // The hero is the home/top section — keep the URL clean instead of showing #hero
+        if (currentSection === 'hero') {
+          window.history.replaceState(null, '', window.location.pathname);
+        } else {
+          window.history.replaceState(null, '', `#${currentSection}`);
+        }
       }
     };
 

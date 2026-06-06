@@ -2,8 +2,7 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import Link from 'next/link';
-import { Code, Layers, Palette, Share2, ArrowRight } from 'lucide-react';
+import { ServiceCard } from '@/components/ui/card-22';
 
 export default function ServicesOverview() {
   const ref = useRef(null);
@@ -11,28 +10,52 @@ export default function ServicesOverview() {
 
   const services = [
     {
-      icon: Code,
       title: "Website Development",
-      description: "Modern, fast, and scalable websites built for performance and growth.",
-      link: "/services/website-development",
+      description: "Websites built to convert visitors, close sales, and drive growth.",
+      href: "/services/website-development",
+      images: [
+        "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=70",
+        "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=70",
+        "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=70"
+      ],
+      tags: ["Development", "Innovation"],
+      rating: 4.9
     },
     {
-      icon: Layers,
       title: "UI & UX Strategy",
-      description: "User-focused design solutions that improve usability and engagement.",
-      link: "/services/ui-ux-strategy",
+      description: "Intuitive, user-centered design that delights customers and drives real growth.",
+      href: "/services/ui-ux-strategy",
+      images: [
+        "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=70",
+        "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=70",
+        "https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=70"
+      ],
+      tags: ["UX/UI", "Strategy"],
+      rating: 4.9
     },
     {
-      icon: Palette,
       title: "Graphic & Brand Design",
-      description: "Visual identities and design assets that communicate your brand clearly.",
-      link: "/services/graphic-brand-design",
+      description: "Memorable, distinctive identities designed to stand out and drive growth.",
+      href: "/services/graphic-brand-design",
+      images: [
+        "https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=70",
+        "https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=70",
+        "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=70"
+      ],
+      tags: ["Design", "Branding"],
+      rating: 4.8
     },
     {
-      icon: Share2,
       title: "Social Media Management",
-      description: "Content creation and management to keep your brand visible and consistent.",
-      link: "/services/social-media-management",
+      description: "Social presence that builds community, engages customers, and drives growth.",
+      href: "/services/social-media-management",
+      images: [
+        "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=70",
+        "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=70",
+        "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=70"
+      ],
+      tags: ["Social Media", "Marketing"],
+      rating: 4.7
     },
   ];
 
@@ -54,33 +77,20 @@ export default function ServicesOverview() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-subheading text-center text-gray-600 mb-16 max-w-3xl mx-auto"
         >
-          We offer end-to-end digital services designed to help your business stand out,
-          connect with your audience, and grow online.
+          Everything your business needs to stand out online, designed, built, and managed under one roof.
         </motion.p>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((service, index) => (
-            <motion.div
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
+          {services.map((service) => (
+            <ServiceCard
               key={service.title}
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.15 + index * 0.1 }}
-              whileHover={{ y: -8, scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="card-liquid-glass p-7 group cursor-pointer"
-            >
-              <div className="w-[52px] h-[52px] bg-gradient-primary rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                <service.icon className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">{service.title}</h3>
-              <p className="text-sm text-gray-600 leading-relaxed mb-3">{service.description}</p>
-              <Link
-                href={service.link}
-                className="inline-flex items-center gap-1 text-sm font-semibold text-secondary-purple group-hover:gap-2 transition-all no-underline"
-              >
-                Learn more <ArrowRight size={14} />
-              </Link>
-            </motion.div>
+              images={service.images}
+              tags={service.tags}
+              rating={service.rating}
+              title={service.title}
+              description={service.description}
+              href={service.href}
+            />
           ))}
         </div>
       </div>

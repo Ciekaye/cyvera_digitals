@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Poppins } from 'next/font/google';
+import { Poppins, Inter } from 'next/font/google';
 import './globals.css';
 import { Providers } from './providers';
 import { Analytics } from "@vercel/analytics/next"
@@ -11,13 +11,24 @@ const poppins = Poppins({
   variable: '--font-poppins',
 });
 
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  display: 'swap',
+  variable: '--font-inter',
+});
+
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
 };
 
 export const metadata: Metadata = {
-  title: 'CYVERA Digitals Interactive Website',
+  metadataBase: new URL('https://cyveradigitals.com'),
+  title: {
+    default: 'Cyvera Digitals | Creative Digital Agency for Modern Businesses',
+    template: '%s',
+  },
   description:
     'Build. Design. Grow. Your digital success, engineered from the ground up. Full-stack digital solutions that attract, engage, and convert.',
   icons: {
@@ -32,7 +43,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={poppins.variable}>
+    <html lang="en" className={`${poppins.variable} ${inter.variable}`}>
       <body>
         {children}
         <Analytics />

@@ -67,7 +67,7 @@ export default function Difference() {
               <div className="flex items-start gap-4">
                 <div className="w-2 h-2 bg-secondary-purple rounded-full mt-2"></div>
                 <p className="text-lg text-gray-700">
-                  <span className="font-semibold text-gray-900">Engineers, designers, strategists</span> — all under one roof, working as your extended team.
+                  <span className="font-semibold text-gray-900">Engineers, designers, strategists</span>, all under one roof, working as your extended team.
                 </p>
               </div>
               <div className="flex items-start gap-4">

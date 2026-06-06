@@ -3,7 +3,9 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
-import { Check, ArrowRight, Sparkles } from 'lucide-react';
+import { Check, ArrowRight } from 'lucide-react';
+import FinalCTA from '@/components/FinalCTA';
+import GridBackground from '@/components/GridBackground';
 
 export default function PricingPage() {
   const ref = useRef(null);
@@ -12,54 +14,70 @@ export default function PricingPage() {
   const plans = [
     {
       name: "Starter",
-      description: "Perfect for small businesses and personal brands getting started online.",
-      price: "499",
+      description: "Perfect if you're just getting your business online and want something professional without the premium price tag.",
+      price: "250",
       features: [
-        "Custom one-page website",
+        "Up to 10 pages",
         "Mobile responsive design",
         "Basic SEO setup",
         "Contact form integration",
-        "1 round of revisions",
-        "2 weeks delivery",
+        "1 week free revisions",
+        "$8/hr add-on for extra revisions & requests",
+        "Maintenance available as add-on",
       ],
       highlighted: false,
     },
     {
-      name: "Growth",
-      description: "Ideal for growing brands that need a complete digital presence.",
-      price: "999",
+      name: "Basic",
+      description: "A step up for growing businesses that need more pages and a stronger online presence.",
+      price: "500",
       features: [
-        "Multi-page custom website",
+        "11–15 pages",
+        "Mobile responsive design",
+        "Standard SEO optimization",
+        "Contact form integration",
+        "1 week free revisions",
+        "$8/hr add-on for extra revisions & requests",
+        "Maintenance available as add-on",
+      ],
+      highlighted: false,
+    },
+    {
+      name: "Plus",
+      description: "Our most popular choice for established brands that need a full-featured, polished web presence.",
+      price: "1000",
+      features: [
+        "16–30 pages",
         "UI/UX strategy & wireframes",
         "Advanced SEO optimization",
-        "Social media starter kit",
-        "Brand identity package",
-        "3 rounds of revisions",
-        "Priority support (30 days)",
-        "4 weeks delivery",
+        "Brand identity touches",
+        "2 weeks free revisions",
+        "$8/hr add-on for extra revisions & requests",
+        "Maintenance available as add-on",
       ],
       highlighted: true,
     },
     {
       name: "Enterprise",
-      description: "Full-scale digital solutions for established businesses ready to scale.",
+      description: "You've outgrown templates. Let's build something fully tailored to your systems, your team, and your growth goals.",
       price: "Custom",
       features: [
-        "Full web application development",
+        "Unlimited pages",
         "Custom UI/UX design system",
         "E-commerce or SaaS integration",
-        "Social media management",
-        "Ongoing maintenance & support",
+        "Custom revision window",
         "Dedicated project manager",
-        "Unlimited revisions",
-        "Custom timeline",
+        "Maintenance plan included",
+        "Talk to us for a custom quote",
       ],
       highlighted: false,
     },
   ];
 
   return (
-    <section ref={ref} className="relative py-24 bg-modern-primary min-h-screen overflow-hidden">
+    <>
+    <section ref={ref} className="relative pt-8 pb-24 bg-modern-primary min-h-screen overflow-hidden">
+      <GridBackground />
       {/* Homepage wave background */}
       <div className="absolute inset-0 w-full h-full">
         <svg
@@ -105,7 +123,7 @@ export default function PricingPage() {
         </svg>
       </div>
 
-      <div className="container mx-auto px-4 lg:px-8 pt-12 relative z-10">
+      <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -113,19 +131,17 @@ export default function PricingPage() {
           className="text-center mb-16"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 border border-purple-100 mb-6">
-            <Sparkles size={16} className="text-secondary-purple" />
             <span className="text-sm font-semibold text-secondary-purple">Simple & Transparent</span>
           </div>
           <h1 className="text-display text-gray-900 mb-6">
             Pricing That Fits Your <span className="text-gradient-purple">Business</span>
           </h1>
           <p className="text-subheading max-w-2xl mx-auto" style={{ color: '#535252' }}>
-            Choose the plan that works best for your goals. Every plan includes quality design,
-            clean code, and dedicated support.
+            No surprise fees. No complicated contracts. Just straightforward pricing for real results.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {plans.map((plan, index) => (
             <motion.div
               key={plan.name}
@@ -133,7 +149,7 @@ export default function PricingPage() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 + index * 0.15 }}
               whileHover={{ y: -8 }}
-              className={`relative p-8 rounded-2xl transition-all card-liquid-glass ${
+              className={`relative p-6 rounded-2xl transition-all card-liquid-glass ${
                 plan.highlighted
                   ? 'scale-[1.02] ring-2 ring-purple-200/50'
                   : ''
@@ -193,9 +209,11 @@ export default function PricingPage() {
           transition={{ delay: 0.8 }}
           className="text-center text-sm text-gray-600 mt-12"
         >
-          All prices are starting points. Final pricing depends on project scope and requirements.
+          Every project is unique. These prices reflect common scopes. Reach out and we'll give you an accurate quote with no obligation.
         </motion.p>
       </div>
     </section>
+    <FinalCTA hidePricingLink />
+    </>
   );
 }

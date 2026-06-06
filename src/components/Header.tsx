@@ -40,11 +40,7 @@ export default function Header() {
   };
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className="sticky top-0 left-0 right-0 z-50 bg-white/95 shadow-sm"
-    >
+    <header className="sticky top-0 left-0 right-0 z-50 bg-white/95 shadow-sm">
       <nav className="container mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -263,6 +259,6 @@ export default function Header() {
           </motion.div>
         )}
       </nav>
-    </motion.header>
+    </header>
   );
 }

@@ -5,6 +5,8 @@ import { useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Code, Monitor, Smartphone, ShoppingCart, Server, Zap, ArrowRight, ArrowLeft } from 'lucide-react';
+import FinalCTA from '@/components/FinalCTA';
+import GridBackground from '@/components/GridBackground';
 
 export default function WebDevPage() {
   const ref = useRef(null);
@@ -12,7 +14,7 @@ export default function WebDevPage() {
 
   const features = [
     { icon: Monitor, title: "Custom Websites", description: "Fully tailored websites designed to match your brand and business goals." },
-    { icon: Smartphone, title: "Responsive Design", description: "Seamless experience across all devices — desktop, tablet, and mobile." },
+    { icon: Smartphone, title: "Responsive Design", description: "Seamless experience across all devices, including desktop, tablet, and mobile." },
     { icon: ShoppingCart, title: "E-Commerce", description: "Online stores with secure payments, inventory management, and smooth checkout." },
     { icon: Server, title: "Web Applications", description: "Complex web apps with custom backends, dashboards, and real-time features." },
     { icon: Zap, title: "Performance Optimized", description: "Fast-loading, SEO-friendly builds that score high on Core Web Vitals." },
@@ -24,56 +26,56 @@ export default function WebDevPage() {
       name: 'WordPress',
       color: '#21759B',
       bg: '#EBF5FB',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg',
+      logo: '/logos/wordpress.svg',
       desc: 'Flexible CMS for business sites, blogs, and WooCommerce stores with easy content management.',
     },
     {
       name: 'Shopify',
       color: '#96BF48',
       bg: '#F0F9EB',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/shopify/shopify-original.svg',
+      logo: '/logos/shopify.svg',
       desc: 'Powerful e-commerce platform for building scalable online stores with seamless checkout.',
     },
     {
       name: 'React',
       color: '#61DAFB',
       bg: '#E8FAFE',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
+      logo: '/logos/react.svg',
       desc: 'Component-based UI library for building fast, interactive, and dynamic web applications.',
     },
     {
       name: 'Next.js',
       color: '#000000',
       bg: '#F2F2F2',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',
+      logo: '/logos/nextjs.svg',
       desc: 'Full-stack React framework with SSR and SSG for lightning-fast, SEO-friendly websites.',
     },
     {
       name: 'Tailwind CSS',
       color: '#38BDF8',
       bg: '#E8F7FE',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg',
+      logo: '/logos/tailwindcss.svg',
       desc: 'Utility-first CSS framework for building modern, responsive interfaces rapidly.',
     },
     {
       name: 'Node.js',
       color: '#339933',
       bg: '#EBF7EB',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
+      logo: '/logos/nodejs.svg',
       desc: 'Scalable server-side runtime for building fast APIs, backends, and real-time applications.',
     },
     {
       name: 'TypeScript',
       color: '#3178C6',
       bg: '#EBF2FB',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
+      logo: '/logos/typescript.svg',
       desc: 'Typed superset of JavaScript that improves code quality, reliability, and maintainability.',
     },
     {
       name: 'Laravel',
       color: '#FF2D20',
       bg: '#FEF0EF',
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-plain.svg',
+      logo: '/logos/laravel.svg',
       desc: 'Elegant PHP framework for building robust web applications with clean, expressive syntax.',
     },
   ];
@@ -89,6 +91,7 @@ export default function WebDevPage() {
     <div ref={ref} className="bg-modern-primary min-h-screen">
       {/* Hero */}
       <section className="relative pt-4 md:pt-12 pb-20 overflow-hidden">
+        <GridBackground />
         {/* Animated background */}
         <div className="absolute inset-0 w-full h-full">
           <svg
@@ -271,7 +274,7 @@ export default function WebDevPage() {
                 whileHover={{ y: -6, scale: 1.02 }}
                 className="p-7 bg-white rounded-2xl shadow-lg hover:shadow-2xl border border-gray-50 transition-all"
               >
-                <div className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center mb-5">
+                <div className="w-12 h-12 bg-[#C02B7D] rounded-xl flex items-center justify-center mb-5">
                   <feature.icon className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
@@ -405,28 +408,23 @@ export default function WebDevPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="relative overflow-hidden rounded-3xl"
-          >
-            <div className="absolute inset-0 bg-gradient-primary" />
-            <div className="relative z-10 px-8 py-16 text-center text-white">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Build Your Website?</h2>
-              <p className="text-white/80 text-lg mb-8 max-w-xl mx-auto">
-                Let's discuss your project and create something exceptional together.
-              </p>
-              <Link href="/contact" className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary-purple rounded-full text-lg font-semibold hover:shadow-2xl transition-all no-underline">
-                Get Started <ArrowRight size={20} />
-              </Link>
+      {/* Recommended reading */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
+          <div className="rounded-2xl border border-purple-100 bg-purple-50/50 p-8 flex flex-col sm:flex-row sm:items-center gap-6">
+            <div className="flex-1">
+              <p className="text-xs font-semibold text-secondary-purple uppercase tracking-wider mb-2">Recommended reading</p>
+              <h3 className="text-lg font-bold text-gray-900 mb-1">Business Website Development: The Complete 2026 Guide</h3>
+              <p className="text-sm text-gray-600">Platforms, costs, performance, and SEO — what actually makes a business website perform.</p>
             </div>
-          </motion.div>
+            <Link href="/guides/business-website-development" className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-white font-semibold text-sm no-underline whitespace-nowrap hover:-translate-y-0.5 transition-transform" style={{ backgroundColor: '#C02B7D' }}>
+              Read the guide <ArrowRight size={16} />
+            </Link>
+          </div>
         </div>
       </section>
+
+      <FinalCTA />
     </div>
   );
 }

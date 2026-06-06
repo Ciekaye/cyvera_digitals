@@ -12,6 +12,8 @@ import {
   CalendarDays, Camera, ChevronDown, ChevronRight,
   Instagram, Facebook,
 } from 'lucide-react';
+import FinalCTA from '@/components/FinalCTA';
+import GridBackground from '@/components/GridBackground';
 
 /* ─── Smooth scroll helper ─── */
 const scrollTo = (id: string) => {
@@ -49,7 +51,7 @@ export default function ServicesPage() {
       <GraphicDesignSection />
       <SocialMediaSection />
       <GuidedDecision />
-      <ServicesFinalCTA />
+      <FinalCTA />
     </div>
   );
 }
@@ -60,6 +62,7 @@ export default function ServicesPage() {
 function ServicesHero() {
   return (
     <section className="relative min-h-[75vh] lg:min-h-[80vh] flex items-center overflow-hidden bg-white">
+      <GridBackground />
       {/* Animated wave background */}
       <div className="absolute inset-0 w-full h-full">
         <svg
@@ -119,7 +122,7 @@ function ServicesHero() {
               className="text-subheading mb-10 leading-relaxed max-w-2xl"
                 style={{ color: '#535252' }}
             >
-              We design, build, and manage digital solutions that strengthen your brand, improve user experience, and support long-term growth.
+              From concept to launch, we handle every piece of your digital presence.
             </motion.p>
 
             <motion.div
@@ -183,7 +186,7 @@ function ServicesHero() {
                 onClick={() => scrollTo(card.target)}
                 className="text-left p-7 bg-white/95 rounded-2xl hover:bg-white/100 transition-all cursor-pointer group border border-white/20"
               >
-                <div className="w-13 h-13 bg-gradient-primary rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform" style={{ width: 52, height: 52 }}>
+                <div className="w-13 h-13 bg-[#C02B7D] rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform" style={{ width: 52, height: 52 }}>
                   <card.icon className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">{card.title}</h3>
@@ -225,14 +228,14 @@ const webBullets = [
 ];
 
 const techStack = [
-  { name: 'WordPress', color: '#21759B' },
-  { name: 'Shopify', color: '#96BF48' },
-  { name: 'Next.js', color: '#000000' },
-  { name: 'React', color: '#61DAFB' },
-  { name: 'Tailwind CSS', color: '#38BDF8' },
-  { name: 'Node.js', color: '#339933' },
-  { name: 'Laravel', color: '#FF2D20' },
-  { name: 'TypeScript', color: '#3178C6' },
+  { name: 'WordPress',    slug: 'wordpress',   color: '#21759B', description: "The world's most popular CMS — flexible, SEO-friendly, and easy to manage." },
+  { name: 'Shopify',      slug: 'shopify',     color: '#96BF48', description: 'Hosted e-commerce with payments, shipping, and product tools out of the box.' },
+  { name: 'Next.js',      slug: 'nextdotjs',   color: '#000000', description: 'React framework for production with hybrid rendering and built-in optimizations.' },
+  { name: 'React',        slug: 'react',       color: '#61DAFB', description: 'Component-based UI library that powers fast, interactive interfaces.' },
+  { name: 'Tailwind CSS', slug: 'tailwindcss', color: '#38BDF8', description: 'Utility-first CSS framework for building modern, responsive designs quickly.' },
+  { name: 'Node.js',      slug: 'nodedotjs',   color: '#339933', description: 'JavaScript runtime for fast, scalable backend services and APIs.' },
+  { name: 'Laravel',      slug: 'laravel',     color: '#FF2D20', description: 'Elegant PHP framework with batteries included for shipping web apps fast.' },
+  { name: 'TypeScript',   slug: 'typescript',  color: '#3178C6', description: 'Typed superset of JavaScript that catches bugs before they reach production.' },
 ];
 
 function WebDevSection() {
@@ -271,7 +274,7 @@ function WebDevSection() {
 
             <Link
               href="/contact"
-              className="btn-gradient-primary inline-flex items-center gap-2 font-semibold no-underline"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#C02B7D] text-white font-semibold no-underline shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
             >
               Start a Website Project <ArrowRight size={16} />
             </Link>
@@ -288,7 +291,7 @@ function WebDevSection() {
                     onClick={() => setActiveTech(i)}
                     className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all ${
                       activeTech === i
-                        ? 'bg-gradient-primary text-white shadow-md'
+                        ? 'bg-[#C02B7D] text-white shadow-md'
                         : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
                     }`}
                   >
@@ -307,10 +310,18 @@ function WebDevSection() {
                   className="w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center"
                   style={{ backgroundColor: techStack[activeTech].color + '18' }}
                 >
-                  <Code size={28} style={{ color: techStack[activeTech].color }} />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`https://cdn.simpleicons.org/${techStack[activeTech].slug}/${techStack[activeTech].color.replace('#', '')}`}
+                    alt={`${techStack[activeTech].name} logo`}
+                    width={36}
+                    height={36}
+                  />
                 </div>
                 <h4 className="text-lg font-bold text-gray-900 mb-1">{techStack[activeTech].name}</h4>
-                <p className="text-sm text-gray-500">Trusted technology for modern web experiences</p>
+                <p className="text-sm text-gray-500 max-w-xs mx-auto leading-relaxed">
+                  {techStack[activeTech].description}
+                </p>
               </motion.div>
             </div>
           </FadeIn>
@@ -334,9 +345,21 @@ function WordPressSection() {
 
   return (
     <section id="wordpress" className="py-20 bg-white scroll-mt-24">
-      <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
+      <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
         <FadeIn>
-          <div className="grid lg:grid-cols-2 gap-14 items-start">
+          <div className="grid lg:grid-cols-[14rem,1fr,1fr] gap-10 items-stretch">
+            <div
+              className="hidden lg:flex rounded-2xl items-center justify-center self-stretch min-h-[260px]"
+              style={{ backgroundColor: '#21759B18' }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://cdn.simpleicons.org/wordpress/21759B"
+                alt="WordPress logo"
+                width={112}
+                height={112}
+              />
+            </div>
             <div>
               <h3 className="text-heading text-gray-900 mb-4">WordPress Development</h3>
               <p className="text-gray-600 leading-relaxed mb-8">
@@ -344,7 +367,7 @@ function WordPressSection() {
               </p>
               <Link
                 href="/contact"
-                className="btn-gradient-primary inline-flex items-center gap-2 font-semibold no-underline"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#C02B7D] text-white font-semibold no-underline shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
               >
                 Build with WordPress <ArrowRight size={16} />
               </Link>
@@ -424,7 +447,7 @@ function UiUxSection() {
               <span className="absolute top-4 right-4 text-3xl font-bold text-purple-200/60 group-hover:text-purple-300/80 transition-colors">
                 {String(i + 1).padStart(2, '0')}
               </span>
-              <div className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center mb-4">
+              <div className="w-12 h-12 bg-[#C02B7D] rounded-xl flex items-center justify-center mb-4">
                 <step.icon size={22} className="text-white" />
               </div>
               <h3 className="text-base font-bold text-gray-900 mb-2">{step.title}</h3>
@@ -437,7 +460,7 @@ function UiUxSection() {
           <div className="card-liquid-glass p-8 text-center">
             <Lightbulb size={28} className="text-secondary-purple mx-auto mb-3" />
             <p className="text-lg font-semibold text-gray-900 italic">
-              "Good design isn't just how it looks — it's how it works."
+              "Good design isn't just how it looks, it's how it works."
             </p>
           </div>
         </FadeIn>
@@ -494,7 +517,7 @@ function GraphicDesignSection() {
               whileHover={{ y: -6, scale: 1.02 }}
               className="p-7 rounded-2xl shadow-lg border border-gray-50 bg-white transition-all"
             >
-              <div className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center mb-5">
+              <div className="w-12 h-12 bg-[#C02B7D] rounded-xl flex items-center justify-center mb-5">
                 <s.icon size={22} className="text-white" />
               </div>
               <h3 className="text-base font-bold text-gray-900 mb-2">{s.title}</h3>
@@ -661,7 +684,7 @@ function GuidedDecision() {
         <FadeIn>
           <h2 className="text-heading text-gray-900 mb-4">Not Sure What You Need?</h2>
           <p className="text-gray-600 mb-12 max-w-xl mx-auto">
-            Pick the statement that sounds most like you, and we'll point you in the right direction.
+            Not sure where to start? Tell us where you are and we'll point you in the right direction.
           </p>
         </FadeIn>
 
@@ -692,31 +715,3 @@ function GuidedDecision() {
   );
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   9 · FINAL CTA
-   ═══════════════════════════════════════════════════════════════ */
-function ServicesFinalCTA() {
-  return (
-    <section className="py-20">
-      <div className="container mx-auto px-4 lg:px-8">
-        <FadeIn>
-          <div className="relative overflow-hidden rounded-3xl">
-            <div className="absolute inset-0 bg-gradient-primary" />
-            <div className="relative z-10 px-8 py-20 text-center text-white">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Start Your Project?</h2>
-              <p className="text-white/80 text-lg mb-8 max-w-xl mx-auto">
-                Let's build a digital solution that supports your business goals.
-              </p>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary-purple rounded-full text-lg font-semibold hover:shadow-2xl transition-all no-underline"
-              >
-                Get Started <ArrowRight size={20} />
-              </Link>
-            </div>
-          </div>
-        </FadeIn>
-      </div>
-    </section>
-  );
-}

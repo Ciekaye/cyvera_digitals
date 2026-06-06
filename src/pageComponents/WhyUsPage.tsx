@@ -22,6 +22,8 @@ import {
   Code,
   Ear,
 } from 'lucide-react';
+import FinalCTA from '@/components/FinalCTA';
+import GridBackground from '@/components/GridBackground';
 
 export default function WhyUsPage() {
   const heroRef = useRef(null);
@@ -140,6 +142,7 @@ export default function WhyUsPage() {
         ref={heroRef}
         className="relative pt-12 pb-20 overflow-hidden"
       >
+        <GridBackground />
         {/* Shared wave background */}
         <div className="absolute inset-0 w-full h-full">
           <svg
@@ -258,7 +261,7 @@ export default function WhyUsPage() {
                   whileHover={{ y: -6, scale: 1.02 }}
                   className="card-liquid-glass p-7"
                 >
-                  <div className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center mb-5">
+                  <div className="w-12 h-12 bg-[#C02B7D] rounded-xl flex items-center justify-center mb-5">
                     <item.icon className="w-6 h-6 text-white" />
                   </div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
@@ -363,7 +366,7 @@ export default function WhyUsPage() {
                 transition={{ duration: 0.5, delay: 0.25 + index * 0.08 }}
                 className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm"
               >
-                <div className="w-8 h-8 bg-gradient-primary rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="w-8 h-8 bg-[#C02B7D] rounded-full flex items-center justify-center flex-shrink-0">
                   <CheckCircle2 className="w-4 h-4 text-white" />
                 </div>
                 <span className="text-gray-700 font-medium">{point}</span>
@@ -414,7 +417,7 @@ export default function WhyUsPage() {
                 transition={{ duration: 0.5, delay: 0.15 + index * 0.1 }}
                 className="card-liquid-glass p-8 group hover:scale-[1.02] transition-transform duration-300"
               >
-                <div className="w-14 h-14 bg-gradient-primary rounded-2xl flex items-center justify-center mb-5 group-hover:shadow-lg group-hover:shadow-purple-200 transition-shadow duration-300">
+                <div className="w-14 h-14 bg-[#C02B7D] rounded-2xl flex items-center justify-center mb-5 group-hover:shadow-lg group-hover:shadow-purple-200 transition-shadow duration-300">
                   <reason.icon className="w-7 h-7 text-white" />
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">{reason.label}</h3>
@@ -425,41 +428,7 @@ export default function WhyUsPage() {
         </div>
       </section>
 
-      {/* ── Final CTA ── */}
-      <section ref={ctaRef} className="py-20">
-        <div className="container mx-auto px-4 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={ctaInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="relative overflow-hidden rounded-3xl"
-          >
-            <div className="absolute inset-0 bg-gradient-primary" />
-            <div className="relative z-10 px-8 py-16 text-center text-white">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Let's Build Something That Makes Sense
-              </h2>
-              <p className="text-white/80 text-lg mb-8 max-w-xl mx-auto">
-                If you're looking for a digital partner who values clarity, quality, and results, let's talk.
-              </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary-purple rounded-full text-lg font-semibold hover:shadow-2xl transition-all no-underline"
-                >
-                  Get Started <ArrowRight size={20} />
-                </Link>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 px-8 py-4 rounded-full border-2 border-white/40 text-white text-lg font-semibold hover:bg-white/10 transition-all no-underline"
-                >
-                  <MessageCircle size={18} /> Talk to Us
-                </Link>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <FinalCTA />
     </div>
   );
 }

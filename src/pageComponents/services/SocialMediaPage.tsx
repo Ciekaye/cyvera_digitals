@@ -5,6 +5,8 @@ import { useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Share2, Camera, CalendarDays, BarChart3, MessageCircle, TrendingUp, ArrowRight, ArrowLeft } from 'lucide-react';
+import FinalCTA from '@/components/FinalCTA';
+import GridBackground from '@/components/GridBackground';
 
 export default function SocialMediaPage() {
   const ref = useRef(null);
@@ -24,42 +26,42 @@ export default function SocialMediaPage() {
       name: 'Instagram',
       color: '#E4405F',
       bg: '#FDF0F3',
-      logo: 'https://cdn.simpleicons.org/instagram/E4405F',
+      logo: '/logos/instagram.svg',
       desc: 'Visual storytelling through posts, reels, and stories to engage your audience.',
     },
     {
       name: 'Facebook',
       color: '#1877F2',
       bg: '#EBF3FE',
-      logo: 'https://cdn.simpleicons.org/facebook/1877F2',
+      logo: '/logos/facebook.svg',
       desc: 'Community building, ads management, and content publishing for broad reach.',
     },
     {
       name: 'LinkedIn',
       color: '#0A66C2',
       bg: '#EBF2FB',
-      logo: 'https://cdn.simpleicons.org/linkedin/0A66C2',
+      logo: '/logos/linkedin.svg',
       desc: 'Professional networking, thought leadership, and B2B brand visibility.',
     },
     {
       name: 'TikTok',
       color: '#000000',
       bg: '#F2F2F2',
-      logo: 'https://cdn.simpleicons.org/tiktok/000000',
+      logo: '/logos/tiktok.svg',
       desc: 'Short-form video content to capture attention and drive viral engagement.',
     },
     {
       name: 'X (Twitter)',
       color: '#000000',
       bg: '#F2F2F2',
-      logo: 'https://cdn.simpleicons.org/x/000000',
+      logo: '/logos/x.svg',
       desc: 'Real-time conversations, brand updates, and audience engagement.',
     },
     {
       name: 'Pinterest',
       color: '#BD081C',
       bg: '#FDF0F1',
-      logo: 'https://cdn.simpleicons.org/pinterest/BD081C',
+      logo: '/logos/pinterest.svg',
       desc: 'Visual discovery and inspiration boards that drive traffic to your site.',
     },
   ];
@@ -74,6 +76,7 @@ export default function SocialMediaPage() {
     <div ref={ref} className="bg-modern-primary min-h-screen">
       {/* Hero */}
       <section className="relative pt-4 md:pt-12 pb-20 overflow-hidden">
+        <GridBackground />
         {/* Animated background */}
         <div className="absolute inset-0 w-full h-full">
           <svg
@@ -256,7 +259,7 @@ export default function SocialMediaPage() {
                 whileHover={{ y: -6, scale: 1.02 }}
                 className="p-7 bg-white rounded-2xl shadow-lg hover:shadow-2xl border border-gray-50 transition-all"
               >
-                <div className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center mb-5">
+                <div className="w-12 h-12 bg-[#C02B7D] rounded-xl flex items-center justify-center mb-5">
                   <feature.icon className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
@@ -395,7 +398,7 @@ export default function SocialMediaPage() {
                 )}
                 <h3 className="text-xl font-bold text-gray-900 mb-1">{pkg.name}</h3>
                 <p className="text-secondary-purple font-semibold text-sm mb-5">{pkg.posts}</p>
-                <ul className="space-y-2.5">
+                <ul className="space-y-2.5 mb-7">
                   {pkg.includes.map((item) => (
                     <li key={item} className="flex items-start gap-2.5 text-sm text-gray-600">
                       <div className="w-1.5 h-1.5 bg-secondary-purple rounded-full mt-1.5 flex-shrink-0" />
@@ -403,34 +406,39 @@ export default function SocialMediaPage() {
                     </li>
                   ))}
                 </ul>
+                <Link
+                  href="/contact"
+                  className={`w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold no-underline transition-all ${
+                    pkg.highlighted
+                      ? 'bg-[#C02B7D] text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5'
+                      : 'border-2 border-gray-200 text-gray-700 hover:border-[#C02B7D] hover:text-[#C02B7D]'
+                  }`}
+                >
+                  Get Started <ArrowRight size={16} />
+                </Link>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="relative overflow-hidden rounded-3xl"
-          >
-            <div className="absolute inset-0 bg-gradient-primary" />
-            <div className="relative z-10 px-8 py-16 text-center text-white">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Grow Your Social Presence?</h2>
-              <p className="text-white/80 text-lg mb-8 max-w-xl mx-auto">
-                Let's build a social media strategy that keeps your audience engaged and your brand growing.
-              </p>
-              <Link href="/contact" className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary-purple rounded-full text-lg font-semibold hover:shadow-2xl transition-all no-underline">
-                Get Started <ArrowRight size={20} />
-              </Link>
+      {/* Recommended reading */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
+          <div className="rounded-2xl border border-purple-100 bg-purple-50/50 p-8 flex flex-col sm:flex-row sm:items-center gap-6">
+            <div className="flex-1">
+              <p className="text-xs font-semibold text-secondary-purple uppercase tracking-wider mb-2">Recommended reading</p>
+              <h3 className="text-lg font-bold text-gray-900 mb-1">Social Media Management for Business: The 2026 Growth Guide</h3>
+              <p className="text-sm text-gray-600">Platform strategy, content calendars, and engagement that turns followers into customers.</p>
             </div>
-          </motion.div>
+            <Link href="/guides/social-media-management-for-business" className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-white font-semibold text-sm no-underline whitespace-nowrap hover:-translate-y-0.5 transition-transform" style={{ backgroundColor: '#C02B7D' }}>
+              Read the guide <ArrowRight size={16} />
+            </Link>
+          </div>
         </div>
       </section>
+
+      <FinalCTA />
     </div>
   );
 }

@@ -5,6 +5,8 @@ import { useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Layers, PenTool, Users, BarChart3, Figma, Lightbulb, ArrowRight, ArrowLeft } from 'lucide-react';
+import FinalCTA from '@/components/FinalCTA';
+import GridBackground from '@/components/GridBackground';
 
 export default function UiUxPage() {
   const ref = useRef(null);
@@ -30,6 +32,7 @@ export default function UiUxPage() {
     <div ref={ref} className="bg-modern-primary min-h-screen">
       {/* Hero */}
       <section className="relative pt-4 md:pt-12 pb-20 overflow-hidden">
+        <GridBackground />
         {/* Animated background */}
         <div className="absolute inset-0 w-full h-full">
           <svg
@@ -250,7 +253,7 @@ export default function UiUxPage() {
                 whileHover={{ y: -6, scale: 1.02 }}
                 className="card-liquid-glass p-7"
               >
-                <div className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center mb-5">
+                <div className="w-12 h-12 bg-[#C02B7D] rounded-xl flex items-center justify-center mb-5">
                   <feature.icon className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
@@ -291,28 +294,23 @@ export default function UiUxPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="relative overflow-hidden rounded-3xl"
-          >
-            <div className="absolute inset-0 bg-gradient-primary" />
-            <div className="relative z-10 px-8 py-16 text-center text-white">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Elevate Your User Experience?</h2>
-              <p className="text-white/80 text-lg mb-8 max-w-xl mx-auto">
-                Let's design digital experiences your users will love.
-              </p>
-              <Link href="/contact" className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary-purple rounded-full text-lg font-semibold hover:shadow-2xl transition-all no-underline">
-                Get Started <ArrowRight size={20} />
-              </Link>
+      {/* Recommended reading */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
+          <div className="rounded-2xl border border-purple-100 bg-purple-50/50 p-8 flex flex-col sm:flex-row sm:items-center gap-6">
+            <div className="flex-1">
+              <p className="text-xs font-semibold text-secondary-purple uppercase tracking-wider mb-2">Recommended reading</p>
+              <h3 className="text-lg font-bold text-gray-900 mb-1">UI/UX Design Strategy: How Great User Experience Drives Revenue</h3>
+              <p className="text-sm text-gray-600">How research, layout, and conversion-focused design turn visitors into customers.</p>
             </div>
-          </motion.div>
+            <Link href="/guides/ui-ux-design-strategy" className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-white font-semibold text-sm no-underline whitespace-nowrap hover:-translate-y-0.5 transition-transform" style={{ backgroundColor: '#C02B7D' }}>
+              Read the guide <ArrowRight size={16} />
+            </Link>
+          </div>
         </div>
       </section>
+
+      <FinalCTA />
     </div>
   );
 }

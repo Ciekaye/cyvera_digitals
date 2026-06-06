@@ -73,7 +73,7 @@ export default function HowWeWork() {
 
               <div className="relative z-10 text-center">
                 <div className="relative mx-auto mb-6">
-                  <div className="w-20 h-20 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform shadow-lg">
+                  <div className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform shadow-lg" style={{ backgroundColor: '#C02B7D' }}>
                     <step.icon className="w-9 h-9 text-white" />
                   </div>
                   <span className="absolute -top-2 -right-2 w-8 h-8 bg-white rounded-full border-2 border-purple-200 flex items-center justify-center text-xs font-bold text-secondary-purple shadow-sm">

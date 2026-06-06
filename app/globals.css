@@ -180,15 +180,15 @@ body {
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.03em;
-  font-family: 'Oceanwide', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
+  font-family: var(--font-inter), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
 }
 
 .text-heading {
   font-size: clamp(1.5rem, 2.6vw, 2.2rem);
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.15;
   letter-spacing: -0.02em;
-  font-family: 'Oceanwide', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
+  font-family: var(--font-inter), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
 }
 
 .text-subheading {
@@ -196,7 +196,7 @@ body {
   font-weight: 500;
   line-height: 1.4;
   color: var(--text-secondary);
-  font-family: 'Oceanwide', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
+  font-family: var(--font-inter), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
 }
 
 /* Cyvera Digitals Brand Utility Classes */
@@ -238,6 +238,12 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  display: inline-block;
+  /* Extend background area so italic slant and tall glyphs aren't clipped.
+     Padding grows the painted region; negative margin keeps layout flush. */
+  padding: 0.15em 0.18em;
+  margin: -0.15em -0.18em;
+  line-height: 1.25;
 }
 
 /* Purple gradient buttons */
@@ -311,4 +317,13 @@ body {
   transform: translateY(-4px);
   box-shadow: 0 20px 40px rgba(123, 25, 231, 0.2);
   border-color: rgba(192, 43, 125, 0.4);
+}
+
+/* Hide scrollbar (used by horizontal carousels) */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }

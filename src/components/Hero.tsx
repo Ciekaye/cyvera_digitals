@@ -3,12 +3,27 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Play } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-start overflow-hidden bg-white">
+    <section className="relative min-h-screen flex flex-col items-center overflow-hidden bg-white">
       {/* Animated wave background */}
       <div className="absolute inset-0 w-full h-full">
+        {/* Grid Background */}
+        <div
+          className="absolute top-0 left-0 right-0 z-0"
+          style={{
+            height: "60%",
+            backgroundImage: `
+              linear-gradient(to right, #d1d5db 1px, transparent 1px),
+              linear-gradient(to bottom, #d1d5db 1px, transparent 1px)
+            `,
+            backgroundSize: "40px 40px",
+            opacity: 0.2,
+          }}
+        />
+
         <svg
           className="absolute bottom-0 left-0 w-full"
           viewBox="0 0 1440 600"
@@ -18,19 +33,19 @@ export default function Hero() {
         >
           <defs>
             <linearGradient id="wave1" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#e879f9" stopOpacity="0.55" />
-              <stop offset="50%" stopColor="#a78bfa" stopOpacity="0.45" />
-              <stop offset="100%" stopColor="#93c5fd" stopOpacity="0.5" />
+              <stop offset="0%" stopColor="#e879f9" stopOpacity="0.75" />
+              <stop offset="50%" stopColor="#a78bfa" stopOpacity="0.65" />
+              <stop offset="100%" stopColor="#93c5fd" stopOpacity="0.7" />
             </linearGradient>
             <linearGradient id="wave2" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#f0abfc" stopOpacity="0.4" />
-              <stop offset="50%" stopColor="#c4b5fd" stopOpacity="0.35" />
-              <stop offset="100%" stopColor="#bfdbfe" stopOpacity="0.45" />
+              <stop offset="0%" stopColor="#f0abfc" stopOpacity="0.6" />
+              <stop offset="50%" stopColor="#c4b5fd" stopOpacity="0.55" />
+              <stop offset="100%" stopColor="#bfdbfe" stopOpacity="0.65" />
             </linearGradient>
             <linearGradient id="wave3" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#d946ef" stopOpacity="0.25" />
-              <stop offset="60%" stopColor="#818cf8" stopOpacity="0.2" />
-              <stop offset="100%" stopColor="#60a5fa" stopOpacity="0.3" />
+              <stop offset="0%" stopColor="#d946ef" stopOpacity="0.45" />
+              <stop offset="60%" stopColor="#818cf8" stopOpacity="0.4" />
+              <stop offset="100%" stopColor="#60a5fa" stopOpacity="0.5" />
             </linearGradient>
             <filter id="blur-wave">
               <feGaussianBlur stdDeviation="8" />
@@ -57,43 +72,46 @@ export default function Hero() {
         <div className="absolute top-0 right-0 w-[500px] h-[350px] bg-gradient-radial from-blue-100/50 via-indigo-50/20 to-transparent rounded-full" />
       </div>
 
-      <div className="container mx-auto px-4 lg:px-8 relative z-10 pt-12 lg:pt-40">
-        <div className="max-w-5xl">
-          <motion.p
+      <div className="container mx-auto px-4 lg:px-8 relative z-10 pt-16 lg:pt-24 pb-20">
+        <div className="max-w-6xl mx-auto text-center">
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-secondary-purple font-semibold text-lg md:text-xl mb-4"
+            className="inline-flex items-center justify-center gap-2 mb-6"
           >
-            Creative Digital Agency
-          </motion.p>
+            <span className="text-secondary-purple font-semibold text-lg md:text-xl">
+              Strategy. Design. Growth.
+            </span>
+          </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-display text-gray-900 mb-4"
+            className="font-inter font-medium text-gray-900 mb-6 tracking-tight leading-[1.2] text-[clamp(2.5rem,6vw,4.5rem)]"
           >
-            Digital Solutions That Help{' '}
-            <span className="text-gradient-purple">Businesses Grow</span> Online
+            We Build Digital Experiences That{' '}
+            <span className="text-gradient-purple italic font-medium leading-[1.2]">
+              Work as Hard as You Do
+            </span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-subheading text-gray-600 mb-12 max-w-3xl leading-relaxed"
+            className="text-subheading mb-12 max-w-[52rem] mx-auto leading-relaxed"
             style={{ color: '#535252' }}
           >
-            Cyvera Digitals is a creative digital agency focused on building modern websites,
-            strong brand identities, and effective digital experiences that drive real results.
+            From bold brand identities to high performing websites, Cyvera Digitals helps startups and growing businesses show up online with purpose and professionalism.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
-            className="flex flex-col sm:flex-row items-center justify-start gap-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-10"
           >
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
@@ -110,12 +128,37 @@ export default function Hero() {
                 className="group inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-gray-200 text-gray-700 font-semibold text-lg hover:border-purple-300 hover:text-purple-700 transition-all no-underline"
               >
                 <Play size={18} className="text-secondary-purple" />
-                View Our Work
+                See What We've Built
               </Link>
             </motion.div>
           </motion.div>
-        </div>
 
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
+            className="mt-16 mx-auto max-w-6xl"
+          >
+            <div
+              className="border-2 border-secondary-purple rounded-[31px] p-3"
+              style={{ boxShadow: '0 4px 4px 0 rgba(0,0,0,0.25)' }}
+            >
+              <div
+                className="relative rounded-[30px] overflow-hidden aspect-[1093/577]"
+                style={{ boxShadow: '0 7px 11.9px 7px rgba(0,0,0,0.11)' }}
+              >
+                <Image
+                  src="/heroimage.jpg"
+                  alt="Cyvera Digitals work showcase"
+                  fill
+                  sizes="(min-width: 1024px) 1100px, 100vw"
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
