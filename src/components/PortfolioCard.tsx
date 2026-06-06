@@ -29,12 +29,12 @@ export default function PortfolioCard({ project, delay = 0 }: Props) {
       whileHover={{ y: -10 }}
       className="group card-modern overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 cursor-pointer no-underline block"
     >
-      <div className="aspect-[16/9] overflow-hidden relative bg-gray-100">
+      <div className="aspect-[4/3] overflow-hidden relative bg-gray-100">
         <Image
           src={previewUrl}
           alt={project.title}
           fill
-          sizes="(max-width: 768px) 100vw, 50vw"
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="object-cover group-hover:scale-105 transition-transform duration-500"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-6">
