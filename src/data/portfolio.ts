@@ -19,7 +19,7 @@
 
 export type FilterCategory =
   | 'Web Development'
-  | 'UI & UX'
+  | 'WordPress Web Development'
   | 'Graphic Design'
   | 'Social Media Management';
 
@@ -65,7 +65,7 @@ export const projects: Project[] = [
     title: "By Kate Cristyl",
     url: "https://bykatecristyl.com/",
     category: "Brand & Web Design",
-    filterCategory: "UI & UX",
+    filterCategory: "Web Development",
   },
   {
     title: "Dental App",
@@ -78,28 +78,28 @@ export const projects: Project[] = [
     title: "Bark & Bathe Lounge",
     url: "https://bark-bathe-lounge.cyveradigitals.com/",
     category: "Web Design",
-    filterCategory: "UI & UX",
+    filterCategory: "Web Development",
     image: "/portfolio/bark-bathe-lounge.png",
   },
   {
     title: "Zenith Financial Advisory",
     url: "https://zenithfinancialadvisory.jcdigital.dev/",
     category: "Wordpress Web Development",
-    filterCategory: "Web Development",
+    filterCategory: "WordPress Web Development",
     image: "/portfolio/zenith-financial-advisory.jpg",
   },
   {
     title: "BrightPath Careers",
     url: "https://brightpathcareers.jcdigital.dev/",
     category: "Wordpress Web Development",
-    filterCategory: "Web Development",
+    filterCategory: "WordPress Web Development",
     image: "/portfolio/brightpath-careers.jpg",
   },
   {
     title: "ClarityOps Consulting",
     url: "https://clarityopsconsulting.jcdigital.dev/",
     category: "Wordpress Web Development",
-    filterCategory: "Web Development",
+    filterCategory: "WordPress Web Development",
     image: "/portfolio/clarity-ops-consulting.jpg",
   },
   {
@@ -113,7 +113,7 @@ export const projects: Project[] = [
     title: "Eleanor & Adrian Wedding",
     url: "https://sample.clarkuyanguren.com/",
     category: "Wordpress Web Development",
-    filterCategory: "Web Development",
+    filterCategory: "WordPress Web Development",
     image: "/portfolio/sample-clark.jpg",
   },
 ];

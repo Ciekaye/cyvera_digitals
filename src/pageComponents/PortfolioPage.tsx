@@ -10,7 +10,7 @@ import { projects, FilterCategory } from '@/data/portfolio';
 const FILTERS: { label: string; value: FilterCategory | 'All' }[] = [
   { label: 'All', value: 'All' },
   { label: 'Web Development', value: 'Web Development' },
-  { label: 'UI & UX', value: 'UI & UX' },
+  { label: 'WordPress Web Development', value: 'WordPress Web Development' },
   { label: 'Graphic Design', value: 'Graphic Design' },
   { label: 'Social Media Management', value: 'Social Media Management' },
 ];
