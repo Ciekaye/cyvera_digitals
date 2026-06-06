@@ -4,6 +4,7 @@ import Script from 'next/script';
 import './globals.css';
 import { Providers } from './providers';
 import { Analytics } from "@vercel/analytics/next"
+import JsonLd from '@/components/JsonLd';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -28,10 +29,53 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://cyveradigitals.com'),
   title: {
     default: 'Cyvera Digitals | Creative Digital Agency for Modern Businesses',
-    template: '%s',
+    template: '%s | Cyvera Digitals',
   },
   description:
-    'Build. Design. Grow. Your digital success, engineered from the ground up. Full-stack digital solutions that attract, engage, and convert.',
+    'Cyvera Digitals is a creative digital agency offering web development, UI/UX design, graphic design, branding, and social media management to help modern businesses grow online.',
+  keywords: [
+    'digital agency',
+    'web development',
+    'web design',
+    'UI UX design',
+    'graphic design',
+    'branding',
+    'social media management',
+    'Cyvera Digitals',
+    'website development',
+    'brand identity',
+  ],
+  authors: [{ name: 'Cyvera Digitals', url: 'https://cyveradigitals.com' }],
+  creator: 'Cyvera Digitals',
+  publisher: 'Cyvera Digitals',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    siteName: 'Cyvera Digitals',
+    title: 'Cyvera Digitals | Creative Digital Agency',
+    description:
+      'Build. Design. Grow. Full-stack digital solutions — web development, branding, UI/UX, and social media management — that attract, engage, and convert.',
+    images: [
+      {
+        url: '/logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'Cyvera Digitals – Creative Digital Agency',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Cyvera Digitals | Creative Digital Agency',
+    description:
+      'Build. Design. Grow. Full-stack digital solutions that attract, engage, and convert.',
+    images: ['/logo.png'],
+  },
   icons: {
     icon: '/favicon.ico',
     apple: '/apple-touch-icon.png',
@@ -46,6 +90,34 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${poppins.variable} ${inter.variable}`}>
       <body>
+        <JsonLd data={{
+          '@context': 'https://schema.org',
+          '@graph': [
+            {
+              '@type': 'Organization',
+              '@id': 'https://cyveradigitals.com/#organization',
+              name: 'Cyvera Digitals',
+              url: 'https://cyveradigitals.com',
+              logo: {
+                '@type': 'ImageObject',
+                url: 'https://cyveradigitals.com/logo.png',
+              },
+              sameAs: [],
+              contactPoint: {
+                '@type': 'ContactPoint',
+                contactType: 'customer service',
+                url: 'https://cyveradigitals.com/contact',
+              },
+            },
+            {
+              '@type': 'WebSite',
+              '@id': 'https://cyveradigitals.com/#website',
+              url: 'https://cyveradigitals.com',
+              name: 'Cyvera Digitals',
+              publisher: { '@id': 'https://cyveradigitals.com/#organization' },
+            },
+          ],
+        }} />
         {children}
         <Analytics />
         <Script
