@@ -94,6 +94,12 @@ export const projects: Project[] = [
     // Client-provided preview image.
     image: "/portfolio/aetheria-estates.png",
   },
+  {
+    title: "Eleanor & Adrian Wedding",
+    url: "https://sample.clarkuyanguren.com/",
+    category: "Wordpress Web Development",
+    image: "/portfolio/sample-clark.jpg",
+  },
 ];
 
 /**
