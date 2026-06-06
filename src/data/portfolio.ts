@@ -103,7 +103,7 @@ export const projects: Project[] = [
  */
 export function getPreviewUrl(
   project: Project,
-  width = 1600,
+  width = 1200,
   height = 900
 ): string {
   if (project.image) return project.image;
