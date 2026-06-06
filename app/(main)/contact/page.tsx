@@ -33,6 +33,13 @@ export default function ContactPage() {
         name: 'Contact Cyvera Digitals',
         description: 'Reach out to Cyvera Digitals for web development, design, and digital marketing inquiries.',
         isPartOf: { '@id': 'https://cyveradigitals.com/#website' },
+        mainEntity: {
+          '@type': 'Organization',
+          name: 'Cyvera Digitals',
+          email: 'info@cyveradigitals.com',
+          telephone: '+63-976-377-5135',
+          url: 'https://cyveradigitals.com',
+        },
         breadcrumb: {
           '@type': 'BreadcrumbList',
           itemListElement: [

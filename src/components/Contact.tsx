@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import GridBackground from '@/components/GridBackground';
+import { Mail, Phone, MessageCircle } from 'lucide-react';
 
 export default function Contact() {
   const ref = useRef(null);
@@ -147,21 +148,53 @@ export default function Contact() {
               <p className="text-sm font-semibold tracking-wide uppercase text-gray-500 mb-2">
                 Contact Info
               </p>
-              <p className="text-lg text-gray-800 mb-4">
-                Prefer WhatsApp, Viber, or email? Plug in your official details here when you&apos;re ready.
+              <p className="text-lg text-gray-800 mb-6">
+                Prefer to reach us directly? We&apos;re just a message away.
               </p>
-              <ul className="space-y-3 text-gray-700 text-sm">
+              <ul className="space-y-4">
                 <li>
-                  <span className="font-semibold text-gray-900">WhatsApp Business:</span>{' '}
-                  <span className="text-gray-700">(Add WA number here)</span>
+                  <a
+                    href="https://wa.me/639763775135"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 group"
+                  >
+                    <span className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(135deg,#25D366,#128C7E)' }}>
+                      <MessageCircle size={18} className="text-white" />
+                    </span>
+                    <span>
+                      <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">WhatsApp</p>
+                      <p className="text-sm font-medium text-gray-900 group-hover:text-secondary-purple transition-colors">+63 976 377 5135</p>
+                    </span>
+                  </a>
                 </li>
                 <li>
-                  <span className="font-semibold text-gray-900">Viber Business:</span>{' '}
-                  <span className="text-gray-700">(Add Viber number here)</span>
+                  <a
+                    href="viber://chat?number=639763775135"
+                    className="flex items-center gap-3 group"
+                  >
+                    <span className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(135deg,#7360F2,#5B4FCF)' }}>
+                      <Phone size={18} className="text-white" />
+                    </span>
+                    <span>
+                      <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">Viber</p>
+                      <p className="text-sm font-medium text-gray-900 group-hover:text-secondary-purple transition-colors">+63 976 377 5135</p>
+                    </span>
+                  </a>
                 </li>
                 <li>
-                  <span className="font-semibold text-gray-900">Email:</span>{' '}
-                  <span className="text-gray-700">(Add official email here)</span>
+                  <a
+                    href="mailto:info@cyveradigitals.com"
+                    className="flex items-center gap-3 group"
+                  >
+                    <span className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(135deg,#7b19e7,#c02b7d)' }}>
+                      <Mail size={18} className="text-white" />
+                    </span>
+                    <span>
+                      <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">Email</p>
+                      <p className="text-sm font-medium text-gray-900 group-hover:text-secondary-purple transition-colors">info@cyveradigitals.com</p>
+                    </span>
+                  </a>
                 </li>
               </ul>
             </div>
@@ -269,8 +302,9 @@ export default function Contact() {
                     Select one
                   </option>
                   <option value="web-app">Web / App Development</option>
-                  <option value="design">Graphics / UI-UX Design</option>
-                  <option value="va-growth">VA + Growth Support</option>
+                  <option value="wordpress">WordPress Web Development</option>
+                  <option value="design">Graphic / UI&UX Design</option>
+                  <option value="smm">Social Media Management</option>
                   <option value="other">Other / Not sure yet</option>
                 </select>
               </div>
