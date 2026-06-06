@@ -1,12 +1,28 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import GridBackground from '@/components/GridBackground';
 import FinalCTA from '@/components/FinalCTA';
 import PortfolioCard from '@/components/PortfolioCard';
-import { projects } from '@/data/portfolio';
+import { projects, FilterCategory } from '@/data/portfolio';
+
+const FILTERS: { label: string; value: FilterCategory | 'All' }[] = [
+  { label: 'All', value: 'All' },
+  { label: 'Web Development', value: 'Web Development' },
+  { label: 'UI & UX', value: 'UI & UX' },
+  { label: 'Graphic Design', value: 'Graphic Design' },
+  { label: 'Social Media Management', value: 'Social Media Management' },
+];
 
 export default function PortfolioPage() {
+  const [active, setActive] = useState<FilterCategory | 'All'>('All');
+
+  const filtered =
+    active === 'All'
+      ? projects
+      : projects.filter((p) => p.filterCategory === active);
+
   return (
     <>
       {/* Hero */}
@@ -67,38 +83,82 @@ export default function PortfolioPage() {
                 <stop offset="100%" stopColor="#60a5fa" stopOpacity="0.3" />
               </linearGradient>
             </defs>
-
-            {/* Back wave */}
             <path fill="url(#portfolio-wave3)" opacity="0.7" d="M0,320 C200,200 400,420 600,300 C800,180 1000,380 1200,280 C1350,200 1420,320 1440,300 L1440,600 L0,600 Z" />
-
-            {/* Mid wave */}
             <path fill="url(#portfolio-wave2)" opacity="0.85" d="M0,380 C160,280 360,460 580,350 C760,250 980,430 1180,330 C1340,250 1410,360 1440,340 L1440,600 L0,600 Z" />
-
-            {/* Front wave */}
             <path fill="url(#portfolio-wave1)" opacity="0.9" d="M0,420 C180,320 360,500 580,400 C760,310 960,480 1180,380 C1340,300 1410,400 1440,380 L1440,600 L0,600 Z" />
-
-            {/* Fine line details */}
             <path fill="none" stroke="#e879f9" strokeWidth="1.2" opacity="0.35" d="M0,440 C200,360 400,500 620,420 C820,340 1020,490 1240,400 C1370,340 1420,420 1440,400" />
             <path fill="none" stroke="#a78bfa" strokeWidth="1" opacity="0.3" d="M0,460 C180,380 380,520 600,440 C800,360 1000,510 1220,420 C1360,360 1420,440 1440,425" />
           </svg>
         </div>
+
         <div className="relative z-10 container mx-auto px-4 lg:px-8">
-          {projects.length === 0 ? (
-            <div className="text-center py-20">
-              <p className="text-gray-500 text-lg">
-                Projects coming soon. Check back shortly.
+          {/* Filter pills */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-wrap justify-center gap-3 mb-12"
+          >
+            {FILTERS.map((f) => {
+              const isActive = active === f.value;
+              return (
+                <button
+                  key={f.value}
+                  onClick={() => setActive(f.value)}
+                  className="relative px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-200 focus:outline-none"
+                  style={{
+                    color: isActive ? '#fff' : '#7b19e7',
+                    border: isActive ? 'none' : '1.5px solid #c4b5fd',
+                    background: isActive ? 'transparent' : 'rgba(245,235,255,0.7)',
+                  }}
+                >
+                  {isActive && (
+                    <motion.span
+                      layoutId="filter-pill"
+                      className="absolute inset-0 rounded-full"
+                      style={{ background: 'linear-gradient(135deg,#7b19e7,#c02b7d)' }}
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                  <span className="relative z-10">{f.label}</span>
+                </button>
+              );
+            })}
+          </motion.div>
+
+          {/* Grid */}
+          {filtered.length === 0 ? (
+            <motion.div
+              key="empty"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="text-center py-20"
+            >
+              <p className="text-gray-400 text-lg">
+                No projects in this category yet — check back soon.
               </p>
-            </div>
+            </motion.div>
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {projects.map((project, index) => (
-                <PortfolioCard
-                  key={project.url}
-                  project={project}
-                  delay={index * 0.1}
-                />
-              ))}
-            </div>
+            <motion.div
+              layout
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
+            >
+              <AnimatePresence mode="popLayout">
+                {filtered.map((project, index) => (
+                  <motion.div
+                    key={project.url}
+                    layout
+                    initial={{ opacity: 0, scale: 0.92, y: 20 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.88, y: -10 }}
+                    transition={{ duration: 0.35, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    <PortfolioCard project={project} />
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </motion.div>
           )}
         </div>
       </section>

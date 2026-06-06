@@ -17,10 +17,19 @@
  *   }
  */
 
+export type FilterCategory =
+  | 'Web Development'
+  | 'UI & UX'
+  | 'Graphic Design'
+  | 'Social Media Management';
+
 export type Project = {
   title: string;
   url: string;
+  /** Display label shown on the card (free-form). */
   category?: string;
+  /** Which filter tab this project belongs to. */
+  filterCategory?: FilterCategory;
   description?: string;
   /** Optional manual image override. If unset, falls back to mShots. */
   image?: string;
@@ -37,67 +46,74 @@ export const projects: Project[] = [
     title: "Vireo Cardiology",
     url: "https://vireocardiology.cyveradigitals.com/",
     category: "Web Development",
+    filterCategory: "Web Development",
   },
   {
     title: "Beauty E-Commerce",
     url: "https://beauty-e-commerse.cyveradigitals.com/",
     category: "E-Commerce",
-    // Manual screenshot override — avoids the mShots async-generation
-    // placeholder that was sticking on this newly-added entry.
+    filterCategory: "Web Development",
     image: "/portfolio/beauty-ecommerce.jpg",
   },
   {
     title: "Helio Grid",
     url: "https://hello-grid.cyveradigitals.com/",
     category: "Web Development",
+    filterCategory: "Web Development",
   },
   {
     title: "By Kate Cristyl",
     url: "https://bykatecristyl.com/",
     category: "Brand & Web Design",
+    filterCategory: "UI & UX",
   },
   {
     title: "Dental App",
     url: "https://dental-app.cyveradigitals.com/",
     category: "Web Application",
+    filterCategory: "Web Development",
     previewRefresh: 2,
   },
   {
     title: "Bark & Bathe Lounge",
     url: "https://bark-bathe-lounge.cyveradigitals.com/",
     category: "Web Design",
-    // Client-provided preview image.
+    filterCategory: "UI & UX",
     image: "/portfolio/bark-bathe-lounge.png",
   },
   {
     title: "Zenith Financial Advisory",
     url: "https://zenithfinancialadvisory.jcdigital.dev/",
     category: "Wordpress Web Development",
+    filterCategory: "Web Development",
     image: "/portfolio/zenith-financial-advisory.jpg",
   },
   {
     title: "BrightPath Careers",
     url: "https://brightpathcareers.jcdigital.dev/",
     category: "Wordpress Web Development",
+    filterCategory: "Web Development",
     image: "/portfolio/brightpath-careers.jpg",
   },
   {
     title: "ClarityOps Consulting",
     url: "https://clarityopsconsulting.jcdigital.dev/",
     category: "Wordpress Web Development",
+    filterCategory: "Web Development",
     image: "/portfolio/clarity-ops-consulting.jpg",
   },
   {
     title: "Aetheria Estates",
     url: "https://realestate-sample-site.cyveradigitals.com/",
     category: "Web Development",
-    // Client-provided preview image.
+    filterCategory: "Web Development",
     image: "/portfolio/aetheria-estates.png",
   },
   {
     title: "Eleanor & Adrian Wedding",
     url: "https://sample.clarkuyanguren.com/",
     category: "Wordpress Web Development",
+    filterCategory: "Web Development",
     image: "/portfolio/sample-clark.jpg",
   },
 ];
