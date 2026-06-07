@@ -44,13 +44,6 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    title: 'Car Dealership Funnel',
-    url: 'https://cardealership-funnel.clarkuyanguren.com',
-    category: 'Lead Generation Funnel',
-    filterCategory: 'Funnels',
-    description: 'A high-converting vehicle consultation funnel built to capture and qualify leads for a car dealership agent.',
-  },
-  {
     title: "Vireo Cardiology",
     url: "https://vireocardiology.cyveradigitals.com/",
     category: "Web Development",
@@ -123,6 +116,14 @@ export const projects: Project[] = [
     category: "Wordpress Web Development",
     filterCategory: "WordPress Web Development",
     image: "/portfolio/sample-clark.jpg",
+  },
+  {
+    title: 'Car Dealership Funnel',
+    url: 'https://cardealership-funnel.clarkuyanguren.com',
+    category: 'Lead Generation Funnel',
+    filterCategory: 'Funnels',
+    description: 'A high-converting vehicle consultation funnel built to capture and qualify leads for a car dealership agent.',
+    image: '/portfolio/car-dealership-funnel.png',
   },
 ];
 
