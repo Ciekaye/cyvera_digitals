@@ -13,6 +13,7 @@ const FILTERS: { label: string; value: FilterCategory | 'All' }[] = [
   { label: 'WordPress Web Development', value: 'WordPress Web Development' },
   { label: 'Graphic Design', value: 'Graphic Design' },
   { label: 'Social Media Management', value: 'Social Media Management' },
+  { label: 'Funnels', value: 'Funnels' },
 ];
 
 export default function PortfolioPage() {

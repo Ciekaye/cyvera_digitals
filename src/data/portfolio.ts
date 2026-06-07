@@ -21,7 +21,8 @@ export type FilterCategory =
   | 'Web Development'
   | 'WordPress Web Development'
   | 'Graphic Design'
-  | 'Social Media Management';
+  | 'Social Media Management'
+  | 'Funnels';
 
 export type Project = {
   title: string;
@@ -42,6 +43,13 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    title: 'Car Dealership Funnel',
+    url: 'https://cardealership-funnel.clarkuyanguren.com',
+    category: 'Lead Generation Funnel',
+    filterCategory: 'Funnels',
+    description: 'A high-converting vehicle consultation funnel built to capture and qualify leads for a car dealership agent.',
+  },
   {
     title: "Vireo Cardiology",
     url: "https://vireocardiology.cyveradigitals.com/",
