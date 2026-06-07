@@ -10,9 +10,11 @@ type Props = {
   project: Project;
   /** Stagger delay (seconds) for the pop-in animation. */
   delay?: number;
+  /** Whether to render the project description below the title. */
+  showDescription?: boolean;
 };
 
-export default function PortfolioCard({ project, delay = 0 }: Props) {
+export default function PortfolioCard({ project, delay = 0, showDescription = false }: Props) {
   const previewUrl = getPreviewUrl(project);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
@@ -58,7 +60,7 @@ export default function PortfolioCard({ project, delay = 0 }: Props) {
           </span>
         )}
         <h3 className="text-lg font-bold text-gray-900 mt-1">{project.title}</h3>
-        {project.description && (
+        {showDescription && project.description && (
           <p className="text-sm text-gray-600 mt-2 leading-relaxed">
             {project.description}
           </p>

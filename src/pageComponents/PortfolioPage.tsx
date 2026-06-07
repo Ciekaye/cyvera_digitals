@@ -155,7 +155,7 @@ export default function PortfolioPage() {
                     exit={{ opacity: 0, scale: 0.88, y: -10 }}
                     transition={{ duration: 0.35, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
                   >
-                    <PortfolioCard project={project} />
+                    <PortfolioCard project={project} showDescription={active === 'Funnels'} />
                   </motion.div>
                 ))}
               </AnimatePresence>
