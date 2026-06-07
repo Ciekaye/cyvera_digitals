@@ -18,6 +18,13 @@ interface SmoothScrollProviderProps {
   children: ReactNode;
 }
 
+// iOS Safari crashes when Lenis intercepts its native momentum scroll.
+// Detect iOS (including iPadOS in desktop-mode, which has maxTouchPoints > 1).
+const isIOS = () =>
+  typeof navigator !== 'undefined' &&
+  (/iPad|iPhone|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1));
+
 export const SmoothScrollProvider: React.FC<SmoothScrollProviderProps> = ({ children }) => {
   const lenisRef = useRef<Lenis | null>(null);
   const sectionsRef = useRef<string[]>(['hero', 'difference', 'tech-expertise', 'testimonials', 'promise', 'services']);
@@ -25,12 +32,15 @@ export const SmoothScrollProvider: React.FC<SmoothScrollProviderProps> = ({ chil
   const lastHashRef = useRef<string>('');
 
   useEffect(() => {
+    // Skip Lenis on iOS — Safari's native momentum scroll is better and Lenis causes repeated crashes.
+    if (isIOS()) return;
+
     // Initialize Lenis with Framer-like settings
     const lenis = new Lenis({
       duration: 1.2, // Smooth duration
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Custom easing for ultra-smooth feel
       wheelMultiplier: 1,
-      touchMultiplier: 1,
+      touchMultiplier: 2,
       infinite: false,
     });
 
