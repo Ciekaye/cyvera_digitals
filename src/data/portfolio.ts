@@ -125,6 +125,14 @@ export const projects: Project[] = [
     description: 'A high-converting vehicle consultation funnel built to capture and qualify leads for a car dealership agent.',
     image: '/portfolio/car-dealership-funnel.png',
   },
+  {
+    title: 'Roofing Lead Gen Funnel',
+    url: 'https://roofing-leadgen-funnel.clarkuyanguren.com/',
+    category: 'Lead Generation Funnel',
+    filterCategory: 'Funnels',
+    description: 'A full-featured roofing inspection funnel with a multi-step qualification form, scroll animations, and a clean modern design system.',
+    image: '/portfolio/roofing-leadgen-funnel.png',
+  },
 ];
 
 /**
