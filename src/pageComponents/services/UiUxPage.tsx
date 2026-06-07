@@ -168,8 +168,8 @@ export default function UiUxPage() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              initial={{ x: 50 }}
+              animate={isInView ? { x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.3 }}
               className="aspect-square bg-gradient-to-br from-purple-100 to-purple-50 rounded-2xl overflow-hidden shadow-2xl"
             >
@@ -177,6 +177,8 @@ export default function UiUxPage() {
                 src="/uiux.jpg"
                 alt="UI & UX Strategy"
                 width={800} height={800}
+                priority
+                sizes="(min-width: 1024px) 50vw, 100vw"
                 className="w-full h-full object-cover"
               />
             </motion.div>

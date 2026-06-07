@@ -8,16 +8,18 @@ import JsonLd from '@/components/JsonLd';
 
 const poppins = Poppins({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
+  weight: ['400', '500', '600', '700'],
   display: 'swap',
   variable: '--font-poppins',
+  preload: true,
 });
 
 const inter = Inter({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
+  weight: ['400', '500', '600', '700'],
   display: 'swap',
   variable: '--font-inter',
+  preload: true,
 });
 
 export const viewport: Viewport = {
@@ -122,9 +124,9 @@ export default function RootLayout({
         <Analytics />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-NR8G7YKZRF"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}

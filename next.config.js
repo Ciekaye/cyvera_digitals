@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'framer-motion'],
+  },
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback = {
@@ -23,7 +26,13 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ['images.unsplash.com', 'cdn.jsdelivr.net', 'cdn.simpleicons.org', 's.wordpress.com'],
+    formats: ['image/avif', 'image/webp'],
+    remotePatterns: [
+      { protocol: 'https', hostname: 'images.unsplash.com' },
+      { protocol: 'https', hostname: 'cdn.jsdelivr.net' },
+      { protocol: 'https', hostname: 'cdn.simpleicons.org' },
+      { protocol: 'https', hostname: 's.wordpress.com' },
+    ],
   },
 };
 

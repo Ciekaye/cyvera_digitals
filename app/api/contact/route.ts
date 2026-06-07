@@ -1,8 +1,6 @@
 import { Resend } from 'resend';
 import { NextRequest, NextResponse } from 'next/server';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 interface ContactFormData {
   fullName: string;
   businessName: string;
@@ -34,13 +32,16 @@ export async function POST(request: NextRequest) {
 
     const adminEmail = process.env.ADMIN_EMAIL;
     const senderEmail = process.env.ADMIN_SENDER_EMAIL;
+    const apiKey = process.env.RESEND_API_KEY;
 
-    if (!adminEmail || !senderEmail) {
+    if (!adminEmail || !senderEmail || !apiKey) {
       return NextResponse.json(
         { error: 'Server configuration error' },
         { status: 500 }
       );
     }
+
+    const resend = new Resend(apiKey);
 
     // Send confirmation email to client
     const clientEmailResponse = await resend.emails.send({

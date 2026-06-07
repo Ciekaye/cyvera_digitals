@@ -147,8 +147,8 @@ function ServicesHero() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ x: 50 }}
+            animate={{ x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="relative"
           >
@@ -156,6 +156,8 @@ function ServicesHero() {
               src="/services.jpg"
               alt="Digital Services"
               width={800} height={600}
+              priority
+              sizes="(min-width: 1024px) 50vw, 100vw"
               className="w-full h-auto rounded-2xl shadow-2xl"
             />
           </motion.div>
@@ -479,12 +481,12 @@ const designServices = [
 ];
 
 const designPreviews = [
-  { label: 'Brand Identity', image: '/brandidentity.png' },
-  { label: 'Logo Design', image: '/logodesign.png' },
-  { label: 'Social Templates', image: '/socialtemplates.png' },
-  { label: 'Marketing Assets', image: '/marketingassets.png' },
-  { label: 'Presentation Design', image: '/presentationdesign.png' },
-  { label: 'Packaging', image: '/packaging.png' },
+  { label: 'Brand Identity', image: '/brandidentity.jpg' },
+  { label: 'Logo Design', image: '/logodesign.jpg' },
+  { label: 'Social Templates', image: '/socialtemplates.jpg' },
+  { label: 'Marketing Assets', image: '/marketingassets.jpg' },
+  { label: 'Presentation Design', image: '/presentationdesign.jpg' },
+  { label: 'Packaging', image: '/packaging.jpg' },
 ];
 
 function GraphicDesignSection() {

@@ -150,12 +150,12 @@ export default function PortfolioPage() {
                   <motion.div
                     key={project.url}
                     layout
-                    initial={{ opacity: 0, scale: 0.92, y: 20 }}
+                    initial={index < 3 ? false : { opacity: 0, scale: 0.92, y: 20 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.88, y: -10 }}
                     transition={{ duration: 0.35, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
                   >
-                    <PortfolioCard project={project} showDescription={active === 'Funnels'} />
+                    <PortfolioCard project={project} showDescription={active === 'Funnels'} priority={index < 3} />
                   </motion.div>
                 ))}
               </AnimatePresence>

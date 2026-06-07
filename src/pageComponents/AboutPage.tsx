@@ -131,8 +131,8 @@ export default function AboutPage() {
             </div>
             
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={heroInView ? { opacity: 1, x: 0 } : {}}
+              initial={{ x: 50 }}
+              animate={heroInView ? { x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.3 }}
               className="relative"
             >
@@ -140,6 +140,8 @@ export default function AboutPage() {
                 src="/aboutUs.jpg"
                 alt="About Cyvera Digitals"
                 width={800} height={600}
+                priority
+                sizes="(min-width: 1024px) 50vw, 100vw"
                 className="w-full h-auto rounded-2xl shadow-2xl"
               />
             </motion.div>

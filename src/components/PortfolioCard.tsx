@@ -12,9 +12,11 @@ type Props = {
   delay?: number;
   /** Whether to render the project description below the title. */
   showDescription?: boolean;
+  /** Eagerly load + prioritize the image (use for above-the-fold cards). */
+  priority?: boolean;
 };
 
-export default function PortfolioCard({ project, delay = 0, showDescription = false }: Props) {
+export default function PortfolioCard({ project, delay = 0, showDescription = false, priority = false }: Props) {
   const previewUrl = getPreviewUrl(project);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
@@ -25,8 +27,8 @@ export default function PortfolioCard({ project, delay = 0, showDescription = fa
       href={project.url}
       target="_blank"
       rel="noopener noreferrer"
-      initial={{ opacity: 0, scale: 0.9, y: 30 }}
-      animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
+      initial={priority ? false : { opacity: 0, scale: 0.9, y: 30 }}
+      animate={priority || isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay, ease: [0.16, 1, 0.3, 1] }}
       whileHover={{ y: -10 }}
       className="group card-modern overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 cursor-pointer no-underline block"
@@ -36,6 +38,7 @@ export default function PortfolioCard({ project, delay = 0, showDescription = fa
           src={previewUrl}
           alt={project.title}
           fill
+          priority={priority}
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="object-cover group-hover:scale-105 transition-transform duration-500"
         />

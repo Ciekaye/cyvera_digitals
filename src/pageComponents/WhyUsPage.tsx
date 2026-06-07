@@ -187,8 +187,8 @@ export default function WhyUsPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-32">
             <div>
               <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={heroInView ? { opacity: 1, y: 0 } : {}}
+                initial={{ y: 30 }}
+                animate={heroInView ? { y: 0 } : {}}
                 transition={{ duration: 0.8 }}
                 className="text-display text-gray-900 mb-6"
               >
@@ -217,8 +217,8 @@ export default function WhyUsPage() {
             </div>
             
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={heroInView ? { opacity: 1, x: 0 } : {}}
+              initial={{ x: 50 }}
+              animate={heroInView ? { x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.3 }}
               className="relative"
             >
@@ -226,6 +226,8 @@ export default function WhyUsPage() {
                 src="/hands-joined-by-team.jpg"
                 alt="Team collaboration"
                 width={800} height={600}
+                priority
+                sizes="(min-width: 1024px) 50vw, 100vw"
                 className="w-full h-auto rounded-2xl shadow-2xl"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-purple-900/20 to-transparent rounded-2xl" />
@@ -299,6 +301,7 @@ export default function WhyUsPage() {
                     src={item.image}
                     alt={item.title}
                     width={800} height={1000}
+                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
                     className="w-full h-full object-cover object-top"
                   />
                 </div>
