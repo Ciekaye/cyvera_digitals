@@ -8,6 +8,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import FinalCTA from '@/components/FinalCTA';
 import GridBackground from '@/components/GridBackground';
+import TeamShowcase from '@/components/ui/team-showcase';
 
 export default function AboutPage() {
   const heroRef = useRef(null);
@@ -27,6 +28,9 @@ export default function AboutPage() {
 
   const ctaRef = useRef(null);
   const ctaInView = useInView(ctaRef, { once: true, margin: '-80px' });
+
+  const teamRef = useRef(null);
+  const teamInView = useInView(teamRef, { once: true, margin: '-80px' });
 
   const values = [
     {
@@ -252,6 +256,30 @@ export default function AboutPage() {
               </div>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* ── Meet the Founders ── */}
+      <section ref={teamRef} className="py-24 bg-white">
+        <div className="container mx-auto px-4 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={teamInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-14"
+          >
+            <h2 className="text-heading text-gray-900 mb-4">Meet the Founders</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed">
+              Three people, one shared belief — that every business deserves a digital presence built with intention, craft, and care.
+            </p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={teamInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <TeamShowcase />
+          </motion.div>
         </div>
       </section>
 
