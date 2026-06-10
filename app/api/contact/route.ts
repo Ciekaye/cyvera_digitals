@@ -9,8 +9,57 @@ interface ContactFormData {
   projectDetails: string;
 }
 
+const MAX_LENGTHS = {
+  fullName: 100,
+  businessName: 150,
+  email: 254,
+  projectType: 100,
+  projectDetails: 5000,
+} as const;
+
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+// Simple in-memory rate limiter: max 3 submissions per IP per 10 minutes.
+// Resets when the serverless instance recycles, which is acceptable for a contact form.
+const RATE_LIMIT = 3;
+const RATE_WINDOW_MS = 10 * 60 * 1000;
+const submissions = new Map<string, number[]>();
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const recent = (submissions.get(ip) ?? []).filter((t) => now - t < RATE_WINDOW_MS);
+  if (recent.length >= RATE_LIMIT) {
+    submissions.set(ip, recent);
+    return true;
+  }
+  recent.push(now);
+  submissions.set(ip, recent);
+  // Prevent unbounded memory growth
+  if (submissions.size > 10000) {
+    for (const [key, times] of submissions) {
+      if (times.every((t) => now - t >= RATE_WINDOW_MS)) submissions.delete(key);
+    }
+  }
+  return false;
+}
+
 export async function POST(request: NextRequest) {
   try {
+    const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown';
+    if (isRateLimited(ip)) {
+      return NextResponse.json(
+        { error: 'Too many submissions. Please try again later.' },
+        { status: 429 }
+      );
+    }
+
     const body: ContactFormData = await request.json();
 
     // Validate required fields
@@ -21,6 +70,17 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Enforce field length limits
+    for (const [field, max] of Object.entries(MAX_LENGTHS)) {
+      const value = body[field as keyof ContactFormData];
+      if (typeof value === 'string' && value.length > max) {
+        return NextResponse.json(
+          { error: `${field} is too long` },
+          { status: 400 }
+        );
+      }
+    }
+
     // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(body.email)) {
@@ -29,6 +89,15 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
+
+    // Escape all user input before interpolating into email HTML
+    const safe = {
+      fullName: escapeHtml(body.fullName),
+      businessName: escapeHtml(body.businessName || ''),
+      email: escapeHtml(body.email),
+      projectType: escapeHtml(body.projectType || ''),
+      projectDetails: escapeHtml(body.projectDetails),
+    };
 
     const adminEmail = process.env.ADMIN_EMAIL;
     const senderEmail = process.env.ADMIN_SENDER_EMAIL;
@@ -69,8 +138,8 @@ export async function POST(request: NextRequest) {
                 <h1>Thank You for Getting in Touch!</h1>
               </div>
               <div class="content">
-                <p>Hi <strong>${body.fullName}</strong>,</p>
-                <p>We've received your inquiry for <strong>${body.businessName || 'your project'}</strong>. We're excited to learn more about your vision!</p>
+                <p>Hi <strong>${safe.fullName}</strong>,</p>
+                <p>We've received your inquiry for <strong>${safe.businessName || 'your project'}</strong>. We're excited to learn more about your vision!</p>
                 
                 <h3>What happens next?</h3>
                 <ul>
@@ -80,8 +149,8 @@ export async function POST(request: NextRequest) {
                 </ul>
 
                 <h3>Your Inquiry Summary:</h3>
-                <p><strong>Project Type:</strong> ${body.projectType}</p>
-                <p><strong>Details:</strong> ${body.projectDetails.substring(0, 200)}${body.projectDetails.length > 200 ? '...' : ''}</p>
+                <p><strong>Project Type:</strong> ${safe.projectType}</p>
+                <p><strong>Details:</strong> ${safe.projectDetails.substring(0, 200)}${safe.projectDetails.length > 200 ? '...' : ''}</p>
 
                 <p style="margin-top: 30px; font-style: italic;">In the meantime, feel free to explore more about our services at CYVERA Digitals.</p>
               </div>
@@ -107,7 +176,7 @@ export async function POST(request: NextRequest) {
     const adminEmailResponse = await resend.emails.send({
       from: senderEmail,
       to: adminEmail,
-      subject: `New Contact Inquiry: ${body.fullName} - ${body.projectType}`,
+      subject: `New Contact Inquiry: ${body.fullName.replace(/[\r\n]/g, ' ')} - ${(body.projectType || '').replace(/[\r\n]/g, ' ')}`,
       html: `
         <!DOCTYPE html>
         <html>
@@ -131,27 +200,27 @@ export async function POST(request: NextRequest) {
               <div class="content">
                 <div class="field">
                   <div class="label">Full Name:</div>
-                  <div class="value">${body.fullName}</div>
+                  <div class="value">${safe.fullName}</div>
                 </div>
 
                 <div class="field">
                   <div class="label">Business/Brand:</div>
-                  <div class="value">${body.businessName || 'Not provided'}</div>
+                  <div class="value">${safe.businessName || 'Not provided'}</div>
                 </div>
 
                 <div class="field">
                   <div class="label">Email:</div>
-                  <div class="value"><a href="mailto:${body.email}">${body.email}</a></div>
+                  <div class="value"><a href="mailto:${safe.email}">${safe.email}</a></div>
                 </div>
 
                 <div class="field">
                   <div class="label">Project Type:</div>
-                  <div class="value">${body.projectType}</div>
+                  <div class="value">${safe.projectType}</div>
                 </div>
 
                 <div class="field">
                   <div class="label">Project Details:</div>
-                  <div class="value">${body.projectDetails.replace(/\n/g, '<br>')}</div>
+                  <div class="value">${safe.projectDetails.replace(/\n/g, '<br>')}</div>
                 </div>
 
                 <hr style="margin-top: 30px; border: none; border-top: 1px solid #d1d5db;">
