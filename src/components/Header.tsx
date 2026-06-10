@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Code, Layers, Palette, Share2 } from 'lucide-react';
+import { Menu, X, Code, Layers, Palette, Share2, TrendingUp } from 'lucide-react';
 import { useState, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -12,6 +12,7 @@ const serviceSubPages = [
   { label: 'UI & UX Strategy', path: '/services/ui-ux-strategy', icon: Layers },
   { label: 'Graphic & Brand Design', path: '/services/graphic-brand-design', icon: Palette },
   { label: 'Social Media Management', path: '/services/social-media-management', icon: Share2 },
+  { label: 'SEO', path: '/services/seo', icon: TrendingUp },
 ];
 
 export default function Header() {

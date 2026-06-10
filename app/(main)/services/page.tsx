@@ -67,6 +67,10 @@ export default function Page() {
               '@type': 'ListItem', position: 4,
               item: { '@type': 'Service', name: 'Social Media Management', url: 'https://cyveradigitals.com/services/social-media-management' },
             },
+            {
+              '@type': 'ListItem', position: 5,
+              item: { '@type': 'Service', name: 'SEO', url: 'https://cyveradigitals.com/services/seo' },
+            },
           ],
         },
       }} />

@@ -24,6 +24,7 @@ const sections = [
       { name: 'UI & UX Strategy', href: '/services/ui-ux-strategy' },
       { name: 'Graphic Design', href: '/services/graphic-brand-design' },
       { name: 'Social Media Management', href: '/services/social-media-management' },
+      { name: 'SEO', href: '/services/seo' },
     ],
   },
   {

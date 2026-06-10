@@ -13,6 +13,7 @@ const staticRoutes = [
   '/services/ui-ux-strategy',
   '/services/graphic-brand-design',
   '/services/social-media-management',
+  '/services/seo',
   '/portfolio',
   '/pricing',
   '/blog',

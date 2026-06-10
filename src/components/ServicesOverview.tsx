@@ -57,6 +57,18 @@ export default function ServicesOverview() {
       tags: ["Social Media", "Marketing"],
       rating: 4.7
     },
+    {
+      title: "SEO",
+      description: "Data-driven optimisations that grow your organic traffic, rankings, and leads.",
+      href: "/services/seo",
+      images: [
+        "/seo.jpg",
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=70",
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=70"
+      ],
+      tags: ["SEO", "Growth"],
+      rating: 4.8
+    },
   ];
 
   return (
@@ -80,7 +92,7 @@ export default function ServicesOverview() {
           Everything your business needs to stand out online, designed, built, and managed under one roof.
         </motion.p>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-8 justify-items-center">
           {services.map((service) => (
             <ServiceCard
               key={service.title}

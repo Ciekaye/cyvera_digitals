@@ -57,6 +57,7 @@ export default function HomePage() {
           'Graphic Design',
           'Brand Identity',
           'Social Media Management',
+          'SEO',
         ],
         areaServed: { '@type': 'Country', name: 'Worldwide' },
         hasOfferCatalog: {
@@ -67,6 +68,7 @@ export default function HomePage() {
             { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'UI/UX Strategy' } },
             { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Graphic & Brand Design' } },
             { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Social Media Management' } },
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'SEO' } },
           ],
         },
       }} />

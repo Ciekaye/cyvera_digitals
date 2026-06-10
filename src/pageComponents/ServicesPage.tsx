@@ -11,6 +11,7 @@ import {
   Image as ImageIcon, Stamp, Megaphone,
   CalendarDays, Camera, ChevronDown, ChevronRight,
   Instagram, Facebook,
+  TrendingUp, Search, FileText, MapPin, Link2,
 } from 'lucide-react';
 import FinalCTA from '@/components/FinalCTA';
 import GridBackground from '@/components/GridBackground';
@@ -50,6 +51,7 @@ export default function ServicesPage() {
       <UiUxSection />
       <GraphicDesignSection />
       <SocialMediaSection />
+      <SeoSection />
       <GuidedDecision />
       <FinalCTA />
     </div>
@@ -176,7 +178,7 @@ function ServicesHero() {
             </h2>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {overviewCards.map((card, i) => (
               <motion.button
                 key={card.title}
@@ -217,6 +219,7 @@ const overviewCards = [
   { icon: Layers, title: 'UI & UX Strategy', desc: 'User-focused design solutions that improve usability and engagement.', target: 'ui-ux', link: '/services/ui-ux-strategy' },
   { icon: Palette, title: 'Graphic & Brand Design', desc: 'Visual identities and design assets that communicate your brand clearly.', target: 'graphic-design', link: '/services/graphic-brand-design' },
   { icon: Share2, title: 'Social Media Management', desc: 'Content creation and management to keep your brand visible and consistent.', target: 'social-media', link: '/services/social-media-management' },
+  { icon: TrendingUp, title: 'SEO', desc: 'Data-driven optimisations that grow your organic traffic, rankings, and leads.', target: 'seo', link: '/services/seo' },
 ];
 
 /* ═══════════════════════════════════════════════════════════════
@@ -667,13 +670,93 @@ function SocialMediaSection() {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   8 · GUIDED DECISION
+   8 · SEO
+   ═══════════════════════════════════════════════════════════════ */
+const seoBullets = [
+  { icon: Search, label: 'Keyword research & strategy' },
+  { icon: FileText, label: 'On-page SEO optimisation' },
+  { icon: Wrench, label: 'Technical SEO & site health' },
+  { icon: MapPin, label: 'Local SEO & Google Business' },
+  { icon: Link2, label: 'Link building & authority' },
+  { icon: BarChart3, label: 'Monthly reporting & analysis' },
+];
+
+function SeoSection() {
+  return (
+    <section id="seo" className="py-24 scroll-mt-24 bg-white">
+      <div className="container mx-auto px-4 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
+          <FadeIn>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 border border-purple-100 mb-6">
+              <TrendingUp size={16} className="text-secondary-purple" />
+              <span className="text-sm font-semibold text-secondary-purple">Search Growth</span>
+            </div>
+            <h2 className="text-heading text-gray-900 mb-5">SEO</h2>
+            <p className="text-gray-600 leading-relaxed mb-8">
+              We help businesses climb the search rankings with technical precision, smart content strategy, and sustainable link-building.
+            </p>
+
+            <ul className="space-y-4 mb-8">
+              {seoBullets.map((b) => (
+                <li key={b.label} className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-purple-50 flex items-center justify-center flex-shrink-0">
+                    <b.icon size={20} className="text-secondary-purple" />
+                  </div>
+                  <span className="text-gray-700 font-medium">{b.label}</span>
+                </li>
+              ))}
+            </ul>
+
+            <a
+              href="/contact"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#C02B7D] text-white font-semibold no-underline shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
+            >
+              Start an SEO Project <ArrowRight size={16} />
+            </a>
+          </FadeIn>
+
+          <FadeIn delay={0.2}>
+            <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
+              <h3 className="text-lg font-bold text-gray-900 mb-6 text-center">What We Optimise</h3>
+              <div className="space-y-4">
+                {[
+                  { label: 'Technical SEO', desc: 'Site speed, crawlability, Core Web Vitals, structured data', pct: 92 },
+                  { label: 'On-Page SEO', desc: 'Titles, meta, headings, content, internal linking', pct: 88 },
+                  { label: 'Off-Page SEO', desc: 'Backlinks, citations, authority signals', pct: 76 },
+                  { label: 'Local SEO', desc: 'Google Business Profile, local citations, map pack', pct: 84 },
+                ].map((item) => (
+                  <div key={item.label} className="p-4 bg-gray-50 rounded-xl">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-sm font-semibold text-gray-900">{item.label}</span>
+                      <span className="text-xs font-bold text-secondary-purple">{item.pct}%</span>
+                    </div>
+                    <p className="text-xs text-gray-500 mb-2">{item.desc}</p>
+                    <div className="h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                      <div
+                        className="h-full rounded-full bg-gradient-to-r from-[#C02B7D] to-purple-400"
+                        style={{ width: `${item.pct}%` }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   9 · GUIDED DECISION
    ═══════════════════════════════════════════════════════════════ */
 const guidanceCards = [
   { label: 'I need a website', target: 'web-dev', icon: Monitor, color: 'from-purple-50 to-purple-100' },
   { label: 'I want better user experience', target: 'ui-ux', icon: Layers, color: 'from-pink-50 to-pink-100' },
   { label: 'I need branding & visuals', target: 'graphic-design', icon: Palette, color: 'from-blue-50 to-blue-100' },
   { label: 'I want online visibility', target: 'social-media', icon: Share2, color: 'from-orange-50 to-orange-100' },
+  { label: 'I want to rank on Google', target: 'seo', icon: TrendingUp, color: 'from-green-50 to-green-100' },
 ];
 
 function GuidedDecision() {
@@ -690,7 +773,7 @@ function GuidedDecision() {
           </p>
         </FadeIn>
 
-        <div className="grid sm:grid-cols-2 gap-5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {guidanceCards.map((card, i) => (
             <motion.button
               key={card.label}
