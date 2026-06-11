@@ -89,12 +89,12 @@ export const ServiceCard = ({
         transition: { type: 'spring', stiffness: 300, damping: 20 }
       }}
       className={cn(
-        'w-full max-w-sm overflow-hidden rounded-2xl border border-gray-200 bg-white text-gray-900 shadow-lg cursor-pointer',
+        'w-full max-w-sm h-full flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white text-gray-900 shadow-lg cursor-pointer',
         className
       )}
     >
       {/* Image Carousel Section */}
-      <div className="relative group h-64">
+      <div className="relative group h-64 flex-shrink-0">
         <AnimatePresence initial={false} custom={direction}>
           <motion.img
             key={currentIndex}
@@ -164,7 +164,7 @@ export const ServiceCard = ({
       </div>
 
       {/* Content Section */}
-      <motion.div variants={contentVariants} className="p-5 flex flex-col">
+      <motion.div variants={contentVariants} className="p-5 flex flex-col flex-1">
         <div className="space-y-2 flex-1">
           <motion.h3 variants={itemVariants} className="text-xl font-bold">
             {title}

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { posts } from '@/data/blog';
 import { guides } from '@/data/guides';
+import { founders } from '@/data/founders';
 
 const SITE = 'https://cyveradigitals.com';
 
@@ -40,6 +41,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
+  const founderEntries: MetadataRoute.Sitemap = founders.map((f) => ({
+    url: `${SITE}/founders/${f.slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }));
+
   const guideEntries: MetadataRoute.Sitemap = guides.map((g) => ({
     url: `${SITE}/guides/${g.slug}`,
     lastModified: new Date(g.updatedAt),
@@ -47,5 +55,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticEntries, ...guideEntries, ...blogEntries];
+  return [...staticEntries, ...founderEntries, ...guideEntries, ...blogEntries];
 }
