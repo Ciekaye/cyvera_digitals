@@ -111,14 +111,14 @@ export const projects: Project[] = [
     url: "https://realestate-sample-site.cyveradigitals.com/",
     category: "Web Development",
     filterCategory: "Web Development",
-    image: "/portfolio/aetheria-estates.png",
+    image: "/portfolio/aetheria-estates.jpg",
   },
   {
     title: "Eleanor & Adrian Wedding",
     url: "https://sample.clarkuyanguren.com/",
     category: "Wordpress Web Development",
     filterCategory: "WordPress Web Development",
-    image: "/portfolio/sample-clark.jpg",
+    image: "/portfolio/eleanor-adrian-wedding.jpg",
   },
   {
     title: 'Car Dealership Funnel',
@@ -126,7 +126,7 @@ export const projects: Project[] = [
     category: 'Lead Generation Funnel',
     filterCategory: 'Funnels',
     description: 'A high-converting vehicle consultation funnel built to capture and qualify leads for a car dealership agent.',
-    image: '/portfolio/car-dealership-funnel.png',
+    image: '/portfolio/car-dealership-funnel.jpg',
   },
   {
     title: 'Roofing Lead Gen Funnel',
@@ -134,7 +134,7 @@ export const projects: Project[] = [
     category: 'Lead Generation Funnel',
     filterCategory: 'Funnels',
     description: 'A full-featured roofing inspection funnel with a multi-step qualification form, scroll animations, and a clean modern design system.',
-    image: '/portfolio/roofing-leadgen-funnel.png',
+    image: '/portfolio/roofing-leadgen-funnel.jpg',
   },
 ];
 

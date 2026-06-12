@@ -47,24 +47,72 @@ export default function Hero() {
               <stop offset="60%" stopColor="#818cf8" stopOpacity="0.4" />
               <stop offset="100%" stopColor="#60a5fa" stopOpacity="0.5" />
             </linearGradient>
-            <filter id="blur-wave">
-              <feGaussianBlur stdDeviation="8" />
-            </filter>
           </defs>
 
-          {/* Back wave - blurred, lightest */}
-          <path fill="url(#wave3)" opacity="0.7" d="M0,320 C200,200 400,420 600,300 C800,180 1000,380 1200,280 C1350,200 1420,320 1440,300 L1440,600 L0,600 Z" />
+          {/* Waves are tileable (repeat every 1440 units) and drawn at 2x width,
+              then slid left by one tile via GPU-composited transforms — no repaints */}
+
+          {/* Back wave - lightest, slowest */}
+          <path
+            className="hero-wave hero-wave-back"
+            fill="url(#wave3)"
+            opacity="0.7"
+            d="M0,300 Q180,230 360,300 T720,300 T1080,300 T1440,300 T1800,300 T2160,300 T2520,300 T2880,300 L2880,600 L0,600 Z"
+          />
 
           {/* Mid wave */}
-          <path fill="url(#wave2)" opacity="0.85" d="M0,380 C160,280 360,460 580,350 C760,250 980,430 1180,330 C1340,250 1410,360 1440,340 L1440,600 L0,600 Z" />
+          <path
+            className="hero-wave hero-wave-mid"
+            fill="url(#wave2)"
+            opacity="0.85"
+            d="M0,350 Q120,290 240,350 T480,350 T720,350 T960,350 T1200,350 T1440,350 T1680,350 T1920,350 T2160,350 T2400,350 T2640,350 T2880,350 L2880,600 L0,600 Z"
+          />
 
-          {/* Front wave - sharpest, most vivid */}
-          <path fill="url(#wave1)" opacity="0.9" d="M0,420 C180,320 360,500 580,400 C760,310 960,480 1180,380 C1340,300 1410,400 1440,380 L1440,600 L0,600 Z" />
+          {/* Front wave - sharpest, most vivid, fastest */}
+          <path
+            className="hero-wave hero-wave-front"
+            fill="url(#wave1)"
+            opacity="0.9"
+            d="M0,400 Q180,460 360,400 T720,400 T1080,400 T1440,400 T1800,400 T2160,400 T2520,400 T2880,400 L2880,600 L0,600 Z"
+          />
 
           {/* Fine line details */}
-          <path fill="none" stroke="#e879f9" strokeWidth="1.2" opacity="0.35" d="M0,440 C200,360 400,500 620,420 C820,340 1020,490 1240,400 C1370,340 1420,420 1440,400" />
-          <path fill="none" stroke="#a78bfa" strokeWidth="1" opacity="0.3" d="M0,460 C180,380 380,520 600,440 C800,360 1000,510 1220,420 C1360,360 1420,440 1440,425" />
+          <path
+            className="hero-wave hero-wave-line1"
+            fill="none"
+            stroke="#e879f9"
+            strokeWidth="1.2"
+            opacity="0.35"
+            d="M0,440 Q120,400 240,440 T480,440 T720,440 T960,440 T1200,440 T1440,440 T1680,440 T1920,440 T2160,440 T2400,440 T2640,440 T2880,440"
+          />
+          <path
+            className="hero-wave hero-wave-line2"
+            fill="none"
+            stroke="#a78bfa"
+            strokeWidth="1"
+            opacity="0.3"
+            d="M0,465 Q180,500 360,465 T720,465 T1080,465 T1440,465 T1800,465 T2160,465 T2520,465 T2880,465"
+          />
         </svg>
+
+        <style>{`
+          @keyframes hero-wave-shift {
+            from { transform: translateX(0); }
+            to { transform: translateX(-1440px); }
+          }
+          .hero-wave {
+            animation: hero-wave-shift linear infinite;
+            will-change: transform;
+          }
+          .hero-wave-back { animation-duration: 30s; }
+          .hero-wave-mid { animation-duration: 22s; }
+          .hero-wave-front { animation-duration: 14s; }
+          .hero-wave-line1 { animation-duration: 18s; }
+          .hero-wave-line2 { animation-duration: 26s; }
+          @media (prefers-reduced-motion: reduce) {
+            .hero-wave { animation: none; }
+          }
+        `}</style>
 
         {/* Soft radial glow top-left */}
         <div className="absolute top-0 left-0 w-[600px] h-[400px] bg-gradient-radial from-fuchsia-100/60 via-purple-50/30 to-transparent rounded-full" />
