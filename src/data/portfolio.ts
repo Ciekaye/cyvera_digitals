@@ -48,6 +48,7 @@ export const projects: Project[] = [
     url: "https://vireocardiology.cyveradigitals.com/",
     category: "Web Development",
     filterCategory: "Web Development",
+    image: "/portfolio/vireo-cardiology.jpg",
   },
   {
     title: "Beauty E-Commerce",
@@ -61,26 +62,28 @@ export const projects: Project[] = [
     url: "https://hello-grid.cyveradigitals.com/",
     category: "Web Development",
     filterCategory: "Web Development",
+    image: "/portfolio/helio-grid.jpg",
   },
   {
     title: "By Kate Cristyl",
     url: "https://bykatecristyl.com/",
     category: "Brand & Web Design",
     filterCategory: "Web Development",
+    image: "/portfolio/by-kate-cristyl.jpg",
   },
   {
     title: "Dental App",
     url: "https://dental-app.cyveradigitals.com/",
     category: "Web Application",
     filterCategory: "Web Development",
-    previewRefresh: 2,
+    image: "/portfolio/dental-app.jpg",
   },
   {
     title: "Bark & Bathe Lounge",
     url: "https://bark-bathe-lounge.cyveradigitals.com/",
     category: "Web Design",
     filterCategory: "Web Development",
-    image: "/portfolio/bark-bathe-lounge.png",
+    image: "/portfolio/bark-bathe-lounge.jpg",
   },
   {
     title: "Zenith Financial Advisory",
