@@ -44,6 +44,41 @@ function Block({ block }: { block: ContentBlock }) {
           {block.text}
         </blockquote>
       );
+    case 'table':
+      return (
+        <div className="overflow-x-auto my-8 rounded-xl border border-gray-200">
+          <table className="w-full text-left">
+            <thead>
+              <tr className="bg-gray-50">
+                {block.headers.map((header) => (
+                  <th
+                    key={header}
+                    className="px-5 py-3 text-sm font-semibold text-gray-900 uppercase tracking-wider"
+                  >
+                    {header}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-200">
+              {block.rows.map((row) => (
+                <tr key={row[0]}>
+                  {row.map((cell, i) => (
+                    <td
+                      key={i}
+                      className={`px-5 py-4 text-gray-700 leading-relaxed align-top ${
+                        i === 0 ? 'font-semibold text-gray-900 whitespace-nowrap' : ''
+                      }`}
+                    >
+                      {cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
     default:
       return null;
   }

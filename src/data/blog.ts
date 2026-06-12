@@ -11,7 +11,8 @@ export type ContentBlock =
   | { type: 'paragraph'; text: string }
   | { type: 'heading'; text: string }
   | { type: 'list'; items: string[] }
-  | { type: 'quote'; text: string };
+  | { type: 'quote'; text: string }
+  | { type: 'table'; headers: string[]; rows: string[][] };
 
 export type BlogPost = {
   slug: string;
@@ -413,49 +414,250 @@ export const posts: BlogPost[] = [
     ],
   },
   {
-    slug: 'cost-of-a-cheap-website',
-    title: 'The Real Cost of a Cheap Website',
+    slug: 'cheap-website-vs-broken-website-math',
+    title: 'We Sell $250 Websites. Here Is Why a Cheap Website Cost a Founder $14,000.',
     excerpt:
-      'A bargain website can be the most expensive thing you ever buy. Here is the hidden math behind cutting corners on your most important sales tool.',
+      'Cheap websites are not the problem. Broken ones are. Here is the hidden math of a website missing its fundamentals, and the checklist proving yours has them.',
     category: 'Web Development',
-    date: '2026-01-22',
-    readTime: '5 min read',
+    date: '2026-06-12',
+    readTime: '10 min read',
     author: 'Cyvera Digitals Team',
-    image:
-      'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+    image: '/blog/cheap-website-vs-broken-website-math.jpg',
     content: [
       {
         type: 'paragraph',
-        text: "Everyone loves a deal — and when a website can be had for a few hundred dollars from a template mill or a freelancer's quickest gig, it's tempting. But a website isn't a one-time purchase; it's a tool that works for your business every single day. And cheap tools have a way of becoming expensive ones.",
+        text: 'Our Starter plan costs $250.',
       },
-      { type: 'heading', text: 'The cost you see vs. the cost you pay' },
       {
         type: 'paragraph',
-        text: "The sticker price of a cheap website is only the beginning. The real costs show up later: customers who bounce because the site looks untrustworthy, leads lost to a broken contact form, hours wasted fighting a system you can't update, and eventually paying again to rebuild it properly. Cheap usually means twice.",
+        text: 'So this next sentence might sound strange coming from us: a cheap website once cost a founder roughly $14,000 in lost leads.',
       },
-      { type: 'heading', text: 'What corners usually get cut' },
+      {
+        type: 'paragraph',
+        text: 'Both statements are true, and the gap between them is the most misunderstood thing in web design. Price was never the problem. What gets left out is.',
+      },
+      {
+        type: 'paragraph',
+        text: 'A founder came to us after paying for the same website five times. A freelancer patch here. A new template there. A "quick fix" from a cousin who knew WordPress. Each round cost a few hundred dollars and bought a few months of false comfort.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The website never broke in a visible way. No error messages. No crashes. The damage happened quietly, one lost visitor at a time, because every build skipped the same four fundamentals.',
+      },
+      {
+        type: 'paragraph',
+        text: 'This post shows you the full math. Then we show you the checklist proving a website has the fundamentals, at any price.',
+      },
+      { type: 'heading', text: 'The four leaks in a broken website' },
+      {
+        type: 'paragraph',
+        text: 'Broken websites fail in four predictable places. None of them show up on launch day. All of them show up on your revenue. And none of them are caused by a low price. They are caused by missing work.',
+      },
+      { type: 'heading', text: 'Leak 1: No speed optimization' },
+      {
+        type: 'paragraph',
+        text: "Google's research found 53% of mobile visits are abandoned when a page takes longer than 3 seconds to load. The same study found mobile sites loading in 5 seconds earned almost double the mobile revenue of sites taking 19 seconds.",
+      },
+      {
+        type: 'paragraph',
+        text: "Rushed builds skip image compression, stack unnecessary plugins, and sit on crowded hosting. The average mobile page in Google's benchmark took 19 seconds to load on a 3G connection. Your visitors decide in 3.",
+      },
+      {
+        type: 'paragraph',
+        text: 'Walmart measured this on their own store: every 1-second improvement in load time lifted conversions by 2%. Speed is not a technical detail. Speed is a revenue setting, and optimizing for speed costs discipline, not thousands of dollars.',
+      },
+      { type: 'heading', text: 'Leak 2: No mobile design' },
+      {
+        type: 'paragraph',
+        text: 'Mobile devices account for around 59% of all web traffic worldwide, according to StatCounter. A website built desktop-first greets the majority of your visitors with pinch-to-zoom text, broken layouts, and buy buttons buried four screens deep.',
+      },
+      {
+        type: 'paragraph',
+        text: 'These visitors do not complain. They leave. Your analytics record a bounce, and you never learn the person was ready to buy.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Mobile responsive design is standard in every plan we sell, including the $250 one, because excluding the majority of your visitors is not a budget decision. Excluding them is a building error.',
+      },
+      { type: 'heading', text: 'Leak 3: No SEO structure' },
+      {
+        type: 'paragraph',
+        text: 'A rushed build has no time budget for SEO fundamentals. No heading hierarchy. No meta descriptions. No image alt text. No sitemap submitted to Google.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The result: your site exists, but search engines treat you as invisible. Every customer searching for your service finds a competitor instead. You then compensate with paid ads, which means the broken website forces you into a permanent advertising bill. The site was supposed to bring customers in. Instead, you pay rent to reach them.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Basic SEO setup belongs in the foundation, not the upsell. A site without an SEO structure is not cheaper. The site simply bills you later, through Google Ads.',
+      },
+      { type: 'heading', text: 'Leak 4: Template bloat and the 12-month rebuild' },
+      {
+        type: 'paragraph',
+        text: 'Careless builds rely on mass-market templates loaded with features nobody uses. Sliders, animations, demo pages, and plugin stacks all add weight and security holes. Within a year, one of three things happens:',
+      },
       {
         type: 'list',
         items: [
-          'Strategy — no thought given to what the site should achieve',
-          'Performance — slow load times that quietly drive visitors away',
-          'Mobile experience — an afterthought, not a priority',
-          'SEO foundations — invisible to search from day one',
-          'Support — no one to call when something breaks',
+          'A plugin update breaks the layout',
+          'The template developer abandons support',
+          'The business outgrows the structure and nothing fits anymore',
         ],
       },
-      { type: 'heading', text: 'Your website is a salesperson, not a brochure' },
       {
         type: 'paragraph',
-        text: "Think of your site the way you'd think of hiring. A great salesperson who works 24/7, never calls in sick, and represents you perfectly is worth investing in. A cheap one who turns customers away at the door costs you far more than their low salary ever saved. Your website is exactly that salesperson.",
+        text: 'Then you pay for the website again. Our founder paid five times. This pattern is so common in our discovery calls we now ask about rebuild history before anything else.',
+      },
+      { type: 'heading', text: 'The $14,000 math, line by line' },
+      {
+        type: 'paragraph',
+        text: "Here is how a broken website turns into a five-figure loss. The numbers below use the founder's real traffic, with conservative assumptions throughout.",
+      },
+      {
+        type: 'paragraph',
+        text: 'His business: a B2B service with an average client value of $1,200.',
+      },
+      {
+        type: 'table',
+        headers: ['Line item', 'The math', 'Annual cost'],
+        rows: [
+          [
+            'Speed abandonment',
+            '1,000 monthly visitors, 53% lost to slow load = 530 lost visits/month',
+            '6,360 lost visits',
+          ],
+          [
+            'Mobile bounce',
+            'Of remaining 470, 59% arrive on mobile and meet a broken layout. 60% of them bounce immediately = 166 more lost visits/month',
+            '1,992 lost visits',
+          ],
+          [
+            'Conversion on survivors',
+            '~304 usable visits/month at a weak 1% conversion = 3 leads/month instead of a realistic 10+ on a working site',
+            '7+ lost leads/month',
+          ],
+          [
+            'Lead value',
+            '7 lost leads × 12 months × 20% close rate × $1,200 client value',
+            '$20,160 potential',
+          ],
+          [
+            'Conservative haircut',
+            'Cut the estimate by 30% for optimism bias',
+            '~$14,000',
+          ],
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: 'Add the repeat build costs across five attempts, plus months of lost compounding from an invisible site.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Notice what is absent from this table: the original purchase price. The math punishes missing fundamentals identically whether the invoice said $250 or $2,500. We have audited expensive sites leaking from all four holes, and modest sites sealed tight. Price predicts nothing. The build checklist predicts everything.',
+      },
+      { type: 'heading', text: 'A website is your hardest-working salesperson' },
+      {
+        type: 'paragraph',
+        text: 'Picture hiring a salesperson with these traits:',
+      },
+      {
+        type: 'list',
+        items: [
+          'Works 24 hours a day, 7 days a week',
+          'Greets every single prospect before you do',
+          'Never takes a holiday, never calls in sick',
+          'Forms the first impression for 100% of your inbound interest',
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: 'A salesperson succeeds with the right equipment: a clear pitch, a fast response, the ability to meet customers where they are. Strip away the equipment and the most expensive salesperson in the world still loses deals.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Here is the reframe behind everything we build: a website is not an expense on your books. A website is a salesperson on your payroll. The question is never "how little did the salesperson cost?" The question is "does the salesperson have what they need to close?"',
+      },
+      { type: 'heading', text: 'What "fundamentals included" looks like, at any price' },
+      {
+        type: 'paragraph',
+        text: 'An affordable build done right is not a stripped-down version of a real website. The fundamentals stay in. The scope shrinks instead: fewer pages, simpler features, leaner design. Here is the non-negotiable list:',
+      },
+      {
+        type: 'list',
+        items: [
+          "Performance budget. Images compressed, code clean, hosting matched to traffic. Target: under 3 seconds on mobile, because Google's data shows half your visitors leave after second three.",
+          'Mobile-first layout. Designed for the 59% majority first, then scaled up to desktop. Buy buttons above the fold on a phone screen.',
+          'SEO foundation from day one. Heading structure, metadata, and page copy written around the phrases your customers type into Google.',
+          "One job per page. A clear headline naming the customer's problem, one primary call to action, and a path from landing to enquiry with no detours.",
+          'Built to grow. A structure your business scales into, not out of. Add pages later. Never rebuild the foundation.',
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: "This is exactly how a $250 Starter project earns more than a $2,000 site missing the list. A 0.5-second delay cut traffic by 20% in Google's testing. Decisions this small separate a site earning leads from a site burning them, and these decisions cost discipline, not money.",
+      },
+      { type: 'heading', text: 'Is your website leaking? A 5-minute self-audit' },
+      {
+        type: 'paragraph',
+        text: 'Run these checks on your own site today, whatever you paid for the build:',
+      },
+      {
+        type: 'list',
+        items: [
+          'The 3-second test. Open your site on your phone using mobile data, not Wi-Fi. Count the seconds before you see usable content. Over 3? You lose half your visitors before hello.',
+          'The thumb test. On your phone, find your main call to action without scrolling. Hidden below the fold? Your salesperson mumbles.',
+          'The 5-second headline test. Show your homepage to a stranger for 5 seconds. Ask what your business does and why anyone should care. Hesitation means your message fails.',
+          'The Google test. Search the exact phrase a customer would use to find your service. Not your brand name, the problem phrase. Absent from page one? Your SEO structure is missing.',
+          'The shame test. Do you hesitate before sharing your own link? Your gut already audited the site for you.',
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: 'Fail two or more checks and your website is costing you customers right now, regardless of what the invoice said.',
+      },
+      { type: 'heading', text: 'Frequently asked questions' },
+      { type: 'heading', text: 'Can a $250 website convert customers?' },
+      {
+        type: 'paragraph',
+        text: 'Yes, when the fundamentals are included: mobile responsive design, speed discipline, basic SEO setup, and one clear call to action. The low price should reflect a smaller scope, never missing foundations. Ask any provider to show you the fundamentals checklist before you compare prices.',
+      },
+      { type: 'heading', text: 'Why do some cheap websites fail then?' },
+      {
+        type: 'paragraph',
+        text: 'Because the price reflected skipped work rather than reduced scope. A 5-page site built properly beats a 30-page site built carelessly. Compare what each quote includes, not the number on the invoice.',
+      },
+      { type: 'heading', text: 'Is a redesign always the answer?' },
+      {
+        type: 'paragraph',
+        text: 'No. Many sites need three fixes first: a headline naming the customer problem, compressed images for speed, and one clear call to action per page. Run those changes, measure 30 days, then decide.',
+      },
+      { type: 'heading', text: 'How do I measure what my current site loses?' },
+      {
+        type: 'paragraph',
+        text: 'Open Google Analytics. Look at mobile bounce rate, average load time, and conversion rate. Multiply lost visitors by your average lead value. The number tells you whether your site needs fixes, a rebuild, or nothing at all.',
+      },
+      { type: 'heading', text: 'Equip your salesperson properly' },
+      {
+        type: 'paragraph',
+        text: 'The founder with five failed builds now runs a site with all four leaks sealed. Same business. Same offer. Same traffic sources. The difference: 2.4x more enquiries within 60 days.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Your website greets every prospect you will ever earn. Before your pitch, before your pricing, before your name registers, your site has already spoken for you.',
       },
       {
         type: 'quote',
-        text: 'A good website is an investment that pays you back. A cheap one is an expense that keeps charging you.',
+        text: 'The price tag never closes deals. The fundamentals do.',
       },
       {
         type: 'paragraph',
-        text: "None of this means you need to overspend — it means you should spend deliberately, on the things that actually drive results. That's the balance we aim for at Cyvera Digitals: websites built to perform, priced to make sense for real businesses.",
+        text: 'Make sure your hardest-working salesperson has them.',
+      },
+      {
+        type: 'paragraph',
+        text: "Want the leaks found in your site? Book a free 15-minute teardown with Cyvera Digitals. No pitch. We show you the three biggest fixes, and you decide what happens next. And yes, properly built websites start at $250. See exactly what's included on our pricing page.",
       },
     ],
   },

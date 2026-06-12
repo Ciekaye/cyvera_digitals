@@ -3,6 +3,15 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['lucide-react', 'framer-motion'],
   },
+  async redirects() {
+    return [
+      {
+        source: '/blog/cost-of-a-cheap-website',
+        destination: '/blog/cheap-website-vs-broken-website-math',
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
