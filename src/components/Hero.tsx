@@ -21,6 +21,8 @@ export default function Hero() {
             `,
             backgroundSize: "40px 40px",
             opacity: 0.2,
+            maskImage: "linear-gradient(to bottom, black 50%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to bottom, black 50%, transparent 100%)",
           }}
         />
 
