@@ -300,7 +300,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  border: 2px solid #e5e7eb;
+  border: 2px solid rgba(123, 25, 231, 0.5);
   border-radius: inherit;
   pointer-events: none;
   transition: border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -348,6 +348,11 @@ body {
 @media (hover: none) {
   .btn-flair__bg {
     display: none;
+  }
+  /* No hover flair to lean on, so give the outline a solid, clearly
+     visible brand border against the light background and waves. */
+  .btn-flair::after {
+    border-color: var(--primary-purple);
   }
   .btn-flair:hover .btn-flair__label,
   .btn-flair:active .btn-flair__label {
