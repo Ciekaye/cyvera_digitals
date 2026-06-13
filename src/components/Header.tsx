@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Code, Layers, Palette, Share2, TrendingUp } from 'lucide-react';
+import { Menu, X, Code, Layers, Palette, Share2, TrendingUp, Newspaper, BookOpen } from 'lucide-react';
 import { useState, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -15,11 +15,19 @@ const serviceSubPages = [
   { label: 'SEO', path: '/services/seo', icon: TrendingUp },
 ];
 
+const resourceSubPages = [
+  { label: 'Blog', path: '/blog', icon: Newspaper },
+  { label: 'Guides', path: '/guides', icon: BookOpen },
+];
+
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isResourcesOpen, setIsResourcesOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
   const servicesTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const resourcesTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pathname = usePathname();
 
   const navItems = [
@@ -28,8 +36,12 @@ export default function Header() {
     { label: 'Why Us', path: '/why-us' },
     { label: 'Services', path: '/services' },
     { label: 'Portfolio', path: '/portfolio' },
-    { label: 'Pricing', path: '/pricing' }
+    { label: 'Pricing', path: '/pricing' },
+    { label: 'Resources', path: '/blog' }
   ];
+
+  const isResourcesActive =
+    (pathname ?? '').startsWith('/blog') || (pathname ?? '').startsWith('/guides');
 
   const handleServicesEnter = () => {
     if (servicesTimeout.current) clearTimeout(servicesTimeout.current);
@@ -38,6 +50,15 @@ export default function Header() {
 
   const handleServicesLeave = () => {
     servicesTimeout.current = setTimeout(() => setIsServicesOpen(false), 150);
+  };
+
+  const handleResourcesEnter = () => {
+    if (resourcesTimeout.current) clearTimeout(resourcesTimeout.current);
+    setIsResourcesOpen(true);
+  };
+
+  const handleResourcesLeave = () => {
+    resourcesTimeout.current = setTimeout(() => setIsResourcesOpen(false), 150);
   };
 
   return (
@@ -109,6 +130,65 @@ export default function Header() {
                                   (pathname ?? '') === sub.path
                                     ? 'bg-gradient-primary'
                                     : 'bg-gray-100 group-hover:bg-gray-200'
+                                }`}>
+                                  <sub.icon size={18} className={(pathname ?? '') === sub.path ? 'text-white' : 'text-gray-500'} />
+                                </div>
+                                {sub.label}
+                              </Link>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                );
+              }
+
+              if (item.label === 'Resources') {
+                return (
+                  <motion.div
+                    key={item.label}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 * index }}
+                    className="relative"
+                    onMouseEnter={handleResourcesEnter}
+                    onMouseLeave={handleResourcesLeave}
+                  >
+                    <Link
+                      href={item.path}
+                      className={`relative hover:text-secondary-purple transition-colors font-medium no-underline ${
+                        isResourcesActive ? 'text-secondary-purple' : 'text-gray-700'
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+
+                    {/* Dropdown */}
+                    <AnimatePresence>
+                      {isResourcesOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 8 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute top-full left-1/2 -translate-x-1/2 pt-4"
+                        >
+                          <div className="w-64 bg-white rounded-2xl shadow-xl border border-gray-100 p-3">
+                            {resourceSubPages.map((sub) => (
+                              <Link
+                                key={sub.path}
+                                href={sub.path}
+                                className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all no-underline ${
+                                  (pathname ?? '') === sub.path
+                                    ? 'bg-purple-50 text-secondary-purple'
+                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                }`}
+                              >
+                                <div className={`w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 ${
+                                  (pathname ?? '') === sub.path
+                                    ? 'bg-gradient-primary'
+                                    : 'bg-gray-100'
                                 }`}>
                                   <sub.icon size={18} className={(pathname ?? '') === sub.path ? 'text-white' : 'text-gray-500'} />
                                 </div>
@@ -202,6 +282,46 @@ export default function Header() {
                           All Services
                         </Link>
                         {serviceSubPages.map((sub) => (
+                          <Link
+                            key={sub.path}
+                            href={sub.path}
+                            onClick={() => setIsMenuOpen(false)}
+                            className={`flex items-center gap-2 text-sm font-medium no-underline ${
+                              (pathname ?? '') === sub.path
+                                ? 'text-secondary-purple'
+                                : 'text-gray-600 hover:text-gray-900'
+                            }`}
+                          >
+                            <sub.icon size={14} />
+                            {sub.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+
+              if (item.label === 'Resources') {
+                return (
+                  <div key={item.label}>
+                    <button
+                      onClick={() => setMobileResourcesOpen(!mobileResourcesOpen)}
+                      className={`relative text-gray-700 hover:text-gray-900 transition-colors font-medium group inline-flex items-center gap-1 ${
+                        isResourcesActive ? 'text-gray-900' : ''
+                      }`}
+                    >
+                      {item.label}
+                      <svg
+                        className={`w-4 h-4 transition-transform ${mobileResourcesOpen ? 'rotate-180' : ''}`}
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                    {mobileResourcesOpen && (
+                      <div className="ml-4 mt-2 flex flex-col gap-2">
+                        {resourceSubPages.map((sub) => (
                           <Link
                             key={sub.path}
                             href={sub.path}
