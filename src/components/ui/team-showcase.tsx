@@ -130,7 +130,8 @@ function MemberRow({
 }) {
   const isActive = hoveredId === member.id;
   const isDimmed = hoveredId !== null && !isActive;
-  const hasLinkedin = !!member.social?.linkedin;
+  const linkedin = member.social?.linkedin;
+  const hasLinkedin = !!linkedin;
 
   return (
     <Link
@@ -169,17 +170,28 @@ function MemberRow({
                 : 'opacity-0 -translate-x-2 pointer-events-none',
             )}
           >
-            {member.social?.linkedin && (
-              <a
-                href={member.social.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="p-1 rounded text-gray-500 hover:text-[#C02B7D] hover:bg-[#C02B7D]/10 transition-all duration-150 hover:scale-110"
+            {linkedin && (
+              <span
+                role="link"
+                tabIndex={0}
+                aria-label={`${member.name} on LinkedIn`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  window.open(linkedin, '_blank', 'noopener,noreferrer');
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    window.open(linkedin, '_blank', 'noopener,noreferrer');
+                  }
+                }}
+                className="p-1 rounded text-gray-500 hover:text-[#C02B7D] hover:bg-[#C02B7D]/10 transition-all duration-150 hover:scale-110 cursor-pointer inline-flex"
                 title="LinkedIn"
               >
                 <FaLinkedinIn size={10} />
-              </a>
+              </span>
             )}
           </div>
         )}

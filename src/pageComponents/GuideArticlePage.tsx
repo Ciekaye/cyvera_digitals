@@ -49,7 +49,7 @@ function Block({ block }: { block: GuideBlock }) {
         <ul className="space-y-3 mb-6">
           {block.items.map((item) => (
             <li key={item} className="flex items-start gap-3 text-gray-700 text-lg">
-              <span className="w-2 h-2 rounded-full bg-secondary-purple mt-2.5 flex-shrink-0" />
+              <span className="w-2 h-2 rounded-full bg-[#C02B7D] mt-2.5 flex-shrink-0" />
               <span className="leading-relaxed">{item}</span>
             </li>
           ))}

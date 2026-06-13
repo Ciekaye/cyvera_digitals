@@ -154,7 +154,7 @@ export default function FounderPage({
                   key={`${item.role}-${item.company}`}
                   className="flex items-start gap-4 md:gap-6"
                 >
-                  <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-secondary-purple/10 flex items-center justify-center text-secondary-purple mt-1">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-[#C02B7D]/10 flex items-center justify-center text-secondary-purple mt-1">
                     <Briefcase size={18} />
                   </div>
                   <div>
