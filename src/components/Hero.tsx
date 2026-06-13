@@ -18,8 +18,14 @@ export default function Hero() {
     const wave = waveRef.current;
     if (!section || !wave) return;
 
-    // Honor a reduced-motion preference by freezing the waves outright.
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    // Freeze the waves to a static frame where path-morphing is too heavy or
+    // unwanted: reduced-motion users, and touch devices (phones/tablets), which
+    // lack the headroom for 5 main-thread morphs. They still render identically
+    // — just without motion. Desktops (fine pointer) keep the full animation.
+    const freeze =
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+      window.matchMedia('(pointer: coarse)').matches;
+    if (freeze) {
       wave.pauseAnimations();
       return;
     }
@@ -92,19 +98,16 @@ export default function Hero() {
             </filter>
           </defs>
 
-          {/* Back wave - blurred, lightest */}
-          <path filter="url(#blur-wave)" fill="url(#wave3)" opacity="0.7">
-            <animate
-              attributeName="d"
-              dur="9s"
-              repeatCount="indefinite"
-              values="
-                M0,320 C200,200 400,420 600,300 C800,180 1000,380 1200,280 C1350,200 1420,320 1440,300 L1440,600 L0,600 Z;
-                M0,360 C180,260 380,440 620,320 C820,210 1020,400 1240,300 C1370,230 1420,340 1440,320 L1440,600 L0,600 Z;
-                M0,320 C200,200 400,420 600,300 C800,180 1000,380 1200,280 C1350,200 1420,320 1440,300 L1440,600 L0,600 Z
-              "
-            />
-          </path>
+          {/* Back wave - blurred, lightest. Held static (no path morph) so the
+              browser caches the blur instead of re-rasterizing the filter every
+              frame — the single biggest perf win, and imperceptible behind the
+              sharper moving layers in front of it. */}
+          <path
+            filter="url(#blur-wave)"
+            fill="url(#wave3)"
+            opacity="0.7"
+            d="M0,320 C200,200 400,420 600,300 C800,180 1000,380 1200,280 C1350,200 1420,320 1440,300 L1440,600 L0,600 Z"
+          />
 
           {/* Mid wave */}
           <path fill="url(#wave2)" opacity="0.85">
