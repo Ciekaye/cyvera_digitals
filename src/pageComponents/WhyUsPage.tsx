@@ -24,6 +24,7 @@ import {
 } from 'lucide-react';
 import FinalCTA from '@/components/FinalCTA';
 import GridBackground from '@/components/GridBackground';
+import FlairButton from '@/components/ui/FlairButton';
 
 export default function WhyUsPage() {
   const heroRef = useRef(null);
@@ -184,12 +185,21 @@ export default function WhyUsPage() {
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           {/* Hero content */}
-          <div className="grid lg:grid-cols-2 gap-12 items-center mb-32">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-32">
             <div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={heroInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6 }}
+                className="inline-flex items-center justify-center px-4 py-2 rounded-full bg-purple-50 border border-purple-100 mb-6"
+              >
+                <span className="text-sm font-semibold text-secondary-purple">Why us</span>
+              </motion.div>
+
               <motion.h1
                 initial={{ y: 30 }}
                 animate={heroInView ? { y: 0 } : {}}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 0.8, delay: 0.1 }}
                 className="text-display text-gray-900 mb-6"
               >
                 Why Choose <span className="text-gradient-purple">Cyvera Digitals</span>
@@ -209,28 +219,74 @@ export default function WhyUsPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={heroInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.35 }}
-                className="text-subheading leading-relaxed"
+                className="text-subheading leading-relaxed mb-8"
                 style={{ color: '#535252' }}
               >
                 At Cyvera Digitals, we focus on clarity, strategy, and execution to create digital experiences that are purposeful, scalable, and built to perform.
               </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={heroInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.45 }}
+                className="flex flex-col sm:flex-row gap-4"
+              >
+                <Link
+                  href="/contact"
+                  className="btn-gradient-primary inline-flex items-center justify-center gap-2 no-underline"
+                >
+                  Work with us
+                  <ArrowRight size={18} />
+                </Link>
+                <FlairButton href="/portfolio" className="no-underline">
+                  See our work
+                </FlairButton>
+              </motion.div>
             </div>
-            
+
             <motion.div
-              initial={{ x: 50 }}
-              animate={heroInView ? { x: 0 } : {}}
+              initial={{ opacity: 0, y: 30 }}
+              animate={heroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.3 }}
               className="relative"
             >
-              <Image
-                src="/hands-joined-by-team.jpg"
-                alt="Team collaboration"
-                width={800} height={600}
-                priority
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="w-full h-auto rounded-2xl shadow-2xl"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-purple-900/20 to-transparent rounded-2xl" />
+              {/* Overlap collage */}
+              <div className="relative w-full max-w-xl mx-auto pb-10 pr-2 sm:pr-6">
+                {/* Soft glow */}
+                <div className="absolute -z-10 inset-0 bg-gradient-radial from-fuchsia-200/40 via-purple-100/20 to-transparent blur-3xl" />
+
+                {/* Primary photo */}
+                <Image
+                  src="/hands-joined-by-team.jpg"
+                  alt="The Cyvera Digitals team joining hands"
+                  width={800}
+                  height={600}
+                  priority
+                  sizes="(min-width: 1024px) 45vw, 90vw"
+                  className="w-[86%] h-auto rounded-3xl shadow-2xl"
+                />
+
+                {/* Secondary overlapping photo */}
+                <Image
+                  src="/services.jpg"
+                  alt="Cyvera Digitals services in action"
+                  width={500}
+                  height={400}
+                  sizes="(min-width: 1024px) 22vw, 45vw"
+                  className="hidden sm:block absolute bottom-0 right-0 w-[46%] aspect-[4/3] object-cover rounded-2xl border-4 border-white shadow-xl"
+                />
+
+                {/* Floating glass badge */}
+                <div className="absolute left-2 bottom-6 sm:left-4 card-liquid-glass px-4 py-3 flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-primary flex items-center justify-center flex-shrink-0">
+                    <Handshake size={18} className="text-white" />
+                  </div>
+                  <div className="leading-tight">
+                    <p className="text-sm font-semibold text-gray-900 mb-0.5">Clarity. Strategy. Execution.</p>
+                    <p className="text-xs text-gray-500">Built to perform</p>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </div>
 

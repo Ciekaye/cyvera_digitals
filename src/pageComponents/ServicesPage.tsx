@@ -106,12 +106,21 @@ function ServicesHero() {
       </div>
       <div className="container mx-auto px-4 lg:px-8 relative z-10 pt-16 lg:pt-20 pb-20">
         {/* Hero Content */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-32">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-32">
           <div className="max-w-3xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="inline-flex items-center justify-center px-4 py-2 rounded-full bg-purple-50 border border-purple-100 mb-6"
+            >
+              <span className="text-sm font-semibold text-secondary-purple">Our services</span>
+            </motion.div>
+
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
               className="text-display text-gray-900 mb-6"
             >
               Digital Services Built to Help Your{' '}
@@ -147,19 +156,48 @@ function ServicesHero() {
           </div>
 
           <motion.div
-            initial={{ x: 50 }}
-            animate={{ x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="relative"
           >
-            <Image
-              src="/services.jpg"
-              alt="Digital Services"
-              width={800} height={600}
-              priority
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="w-full h-auto rounded-2xl shadow-2xl"
-            />
+            {/* Overlap collage */}
+            <div className="relative w-full max-w-xl mx-auto pb-10 pr-2 sm:pr-6">
+              {/* Soft glow */}
+              <div className="absolute -z-10 inset-0 bg-gradient-radial from-fuchsia-200/40 via-purple-100/20 to-transparent blur-3xl" />
+
+              {/* Primary photo */}
+              <Image
+                src="/services.jpg"
+                alt="Building digital services on a laptop"
+                width={800}
+                height={600}
+                priority
+                sizes="(min-width: 1024px) 45vw, 90vw"
+                className="w-[86%] h-auto rounded-3xl shadow-2xl"
+              />
+
+              {/* Secondary overlapping photo */}
+              <Image
+                src="/our_story.jpg"
+                alt="The Cyvera Digitals team at work"
+                width={500}
+                height={400}
+                sizes="(min-width: 1024px) 22vw, 45vw"
+                className="hidden sm:block absolute bottom-0 right-0 w-[46%] aspect-[4/3] object-cover rounded-2xl border-4 border-white shadow-xl"
+              />
+
+              {/* Floating glass badge */}
+              <div className="absolute left-2 bottom-6 sm:left-4 card-liquid-glass px-4 py-3 flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-gradient-primary flex items-center justify-center flex-shrink-0">
+                  <Layers size={18} className="text-white" />
+                </div>
+                <div className="leading-tight">
+                  <p className="text-sm font-semibold text-gray-900 mb-0.5">Concept to launch</p>
+                  <p className="text-xs text-gray-500">End-to-end delivery</p>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </div>
 
