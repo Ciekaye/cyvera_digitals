@@ -77,16 +77,11 @@ export default function Header() {
                   >
                     <Link
                       href={item.path}
-                      className={`relative text-gray-700 hover:text-gray-900 transition-colors font-medium no-underline group ${
-                        (pathname ?? '').startsWith('/services') ? 'text-gray-900' : ''
+                      className={`relative hover:text-secondary-purple transition-colors font-medium no-underline ${
+                        (pathname ?? '').startsWith('/services') ? 'text-secondary-purple' : 'text-gray-700'
                       }`}
                     >
                       {item.label}
-                      <span
-                        className={`absolute bottom-0 left-0 h-0.5 bg-gray-900 transition-all duration-300 ${
-                          (pathname ?? '').startsWith('/services') ? 'w-full' : 'w-0 group-hover:w-full'
-                        }`}
-                      ></span>
                     </Link>
 
                     {/* Dropdown */}
@@ -137,16 +132,11 @@ export default function Header() {
                 >
                   <Link
                     href={item.path}
-                    className={`relative text-gray-700 hover:text-gray-900 transition-colors font-medium no-underline group ${
-                      (pathname ?? '') === item.path ? 'text-gray-900' : ''
+                    className={`relative hover:text-secondary-purple transition-colors font-medium no-underline ${
+                      (pathname ?? '') === item.path ? 'text-secondary-purple' : 'text-gray-700'
                     }`}
                   >
                     {item.label}
-                    <span
-                      className={`absolute bottom-0 left-0 h-0.5 bg-gray-900 transition-all duration-300 ${
-                        (pathname ?? '') === item.path ? 'w-full' : 'w-0 group-hover:w-full'
-                      }`}
-                    ></span>
                   </Link>
                 </motion.div>
               );
@@ -237,16 +227,11 @@ export default function Header() {
                   key={item.label}
                   href={item.path}
                   onClick={() => setIsMenuOpen(false)}
-                  className={`relative text-gray-700 hover:text-gray-900 transition-colors font-medium no-underline group inline-block ${
-                    (pathname ?? '') === item.path ? 'text-gray-900' : ''
+                  className={`relative hover:text-secondary-purple transition-colors font-medium no-underline inline-block ${
+                    (pathname ?? '') === item.path ? 'text-secondary-purple' : 'text-gray-700'
                   }`}
                 >
                   {item.label}
-                  <span
-                    className={`absolute bottom-0 left-0 h-0.5 bg-gray-900 transition-all duration-300 ${
-                      (pathname ?? '') === item.path ? 'w-full' : 'w-0 group-hover:w-full'
-                    }`}
-                  ></span>
                 </Link>
               );
             })}

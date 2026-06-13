@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import Link from 'next/link';
+import FlairButton from '@/components/ui/FlairButton';
 import Image from 'next/image';
 import {
   Code, Layers, Palette, Share2, ArrowRight, MessageCircle,
@@ -139,12 +140,9 @@ function ServicesHero() {
               >
                 Get Started <ArrowRight size={18} />
               </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-gray-200 text-gray-700 font-semibold hover:border-purple-300 hover:text-purple-700 transition-all no-underline"
-              >
+              <FlairButton href="/contact">
                 <MessageCircle size={18} /> Talk to Us
-              </Link>
+              </FlairButton>
             </motion.div>
           </div>
 

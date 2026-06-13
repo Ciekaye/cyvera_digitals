@@ -2,6 +2,7 @@
 
 import { useRef } from 'react';
 import Link from 'next/link';
+import FlairButton from '@/components/ui/FlairButton';
 import { motion, useInView, useReducedMotion } from 'framer-motion';
 import {
   Rocket,
@@ -117,12 +118,9 @@ export default function GuidesPage() {
               >
                 Browse the Guides <ArrowRight size={18} />
               </button>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border-2 border-gray-200 text-gray-700 font-semibold hover:border-purple-300 hover:text-purple-700 transition-all no-underline"
-              >
+              <FlairButton href="/contact" className="!rounded-xl">
                 Book a Free Discovery Call
-              </Link>
+              </FlairButton>
             </div>
             <p className="text-sm text-gray-500">
               New here? Start with our flagship guide —{' '}

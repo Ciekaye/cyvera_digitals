@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
+import FlairButton from '@/components/ui/FlairButton';
 import Image from 'next/image';
 import { Share2, Camera, CalendarDays, BarChart3, MessageCircle, TrendingUp, ArrowRight, ArrowLeft } from 'lucide-react';
 import FinalCTA from '@/components/FinalCTA';
@@ -206,9 +207,9 @@ export default function SocialMediaPage() {
                 <Link href="/contact" className="btn-gradient-primary inline-flex items-center justify-center gap-2 text-lg font-semibold no-underline">
                   Start a Project <ArrowRight size={18} />
                 </Link>
-                <Link href="/portfolio" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border-2 border-gray-200 text-gray-700 font-semibold hover:border-purple-300 hover:text-purple-700 transition-all no-underline">
+                <FlairButton href="/portfolio">
                   View Our Work
-                </Link>
+                </FlairButton>
               </div>
             </motion.div>
 

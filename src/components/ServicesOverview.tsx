@@ -93,7 +93,7 @@ export default function ServicesOverview() {
         </motion.p>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-8 justify-items-center">
-          {services.map((service) => (
+          {services.map((service, index) => (
             <ServiceCard
               key={service.title}
               images={service.images}
@@ -102,6 +102,7 @@ export default function ServicesOverview() {
               title={service.title}
               description={service.description}
               href={service.href}
+              delay={index * 0.08}
             />
           ))}
         </div>

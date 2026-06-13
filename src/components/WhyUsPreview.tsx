@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
+import FlairButton from '@/components/ui/FlairButton';
 import { ArrowRight } from 'lucide-react';
 
 export default function WhyUsPreview() {
@@ -67,13 +68,10 @@ export default function WhyUsPreview() {
           transition={{ duration: 0.6, delay: 0.7 }}
           className="text-center"
         >
-          <Link
-            href="/why-us"
-            className="group inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-gray-200 text-gray-700 font-semibold hover:border-purple-300 hover:text-purple-700 transition-all no-underline"
-          >
+          <FlairButton href="/why-us" className="group">
             Learn More About Us
             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-          </Link>
+          </FlairButton>
         </motion.div>
       </div>
     </section>

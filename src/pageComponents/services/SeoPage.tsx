@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
+import FlairButton from '@/components/ui/FlairButton';
 import Image from 'next/image';
 import { TrendingUp, Search, FileText, Wrench, MapPin, Link2, BarChart3, ArrowRight, ArrowLeft } from 'lucide-react';
 import FinalCTA from '@/components/FinalCTA';
@@ -118,9 +119,9 @@ export default function SeoPage() {
                 <Link href="/contact" className="btn-gradient-primary inline-flex items-center justify-center gap-2 text-lg font-semibold no-underline">
                   Start Ranking <ArrowRight size={18} />
                 </Link>
-                <Link href="/portfolio" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border-2 border-gray-200 text-gray-700 font-semibold hover:border-purple-300 hover:text-purple-700 transition-all no-underline">
+                <FlairButton href="/portfolio">
                   View Our Work
-                </Link>
+                </FlairButton>
               </div>
             </motion.div>
 

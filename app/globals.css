@@ -277,6 +277,84 @@ body {
   box-shadow: 0 8px 25px rgba(192, 43, 125, 0.4);
 }
 
+/* Outlined CTA with gsap.com-style "flair" hover fill.
+   The border is drawn by ::after so it paints above the fill circle;
+   the circle (.btn-flair__bg::before) is positioned by GSAP via
+   xPercent/yPercent on .btn-flair__bg (see FlairButton.tsx). */
+.btn-flair {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #374151;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-flair::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid #e5e7eb;
+  border-radius: inherit;
+  pointer-events: none;
+  transition: border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-flair:hover::after {
+  border-color: var(--secondary-purple);
+}
+
+.btn-flair__bg {
+  position: absolute;
+  inset: 0;
+  transform: scale(0);
+  transform-origin: 0 0;
+  will-change: transform;
+  pointer-events: none;
+}
+
+.btn-flair__bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 170%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--secondary-purple);
+  pointer-events: none;
+}
+
+.btn-flair__label {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.15s ease-in-out;
+}
+
+.btn-flair:hover .btn-flair__label {
+  color: #ffffff;
+}
+
+/* Touch devices get the simple legacy hover/active treatment */
+@media (hover: none) {
+  .btn-flair__bg {
+    display: none;
+  }
+  .btn-flair:hover .btn-flair__label,
+  .btn-flair:active .btn-flair__label {
+    color: var(--primary-purple);
+  }
+}
+
 /* Liquid glass card */
 .card-liquid-glass {
   background: rgba(255, 255, 255, 0.95);
@@ -286,7 +364,12 @@ body {
     0 8px 32px rgba(123, 25, 231, 0.10),
     0 1.5px 0px rgba(255,255,255,0.7) inset,
     0 -1px 0px rgba(123, 25, 231, 0.08) inset;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Paint properties only — transform is owned by framer-motion, and
+     transitioning it makes every motion frame ease, causing visible lag */
+  transition:
+    background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card-liquid-glass:hover {
@@ -296,7 +379,6 @@ body {
     0 1.5px 0px rgba(255,255,255,0.8) inset,
     0 -1px 0px rgba(123, 25, 231, 0.12) inset;
   border-color: rgba(255, 255, 255, 0.65);
-  transform: translateY(-6px) scale(1.02);
 }
 
 /* Purple gradient cards */

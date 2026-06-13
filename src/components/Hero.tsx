@@ -4,10 +4,64 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Play } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useEffect, useRef } from 'react';
+import FlairButton from '@/components/ui/FlairButton';
+
+/** Tileable wave layer. Rendered as its own <svg> so the looping transform
+ *  animates the element (GPU-composited) instead of an SVG-internal path,
+ *  which browsers repaint on the main thread every frame. */
+function Wave({
+  layer,
+  path,
+  fill,
+  stroke,
+  strokeWidth,
+  opacity,
+}: {
+  layer: string;
+  path: string;
+  fill?: string;
+  stroke?: string;
+  strokeWidth?: number;
+  opacity: number;
+}) {
+  return (
+    <svg
+      className={`hero-wave ${layer} absolute bottom-0 left-0 h-full`}
+      style={{ width: '200%' }}
+      viewBox="0 0 2880 600"
+      preserveAspectRatio="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        d={path}
+        fill={fill ?? 'none'}
+        stroke={stroke}
+        strokeWidth={strokeWidth}
+        opacity={opacity}
+      />
+    </svg>
+  );
+}
 
 export default function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Pause the wave loop whenever the hero is scrolled out of view so it
+  // costs nothing while the user reads the rest of the page.
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      section.dataset.waves = entry.isIntersecting ? 'running' : 'paused';
+    });
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="relative min-h-screen flex flex-col items-center overflow-hidden bg-white">
+    <section ref={sectionRef} className="relative min-h-screen flex flex-col items-center overflow-hidden bg-white">
       {/* Animated wave background */}
       <div className="absolute inset-0 w-full h-full">
         {/* Grid Background */}
@@ -26,13 +80,8 @@ export default function Hero() {
           }}
         />
 
-        <svg
-          className="absolute bottom-0 left-0 w-full"
-          viewBox="0 0 1440 600"
-          preserveAspectRatio="xMidYMid slice"
-          xmlns="http://www.w3.org/2000/svg"
-          style={{ minHeight: '100%' }}
-        >
+        {/* Shared gradient defs for the wave layers (referenced document-wide) */}
+        <svg width="0" height="0" aria-hidden="true" className="absolute">
           <defs>
             <linearGradient id="wave1" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="#e879f9" stopOpacity="0.75" />
@@ -50,57 +99,47 @@ export default function Hero() {
               <stop offset="100%" stopColor="#60a5fa" stopOpacity="0.5" />
             </linearGradient>
           </defs>
-
-          {/* Waves are tileable (repeat every 1440 units) and drawn at 2x width,
-              then slid left by one tile via GPU-composited transforms — no repaints */}
-
-          {/* Back wave - lightest, slowest */}
-          <path
-            className="hero-wave hero-wave-back"
-            fill="url(#wave3)"
-            opacity="0.7"
-            d="M0,300 Q180,230 360,300 T720,300 T1080,300 T1440,300 T1800,300 T2160,300 T2520,300 T2880,300 L2880,600 L0,600 Z"
-          />
-
-          {/* Mid wave */}
-          <path
-            className="hero-wave hero-wave-mid"
-            fill="url(#wave2)"
-            opacity="0.85"
-            d="M0,350 Q120,290 240,350 T480,350 T720,350 T960,350 T1200,350 T1440,350 T1680,350 T1920,350 T2160,350 T2400,350 T2640,350 T2880,350 L2880,600 L0,600 Z"
-          />
-
-          {/* Front wave - sharpest, most vivid, fastest */}
-          <path
-            className="hero-wave hero-wave-front"
-            fill="url(#wave1)"
-            opacity="0.9"
-            d="M0,400 Q180,460 360,400 T720,400 T1080,400 T1440,400 T1800,400 T2160,400 T2520,400 T2880,400 L2880,600 L0,600 Z"
-          />
-
-          {/* Fine line details */}
-          <path
-            className="hero-wave hero-wave-line1"
-            fill="none"
-            stroke="#e879f9"
-            strokeWidth="1.2"
-            opacity="0.35"
-            d="M0,440 Q120,400 240,440 T480,440 T720,440 T960,440 T1200,440 T1440,440 T1680,440 T1920,440 T2160,440 T2400,440 T2640,440 T2880,440"
-          />
-          <path
-            className="hero-wave hero-wave-line2"
-            fill="none"
-            stroke="#a78bfa"
-            strokeWidth="1"
-            opacity="0.3"
-            d="M0,465 Q180,500 360,465 T720,465 T1080,465 T1440,465 T1800,465 T2160,465 T2520,465 T2880,465"
-          />
         </svg>
+
+        {/* Waves tile every 1440 units, are drawn 2x wide, and each svg element
+            slides left by half its width (one tile) on the compositor */}
+        <Wave
+          layer="hero-wave-back"
+          fill="url(#wave3)"
+          opacity={0.7}
+          path="M0,300 Q180,230 360,300 T720,300 T1080,300 T1440,300 T1800,300 T2160,300 T2520,300 T2880,300 L2880,600 L0,600 Z"
+        />
+        <Wave
+          layer="hero-wave-mid"
+          fill="url(#wave2)"
+          opacity={0.85}
+          path="M0,350 Q120,290 240,350 T480,350 T720,350 T960,350 T1200,350 T1440,350 T1680,350 T1920,350 T2160,350 T2400,350 T2640,350 T2880,350 L2880,600 L0,600 Z"
+        />
+        <Wave
+          layer="hero-wave-front"
+          fill="url(#wave1)"
+          opacity={0.9}
+          path="M0,400 Q180,460 360,400 T720,400 T1080,400 T1440,400 T1800,400 T2160,400 T2520,400 T2880,400 L2880,600 L0,600 Z"
+        />
+        <Wave
+          layer="hero-wave-line1"
+          stroke="#e879f9"
+          strokeWidth={1.2}
+          opacity={0.35}
+          path="M0,440 Q120,400 240,440 T480,440 T720,440 T960,440 T1200,440 T1440,440 T1680,440 T1920,440 T2160,440 T2400,440 T2640,440 T2880,440"
+        />
+        <Wave
+          layer="hero-wave-line2"
+          stroke="#a78bfa"
+          strokeWidth={1}
+          opacity={0.3}
+          path="M0,465 Q180,500 360,465 T720,465 T1080,465 T1440,465 T1800,465 T2160,465 T2520,465 T2880,465"
+        />
 
         <style>{`
           @keyframes hero-wave-shift {
-            from { transform: translateX(0); }
-            to { transform: translateX(-1440px); }
+            from { transform: translate3d(0, 0, 0); }
+            to { transform: translate3d(-50%, 0, 0); }
           }
           .hero-wave {
             animation: hero-wave-shift linear infinite;
@@ -111,6 +150,9 @@ export default function Hero() {
           .hero-wave-front { animation-duration: 14s; }
           .hero-wave-line1 { animation-duration: 18s; }
           .hero-wave-line2 { animation-duration: 26s; }
+          section[data-waves=paused] .hero-wave {
+            animation-play-state: paused;
+          }
           @media (prefers-reduced-motion: reduce) {
             .hero-wave { animation: none; }
           }
@@ -173,13 +215,10 @@ export default function Hero() {
               </Link>
             </motion.div>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link
-                href="/portfolio"
-                className="group inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-gray-200 text-gray-700 font-semibold text-lg hover:border-purple-300 hover:text-purple-700 transition-all no-underline"
-              >
-                <Play size={18} className="text-secondary-purple" />
+              <FlairButton href="/portfolio" className="group text-lg no-underline">
+                <Play size={18} className="text-secondary-purple group-hover:text-white transition-colors" />
                 See What We've Built
-              </Link>
+              </FlairButton>
             </motion.div>
           </motion.div>
 

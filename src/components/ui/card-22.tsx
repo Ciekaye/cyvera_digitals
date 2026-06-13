@@ -18,6 +18,8 @@ interface ServiceCardProps {
   href?: string;
   features?: string[];
   className?: string;
+  /** Entrance stagger delay in seconds (set per-card by the parent grid). */
+  delay?: number;
 }
 
 export const ServiceCard = ({
@@ -29,6 +31,7 @@ export const ServiceCard = ({
   href,
   features,
   className,
+  delay = 0,
 }: ServiceCardProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
@@ -60,36 +63,18 @@ export const ServiceCard = ({
     }),
   };
 
-  const contentVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 15 },
-    visible: { opacity: 1, y: 0 },
-  };
-
   return (
     <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.5 }}
-      variants={contentVariants}
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.5, delay, ease: 'easeOut' }}
       whileHover={{
         scale: 1.03,
-        boxShadow: '0px 10px 30px -5px rgba(0, 0, 0, 0.15)',
         transition: { type: 'spring', stiffness: 300, damping: 20 }
       }}
       className={cn(
-        'w-full max-w-sm h-full flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white text-gray-900 shadow-lg cursor-pointer',
+        'w-full max-w-sm h-full flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white text-gray-900 shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer',
         className
       )}
     >
@@ -100,6 +85,8 @@ export const ServiceCard = ({
             key={currentIndex}
             src={images[currentIndex]}
             alt={title}
+            loading="lazy"
+            decoding="async"
             custom={direction}
             variants={carouselVariants}
             initial="enter"
@@ -136,13 +123,13 @@ export const ServiceCard = ({
         {/* Top Badges and Rating */}
         <div className="absolute top-3 left-3 z-10 flex gap-2 flex-wrap">
           {tags.map((tag) => (
-            <Badge key={tag} variant="secondary" className="bg-white/90 backdrop-blur-sm text-gray-900">
+            <Badge key={tag} variant="secondary" className="bg-white/90 text-gray-900">
               {tag}
             </Badge>
           ))}
         </div>
         <div className="absolute top-3 right-3 z-10">
-          <Badge variant="secondary" className="flex items-center gap-1 bg-white/90 backdrop-blur-sm text-gray-900">
+          <Badge variant="secondary" className="flex items-center gap-1 bg-white/90 text-gray-900">
             <Star className="h-4 w-4 text-yellow-400 fill-yellow-400" /> {rating}
           </Badge>
         </div>
@@ -164,29 +151,25 @@ export const ServiceCard = ({
       </div>
 
       {/* Content Section */}
-      <motion.div variants={contentVariants} className="p-5 flex flex-col flex-1">
+      <div className="p-5 flex flex-col flex-1">
         <div className="space-y-2 flex-1">
-          <motion.h3 variants={itemVariants} className="text-xl font-bold">
-            {title}
-          </motion.h3>
+          <h3 className="text-xl font-bold">{title}</h3>
 
-          <motion.p variants={itemVariants} className="text-sm text-gray-600 leading-relaxed">
-            {description}
-          </motion.p>
+          <p className="text-sm text-gray-600 leading-relaxed">{description}</p>
 
           {features && features.length > 0 && (
-            <motion.ul variants={itemVariants} className="space-y-2">
+            <ul className="space-y-2">
               {features.map((feature) => (
                 <li key={feature} className="flex items-center gap-2 text-sm text-gray-700">
                   <div className="w-1.5 h-1.5 bg-secondary-purple rounded-full"></div>
                   {feature}
                 </li>
               ))}
-            </motion.ul>
+            </ul>
           )}
         </div>
 
-        <motion.div variants={itemVariants} className="pt-2 mt-auto">
+        <div className="pt-2 mt-auto">
           {href ? (
             <Link href={href} className="block">
               <Button className="group w-full text-white hover:shadow-lg" style={{ backgroundColor: '#C02B7D' }}>
@@ -200,8 +183,8 @@ export const ServiceCard = ({
               <ArrowRight className="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" />
             </Button>
           )}
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </motion.div>
   );
 };

@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import FlairButton from '@/components/ui/FlairButton';
 import { motion, useInView } from 'framer-motion';
 import { ArrowRight, ArrowLeft, Clock } from 'lucide-react';
 import { getSortedPosts } from '@/data/blog';
@@ -112,13 +113,10 @@ export default function BlogPreview() {
         </div>
 
         <div className="text-center mt-10">
-          <Link
-            href="/blog"
-            className="group inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-gray-200 text-gray-700 font-semibold hover:border-purple-300 hover:text-purple-700 transition-all no-underline"
-          >
+          <FlairButton href="/blog" className="group">
             Read the Blog
             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-          </Link>
+          </FlairButton>
         </div>
       </div>
     </section>
