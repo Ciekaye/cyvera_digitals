@@ -18,21 +18,21 @@ export default function FinalCTA({ hidePricingLink = false }: { hidePricingLink?
           transition={{ duration: 0.8 }}
           className="relative overflow-hidden rounded-3xl bg-white shadow-xl"
         >
-          {/* Decorative arcs: pre-blurred rings drawn as radial gradients —
-              visually equivalent to a blurred 60px ring, but no filter cost */}
+          {/* Decorative left arc */}
           <div
-            className="pointer-events-none absolute -left-40 top-1/2 -translate-y-1/2 w-[500px] h-[500px]"
+            className="pointer-events-none absolute -left-40 top-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full"
             style={{
-              background:
-                'radial-gradient(circle, transparent 52%, rgba(139, 92, 246, 0.32) 68%, rgba(139, 92, 246, 0.32) 78%, transparent 94%)',
+              border: '60px solid rgba(139, 92, 246, 0.35)',
+              filter: 'blur(28px)',
             }}
             aria-hidden="true"
           />
+          {/* Decorative right arc */}
           <div
-            className="pointer-events-none absolute -right-40 top-1/2 -translate-y-1/2 w-[500px] h-[500px]"
+            className="pointer-events-none absolute -right-40 top-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full"
             style={{
-              background:
-                'radial-gradient(circle, transparent 52%, rgba(139, 92, 246, 0.32) 68%, rgba(139, 92, 246, 0.32) 78%, transparent 94%)',
+              border: '60px solid rgba(139, 92, 246, 0.35)',
+              filter: 'blur(28px)',
             }}
             aria-hidden="true"
           />
