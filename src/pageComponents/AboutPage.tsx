@@ -363,7 +363,7 @@ export default function AboutPage() {
 
             {/* Right side - Stacked sections */}
             <div className="lg:col-span-3 lg:pl-12 space-y-16">
-              {/* Mission & Vision */}
+              {/* Mission */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={missionInView ? { opacity: 1, y: 0 } : {}}
@@ -374,9 +374,28 @@ export default function AboutPage() {
                     <Target className="w-8 h-8 text-white" />
                   </div>
                   <div>
-                    <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Mission &amp; Vision</h2>
+                    <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Mission</h2>
                     <p className="text-body text-gray-600 leading-relaxed">
-                      Our mission is to help businesses grow online through digital solutions that are clear, scalable, and built around real goals. We want to be a long term partner for brands that value quality, honesty, and steady growth.
+                      Our mission is to help businesses grow online through digital solutions that are clear, scalable, and built around real goals.
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Vision */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={missionInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                <div className="flex items-start gap-6">
+                  <div className="w-16 h-16 bg-[#C02B7D] rounded-full flex items-center justify-center flex-shrink-0">
+                    <Eye className="w-8 h-8 text-white" />
+                  </div>
+                  <div>
+                    <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Vision</h2>
+                    <p className="text-body text-gray-600 leading-relaxed">
+                      We want to be a long-term partner for brands that value quality, honesty, and steady growth.
                     </p>
                   </div>
                 </div>
