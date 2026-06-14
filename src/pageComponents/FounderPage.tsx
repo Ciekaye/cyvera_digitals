@@ -35,9 +35,9 @@ export default function FounderPage({
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
-              className="md:col-span-2 md:min-h-[480px]"
+              className="md:col-span-2"
             >
-              <div className="relative aspect-[4/5] md:aspect-auto md:h-full rounded-2xl overflow-hidden shadow-2xl">
+              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
                 <Image
                   src={founder.image}
                   alt={founder.name}
@@ -64,6 +64,12 @@ export default function FounderPage({
                 {founder.name}
               </h1>
 
+              {founder.tagline && (
+                <p className="text-xl md:text-2xl font-semibold text-gray-900 leading-snug mb-5">
+                  {founder.tagline}
+                </p>
+              )}
+
               <p className="text-gray-700 leading-relaxed text-base md:text-lg mb-6">
                 {founder.bio}
               </p>
@@ -76,6 +82,20 @@ export default function FounderPage({
                   {paragraph}
                 </p>
               ))}
+
+              {/* Stats */}
+              {founder.stats && founder.stats.length > 0 && (
+                <div className="grid grid-cols-3 gap-4 border-y border-gray-200 py-6 mb-8">
+                  {founder.stats.map((stat) => (
+                    <div key={stat.label}>
+                      <p className="text-3xl md:text-4xl font-bold text-gradient-purple">{stat.value}</p>
+                      <p className="text-[11px] md:text-xs font-medium uppercase tracking-[0.15em] text-gray-500 mt-1">
+                        {stat.label}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              )}
 
               {/* Skills */}
               {founder.skills && founder.skills.length > 0 && (

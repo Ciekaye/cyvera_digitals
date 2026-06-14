@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { useRef } from 'react';
 import { useInView } from 'framer-motion';
-import { ArrowRight, Target, Eye, Heart, Users, Shield } from 'lucide-react';
+import { ArrowRight, Target, Eye, Heart, Users, Shield, Check, Rocket, Building2, Briefcase, Handshake, Award, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import FinalCTA from '@/components/FinalCTA';
@@ -113,7 +113,7 @@ export default function AboutPage() {
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           {/* Hero content */}
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-32">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -208,110 +208,151 @@ export default function AboutPage() {
             </motion.div>
           </div>
 
-          {/* Who We Are */}
-          <div ref={whoWeAreRef} className="mb-20">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={whoWeAreInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8 }}
-              className="card-liquid-glass p-8"
-            >
-              <div className="grid lg:grid-cols-5 gap-8 items-center">
-                <div className="lg:col-span-2">
-                  <motion.div
-                    initial={{ opacity: 0, x: -30 }}
-                    animate={whoWeAreInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 0.8, delay: 0.1 }}
-                  >
+          {/* Who We Are + Our Story */}
+          <div className="space-y-24 lg:space-y-28 mt-24">
+            {/* Who We Are — image left, text right */}
+            <div ref={whoWeAreRef} className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+              {/* Image */}
+              <motion.div
+                initial={{ opacity: 0, x: -40 }}
+                animate={whoWeAreInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8 }}
+                className="relative"
+              >
+                <motion.div
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                  className="relative rounded-[26px] p-1.5 bg-gradient-to-tr from-secondary-purple/40 via-purple-300/20 to-blue-200/30 shadow-2xl"
+                >
+                  <div className="relative rounded-[20px] overflow-hidden aspect-[4/3] bg-white">
                     <Image
                       src="/Who_we_are.jpg"
                       alt="Who We Are"
                       width={800} height={600}
-                      className="w-full h-auto rounded-xl shadow-lg"
+                      className="w-full h-full object-cover"
                     />
-                  </motion.div>
-                </div>
-                <div className="lg:col-span-3">
-                  <motion.h2
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={whoWeAreInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    className="text-heading text-gradient-purple mb-6"
-                  >
-                    Who We Are
-                  </motion.h2>
-                  <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={whoWeAreInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.8, delay: 0.3 }}
-                    className="text-body text-gray-700 leading-relaxed mb-4"
-                  >
-                    Cyvera Digitals is a growing digital agency that helps startups, entrepreneurs, and businesses establish a clear and professional digital presence. We focus on building websites and digital experiences that are purposeful, scalable, and easy to use.
-                  </motion.p>
-                  <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={whoWeAreInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.8, delay: 0.4 }}
-                    className="text-body text-gray-700 leading-relaxed"
-                  >
-                    Our goal is to create digital solutions that support long-term growth and meaningful user engagement.
-                  </motion.p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
+                  </div>
+                </motion.div>
 
-          {/* Our Story */}
-          <div>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={heroInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="card-liquid-glass p-8"
-            >
-              <div className="grid lg:grid-cols-5 gap-8 items-center">
-                <div className="lg:col-span-2">
+                {/* Floating accent card */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={whoWeAreInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.6, delay: 0.5 }}
+                  className="absolute -bottom-6 -right-3 sm:-right-6 z-20"
+                >
                   <motion.div
-                    initial={{ opacity: 0, x: -30 }}
-                    animate={heroInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 0.8, delay: 0.7 }}
+                    animate={{ y: [0, -8, 0] }}
+                    transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
+                    className="card-liquid-glass px-5 py-4 flex items-center gap-3"
                   >
+                    <div className="w-11 h-11 rounded-xl bg-[#C02B7D] flex items-center justify-center shadow-md flex-shrink-0">
+                      <Target className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-bold text-gray-900 leading-tight">Purpose-built</p>
+                      <p className="text-xs text-gray-500">Scalable &amp; easy to use</p>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              </motion.div>
+
+              {/* Text */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={whoWeAreInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.15 }}
+                className="bg-white/80 backdrop-blur-sm rounded-3xl p-7 sm:p-9 shadow-lg ring-1 ring-white/60"
+              >
+                <h2 className="text-heading text-gradient-purple mb-6">Who We Are</h2>
+                <p className="text-body text-gray-700 leading-relaxed mb-4">
+                  Cyvera Digitals is a growing digital agency that helps startups, entrepreneurs, and businesses establish a clear and professional digital presence. We focus on building websites and digital experiences that are purposeful, scalable, and easy to use.
+                </p>
+                <p className="text-body text-gray-700 leading-relaxed mb-6">
+                  Our goal is to create digital solutions that support long-term growth and meaningful user engagement.
+                </p>
+                <div className="flex flex-wrap gap-2.5">
+                  {['Purposeful', 'Scalable', 'Easy to use'].map((tag) => (
+                    <span key={tag} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-purple-50 border border-purple-100 text-sm font-medium text-gray-700">
+                      <Check size={13} className="text-secondary-purple" strokeWidth={3} />
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Our Story — text left, image right (alternated) */}
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+              {/* Text */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={heroInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.15 }}
+                className="lg:order-1 order-2 bg-white/80 backdrop-blur-sm rounded-3xl p-7 sm:p-9 shadow-lg ring-1 ring-white/60"
+              >
+                <h2 className="text-heading text-gradient-purple mb-6">Our Story</h2>
+                <p className="text-body text-gray-700 leading-relaxed mb-4">
+                  Cyvera Digitals started with a simple frustration. Too many businesses were being sold expensive digital solutions that didn't actually fit their needs.
+                </p>
+                <p className="text-body text-gray-700 leading-relaxed mb-6">
+                  We set out to do it differently, with clear communication, honest pricing, and work that actually moves the needle.
+                </p>
+                <div className="flex flex-wrap gap-2.5">
+                  {['Clear communication', 'Honest pricing', 'Real results'].map((tag) => (
+                    <span key={tag} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-purple-50 border border-purple-100 text-sm font-medium text-gray-700">
+                      <Check size={13} className="text-secondary-purple" strokeWidth={3} />
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+
+              {/* Image */}
+              <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                animate={heroInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8 }}
+                className="relative lg:order-2 order-1"
+              >
+                <motion.div
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut' }}
+                  className="relative rounded-[26px] p-1.5 bg-gradient-to-tr from-blue-200/30 via-purple-300/20 to-secondary-purple/40 shadow-2xl"
+                >
+                  <div className="relative rounded-[20px] overflow-hidden aspect-[4/3] bg-white">
                     <Image
                       src="/our_story.jpg"
                       alt="Our Story"
                       width={800} height={600}
-                      className="w-full h-auto rounded-xl shadow-lg"
+                      className="w-full h-full object-cover"
                     />
+                  </div>
+                </motion.div>
+
+                {/* Floating accent card */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={heroInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.6, delay: 0.5 }}
+                  className="absolute -bottom-6 -left-3 sm:-left-6 z-20"
+                >
+                  <motion.div
+                    animate={{ y: [0, -8, 0] }}
+                    transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+                    className="card-liquid-glass px-5 py-4 flex items-center gap-3"
+                  >
+                    <div className="w-11 h-11 rounded-xl bg-[#C02B7D] flex items-center justify-center shadow-md flex-shrink-0">
+                      <Heart className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-bold text-gray-900 leading-tight">Built differently</p>
+                      <p className="text-xs text-gray-500">Honest &amp; clear</p>
+                    </div>
                   </motion.div>
-                </div>
-                <div className="lg:col-span-3">
-                  <motion.h2
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={heroInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.8, delay: 0.8 }}
-                    className="text-heading text-gradient-purple mb-6"
-                  >
-                    Our Story
-                  </motion.h2>
-                  <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={heroInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.8, delay: 0.9 }}
-                    className="text-body text-gray-700 leading-relaxed mb-4"
-                  >
-                    Cyvera Digitals started with a simple frustration. Too many businesses were being sold expensive digital solutions that didn't actually fit their needs.
-                  </motion.p>
-                  <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={heroInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.8, delay: 1.0 }}
-                    className="text-body text-gray-700 leading-relaxed"
-                  >
-                    We set out to do it differently, with clear communication, honest pricing, and work that actually moves the needle.
-                  </motion.p>
-                </div>
-              </div>
-            </motion.div>
+                </motion.div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -455,28 +496,52 @@ export default function AboutPage() {
 
       {/* ── Who We Work With ── */}
       <section ref={workRef} className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4 lg:px-8 max-w-4xl text-center">
+        <div className="container mx-auto px-4 lg:px-8">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             animate={workInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="text-heading text-gray-900 mb-6"
+            className="text-heading text-gray-900 text-center mb-4"
           >
             Who We Work With
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={workInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-body text-gray-600 leading-relaxed mb-4"
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="text-body text-gray-600 leading-relaxed text-center max-w-2xl mx-auto mb-12"
           >
-            We work with startups, small to medium-sized businesses, and entrepreneurs who want to improve their online presence through professional web design and development.
+            We partner with people who want to improve their online presence through professional web design and development.
           </motion.p>
+
+          <div className="grid sm:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {[
+              { icon: Rocket, title: 'Startups', desc: 'Launch with a clear, scalable digital presence built to grow.' },
+              { icon: Building2, title: 'Small & medium businesses', desc: 'Level up your online presence with a professional, modern build.' },
+              { icon: Briefcase, title: 'Entrepreneurs', desc: 'Turn your idea into a polished, credible digital product.' },
+            ].map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 30 }}
+                animate={workInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+                whileHover={{ y: -6 }}
+                className="card-liquid-glass p-7 text-center"
+              >
+                <div className="w-14 h-14 rounded-2xl bg-[#C02B7D] flex items-center justify-center mx-auto mb-5 shadow-md">
+                  <item.icon className="w-7 h-7 text-white" />
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={workInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-body text-gray-600 leading-relaxed"
+            transition={{ duration: 0.8, delay: 0.55 }}
+            className="text-center text-gray-500 mt-10"
           >
             Regardless of business size, every project receives the same level of focus and care.
           </motion.p>
@@ -485,23 +550,47 @@ export default function AboutPage() {
 
       {/* ── Why Cyvera Digitals ── */}
       <section ref={whyRef} className="py-20 bg-gradient-to-br from-purple-50 to-fuchsia-50">
-        <div className="container mx-auto px-4 lg:px-8 max-w-4xl text-center">
+        <div className="container mx-auto px-4 lg:px-8">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             animate={whyInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="text-heading text-gray-900 mb-6"
+            className="text-heading text-gray-900 text-center mb-4"
           >
             Why Cyvera Digitals
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={whyInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-body text-gray-600 leading-relaxed"
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="text-body text-gray-600 leading-relaxed text-center max-w-2xl mx-auto mb-12"
           >
-            As a growing digital agency, we offer focused attention, direct collaboration, and a strong commitment to quality. We work closely with our clients to build digital solutions that support real growth.
+            As a growing agency, we work closely with our clients to build digital solutions that support real growth.
           </motion.p>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {[
+              { icon: Target, title: 'Focused attention', desc: 'Direct, dedicated focus on your project — never an afterthought.' },
+              { icon: Handshake, title: 'Direct collaboration', desc: 'We work closely with you at every step of the process.' },
+              { icon: Award, title: 'Commitment to quality', desc: 'A high standard held on every detail, every time.' },
+              { icon: TrendingUp, title: 'Built for real growth', desc: 'Solutions designed to support sustainable, long-term growth.' },
+            ].map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 30 }}
+                animate={whyInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+                whileHover={{ y: -6 }}
+                className="card-liquid-glass p-6"
+              >
+                <div className="w-12 h-12 rounded-xl bg-[#C02B7D] flex items-center justify-center mb-4 shadow-md">
+                  <item.icon className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-base font-bold text-gray-900 mb-2">{item.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 

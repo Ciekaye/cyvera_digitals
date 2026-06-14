@@ -15,8 +15,12 @@ export interface Founder {
   imageOrigin?: string;
   heroImagePosition?: string;
   bio: string;
+  /** Short lead statement shown prominently below the name. */
+  tagline?: string;
   /** Extended paragraphs shown on the founder's page, below the intro bio. */
   longBio?: string[];
+  /** Headline stats (e.g. years of experience, projects). */
+  stats?: { value: string; label: string }[];
   skills?: string[];
   quote?: string;
   experience?: FounderExperience[];
@@ -39,7 +43,12 @@ export const founders: Founder[] = [
     imageScale: 1.25,
     imageOrigin: '50% 50%',
     heroImagePosition: '50% 50%',
-    bio: 'With nearly 6 years in the industry, Clark leads the creative vision at Cyvera Digitals — translating brand ideas into design systems that feel intentional and alive.',
+    bio: 'With nearly 6 years in the industry, Clark leads the creative vision at Cyvera Digitals, translating brand ideas into design systems that feel intentional and alive.',
+    tagline: 'Helping brands look credible, show up consistently, and sell more.',
+    longBio: [
+      "For 6 years, Clark has been the person brands call when they need visuals that actually do something, not just look pretty, but build trust, attract the right audience, and drive real results.",
+      "He doesn't just design. He manages social media accounts, builds high-converting funnels, and makes sure everything works together as one system. His clients are in Europe, the UAE, Australia, and the USA, so he knows what works across different markets because he's tested it.",
+    ],
     skills: ['Brand Identity', 'Creative Direction', 'UI Design', 'Visual Strategy', 'Front-End Development', 'WordPress'],
     quote: 'Design is how it works, not just how it looks.',
     social: { linkedin: '#' },
@@ -51,9 +60,9 @@ export const founders: Founder[] = [
     role: 'Co-Founder & Growth Lead',
     image: '/team/jhon.jpg',
     heroImagePosition: '50% 10%',
-    bio: 'With nearly 10 years of experience, Jhon drives growth strategy at Cyvera Digitals — connecting businesses with the right audiences through data-informed campaigns.',
+    bio: 'With nearly 10 years of experience, Jhon drives growth strategy at Cyvera Digitals, connecting businesses with the right audiences through data-informed campaigns.',
     skills: ['Growth Marketing', 'Paid Media', 'SEO Strategy', 'Analytics', 'WordPress'],
-    quote: 'Every click is a conversation — make it count.',
+    quote: 'Every click is a conversation. Make it count.',
     social: { linkedin: '#' },
   },
   {
@@ -63,43 +72,13 @@ export const founders: Founder[] = [
     role: 'Co-Founder & Technical Lead',
     image: '/team/rechcel.jpg',
     heroImagePosition: '50% 10%',
-    bio: 'A Software Developer with 3+ years of experience, Rechcel is passionate about development and technology. He architects the technical backbone of every project at Cyvera Digitals — building fast, scalable digital experiences with modern tools like React, TypeScript, and Tailwind CSS.',
+    bio: 'A Software Developer with 3+ years of experience, Rechcel is passionate about development and technology. He architects the technical backbone of every project at Cyvera Digitals, building fast, scalable digital experiences with modern tools like React, TypeScript, and Tailwind CSS.',
     longBio: [
-      'Currently building at Onlinejobs.ph, Rechcel leads the development of a real-time communication system — architecting a chat and video call platform with WebRTC, WebSockets, and modern web technologies.',
+      'Currently building at Onlinejobs.ph, Rechcel leads the development of a real-time communication system, architecting a chat and video call platform with WebRTC, WebSockets, and modern web technologies.',
       'Beyond client work, he has taught comprehensive web development courses on Udemy, designing project-based curriculum covering both frontend and backend technologies. His full-stack range spans React, TypeScript, and Astro on the frontend to Node.js, Python, and Flask on the backend, backed by databases like MongoDB, Firebase, Supabase, and MySQL.',
     ],
     skills: ['React', 'TypeScript', 'Tailwind CSS', 'Node.js', 'Python', 'Flask', 'WebRTC', 'WebSocket', 'Supabase', 'MongoDB', 'Full Stack Development'],
-    quote: 'Good code is invisible — it just works.',
-    experience: [
-      {
-        role: 'Software Developer',
-        company: 'Onlinejobs.ph',
-        period: 'Aug 2023 — Present',
-        description:
-          'Leading development of a real-time communication system using Flask. Architecting a chat and video call platform with WebRTC, WebSockets, and modern web technologies.',
-      },
-      {
-        role: 'Web Development Instructor',
-        company: 'Udemy',
-        period: 'Jun — Aug 2023',
-        description:
-          'Created and taught comprehensive web development courses. Designed curriculum covering frontend and backend technologies through project-based learning.',
-      },
-      {
-        role: 'Junior Frontend Developer',
-        company: 'Purple Roof',
-        period: 'Mar — May 2023',
-        description:
-          'Contributed to mortgage solutions platform development. Implemented and maintained user-facing features for purpleroof.com under senior developer guidance.',
-      },
-      {
-        role: 'Backend Python Developer',
-        company: 'Rooche Digital',
-        period: 'Dec 2022 — Mar 2023',
-        description:
-          'Developed and maintained backend APIs for ecommerce clients using Python. Ensured scalability, performance, and seamless frontend integration.',
-      },
-    ],
+    quote: 'Good code is invisible. It just works.',
     social: {
       linkedin: 'https://www.linkedin.com/in/rechcel-toledo-589252388/',
       github: 'https://github.com/phcodesage',
