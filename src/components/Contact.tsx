@@ -153,7 +153,7 @@ export default function Contact() {
               <ul className="space-y-4">
                 <li>
                   <a
-                    href="https://wa.me/639763775135"
+                    href="https://wa.me/639164632185"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 group"
@@ -165,7 +165,7 @@ export default function Contact() {
                     </span>
                     <span>
                       <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">WhatsApp</p>
-                      <p className="text-sm font-medium text-gray-900 group-hover:text-secondary-purple transition-colors">+63 976 377 5135</p>
+                      <p className="text-sm font-medium text-gray-900 group-hover:text-secondary-purple transition-colors">+63 916 463 2185</p>
                     </span>
                   </a>
                 </li>

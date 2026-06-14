@@ -5,7 +5,8 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Instagram, Facebook, Linkedin } from 'lucide-react';
+import { Instagram, Facebook, Linkedin, Mail } from 'lucide-react';
+import { FaTiktok, FaWhatsapp } from 'react-icons/fa6';
 
 const sections = [
   {
@@ -44,6 +45,11 @@ const socialLinks = [
     label: 'Instagram',
   },
   {
+    icon: FaTiktok,
+    href: 'https://www.tiktok.com/@cyvera.digitals',
+    label: 'TikTok',
+  },
+  {
     icon: Facebook,
     href: 'https://www.facebook.com/share/18cUTByjQy/?mibextid=wwXIfr',
     label: 'Facebook',
@@ -78,11 +84,33 @@ export default function Footer() {
             className="flex w-full flex-col justify-between gap-8 lg:items-start"
           >
             <Link href="/" className="inline-block">
-              <Image src="/logo.png" alt="Cyvera Digitals" width={360} height={144} style={{ width: 'auto', height: '8rem' }} />
+              <Image src="/logo.svg" alt="Cyvera Digitals" width={192} height={64} unoptimized style={{ width: 'auto', height: '4rem' }} />
             </Link>
             <p className="max-w-[70%] text-base text-gray-500 leading-relaxed">
               From bold brand identities to high-performing websites, Cyvera Digitals helps startups and growing businesses show up online with purpose and professionalism.
             </p>
+            <ul className="space-y-3 text-base text-gray-500">
+              <li>
+                <a
+                  href="mailto:info@cyveradigitals.com"
+                  className="inline-flex items-center gap-2.5 no-underline text-inherit hover:text-secondary-purple transition-colors"
+                >
+                  <Mail className="size-5 text-secondary-purple" />
+                  info@cyveradigitals.com
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://wa.me/639164632185"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 no-underline text-inherit hover:text-secondary-purple transition-colors"
+                >
+                  <FaWhatsapp className="size-5 text-secondary-purple" />
+                  +63 916 463 2185
+                </a>
+              </li>
+            </ul>
             <ul className="flex items-center space-x-7 text-gray-400">
               {socialLinks.map((social) => (
                 <li key={social.label} className="hover:text-secondary-purple transition-colors">

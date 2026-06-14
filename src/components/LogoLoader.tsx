@@ -13,7 +13,7 @@ export default function LogoLoader() {
         className="flex flex-col items-center justify-center gap-4"
       >
         <motion.img
-          src='/logo.png'
+          src={logo}
           alt="Cyvera Digitals logo"
           className="h-24 w-auto"
           animate={{ rotate: [0, 5, -5, 0] }}
