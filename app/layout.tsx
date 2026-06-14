@@ -5,6 +5,7 @@ import './globals.css';
 import { Providers } from './providers';
 import { Analytics } from "@vercel/analytics/next"
 import JsonLd from '@/components/JsonLd';
+import MetaPixel from '@/components/MetaPixel';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -122,6 +123,7 @@ export default function RootLayout({
         }} />
         {children}
         <Analytics />
+        <MetaPixel />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-NR8G7YKZRF"
           strategy="lazyOnload"
