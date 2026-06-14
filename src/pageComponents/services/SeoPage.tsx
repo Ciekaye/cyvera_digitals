@@ -5,7 +5,7 @@ import { useRef } from 'react';
 import Link from 'next/link';
 import FlairButton from '@/components/ui/FlairButton';
 import Image from 'next/image';
-import { TrendingUp, Search, FileText, Wrench, MapPin, Link2, BarChart3, ArrowRight, ArrowLeft } from 'lucide-react';
+import { TrendingUp, Search, FileText, Wrench, MapPin, Link2, BarChart3, ArrowRight, ArrowLeft, Check, ArrowUpRight } from 'lucide-react';
 import FinalCTA from '@/components/FinalCTA';
 import GridBackground from '@/components/GridBackground';
 
@@ -43,7 +43,7 @@ export default function SeoPage() {
   return (
     <div ref={ref} className="bg-modern-primary min-h-screen">
       {/* Hero */}
-      <section className="relative pt-4 md:pt-12 pb-20 overflow-hidden">
+      <section className="relative pt-4 md:pt-12 pb-28 overflow-hidden">
         <GridBackground />
         <div className="absolute inset-0 w-full h-full">
           <svg
@@ -98,23 +98,37 @@ export default function SeoPage() {
             </Link>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8 }}
+              className="lg:col-span-6"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 border border-purple-100 mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 backdrop-blur border border-purple-100 shadow-sm mb-6">
                 <TrendingUp size={16} className="text-secondary-purple" />
                 <span className="text-sm font-semibold text-secondary-purple">Search Engine Optimisation</span>
               </div>
               <h1 className="text-display text-gray-900 mb-6">
                 Rank Higher, Get Found, <span className="text-gradient-purple">Grow Faster</span>
               </h1>
-              <p className="text-subheading mb-8 leading-relaxed" style={{ color: '#535252' }}>
+              <p className="text-subheading mb-8 leading-relaxed max-w-xl" style={{ color: '#535252' }}>
                 We help businesses climb the search rankings with technical precision, smart
                 content strategy, and sustainable link-building — driving organic traffic that converts.
               </p>
+
+              {/* Quick value points */}
+              <ul className="flex flex-wrap gap-x-6 gap-y-3 mb-9">
+                {['Technical + content + links', 'White-hat & sustainable', 'Traffic that converts'].map((point) => (
+                  <li key={point} className="flex items-center gap-2 text-sm font-medium text-gray-700">
+                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-purple-100 flex-shrink-0">
+                      <Check size={12} className="text-secondary-purple" strokeWidth={3} />
+                    </span>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/contact" className="btn-gradient-primary inline-flex items-center justify-center gap-2 text-lg font-semibold no-underline">
                   Start Ranking <ArrowRight size={18} />
@@ -125,18 +139,96 @@ export default function SeoPage() {
               </div>
             </motion.div>
 
+            {/* Search & ranking mockup */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="aspect-square bg-gradient-to-br from-purple-100 to-purple-50 rounded-2xl overflow-hidden shadow-2xl"
+              className="lg:col-span-6 relative"
             >
-              <Image
-                src="/seo.jpg"
-                alt="SEO Services"
-                width={800} height={800}
-                className="w-full h-full object-cover"
+              <motion.div
+                animate={{ scale: [1, 1.06, 1], opacity: [0.7, 1, 0.7] }}
+                transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+                className="absolute -inset-6 bg-gradient-to-tr from-purple-300/40 via-fuchsia-200/30 to-blue-200/30 rounded-[3rem] blur-3xl -z-10"
               />
+
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                className="relative rounded-[20px] overflow-hidden shadow-2xl ring-1 ring-black/5 bg-white"
+              >
+                {/* Search bar chrome */}
+                <div className="px-4 py-3 border-b border-gray-100 bg-white">
+                  <div className="h-10 rounded-full border border-gray-200 flex items-center gap-2.5 px-4">
+                    <Search size={15} className="text-secondary-purple" />
+                    <span className="text-[12px] text-gray-500 font-medium">best agency near me</span>
+                    <span className="ml-auto flex items-center gap-1 text-[11px] font-semibold text-secondary-purple">
+                      <MapPin size={12} /> Local
+                    </span>
+                  </div>
+                </div>
+                {/* Result preview */}
+                <div className="relative aspect-[16/11]">
+                  <Image
+                    src="/seo.jpg"
+                    alt="SEO Services"
+                    width={800} height={800}
+                    priority
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </motion.div>
+
+              {/* Floating #1 ranking card */}
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.75 }}
+                className="absolute -top-5 -left-2 sm:-left-6 z-20"
+              >
+                <motion.div
+                  animate={{ y: [0, 9, 0] }}
+                  transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
+                  className="card-liquid-glass px-4 py-3 flex items-center gap-3"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-gradient-primary flex items-center justify-center text-white font-extrabold text-base shadow-md flex-shrink-0">#1</div>
+                  <div>
+                    <p className="text-sm font-bold text-gray-900 leading-tight">Top ranking</p>
+                    <p className="text-[11px] text-gray-500">Page one, position one</p>
+                  </div>
+                </motion.div>
+              </motion.div>
+
+              {/* Floating analytics card */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="absolute -bottom-6 -right-3 sm:-right-6 z-20"
+              >
+                <motion.div
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
+                  className="card-liquid-glass px-4 py-3"
+                >
+                  <div className="flex items-center justify-between gap-6 mb-1.5">
+                    <span className="text-xs font-semibold text-gray-700">Organic traffic</span>
+                    <span className="flex items-center gap-0.5 text-[11px] font-bold text-green-600">
+                      <ArrowUpRight size={12} /> Growing
+                    </span>
+                  </div>
+                  <svg width="120" height="36" viewBox="0 0 120 36" fill="none">
+                    <polyline points="0,30 20,26 40,28 60,18 80,20 100,8 120,4" stroke="url(#seoTrend)" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                    <defs>
+                      <linearGradient id="seoTrend" x1="0" y1="0" x2="120" y2="0">
+                        <stop stopColor="#7b19e7" />
+                        <stop offset="1" stopColor="#c02b7d" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </motion.div>
+              </motion.div>
             </motion.div>
           </div>
         </div>

@@ -5,7 +5,7 @@ import { useRef } from 'react';
 import Link from 'next/link';
 import FlairButton from '@/components/ui/FlairButton';
 import Image from 'next/image';
-import { Layers, PenTool, Users, BarChart3, Figma, Lightbulb, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Layers, PenTool, Users, BarChart3, Figma, Lightbulb, ArrowRight, ArrowLeft, Check, MousePointer2, Square, Type } from 'lucide-react';
 import FinalCTA from '@/components/FinalCTA';
 import GridBackground from '@/components/GridBackground';
 
@@ -32,7 +32,7 @@ export default function UiUxPage() {
   return (
     <div ref={ref} className="bg-modern-primary min-h-screen">
       {/* Hero */}
-      <section className="relative pt-4 md:pt-12 pb-20 overflow-hidden">
+      <section className="relative pt-4 md:pt-12 pb-28 overflow-hidden">
         <GridBackground />
         {/* Animated background */}
         <div className="absolute inset-0 w-full h-full">
@@ -141,23 +141,37 @@ export default function UiUxPage() {
             </Link>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8 }}
+              className="lg:col-span-6"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 border border-purple-100 mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 backdrop-blur border border-purple-100 shadow-sm mb-6">
                 <Layers size={16} className="text-secondary-purple" />
                 <span className="text-sm font-semibold text-secondary-purple">UI & UX Strategy</span>
               </div>
               <h1 className="text-display text-gray-900 mb-6">
                 User-Centered Design That <span className="text-gradient-purple">Converts</span>
               </h1>
-              <p className="text-subheading mb-8 leading-relaxed" style={{ color: '#535252' }}>
+              <p className="text-subheading mb-8 leading-relaxed max-w-xl" style={{ color: '#535252' }}>
                 We create intuitive, engaging digital experiences grounded in research and best practices.
                 Every design decision is made to improve usability, accessibility, and conversion rates.
               </p>
+
+              {/* Quick value points */}
+              <ul className="flex flex-wrap gap-x-6 gap-y-3 mb-9">
+                {['Research-backed decisions', 'Accessible & inclusive', 'Conversion-focused'].map((point) => (
+                  <li key={point} className="flex items-center gap-2 text-sm font-medium text-gray-700">
+                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-purple-100 flex-shrink-0">
+                      <Check size={12} className="text-secondary-purple" strokeWidth={3} />
+                    </span>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/contact" className="btn-gradient-primary inline-flex items-center justify-center gap-2 text-lg font-semibold no-underline">
                   Start a Project <ArrowRight size={18} />
@@ -168,20 +182,86 @@ export default function UiUxPage() {
               </div>
             </motion.div>
 
+            {/* Design-canvas mockup */}
             <motion.div
-              initial={{ x: 50 }}
-              animate={isInView ? { x: 0 } : {}}
+              initial={{ opacity: 0, x: 50 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="aspect-square bg-gradient-to-br from-purple-100 to-purple-50 rounded-2xl overflow-hidden shadow-2xl"
+              className="lg:col-span-6 relative"
             >
-              <Image
-                src="/uiux.jpg"
-                alt="UI & UX Strategy"
-                width={800} height={800}
-                priority
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="w-full h-full object-cover"
+              <motion.div
+                animate={{ scale: [1, 1.06, 1], opacity: [0.7, 1, 0.7] }}
+                transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+                className="absolute -inset-6 bg-gradient-to-tr from-purple-300/40 via-fuchsia-200/30 to-blue-200/30 rounded-[3rem] blur-3xl -z-10"
               />
+
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                className="relative rounded-[20px] overflow-hidden shadow-2xl ring-1 ring-black/5 bg-white"
+              >
+                {/* Design toolbar */}
+                <div className="flex items-center gap-3 px-4 h-11 border-b border-gray-100 bg-white">
+                  <Figma size={16} className="text-secondary-purple" />
+                  <div className="flex items-center gap-2.5 text-gray-400">
+                    <MousePointer2 size={14} />
+                    <Square size={14} />
+                    <Type size={14} />
+                    <PenTool size={14} />
+                  </div>
+                  <span className="ml-auto text-[11px] font-medium text-gray-400">Frame · 1440 × 900</span>
+                </div>
+                {/* Canvas */}
+                <div className="relative aspect-[16/11]">
+                  <Image
+                    src="/uiux.jpg"
+                    alt="UI & UX Strategy"
+                    width={800} height={800}
+                    priority
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className="w-full h-full object-cover"
+                  />
+                  {/* Selection annotation */}
+                  <div className="absolute left-[12%] top-[20%] w-[44%] h-[44%] border-2 border-secondary-purple rounded-md">
+                    <span className="absolute top-0 left-3 -translate-y-[130%] bg-secondary-purple text-white text-[10px] font-semibold px-2 py-0.5 rounded">Hero · 520 × 320</span>
+                    <span className="absolute -right-1 -bottom-1 w-2.5 h-2.5 bg-white border-2 border-secondary-purple rounded-sm" />
+                    <span className="absolute -left-1 -top-1 w-2.5 h-2.5 bg-white border-2 border-secondary-purple rounded-sm" />
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Floating collaborator cursor */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.6 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.5, delay: 0.75 }}
+                className="absolute top-[32%] -right-1 sm:-right-3 z-20 flex items-start gap-1"
+              >
+                <MousePointer2 className="w-5 h-5 text-primary-purple fill-primary-purple" />
+                <span className="bg-primary-purple text-white text-[11px] font-semibold px-2 py-0.5 rounded-md shadow-md">Cyvera</span>
+              </motion.div>
+
+              {/* Floating spec card */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="absolute -bottom-6 -left-3 sm:-left-6 z-20"
+              >
+                <motion.div
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
+                  className="card-liquid-glass px-5 py-4 flex items-center gap-3"
+                >
+                  <div className="w-11 h-11 rounded-xl bg-gradient-primary flex items-center justify-center shadow-md flex-shrink-0">
+                    <Lightbulb className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-gray-900 leading-tight">User-tested</p>
+                    <p className="text-xs text-gray-500">Designed to convert</p>
+                  </div>
+                </motion.div>
+              </motion.div>
             </motion.div>
           </div>
         </div>

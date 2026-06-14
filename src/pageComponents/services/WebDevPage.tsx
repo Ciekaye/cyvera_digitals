@@ -5,7 +5,7 @@ import { useRef } from 'react';
 import Link from 'next/link';
 import FlairButton from '@/components/ui/FlairButton';
 import Image from 'next/image';
-import { Code, Monitor, Smartphone, ShoppingCart, Server, Zap, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Code, Monitor, Smartphone, ShoppingCart, Server, Zap, ArrowRight, ArrowLeft, Check, Gauge } from 'lucide-react';
 import FinalCTA from '@/components/FinalCTA';
 import GridBackground from '@/components/GridBackground';
 
@@ -91,7 +91,7 @@ export default function WebDevPage() {
   return (
     <div ref={ref} className="bg-modern-primary min-h-screen">
       {/* Hero */}
-      <section className="relative pt-4 md:pt-12 pb-20 overflow-hidden">
+      <section className="relative pt-4 md:pt-12 pb-28 overflow-hidden">
         <GridBackground />
         {/* Animated background */}
         <div className="absolute inset-0 w-full h-full">
@@ -200,24 +200,42 @@ export default function WebDevPage() {
             </Link>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8 }}
+              className="lg:col-span-6"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 border border-purple-100 mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 backdrop-blur border border-purple-100 shadow-sm mb-6">
                 <Code size={16} className="text-secondary-purple" />
                 <span className="text-sm font-semibold text-secondary-purple">Website Development</span>
               </div>
               <h1 className="text-display text-gray-900 mb-6">
                 Custom Websites Built for <span className="text-gradient-purple">Performance</span>
               </h1>
-              <p className="text-subheading mb-8 leading-relaxed" style={{ color: '#535252' }}>
+              <p className="text-subheading mb-8 leading-relaxed max-w-xl" style={{ color: '#535252' }}>
                 We build custom, responsive, and high-performing websites using modern technologies.
                 From landing pages to full-scale web applications, every project is engineered
                 for speed, usability, and scalability.
               </p>
+
+              {/* Quick value points */}
+              <ul className="flex flex-wrap gap-x-6 gap-y-3 mb-9">
+                {[
+                  'Responsive on every device',
+                  'SEO-ready & accessible',
+                  'Optimized for Core Web Vitals',
+                ].map((point) => (
+                  <li key={point} className="flex items-center gap-2 text-sm font-medium text-gray-700">
+                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-purple-100 flex-shrink-0">
+                      <Check size={12} className="text-secondary-purple" strokeWidth={3} />
+                    </span>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/contact" className="btn-gradient-primary inline-flex items-center justify-center gap-2 text-lg font-semibold no-underline">
                   Start a Project <ArrowRight size={18} />
@@ -229,19 +247,94 @@ export default function WebDevPage() {
             </motion.div>
 
             <motion.div
-              initial={{ x: 50 }}
-              animate={isInView ? { x: 0 } : {}}
+              initial={{ opacity: 0, x: 50 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="aspect-square bg-gradient-to-br from-purple-100 to-purple-50 rounded-2xl overflow-hidden shadow-2xl"
+              className="lg:col-span-6 relative"
             >
-              <Image
-                src="/webdevelopment.jpg"
-                alt="Website Development"
-                width={800} height={800}
-                priority
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="w-full h-full object-cover"
+              {/* Soft gradient glow behind the mockup */}
+              <motion.div
+                animate={{ scale: [1, 1.06, 1], opacity: [0.7, 1, 0.7] }}
+                transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+                className="absolute -inset-6 bg-gradient-to-tr from-purple-300/40 via-fuchsia-200/30 to-blue-200/30 rounded-[3rem] blur-3xl -z-10"
               />
+
+              {/* Browser window mockup */}
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                className="relative rounded-[20px] overflow-hidden shadow-2xl ring-1 ring-black/5 bg-white"
+              >
+                {/* Top chrome bar */}
+                <div className="flex items-center gap-2 px-4 h-11 bg-gradient-to-r from-gray-50 to-white border-b border-gray-100">
+                  <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+                  <span className="w-3 h-3 rounded-full bg-[#febc2e]" />
+                  <span className="w-3 h-3 rounded-full bg-[#28c840]" />
+                  <div className="ml-3 flex-1 max-w-[65%] h-6 rounded-full bg-gray-100 flex items-center gap-1.5 px-3">
+                    <div className="w-2.5 h-2.5 rounded-full border border-gray-300" />
+                    <span className="text-[11px] text-gray-400 font-medium tracking-tight">cyveradigitals.com</span>
+                  </div>
+                </div>
+                {/* Screenshot */}
+                <div className="relative aspect-[16/11]">
+                  <Image
+                    src="/webdevelopment.jpg"
+                    alt="Website Development"
+                    width={800} height={800}
+                    priority
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-purple-900/10 to-transparent" />
+                </div>
+              </motion.div>
+
+              {/* Floating performance card (continuous float) */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="absolute -bottom-6 -left-3 sm:-left-6 z-20"
+              >
+                <motion.div
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
+                  className="card-liquid-glass px-5 py-4 flex items-center gap-3"
+                >
+                  <div className="w-11 h-11 rounded-xl bg-gradient-primary flex items-center justify-center shadow-md flex-shrink-0">
+                    <Gauge className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-gray-900 leading-tight">Performance-first</p>
+                    <p className="text-xs text-gray-500">Engineered for speed</p>
+                  </div>
+                </motion.div>
+              </motion.div>
+
+              {/* Floating tech-stack chips (continuous float, opposite phase) */}
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.75 }}
+                className="absolute -top-5 -right-3 sm:-right-6 z-20"
+              >
+                <motion.div
+                  animate={{ y: [0, 9, 0] }}
+                  transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
+                  className="card-liquid-glass px-3 py-2.5 flex items-center gap-2"
+                >
+                  {['react', 'nextjs', 'tailwindcss', 'typescript'].map((logo, i) => (
+                    <div
+                      key={logo}
+                      className="w-8 h-8 rounded-lg bg-white flex items-center justify-center shadow-sm ring-1 ring-gray-100"
+                      style={{ marginLeft: i === 0 ? 0 : '-2px' }}
+                    >
+                      <Image src={`/logos/${logo}.svg`} alt={logo} width={18} height={18} className="object-contain" />
+                    </div>
+                  ))}
+                  <span className="text-xs font-semibold text-gray-700 pl-1 pr-1">+ more</span>
+                </motion.div>
+              </motion.div>
             </motion.div>
           </div>
         </div>

@@ -5,7 +5,7 @@ import { useRef } from 'react';
 import Link from 'next/link';
 import FlairButton from '@/components/ui/FlairButton';
 import Image from 'next/image';
-import { Palette, PenTool, Image as ImageIcon, BookOpen, Stamp, Eye, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Palette, PenTool, Image as ImageIcon, BookOpen, Stamp, Eye, ArrowRight, ArrowLeft, Check } from 'lucide-react';
 import FinalCTA from '@/components/FinalCTA';
 import GridBackground from '@/components/GridBackground';
 
@@ -36,7 +36,7 @@ export default function GraphicDesignPage() {
   return (
     <div ref={ref} className="bg-modern-primary min-h-screen">
       {/* Hero */}
-      <section className="relative pt-4 md:pt-12 pb-20 overflow-hidden">
+      <section className="relative pt-4 md:pt-12 pb-28 overflow-hidden">
         <GridBackground />
         {/* Animated background */}
         <div className="absolute inset-0 w-full h-full">
@@ -101,23 +101,37 @@ export default function GraphicDesignPage() {
             </Link>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8 }}
+              className="lg:col-span-6"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 border border-purple-100 mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 backdrop-blur border border-purple-100 shadow-sm mb-6">
                 <Palette size={16} className="text-secondary-purple" />
                 <span className="text-sm font-semibold text-secondary-purple">Graphic & Brand Design</span>
               </div>
               <h1 className="text-display text-gray-900 mb-6">
                 Visual Identities That <span className="text-gradient-purple">Stand Out</span>
               </h1>
-              <p className="text-subheading mb-8 leading-relaxed" style={{ color: '#535252' }}>
+              <p className="text-subheading mb-8 leading-relaxed max-w-xl" style={{ color: '#535252' }}>
                 We create professional brand identities and design assets that communicate
                 your brand clearly, consistently, and memorably across every platform.
               </p>
+
+              {/* Quick value points */}
+              <ul className="flex flex-wrap gap-x-6 gap-y-3 mb-9">
+                {['Unique & ownable', 'Consistent everywhere', 'Print & digital ready'].map((point) => (
+                  <li key={point} className="flex items-center gap-2 text-sm font-medium text-gray-700">
+                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-purple-100 flex-shrink-0">
+                      <Check size={12} className="text-secondary-purple" strokeWidth={3} />
+                    </span>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/contact" className="btn-gradient-primary inline-flex items-center justify-center gap-2 text-lg font-semibold no-underline">
                   Start a Project <ArrowRight size={18} />
@@ -128,20 +142,79 @@ export default function GraphicDesignPage() {
               </div>
             </motion.div>
 
+            {/* Brand-board mockup */}
             <motion.div
-              initial={{ x: 50 }}
-              animate={isInView ? { x: 0 } : {}}
+              initial={{ opacity: 0, x: 50 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="aspect-square bg-gradient-to-br from-purple-100 to-purple-50 rounded-2xl overflow-hidden shadow-2xl"
+              className="lg:col-span-6 relative"
             >
-              <Image
-                src="/graphicdesign.jpg"
-                alt="Graphic & Brand Design"
-                width={800} height={800}
-                priority
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="w-full h-full object-cover"
+              <motion.div
+                animate={{ scale: [1, 1.06, 1], opacity: [0.7, 1, 0.7] }}
+                transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+                className="absolute -inset-6 bg-gradient-to-tr from-fuchsia-300/40 via-purple-200/30 to-blue-200/30 rounded-[3rem] blur-3xl -z-10"
               />
+
+              {/* Image board with gradient frame */}
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                className="relative rounded-[26px] p-1.5 bg-gradient-to-tr from-secondary-purple/40 via-purple-300/20 to-blue-200/30 shadow-2xl"
+              >
+                <div className="relative rounded-[20px] overflow-hidden aspect-[16/12] bg-white">
+                  <Image
+                    src="/graphicdesign.jpg"
+                    alt="Graphic & Brand Design"
+                    width={800} height={800}
+                    priority
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </motion.div>
+
+              {/* Floating color palette */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="absolute -bottom-6 -left-3 sm:-left-6 z-20"
+              >
+                <motion.div
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
+                  className="card-liquid-glass px-4 py-3"
+                >
+                  <div className="flex items-center gap-1.5 mb-2">
+                    {['#7b19e7', '#c02b7d', '#e879f9', '#f0abfc', '#1f2937'].map((c) => (
+                      <span key={c} className="w-6 h-6 rounded-full ring-1 ring-black/5" style={{ backgroundColor: c }} />
+                    ))}
+                  </div>
+                  <p className="text-xs font-semibold text-gray-700 flex items-center gap-1.5">
+                    <Palette size={12} className="text-secondary-purple" /> Brand palette
+                  </p>
+                </motion.div>
+              </motion.div>
+
+              {/* Floating typography card */}
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.75 }}
+                className="absolute -top-5 -right-2 sm:-right-6 z-20"
+              >
+                <motion.div
+                  animate={{ y: [0, 9, 0] }}
+                  transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
+                  className="card-liquid-glass px-4 py-3 flex items-center gap-3"
+                >
+                  <span className="text-3xl font-extrabold leading-none text-gradient-purple">Aa</span>
+                  <div>
+                    <p className="text-xs font-bold text-gray-900 leading-tight">Poppins</p>
+                    <p className="text-[11px] text-gray-500">Type system</p>
+                  </div>
+                </motion.div>
+              </motion.div>
             </motion.div>
           </div>
         </div>

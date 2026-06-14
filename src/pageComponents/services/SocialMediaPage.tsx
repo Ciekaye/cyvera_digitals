@@ -5,7 +5,7 @@ import { useRef } from 'react';
 import Link from 'next/link';
 import FlairButton from '@/components/ui/FlairButton';
 import Image from 'next/image';
-import { Share2, Camera, CalendarDays, BarChart3, MessageCircle, TrendingUp, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Share2, Camera, CalendarDays, BarChart3, MessageCircle, TrendingUp, ArrowRight, ArrowLeft, Check, Heart, Send, Bookmark, MoreHorizontal } from 'lucide-react';
 import FinalCTA from '@/components/FinalCTA';
 import GridBackground from '@/components/GridBackground';
 
@@ -76,7 +76,7 @@ export default function SocialMediaPage() {
   return (
     <div ref={ref} className="bg-modern-primary min-h-screen">
       {/* Hero */}
-      <section className="relative pt-4 md:pt-12 pb-20 overflow-hidden">
+      <section className="relative pt-4 md:pt-12 pb-28 overflow-hidden">
         <GridBackground />
         {/* Animated background */}
         <div className="absolute inset-0 w-full h-full">
@@ -185,24 +185,38 @@ export default function SocialMediaPage() {
             </Link>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8 }}
+              className="lg:col-span-6"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 border border-purple-100 mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 backdrop-blur border border-purple-100 shadow-sm mb-6">
                 <Share2 size={16} className="text-secondary-purple" />
                 <span className="text-sm font-semibold text-secondary-purple">Social Media Management</span>
               </div>
               <h1 className="text-display text-gray-900 mb-6">
                 Stay Visible, Stay <span className="text-gradient-purple">Engaging</span>
               </h1>
-              <p className="text-subheading mb-8 leading-relaxed" style={{ color: '#535252' }}>
+              <p className="text-subheading mb-8 leading-relaxed max-w-xl" style={{ color: '#535252' }}>
                 We handle your social media so you can focus on running your business.
                 From content creation to community management, we keep your brand active,
                 consistent, and growing.
               </p>
+
+              {/* Quick value points */}
+              <ul className="flex flex-wrap gap-x-6 gap-y-3 mb-9">
+                {['Daily, on-brand content', 'Community management', 'Growth you can track'].map((point) => (
+                  <li key={point} className="flex items-center gap-2 text-sm font-medium text-gray-700">
+                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-purple-100 flex-shrink-0">
+                      <Check size={12} className="text-secondary-purple" strokeWidth={3} />
+                    </span>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/contact" className="btn-gradient-primary inline-flex items-center justify-center gap-2 text-lg font-semibold no-underline">
                   Start a Project <ArrowRight size={18} />
@@ -213,20 +227,104 @@ export default function SocialMediaPage() {
               </div>
             </motion.div>
 
+            {/* Social-post mockup */}
             <motion.div
-              initial={{ x: 50 }}
-              animate={isInView ? { x: 0 } : {}}
+              initial={{ opacity: 0, x: 50 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="aspect-square bg-gradient-to-br from-purple-100 to-purple-50 rounded-2xl overflow-hidden shadow-2xl"
+              className="lg:col-span-6 relative"
             >
-              <Image
-                src="/smm.jpg"
-                alt="Social Media Management"
-                width={800} height={800}
-                priority
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="w-full h-full object-cover"
+              <motion.div
+                animate={{ scale: [1, 1.06, 1], opacity: [0.7, 1, 0.7] }}
+                transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+                className="absolute -inset-6 bg-gradient-to-tr from-fuchsia-300/40 via-purple-200/30 to-blue-200/30 rounded-[3rem] blur-3xl -z-10"
               />
+
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                className="relative rounded-[20px] overflow-hidden shadow-2xl ring-1 ring-black/5 bg-white"
+              >
+                {/* Post header */}
+                <div className="flex items-center gap-3 px-4 py-3">
+                  <div className="w-9 h-9 rounded-full bg-gradient-primary flex items-center justify-center text-white text-sm font-bold flex-shrink-0">C</div>
+                  <div className="leading-tight">
+                    <p className="text-sm font-semibold text-gray-900">cyveradigitals</p>
+                    <p className="text-[11px] text-gray-400">Sponsored</p>
+                  </div>
+                  <MoreHorizontal className="ml-auto w-5 h-5 text-gray-400" />
+                </div>
+                {/* Post image */}
+                <div className="relative aspect-[16/12]">
+                  <Image
+                    src="/smm.jpg"
+                    alt="Social Media Management"
+                    width={800} height={800}
+                    priority
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                {/* Post actions */}
+                <div className="flex items-center gap-4 px-4 pt-3">
+                  <Heart className="w-6 h-6 text-secondary-purple fill-secondary-purple" />
+                  <MessageCircle className="w-6 h-6 text-gray-700" />
+                  <Send className="w-6 h-6 text-gray-700" />
+                  <Bookmark className="ml-auto w-6 h-6 text-gray-700" />
+                </div>
+                <div className="px-4 pt-2 pb-4">
+                  <p className="text-sm font-semibold text-gray-900">2,481 likes</p>
+                  <p className="text-sm text-gray-600">
+                    <span className="font-semibold text-gray-900">cyveradigitals</span> Brands that show up daily, win. ✨
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Floating platform chips */}
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.75 }}
+                className="absolute -top-5 -right-2 sm:-right-5 z-20"
+              >
+                <motion.div
+                  animate={{ y: [0, 9, 0] }}
+                  transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
+                  className="card-liquid-glass px-3 py-2.5 flex items-center gap-2"
+                >
+                  {['instagram', 'tiktok', 'facebook', 'x'].map((logo, i) => (
+                    <div
+                      key={logo}
+                      className="w-8 h-8 rounded-lg bg-white flex items-center justify-center shadow-sm ring-1 ring-gray-100"
+                      style={{ marginLeft: i === 0 ? 0 : '-2px' }}
+                    >
+                      <Image src={`/logos/${logo}.svg`} alt={logo} width={16} height={16} className="object-contain" />
+                    </div>
+                  ))}
+                </motion.div>
+              </motion.div>
+
+              {/* Floating schedule card */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="absolute -bottom-6 -left-3 sm:-left-6 z-20"
+              >
+                <motion.div
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
+                  className="card-liquid-glass px-5 py-4 flex items-center gap-3"
+                >
+                  <div className="w-11 h-11 rounded-xl bg-gradient-primary flex items-center justify-center shadow-md flex-shrink-0">
+                    <CalendarDays className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-gray-900 leading-tight">Always-on</p>
+                    <p className="text-xs text-gray-500">Scheduled &amp; consistent</p>
+                  </div>
+                </motion.div>
+              </motion.div>
             </motion.div>
           </div>
         </div>
