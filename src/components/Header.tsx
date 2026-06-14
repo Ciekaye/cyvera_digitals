@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Code, Layers, Palette, Share2, TrendingUp, Newspaper, BookOpen } from 'lucide-react';
+import { Menu, X, Code, Layers, Palette, Share2, TrendingUp, Newspaper, BookOpen, ChevronDown } from 'lucide-react';
 import { useState, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -98,11 +98,15 @@ export default function Header() {
                   >
                     <Link
                       href={item.path}
-                      className={`relative hover:text-secondary-purple transition-colors font-medium no-underline ${
+                      className={`relative inline-flex items-center gap-1 hover:text-secondary-purple transition-colors font-medium no-underline ${
                         (pathname ?? '').startsWith('/services') ? 'text-secondary-purple' : 'text-gray-700'
                       }`}
                     >
                       {item.label}
+                      <ChevronDown
+                        size={16}
+                        className={`transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`}
+                      />
                     </Link>
 
                     {/* Dropdown */}
@@ -157,11 +161,15 @@ export default function Header() {
                   >
                     <Link
                       href={item.path}
-                      className={`relative hover:text-secondary-purple transition-colors font-medium no-underline ${
+                      className={`relative inline-flex items-center gap-1 hover:text-secondary-purple transition-colors font-medium no-underline ${
                         isResourcesActive ? 'text-secondary-purple' : 'text-gray-700'
                       }`}
                     >
                       {item.label}
+                      <ChevronDown
+                        size={16}
+                        className={`transition-transform duration-200 ${isResourcesOpen ? 'rotate-180' : ''}`}
+                      />
                     </Link>
 
                     {/* Dropdown */}
