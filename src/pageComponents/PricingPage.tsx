@@ -170,10 +170,13 @@ export default function PricingPage() {
                 {plan.price === "Custom" ? (
                   <span className="text-4xl font-bold text-gray-900">Custom</span>
                 ) : (
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-lg font-medium text-gray-500">$</span>
-                    <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
-                    <span className="text-gray-500 text-sm ml-1">/ project</span>
+                  <div>
+                    <span className="block text-xs font-medium text-gray-500 mb-1">Starts at</span>
+                    <div className="flex items-baseline gap-1">
+                      <span className="text-lg font-medium text-gray-500">$</span>
+                      <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
+                      <span className="text-gray-500 text-sm ml-1">/ project</span>
+                    </div>
                   </div>
                 )}
               </div>
