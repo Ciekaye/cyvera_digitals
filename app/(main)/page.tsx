@@ -6,6 +6,7 @@ import WhyUsPreview from '@/components/WhyUsPreview';
 import HowWeWork from '@/components/HowWeWork';
 import PortfolioPreview from '@/components/PortfolioPreview';
 import BlogPreview from '@/components/BlogPreview';
+import FAQ from '@/components/FAQ';
 import FinalCTA from '@/components/FinalCTA';
 import JsonLd from '@/components/JsonLd';
 
@@ -92,6 +93,9 @@ export default function HomePage() {
       </section>
       <section id="blog-preview" className="smooth-scroll-section">
         <BlogPreview />
+      </section>
+      <section id="faq" className="smooth-scroll-section">
+        <FAQ />
       </section>
       <section id="final-cta" className="smooth-scroll-section">
         <FinalCTA />

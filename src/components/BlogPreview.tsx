@@ -25,7 +25,7 @@ export default function BlogPreview() {
   };
 
   return (
-    <section ref={ref} className="py-24 bg-modern-primary">
+    <section ref={ref} className="py-12 lg:py-24 bg-modern-primary">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-end justify-between gap-6 mb-12">
           <div>

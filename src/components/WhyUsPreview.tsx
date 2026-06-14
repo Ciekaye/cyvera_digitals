@@ -34,7 +34,7 @@ export default function WhyUsPreview() {
   ];
 
   return (
-    <section ref={ref} className="py-24 bg-gradient-to-br from-gray-50 to-purple-50">
+    <section ref={ref} className="py-12 lg:py-24 bg-gradient-to-br from-gray-50 to-purple-50">
       <div className="container mx-auto px-4 lg:px-8">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}

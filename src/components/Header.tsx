@@ -83,7 +83,7 @@ export default function Header() {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden xl:flex items-center gap-8">
             {navItems.map((item, index) => {
               if (item.label === 'Services') {
                 return (
@@ -235,7 +235,7 @@ export default function Header() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.8 }}
-            className="hidden lg:block"
+            className="hidden xl:block"
           >
             <Link
               href="/contact"
@@ -247,7 +247,7 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 text-gray-700 hover:text-gray-900 transition-colors"
+            className="xl:hidden p-2 text-gray-700 hover:text-gray-900 transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -260,7 +260,7 @@ export default function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden mt-6 pb-6 flex flex-col gap-4"
+            className="xl:hidden mt-6 pb-6 flex flex-col gap-4"
           >
             {navItems.map((item) => {
               if (item.label === 'Services') {

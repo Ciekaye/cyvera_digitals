@@ -72,7 +72,7 @@ export default function ServicesOverview() {
   ];
 
   return (
-    <section ref={ref} className="py-24 bg-white">
+    <section ref={ref} className="py-12 lg:py-24 bg-white">
       <div className="container mx-auto px-4 lg:px-8">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}

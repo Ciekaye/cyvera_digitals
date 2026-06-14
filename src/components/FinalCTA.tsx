@@ -10,7 +10,7 @@ export default function FinalCTA({ hidePricingLink = false }: { hidePricingLink?
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="py-24 bg-gradient-to-br from-gray-100 to-purple-100">
+    <section ref={ref} className="py-12 lg:py-24 bg-gradient-to-br from-gray-100 to-purple-100">
       <div className="container mx-auto px-4 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
