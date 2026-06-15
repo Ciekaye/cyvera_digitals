@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Poppins, Inter } from 'next/font/google';
+import localFont from 'next/font/local';
 import Script from 'next/script';
 import './globals.css';
 import { Providers } from './providers';
@@ -7,17 +7,23 @@ import { Analytics } from "@vercel/analytics/next"
 import JsonLd from '@/components/JsonLd';
 import MetaPixel from '@/components/MetaPixel';
 
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+// Self-hosted fonts (next/font/local) — no runtime dependency on Google Fonts,
+// so no font-swap flash even offline. Files live in app/fonts/.
+const poppins = localFont({
+  src: [
+    { path: './fonts/Poppins-400.woff2', weight: '400', style: 'normal' },
+    { path: './fonts/Poppins-500.woff2', weight: '500', style: 'normal' },
+    { path: './fonts/Poppins-600.woff2', weight: '600', style: 'normal' },
+    { path: './fonts/Poppins-700.woff2', weight: '700', style: 'normal' },
+  ],
   display: 'swap',
   variable: '--font-poppins',
   preload: true,
 });
 
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+const inter = localFont({
+  src: './fonts/Inter-Variable.woff2',
+  weight: '100 900',
   display: 'swap',
   variable: '--font-inter',
   preload: true,

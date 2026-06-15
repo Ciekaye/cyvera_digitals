@@ -55,7 +55,7 @@ export default function FinalCTA({ hidePricingLink = false }: { hidePricingLink?
               className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 max-w-3xl mx-auto leading-[1.1] text-gray-900 tracking-tight"
             >
               Let's Build Something{' '}
-              <span className="block">Worth Noticing.</span>
+              <span className="block text-gradient-purple">Worth Noticing.</span>
             </motion.h2>
 
             <motion.p

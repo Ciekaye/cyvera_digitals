@@ -26,7 +26,7 @@ export default function PortfolioPreview() {
           transition={{ duration: 0.8 }}
           className="text-display text-center text-gray-900 mb-6"
         >
-          Selected Work
+          Selected <span className="text-gradient-purple">Work</span>
         </motion.h2>
 
         <motion.p
