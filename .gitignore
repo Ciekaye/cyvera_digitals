@@ -23,3 +23,7 @@ out
 *.sln
 *.sw?
 .env
+
+# build artifacts & tooling
+*.tsbuildinfo
+.claude/
