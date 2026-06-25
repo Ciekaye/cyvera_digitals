@@ -21,7 +21,7 @@ export const bookingConfig = {
   minNoticeHours: 4,
 
   /** How many days into the future the date picker shows. */
-  maxDaysAhead: 30,
+  maxDaysAhead: 90,
 
   /**
    * Working days, in Luxon weekday numbers: 1 = Monday … 7 = Sunday.
