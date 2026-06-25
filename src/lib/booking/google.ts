@@ -62,18 +62,11 @@ export async function getAvailableSlots(dateISO: string): Promise<string[]> {
   // Closed on non-working days.
   if (!bookingConfig.workingDays.includes(day.weekday)) return [];
 
-  const windowStart = day.set({
-    hour: bookingConfig.workingStartHour,
-    minute: 0,
-    second: 0,
-    millisecond: 0,
-  });
-  const windowEnd = day.set({
-    hour: bookingConfig.workingEndHour,
-    minute: 0,
-    second: 0,
-    millisecond: 0,
-  });
+  // Compute the window off midnight so workingEndHour: 24 maps cleanly to the
+  // next midnight (and 0 to this midnight) — set({ hour: 24 }) is ambiguous.
+  const dayStart = day.startOf('day');
+  const windowStart = dayStart.plus({ hours: bookingConfig.workingStartHour });
+  const windowEnd = dayStart.plus({ hours: bookingConfig.workingEndHour });
 
   const minStart = DateTime.utc().plus({ hours: bookingConfig.minNoticeHours });
 

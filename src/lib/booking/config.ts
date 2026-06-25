@@ -25,15 +25,19 @@ export const bookingConfig = {
 
   /**
    * Working days, in Luxon weekday numbers: 1 = Monday … 7 = Sunday.
-   * Default = Mon–Sat (Sunday off).
+   * All seven days open so global clients always have slots in their own week.
    */
-  workingDays: [1, 2, 3, 4, 5, 6] as number[],
+  workingDays: [1, 2, 3, 4, 5, 6, 7] as number[],
 
-  /** Start of the working window (24h clock) in the owner timezone. 8 = 08:00. */
-  workingStartHour: 8,
+  /**
+   * Working window (24h clock) in the owner timezone. 0–24 = open around the
+   * clock, so visitors in any timezone always see slots during their daytime.
+   * Existing calendar events still block their slots via the free/busy check.
+   */
+  workingStartHour: 0,
 
-  /** End of the working window (24h clock) in the owner timezone. 22 = 22:00. */
-  workingEndHour: 22,
+  /** End of the working window. 24 = midnight (end of day). */
+  workingEndHour: 24,
 } as const;
 
 /**

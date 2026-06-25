@@ -1,9 +1,10 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { DateTime } from 'luxon';
 import { Calendar, Clock, Globe, Check, Loader2, ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react';
 import { bookingConfig } from '@/lib/booking/config';
+import { useSmoothScrollContext } from '@/components/SmoothScrollProvider';
 
 interface BookingPickerProps {
   /** Studio timezone, forwarded from the server. Used to build the working-day grid. */
@@ -28,6 +29,9 @@ export default function BookingPicker({ ownerTimezone }: BookingPickerProps) {
       return [ownerTimezone, 'UTC'];
     }
   }, [ownerTimezone]);
+
+  const { scrollToElement } = useSmoothScrollContext();
+  const cardRef = useRef<HTMLDivElement>(null);
 
   const [tz, setTz] = useState<string>(ownerTimezone);
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
@@ -113,6 +117,17 @@ export default function BookingPicker({ ownerTimezone }: BookingPickerProps) {
       cancelled = true;
     };
   }, [selectedDate, tz]);
+
+  // Picking a time swaps the tall calendar/slots view for the shorter details
+  // form, which collapses the page height and can leave the viewport sitting
+  // down by the footer. Pull the card back into view so the form is on screen.
+  useEffect(() => {
+    if (selectedSlot && cardRef.current) {
+      scrollToElement(cardRef.current, { offset: -100, duration: 0.6 });
+    }
+    // scrollToElement is stable for our purposes; only react to slot changes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedSlot]);
 
   const formatSlot = (utc: string) =>
     DateTime.fromISO(utc, { zone: 'utc' }).setZone(tz).toFormat('h:mm a');
@@ -200,7 +215,7 @@ export default function BookingPicker({ ownerTimezone }: BookingPickerProps) {
 
   // ---- Picker + form -----------------------------------------------------
   return (
-    <div className="card-liquid-glass rounded-3xl p-6 md:p-8 w-full">
+    <div ref={cardRef} className="card-liquid-glass rounded-3xl p-6 md:p-8 w-full scroll-mt-28">
       {/* Timezone */}
       <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-8">
         <span className="inline-flex items-center gap-2 text-sm font-medium text-gray-700">
