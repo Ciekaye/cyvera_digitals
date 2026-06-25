@@ -16,6 +16,7 @@ const sections = [
       { name: 'Why Us', href: '/why-us' },
       { name: 'Portfolio', href: '/portfolio' },
       { name: 'Pricing', href: '/pricing' },
+      { name: 'Contact', href: '/contact' },
     ],
   },
   {

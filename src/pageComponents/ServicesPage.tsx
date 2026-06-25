@@ -144,10 +144,10 @@ function ServicesHero() {
               className="flex flex-col sm:flex-row items-start gap-4"
             >
               <Link
-                href="/contact"
+                href="/book"
                 className="btn-gradient-primary inline-flex items-center gap-2 text-lg font-semibold no-underline"
               >
-                Get Started <ArrowRight size={18} />
+                Book Now <ArrowRight size={18} />
               </Link>
               <FlairButton href="/contact">
                 <MessageCircle size={18} /> Talk to Us
@@ -314,10 +314,10 @@ function WebDevSection() {
             </div>
 
             <Link
-              href="/contact"
+              href="/book"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#C02B7D] text-white font-semibold no-underline shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
             >
-              Start a Website Project <ArrowRight size={16} />
+              Book Now <ArrowRight size={16} />
             </Link>
           </FadeIn>
 
@@ -407,10 +407,10 @@ function WordPressSection() {
                 Flexible and easy-to-manage WordPress websites tailored to your business needs.
               </p>
               <Link
-                href="/contact"
+                href="/book"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#C02B7D] text-white font-semibold no-underline shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
               >
-                Build with WordPress <ArrowRight size={16} />
+                Book Now <ArrowRight size={16} />
               </Link>
             </div>
 
@@ -744,10 +744,10 @@ function SeoSection() {
             </ul>
 
             <a
-              href="/contact"
+              href="/book"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#C02B7D] text-white font-semibold no-underline shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
             >
-              Start an SEO Project <ArrowRight size={16} />
+              Book Now <ArrowRight size={16} />
             </a>
           </FadeIn>
 

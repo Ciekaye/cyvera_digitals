@@ -75,11 +75,11 @@ export default function FinalCTA({ hidePricingLink = false }: { hidePricingLink?
             >
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-block">
                 <Link
-                  href="/contact"
+                  href="/book"
                   className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl text-white text-base font-semibold hover:shadow-2xl transition-all no-underline"
                   style={{ backgroundColor: '#C02B7D' }}
                 >
-                  Book a Free Discovery Call
+                  Book Now
                 </Link>
               </motion.div>
               {!hidePricingLink && (

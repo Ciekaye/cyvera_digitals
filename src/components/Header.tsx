@@ -229,6 +229,21 @@ export default function Header() {
                 </motion.div>
               );
             })}
+            {/* Plain-text Contact link kept alongside the primary Book CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 }}
+            >
+              <Link
+                href="/contact"
+                className={`relative hover:text-secondary-purple transition-colors font-medium no-underline ${
+                  (pathname ?? '') === '/contact' ? 'text-secondary-purple' : 'text-gray-700'
+                }`}
+              >
+                Contact Us
+              </Link>
+            </motion.div>
           </div>
 
           <motion.div
@@ -238,10 +253,10 @@ export default function Header() {
             className="hidden xl:block"
           >
             <Link
-              href="/contact"
+              href="/book"
               className="px-6 py-2 bg-gray-900 text-white rounded-full font-medium hover:bg-gray-800 transition-colors no-underline"
             >
-              Contact Us
+              Book Now
             </Link>
           </motion.div>
 
@@ -366,9 +381,18 @@ export default function Header() {
             <Link
               href="/contact"
               onClick={() => setIsMenuOpen(false)}
-              className="mt-2 px-6 py-2 bg-gray-900 text-white rounded-full font-medium hover:bg-gray-800 transition-colors w-fit no-underline inline-block"
+              className={`relative hover:text-secondary-purple transition-colors font-medium no-underline inline-block ${
+                (pathname ?? '') === '/contact' ? 'text-secondary-purple' : 'text-gray-700'
+              }`}
             >
               Contact Us
+            </Link>
+            <Link
+              href="/book"
+              onClick={() => setIsMenuOpen(false)}
+              className="mt-2 px-6 py-2 bg-gray-900 text-white rounded-full font-medium hover:bg-gray-800 transition-colors w-fit no-underline inline-block"
+            >
+              Book Now
             </Link>
           </motion.div>
         )}

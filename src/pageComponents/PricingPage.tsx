@@ -191,7 +191,7 @@ export default function PricingPage() {
               </ul>
 
               <Link
-                href="/contact"
+                href="/book"
                 className={`w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-xl font-semibold text-sm transition-all no-underline ${
                   plan.highlighted
                     ? 'text-white hover:shadow-xl hover:-translate-y-0.5'
@@ -199,7 +199,7 @@ export default function PricingPage() {
                 }`}
                 style={plan.highlighted ? { background: 'var(--gradient-primary)', boxShadow: '0 4px 20px rgba(123, 25, 231, 0.35)' } : {}}
               >
-                {plan.price === "Custom" ? "Contact Us" : "Get Started"}
+                Book Now
                 <ArrowRight size={16} />
               </Link>
             </motion.div>

@@ -198,10 +198,10 @@ export default function GuideArticlePage({
                       Explore {serviceLabel} <ArrowRight size={16} />
                     </Link>
                     <Link
-                      href="/contact"
+                      href="/book"
                       className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border-2 border-white/60 text-white font-semibold no-underline hover:bg-white/10 transition-colors"
                     >
-                      Book a Free Discovery Call
+                      Book Now
                     </Link>
                   </div>
                 </div>

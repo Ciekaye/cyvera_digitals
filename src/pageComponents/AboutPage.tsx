@@ -150,10 +150,10 @@ export default function AboutPage() {
                 className="flex flex-col sm:flex-row gap-4"
               >
                 <Link
-                  href="/contact"
+                  href="/book"
                   className="btn-gradient-primary inline-flex items-center justify-center gap-2 no-underline"
                 >
-                  Work with us
+                  Book Now
                   <ArrowRight size={18} />
                 </Link>
                 <FlairButton href="/portfolio" className="no-underline">

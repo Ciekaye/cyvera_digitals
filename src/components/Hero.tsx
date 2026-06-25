@@ -182,10 +182,10 @@ export default function Hero() {
           >
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
-                href="/contact"
+                href="/book"
                 className="group btn-gradient-primary text-lg font-semibold hover:shadow-2xl transition-all inline-flex items-center gap-2 no-underline"
               >
-                Get Started
+                Book Now
                 <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
               </Link>
             </motion.div>

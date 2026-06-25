@@ -218,8 +218,8 @@ export default function SocialMediaPage() {
               </ul>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/contact" className="btn-gradient-primary inline-flex items-center justify-center gap-2 text-lg font-semibold no-underline">
-                  Start a Project <ArrowRight size={18} />
+                <Link href="/book" className="btn-gradient-primary inline-flex items-center justify-center gap-2 text-lg font-semibold no-underline">
+                  Book Now <ArrowRight size={18} />
                 </Link>
                 <FlairButton href="/portfolio">
                   View Our Work
@@ -508,14 +508,14 @@ export default function SocialMediaPage() {
                   ))}
                 </ul>
                 <Link
-                  href="/contact"
+                  href="/book"
                   className={`w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold no-underline transition-all ${
                     pkg.highlighted
                       ? 'bg-[#C02B7D] text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5'
                       : 'border-2 border-gray-200 text-gray-700 hover:border-[#C02B7D] hover:text-[#C02B7D]'
                   }`}
                 >
-                  Get Started <ArrowRight size={16} />
+                  Book Now <ArrowRight size={16} />
                 </Link>
               </motion.div>
             ))}

@@ -118,8 +118,8 @@ export default function GuidesPage() {
               >
                 Browse the Guides <ArrowRight size={18} />
               </button>
-              <FlairButton href="/contact" className="!rounded-xl">
-                Book a Free Discovery Call
+              <FlairButton href="/book" className="!rounded-xl">
+                Book Now
               </FlairButton>
             </div>
             <p className="text-sm text-gray-500">
@@ -203,10 +203,10 @@ export default function GuidesPage() {
               turn strategy into a digital presence that performs.
             </p>
             <Link
-              href="/contact"
+              href="/book"
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-white text-gray-900 font-semibold no-underline hover:shadow-xl hover:-translate-y-0.5 transition-all"
             >
-              Book a Free Discovery Call <ArrowRight size={18} />
+              Book Now <ArrowRight size={18} />
             </Link>
           </div>
         </div>

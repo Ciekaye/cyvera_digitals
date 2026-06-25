@@ -173,8 +173,8 @@ export default function UiUxPage() {
               </ul>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/contact" className="btn-gradient-primary inline-flex items-center justify-center gap-2 text-lg font-semibold no-underline">
-                  Start a Project <ArrowRight size={18} />
+                <Link href="/book" className="btn-gradient-primary inline-flex items-center justify-center gap-2 text-lg font-semibold no-underline">
+                  Book Now <ArrowRight size={18} />
                 </Link>
                 <FlairButton href="/portfolio">
                   View Our Work
