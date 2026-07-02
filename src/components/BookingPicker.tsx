@@ -5,6 +5,7 @@ import { DateTime } from 'luxon';
 import { Calendar, Clock, Globe, Check, Loader2, ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react';
 import { bookingConfig } from '@/lib/booking/config';
 import { useSmoothScrollContext } from '@/components/SmoothScrollProvider';
+import TimezoneCombobox from '@/components/TimezoneCombobox';
 
 interface BookingPickerProps {
   /** Studio timezone, forwarded from the server. Used to build the working-day grid. */
@@ -222,19 +223,7 @@ export default function BookingPicker({ ownerTimezone }: BookingPickerProps) {
           <Globe size={18} className="text-secondary-purple" />
           Times shown in your timezone
         </span>
-        <select
-          value={tz}
-          onChange={(e) => setTz(e.target.value)}
-          className="px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-secondary-purple text-sm bg-white sm:max-w-xs"
-          aria-label="Your timezone"
-        >
-          {!allTimezones.includes(tz) && <option value={tz}>{tz}</option>}
-          {allTimezones.map((z) => (
-            <option key={z} value={z}>
-              {z.replace(/_/g, ' ')}
-            </option>
-          ))}
-        </select>
+        <TimezoneCombobox value={tz} onChange={setTz} timezones={allTimezones} />
       </div>
 
       {!selectedSlot && (
