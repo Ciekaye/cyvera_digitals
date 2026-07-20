@@ -172,7 +172,7 @@ export default function Footer() {
 
       {/* Large Logo */}
       <div className="absolute bottom-0 right-0 opacity-10 pointer-events-none">
-        <div className="text-[20rem] md:text-[30rem] font-bold text-primary-purple leading-none">
+        <div className="text-[7rem] md:text-[11rem] lg:text-[14rem] font-bold text-primary-purple leading-none">
           Cyvera
         </div>
       </div>
