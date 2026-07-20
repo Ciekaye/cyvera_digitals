@@ -85,7 +85,7 @@ export default function Footer() {
             className="flex w-full flex-col justify-between gap-8 lg:items-start"
           >
             <Link href="/" className="inline-block">
-              <Image src="/logo.svg" alt="Cyvera Digitals" width={192} height={64} unoptimized style={{ width: 'auto', height: '4rem' }} />
+              <Image src="/logo.png" alt="Cyvera Digitals" width={288} height={192} style={{ width: 'auto', height: '8rem' }} />
             </Link>
             <p className="max-w-[70%] text-base text-gray-500 leading-relaxed">
               From bold brand identities to high-performing websites, Cyvera Digitals helps startups and growing businesses show up online with purpose and professionalism.
