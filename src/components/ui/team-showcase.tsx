@@ -18,7 +18,7 @@ export default function TeamShowcase({ members = founders }: TeamShowcaseProps) 
   const col3 = members.filter((_, i) => i % 3 === 2);
 
   return (
-    <div className="flex flex-col md:flex-row items-start gap-8 md:gap-12 lg:gap-16 select-none w-full max-w-6xl mx-auto py-8 px-4 md:px-6 font-poppins">
+    <div className="flex flex-col lg:flex-row items-start gap-8 lg:gap-16 select-none w-full max-w-6xl mx-auto py-8 px-4 md:px-6 font-poppins">
       {/* ── Left: photo grid ── */}
       <div className="flex gap-2 md:gap-3 flex-shrink-0 w-full md:w-auto">
         {/* Column 1 */}
@@ -62,7 +62,7 @@ export default function TeamShowcase({ members = founders }: TeamShowcaseProps) 
       </div>
 
       {/* ── Right: member name list ── */}
-      <div className="flex flex-col sm:grid sm:grid-cols-2 md:flex md:flex-col gap-4 md:gap-6 pt-0 md:pt-2 flex-1 w-full min-w-0 md:min-w-[260px]">
+      <div className="flex flex-col sm:grid sm:grid-cols-2 lg:flex lg:flex-col gap-4 lg:gap-6 pt-0 lg:pt-2 flex-1 w-full min-w-0 lg:min-w-[260px]">
         {members.map((member) => (
           <MemberRow
             key={member.id}
@@ -144,16 +144,16 @@ function MemberRow({
       onMouseLeave={() => onHover(null)}
     >
       {/* Name + social */}
-      <div className="flex items-center gap-2.5">
+      <div className="flex items-start gap-2.5">
         <span
           className={cn(
-            'h-3 rounded-[5px] flex-shrink-0 transition-all duration-300 bg-[#C02B7D]',
+            'h-3 mt-0.5 rounded-[5px] flex-shrink-0 transition-all duration-300 bg-[#C02B7D]',
             isActive ? 'w-5' : 'w-4 opacity-25',
           )}
         />
         <span
           className={cn(
-            'text-[17px] md:text-[20px] font-semibold leading-none tracking-tight transition-colors duration-300 font-poppins',
+            'text-[17px] md:text-[13px] lg:text-[20px] font-semibold leading-tight tracking-tight transition-colors duration-300 font-poppins',
             isActive ? 'text-gray-900' : 'text-gray-700',
           )}
         >
@@ -198,7 +198,7 @@ function MemberRow({
       </div>
 
       {/* Role */}
-      <p className="mt-1.5 pl-[27px] text-[9px] md:text-[11px] font-medium uppercase tracking-[0.2em] text-gray-500 font-poppins">
+      <p className="mt-1.5 pl-[27px] text-[9px] md:text-[8px] lg:text-[11px] font-medium uppercase tracking-[0.2em] text-gray-500 font-poppins">
         {member.role}
       </p>
     </Link>
