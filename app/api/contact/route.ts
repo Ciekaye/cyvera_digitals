@@ -85,11 +85,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const adminEmail = process.env.ADMIN_EMAIL;
+    // Inquiries go to the shared inbox by default; ADMIN_EMAIL overrides it
+    // (e.g. to route somewhere else while testing).
+    const adminEmail = process.env.ADMIN_EMAIL || 'info@cyveradigitals.com';
     const senderEmail = process.env.ADMIN_SENDER_EMAIL;
     const apiKey = process.env.RESEND_API_KEY;
 
-    if (!adminEmail || !senderEmail || !apiKey) {
+    if (!senderEmail || !apiKey) {
       return NextResponse.json(
         { error: 'Server configuration error' },
         { status: 500 }

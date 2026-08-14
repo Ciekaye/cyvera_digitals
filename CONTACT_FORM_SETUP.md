@@ -41,8 +41,10 @@ Edit `.env.local` with your actual values:
 ```env
 RESEND_API_KEY=re_your_actual_api_key_here
 
-# Where to send admin notifications
-ADMIN_EMAIL=your-admin-email@gmail.com
+# Where to send admin notifications.
+# Optional — defaults to info@cyveradigitals.com when unset.
+# Set it only to route inquiries somewhere else, e.g. while testing.
+ADMIN_EMAIL=
 
 # The "from" email (must be verified in Resend)
 # For testing: use onboarding@resend.dev
