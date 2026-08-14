@@ -1,5 +1,9 @@
 import { Resend } from 'resend';
 import { NextRequest, NextResponse } from 'next/server';
+import {
+  adminNotificationEmail,
+  clientConfirmationEmail,
+} from '@/emails/contactEmails';
 
 interface ContactFormData {
   fullName: string;
@@ -16,15 +20,6 @@ const MAX_LENGTHS = {
   projectType: 100,
   projectDetails: 5000,
 } as const;
-
-function escapeHtml(value: string): string {
-  return value
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
-}
 
 // Simple in-memory rate limiter: max 3 submissions per IP per 10 minutes.
 // Resets when the serverless instance recycles, which is acceptable for a contact form.
@@ -90,15 +85,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Escape all user input before interpolating into email HTML
-    const safe = {
-      fullName: escapeHtml(body.fullName),
-      businessName: escapeHtml(body.businessName || ''),
-      email: escapeHtml(body.email),
-      projectType: escapeHtml(body.projectType || ''),
-      projectDetails: escapeHtml(body.projectDetails),
-    };
-
     const adminEmail = process.env.ADMIN_EMAIL;
     const senderEmail = process.env.ADMIN_SENDER_EMAIL;
     const apiKey = process.env.RESEND_API_KEY;
@@ -112,56 +98,23 @@ export async function POST(request: NextRequest) {
 
     const resend = new Resend(apiKey);
 
+    // Templates escape their own input, so raw values are passed through.
+    const submission = {
+      fullName: body.fullName,
+      businessName: body.businessName,
+      email: body.email,
+      projectType: body.projectType,
+      projectDetails: body.projectDetails,
+    };
+
     // Send confirmation email to client
+    const clientEmail = clientConfirmationEmail(submission);
     const clientEmailResponse = await resend.emails.send({
       from: senderEmail,
       to: body.email,
-      subject: 'We received your inquiry - CYVERA Digitals',
-      html: `
-        <!DOCTYPE html>
-        <html>
-          <head>
-            <meta charset="utf-8" />
-            <style>
-              body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-              .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-              .header { background: linear-gradient(135deg, #7b19e7 0%, #a78bfa 100%); color: white; padding: 20px; border-radius: 10px 10px 0 0; }
-              .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 10px 10px; }
-              .footer { margin-top: 20px; font-size: 12px; color: #666; }
-              h1 { margin: 0; font-size: 24px; }
-              .cta { display: inline-block; background: linear-gradient(135deg, #7b19e7 0%, #a78bfa 100%); color: white; padding: 12px 24px; border-radius: 25px; text-decoration: none; margin-top: 20px; }
-            </style>
-          </head>
-          <body>
-            <div class="container">
-              <div class="header">
-                <h1>Thank You for Getting in Touch!</h1>
-              </div>
-              <div class="content">
-                <p>Hi <strong>${safe.fullName}</strong>,</p>
-                <p>We've received your inquiry for <strong>${safe.businessName || 'your project'}</strong>. We're excited to learn more about your vision!</p>
-                
-                <h3>What happens next?</h3>
-                <ul>
-                  <li>Our team will review your details</li>
-                  <li>We'll reach out within 1-2 business days</li>
-                  <li>We'll discuss your project requirements and next steps</li>
-                </ul>
-
-                <h3>Your Inquiry Summary:</h3>
-                <p><strong>Project Type:</strong> ${safe.projectType}</p>
-                <p><strong>Details:</strong> ${safe.projectDetails.substring(0, 200)}${safe.projectDetails.length > 200 ? '...' : ''}</p>
-
-                <p style="margin-top: 30px; font-style: italic;">In the meantime, feel free to explore more about our services at CYVERA Digitals.</p>
-              </div>
-              <div class="footer">
-                <p>CYVERA Digitals | Building, Designing & Growing Brands</p>
-                <p>This is an automated response. Please do not reply to this email.</p>
-              </div>
-            </div>
-          </body>
-        </html>
-      `,
+      subject: clientEmail.subject,
+      html: clientEmail.html,
+      text: clientEmail.text,
     });
 
     if (clientEmailResponse.error) {
@@ -172,66 +125,16 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Send notification email to admin
+    // Send notification email to admin. replyTo points at the enquirer so
+    // hitting Reply in the inbox reaches them rather than the sender address.
+    const adminMail = adminNotificationEmail(submission, { receivedAt: new Date() });
     const adminEmailResponse = await resend.emails.send({
       from: senderEmail,
       to: adminEmail,
-      subject: `New Contact Inquiry: ${body.fullName.replace(/[\r\n]/g, ' ')} - ${(body.projectType || '').replace(/[\r\n]/g, ' ')}`,
-      html: `
-        <!DOCTYPE html>
-        <html>
-          <head>
-            <meta charset="utf-8" />
-            <style>
-              body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-              .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-              .header { background: #1f2937; color: white; padding: 20px; border-radius: 10px 10px 0 0; }
-              .content { background: #f3f4f6; padding: 30px; border-radius: 0 0 10px 10px; }
-              .field { margin-bottom: 20px; }
-              .label { font-weight: bold; color: #7b19e7; }
-              .value { margin-top: 5px; padding: 10px; background: white; border-left: 3px solid #7b19e7; }
-            </style>
-          </head>
-          <body>
-            <div class="container">
-              <div class="header">
-                <h1>🚀 New Contact Inquiry</h1>
-              </div>
-              <div class="content">
-                <div class="field">
-                  <div class="label">Full Name:</div>
-                  <div class="value">${safe.fullName}</div>
-                </div>
-
-                <div class="field">
-                  <div class="label">Business/Brand:</div>
-                  <div class="value">${safe.businessName || 'Not provided'}</div>
-                </div>
-
-                <div class="field">
-                  <div class="label">Email:</div>
-                  <div class="value"><a href="mailto:${safe.email}">${safe.email}</a></div>
-                </div>
-
-                <div class="field">
-                  <div class="label">Project Type:</div>
-                  <div class="value">${safe.projectType}</div>
-                </div>
-
-                <div class="field">
-                  <div class="label">Project Details:</div>
-                  <div class="value">${safe.projectDetails.replace(/\n/g, '<br>')}</div>
-                </div>
-
-                <hr style="margin-top: 30px; border: none; border-top: 1px solid #d1d5db;">
-                <p style="color: #666; font-size: 12px; margin-top: 20px;">
-                  Received at: ${new Date().toLocaleString()}
-                </p>
-              </div>
-            </div>
-          </body>
-        </html>
-      `,
+      replyTo: body.email,
+      subject: adminMail.subject,
+      html: adminMail.html,
+      text: adminMail.text,
     });
 
     if (adminEmailResponse.error) {
