@@ -9,11 +9,10 @@ import { projects, FilterCategory } from '@/data/portfolio';
 
 const FILTERS: { label: string; value: FilterCategory | 'All' }[] = [
   { label: 'All', value: 'All' },
-  { label: 'Web Development', value: 'Web Development' },
-  { label: 'WordPress Web Development', value: 'WordPress Web Development' },
+  { label: 'Custom Website Development', value: 'Custom Website Development' },
+  { label: 'WordPress Website Development', value: 'WordPress Website Development' },
   { label: 'Graphic Design', value: 'Graphic Design' },
   { label: 'Social Media Management', value: 'Social Media Management' },
-  { label: 'Funnels', value: 'Funnels' },
 ];
 
 export default function PortfolioPage() {
@@ -157,7 +156,7 @@ export default function PortfolioPage() {
                   >
                     <PortfolioCard
                       project={project}
-                      showDescription={active === 'Funnels'}
+                      showDescription
                       priority={index < 3}
                     />
                   </motion.div>

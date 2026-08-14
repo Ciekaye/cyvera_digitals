@@ -51,9 +51,9 @@ export default function PortfolioCard({ project, delay = 0, showDescription = fa
         </div>
       </div>
       <div className="p-5 flex flex-col flex-1">
-        {project.category && (
+        {project.filterCategory && (
           <span className="text-[11px] font-semibold text-secondary-purple uppercase tracking-wider">
-            {project.category}
+            {project.filterCategory}
           </span>
         )}
         <h3 className="text-base font-bold text-gray-900 mt-1 group-hover:text-secondary-purple transition-colors duration-200">
