@@ -141,6 +141,15 @@ export interface CreateBookingParams {
 export interface BookingResult {
   startUtc: string;
   meetLink: string | null;
+  /** Google Calendar event id, so a booking can be traced back to its event. */
+  eventId: string | null;
+  /**
+   * Deep link to the event in Google Calendar's UI. Google returns this on every
+   * insert; we surface it so the internal notification can link the owner
+   * straight to the event instead of making them hunt for it. Kept server-side —
+   * it describes the owner's calendar, not anything the guest needs.
+   */
+  htmlLink: string | null;
 }
 
 /**
@@ -189,5 +198,10 @@ export async function createBooking(params: CreateBookingParams): Promise<Bookin
     res.data.conferenceData?.entryPoints?.find((e) => e.entryPointType === 'video')?.uri ||
     null;
 
-  return { startUtc: start.toUTC().toISO()!, meetLink };
+  return {
+    startUtc: start.toUTC().toISO()!,
+    meetLink,
+    eventId: res.data.id ?? null,
+    htmlLink: res.data.htmlLink ?? null,
+  };
 }

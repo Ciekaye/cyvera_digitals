@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createBooking, isSlotAvailable } from '@/lib/booking/google';
+import { notifyOwnerOfBooking } from '@/lib/booking/notify';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -116,6 +117,22 @@ export async function POST(request: NextRequest) {
     }
 
     const result = await createBooking({ startUtc, name, email, tz, notes, company });
+
+    // Awaited rather than fire-and-forget: a serverless instance can be frozen
+    // the moment the response is flushed, which would silently drop a floating
+    // promise. Safe to sit inside this try — notifyOwnerOfBooking swallows its
+    // own failures, so a mail problem can never reach the catch below and tell
+    // the visitor their booking failed when the event already exists.
+    await notifyOwnerOfBooking({
+      name,
+      email,
+      company,
+      notes,
+      startUtc: result.startUtc,
+      tz,
+      meetLink: result.meetLink,
+      calendarLink: result.htmlLink,
+    });
 
     return NextResponse.json({
       success: true,
