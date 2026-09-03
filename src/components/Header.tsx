@@ -63,7 +63,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 left-0 right-0 z-50 bg-white/95 shadow-sm">
-      <nav className="container mx-auto px-6 lg:px-8">
+      <nav className="container mx-auto px-6 lg:px-8 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <motion.div
@@ -75,9 +75,9 @@ export default function Header() {
               <Image
                 src='/logo.png'
                 alt="Cyvera Digitals logo"
-                width={200}
+                width={251}
                 height={96}
-                style={{ width: 'auto', height: '6rem' }}
+                style={{ width: 'auto', height: '3rem' }}
               />
             </Link>
           </motion.div>
